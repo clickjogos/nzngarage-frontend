@@ -1,0 +1,4 @@
+applications:
+- name: template-dashboard-frontend-dev
+  random-route: false
+  buildback: https://github.com/cloudfoundry/staticfile-buildpack
