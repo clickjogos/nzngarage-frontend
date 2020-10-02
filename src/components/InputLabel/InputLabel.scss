@@ -1,20 +1,54 @@
+@import "../../styles/variables";
 
-body {
+.container-inputlabel {
   width: 100%;
-  height: 100%;
-  margin: 0;
-  font-family:'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-}
-#root{
-  width: 100%;
-  height: 100%;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  margin-top: 30px;
+
+  label {
+    width: 140px;
+    height: 18px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #333e7c
+  }
+
+  .container-input-icon {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 45px;
+    border-radius: 3.5px;
+    border: solid 1.5px $medium_color;
+    background-color: $light_color;
+
+    &:active,
+    &:hover,
+    &:visited,
+    &:focus {
+      border: solid 1.5px #333e7c;
+    }
+
+
+    .input {
+      width: 85%;
+      color: $font_color;
+      font-weight: bold;
+      border: none;
+
+      .container-input-icon+&:focus {
+        border: solid 1.5px red;
+      }
+
+    }
+
+    img {
+      width: 20px;
+      cursor: pointer;
+    }
+  }
 }
