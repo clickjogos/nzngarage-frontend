@@ -15,14 +15,15 @@ function Login() {
         <div class="logo">
           <Image src={logoNZN} height="44px" width="173px" />
         </div>
+        <div class="container">
         <div class="user-information">
           <p>Entrar</p>
-
           <InputLabel label="E-mail" placeholder="exemplo@email.com.br"/>
           <InputLabel label="Senha" placeholder="Senha de acesso"/>
         </div>
         <div class="box-button">
           <AccessButton title="Acessar conta" />
+        </div>
         </div>
       </div>
       <div class="background-information">
