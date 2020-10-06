@@ -27,6 +27,8 @@ function Login() {
         </div>
       </div>
       <div class="background-information">
+      <h1>Mensurar o conhecimento e estimular o engajamento nunca foi tão simples</h1>
+
         <div class="containerImage">
           <Image src={backgroundLogin} height="544" width="727" />
         </div>
