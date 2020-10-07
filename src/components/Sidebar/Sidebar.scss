@@ -5,7 +5,7 @@
   width: 280px;
   height: 100vh;
 
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .logo {
@@ -88,4 +88,25 @@ hr {
 
 button:hover {
   background-color: #EFEFEF;
-}   
+}  
+#footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:auto;
+  
+} 
+.information-person{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  p{
+    font-family: proxima-nova, sans-serif;
+font-weight: bold;
+font-style: normal;
+padding-left: 50px;  
+}
+  // img{
+  //   padding-left: 20px;
+  // }
+}
