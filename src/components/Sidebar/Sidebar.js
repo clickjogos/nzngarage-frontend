@@ -38,7 +38,6 @@ export default class Sidebar extends Component {
        
         <div id="footer">
 
-
         <div class="information-person">
           
         {/* <Image src={logoNZN} style={{width: 20, height: 20, borderRadius: 400/ 2}}/> */}
