@@ -4,7 +4,7 @@ import "./AccessButton.scss";
 export default class AccessButton extends Component {
   render() {
     return (
-      <div>
+      <div >
         <button className="button-access" onClick={() => this.props.callback()}>
           {this.props.title}
         </button>
