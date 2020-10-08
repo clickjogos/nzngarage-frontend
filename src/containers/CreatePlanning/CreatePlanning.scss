@@ -11,18 +11,17 @@
   padding-left: 39px;
   padding-top: 39px;
   height: 70px;
-  flex-direction: column; /*This solves everything*/
+  flex-direction: column; 
+  
+
 }
 
 #back-text {
   color: #777777;
   padding-top: 4px;
-  // padding-left: 30px;
   padding-right: 300px;
-
   font-family: proxima-nova, sans-serif;
-  // width: 90px;
-  // height: 70px;
+
 }
 
 .container-block {
@@ -77,7 +76,7 @@
   // width: 90px;
 }
 
-.button-access {
+.button {
   font-weight: bold;
 
   background-color: #2942D6;
@@ -90,6 +89,14 @@
   color: $light_color;
   border-radius: 8px;
   opacity:1;
+}
+
+.container-back{
+  button{
+    background-color: Transparent;
+    border: none;
+    outline:none;
+  }
 }
 
 

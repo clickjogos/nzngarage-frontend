@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 import "../../components/Sidebar/Sidebar.scss";
-import Image from "react-bootstrap/Image";
 const planning = require("../../assets/icons/icon-planejamento.svg");
 const acompanhamento = require("../../assets/icons/icon-acompanhamento.svg");
 const logoNZN = require("../../assets/images/nzn.png");
-const Iconperson = require("../../assets/icons/iconfinder_Picture1_3289576.png");
-
 
 export default class Sidebar extends Component {
   render() {
     return (
       <div class="sidebar">
         <div class="logo">
-          <img src={logoNZN} height="44px" width="173px" />
+        <img src={logoNZN} height="44px" width="173px" />
         </div>
         <hr />
         <div class="icon-container">
@@ -40,7 +37,6 @@ export default class Sidebar extends Component {
 
           <div class="information-person">
 
-            {/* <Image src={logoNZN} style={{width: 20, height: 20, borderRadius: 400/ 2}}/> */}
             <p>Alana</p>
           </div>
         </div>
