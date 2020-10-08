@@ -6,8 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import backgroundLogin from "../../assets/images/brand-illustration.png";
 
 import "../Login/Login.scss";
-import { Button } from "react-bootstrap";
-const logoNZN = require("../../assets/images/logoNZN.png");
+const logoNZN = require("../../assets/images/nzn-logo.png");
 
 function Login() {
   return (

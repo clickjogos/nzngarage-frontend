@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.scss';
 import Login from '../Login/Login'
+import CreatePlanning from '../CreatePlanning/CreatePlanning'
+
 import { BrowserRouter, Route } from 'react-router-dom';
 import PlanningList from '../PlanningList/PlanningList';
 // import {
