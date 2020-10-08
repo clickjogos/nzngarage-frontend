@@ -56,7 +56,7 @@ hr {
   // // background: #EFEFEF 0% 0% no-repeat padding-box;
   border-radius: 8px;
   outline-style: none;
-   border: 1px solid #EFEFEF;
+  border: 1px solid #efefef;
   font-weight: bold;
   font-style: normal;
   padding-left: 20px;
@@ -66,6 +66,10 @@ hr {
   cursor: pointer;
   margin: 0;
   padding: 0;
+}
+
+.buttonSidebar:hover {
+  background-color: #efefef;
 }
 
 #txtButtonPlan {
@@ -86,26 +90,22 @@ hr {
   margin-right: 30px;
 }
 
-button:hover {
-  background-color: #EFEFEF;
-}  
 #footer {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:auto;
-  
-} 
-.information-person{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
+.information-person {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  p{
+  p {
     font-family: proxima-nova, sans-serif;
-font-weight: bold;
-font-style: normal;
-padding-left: 50px;  
-}
+    font-weight: bold;
+    font-style: normal;
+    padding-left: 50px;
+  }
   // img{
   //   padding-left: 20px;
   // }

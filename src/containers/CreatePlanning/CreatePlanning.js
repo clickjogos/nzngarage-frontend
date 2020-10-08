@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import ButtonBack from "../../components/Button/Back";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InputLabelPlanning from "../../components/InputLabel/InputLabelPlanning";
-import ButtonAccess from "../../components/Button/AccessButton";
+import Button from "../../components/Button/Button";
+
 
 import "./CreatePlanning.scss";
 
@@ -53,7 +53,7 @@ function CreatePanning() {
             <button id="buttonPlanning" type="submit">
               Ver Sugestão de Planejamento ❯
             </button> */}
-            <ButtonAccess title="Ver Sugestão de Planejamento ❯"/>
+            <Button title="Ver Sugestão de Planejamento ❯"/>
           </div>
         </div>
       </div>
