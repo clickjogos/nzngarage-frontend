@@ -10,7 +10,6 @@ h1 {
 h2 { 
     color: #23282D;
     font-size: 16px;
-    margin-left: 10px;
 }
 
 .planning-count { 
@@ -72,18 +71,20 @@ h2 {
     list-style-type: none;
 }
 
-span { 
+.dates { 
     color: #8995A0;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 20px;
     letter-spacing: 1px;
+    margin-top: 20px;
 }
 .status { 
     color: #8995A0;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 20px;
     letter-spacing: 0px;
-    margin-top: 50px;
+    margin-top: 75px;
+    letter-spacing: 0px;
 }
 .container-image { 
     margin-bottom: 37px;
@@ -107,4 +108,13 @@ li {
 .option { 
     margin-top: -22px;
     margin-left: 200px;
+}
+
+
+.card-name { 
+    margin-left: 20px;
+}
+
+span { 
+    margin-left: 10px;
 }

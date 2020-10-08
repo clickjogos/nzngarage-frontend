@@ -17,42 +17,48 @@ export default class PlanningList extends Component {
             </div>
                 <div className="new-planning">
                     <div className="container-image">
-                    <img src={PlanningButton} alt="planning button image"/>
+                    <img src={PlanningButton} alt=""/>
                     </div>
                     <h2 className="planning-title">Criar novo planejamento</h2>
                 </div>
                 <div className="theme-list">
                     <ul>
                         <li className="theme-list-activated">
-                            <span>20/04 até 20/05</span>
-                            <h2>Cultura Interna</h2>
+                            <span className="dates">20/04 até 20/05</span>
+                            <h2 className="card-name">Cultura Interna</h2>
                             <div className="status-option">
-                                <div className="status"><img src={Activated} alt="status image"/></div>
+                                <div className="status">
+                                    <img src={Activated} alt="status image"/>
                                     <span>Ativado</span>
+                                    </div>
                                 <div className="option">
-                                <img src={MoreOptions} alt="more options button image"/>
+                                <img src={MoreOptions} alt=""/>
                                 </div>
                             </div>
                         </li>
                         <li className="theme-list-deactivated">
-                            <span>20/04 até 20/05</span>
-                            <h2>Cultura Interna</h2>
+                            <span className="dates">20/04 até 20/05</span>
+                            <h2 className="card-name">Cultura Interna</h2>
                             <div className="status-option">
-                                <div className="status"><img src={Deactivated} alt="status image"/></div>
+                                <div className="status">
+                                    <img src={Deactivated} alt="status image"/>
                                 <span>Desativado</span>
+                                </div>
                                 <div className="option">
-                                <img src={MoreOptions} alt="more options button image"/>
+                                <img src={MoreOptions} alt="e"/>
                                 </div>
                             </div>
                         </li>
                         <li className="theme-list-deactivated">
-                            <span>20/04 até 20/05</span>
-                            <h2>Cultura Interna</h2>
+                            <span className="dates">20/04 até 20/05</span>
+                            <h2 className="card-name">Cultura Interna</h2>
                             <div className="status-option">
-                                <div className="status"><img src={ Deactivated} alt="status image"/></div>
+                                <div className="status">
+                                    <img src={Deactivated} alt=""/>
                                 <span>Desativado</span>
+                                </div>
                                 <div className="option">
-                                <img src={MoreOptions} alt="more options button image"/>
+                                <img src={MoreOptions} alt=""/>
                                 </div>
                             </div>
                         </li>
