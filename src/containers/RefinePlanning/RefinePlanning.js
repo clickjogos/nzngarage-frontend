@@ -8,7 +8,7 @@ function refinePlanning() {
     return (
         <div className="main">
             <Sidebar></Sidebar>
-            <div className="container-block">
+            <div className="container-flex">
                 <div className="container-back-two">
                     <div className="gambeta">
                         <Button>
