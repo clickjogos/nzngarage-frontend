@@ -1,19 +1,17 @@
 @import "../../styles/variables";
 @import url("https://use.typekit.net/bsf1heu.css");
+
 .main {
   background-color: $background_color;
 }
-.container-back {
-  padding-left: 39px;
 
+.container-back {
   display: flex;
   flex-wrap: wrap;
   padding-left: 39px;
   padding-top: 39px;
   height: 70px;
-  flex-direction: column; 
-  
-
+  flex-direction: column;
 }
 
 #back-text {
@@ -35,7 +33,7 @@
   padding-top: 120px;
 }
 
-.flex-container{
+.flex-container {
   display: grid;
   grid-column-gap: 15px;
   grid-row-gap: 15px;
@@ -44,16 +42,17 @@
 
 }
 
-.container-step{
+.container-step {
   padding-top: 130px;
   display: grid;
   grid-column-gap: 15px;
   grid-row-gap: 15px;
   grid-template-columns: repeat(2, 1fr);
 
- 
+
 }
-#buttonPlanning{
+
+#buttonPlanning {
   font-weight: bold;
 
   background-color: #2942D6;
@@ -65,11 +64,11 @@
   letter-spacing: 0px;
   color: $light_color;
   border-radius: 8px;
-  opacity:1;
+  opacity: 1;
 
 }
 
-#textStep{
+#textStep {
   color: #777777;
   padding-top: 16px;
   font-family: proxima-nova, sans-serif;
@@ -88,18 +87,13 @@
   letter-spacing: 0px;
   color: $light_color;
   border-radius: 8px;
-  opacity:1;
+  opacity: 1;
 }
 
-.container-back{
-  button{
+.container-back {
+  button {
     background-color: Transparent;
     border: none;
-    outline:none;
+    outline: none;
   }
 }
-
-
-
-
-

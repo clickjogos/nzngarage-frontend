@@ -11,7 +11,7 @@
         flex-direction: column;
         padding: 30px;
 
-        .container-back {
+        .container-back-two {
             display: flex;
             flex-wrap: wrap;
             padding-top: 39px;
@@ -34,8 +34,9 @@
 
         .container-refine {
             font-family: proxima-nova, sans-serif;
-            padding-left: 39px;
             padding-top: 120px;
+            padding-right: 50px;
+            padding-left: 50px;
 
             .container-filters {
                 display: flex;

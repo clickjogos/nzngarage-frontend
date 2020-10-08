@@ -1,19 +1,18 @@
 import Sidebar from '../../components/Sidebar/Sidebar'
 import React, { Component } from "react";
 import "./RefinePlanning.scss";
-
-const Backbutton = require("../../assets/icons/icon-back-button.svg");
+import Button from '../../components/Button/Back'
 
 function refinePlanning() {
+
     return (
         <div className="main">
             <Sidebar></Sidebar>
             <div className="container-block">
-                <div className="container-back">
+                <div className="container-back-two">
                     <div className="gambeta">
-                        <button>
-                            <img src={Backbutton} icon={<img src={Backbutton} />} />
-                        </button>
+                        <Button>
+                        </Button>
                         <p id="back-text"> Voltar para a Criação do Planejamento</p>
                     </div>
                 </div>
@@ -52,6 +51,7 @@ function refinePlanning() {
             </div>
         </div>
     )
+
 }
 
 export default refinePlanning;
