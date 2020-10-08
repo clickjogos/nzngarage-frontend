@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import Login from '../Login/Login'
 import CreatePlanning from '../CreatePlanning/CreatePlanning'
+import RefinePlanning from '../RefinePlanning/RefinePlanning'
 
 import { BrowserRouter, Route } from 'react-router-dom';
 // import {
@@ -16,7 +17,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 function App() {
   return (
     <BrowserRouter>
-      <Route path='/' exact component={CreatePlanning} />
+      <Route path='/' exact component={RefinePlanning} />
     </BrowserRouter>
   );
 }
