@@ -3,7 +3,7 @@ import "./Sidebar.scss";
 import Image from "react-bootstrap/Image";
 const planning = require("../../assets/icons/icon-planejamento.svg");
 const acompanhamento = require("../../assets/icons/icon-acompanhamento.svg");
-const logoNZN = require("../../assets/images/nzn-logo.png");
+const logoNZN = require("../../assets/images/nzn.png");
 const Iconperson = require("../../assets/icons/iconfinder_Picture1_3289576.png");
 
 
