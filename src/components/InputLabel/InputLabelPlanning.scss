@@ -1,0 +1,52 @@
+@import "../../styles/variables";
+
+.container-inputlabel {
+  width: 100%;
+  margin-top: 30px;
+
+  label {
+    text-align: left;
+    width: 146px;
+    height: 18px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #636f7a;
+  }
+
+  .container-input-icon {
+      background: #FFFFFF;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 236px;
+    height: 48px;
+    box-shadow: 0px 1px 2px #23282d14;
+    border: 1px solid #dbe1e5;
+    border-radius: 8px;
+    opacity: 1;
+
+    &:active,
+    &:hover,
+    &:visited,
+    &:focus {
+      border: 1px solid #dbe1e5;
+    }
+
+    .input {
+      text-align: left;
+      font-family: proxima-nova, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      letter-spacing: 0px;
+      opacity: 1;
+      width: 85%;
+      color: $font_color-light;
+      border: none;
+      outline: 0;
+    }
+  }
+}

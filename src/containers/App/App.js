@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.scss';
 import Login from '../Login/Login'
+import CreatePlanning from '../CreatePlanning/CreatePlanning'
+
 import { BrowserRouter, Route } from 'react-router-dom';
 // import {
 //   BrowserRouter as Router,
@@ -14,7 +16,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 function App() {
   return (
     <BrowserRouter>
-      <Route path='/' exact component={Login} />
+      <Route path='/' exact component={CreatePlanning} />
     </BrowserRouter>
   );
 }
