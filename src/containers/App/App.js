@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import Login from '../Login/Login'
 import { BrowserRouter, Route } from 'react-router-dom';
+import PlanningList from '../PlanningList/PlanningList';
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -14,7 +15,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 function App() {
   return (
     <BrowserRouter>
-      <Route path='/' exact component={Login} />
+      <Route path='/' exact component={PlanningList} />
     </BrowserRouter>
   );
 }

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Button } from 'reactstrap';
+import "./AccessButton.scss";
 
-
-  
-  export default class AccessButton extends Component {
-      render() {
-        return (
-            <div>
-            <Button color="danger">Danger!</Button>
-        </div>    
-        )
-      }
-    }
+export default class AccessButton extends Component {
+  render() {
+    return (
+      <div>
+        <button className="button-access" onClick={() => this.props.callback()}>
+          {this.props.title}
+        </button>
+      </div>
+    );
+  }
+}

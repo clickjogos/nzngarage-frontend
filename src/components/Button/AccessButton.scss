@@ -1,8 +1,22 @@
-h6 {
-    position: absolute;
-    right: 80px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #e4e6ee;
-    cursor: pointer;
-  }
+@import url('https://use.typekit.net/bsf1heu.css');
+
+.button-access {
+  width: 149px;
+  height: 40px;
+  background: #2942d6 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px #0000001a;
+  border: 1px solid #2942d6;
+  opacity: 1;
+  outline: 0;
+  font-size: 15px;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "proxima-nova", sans-serif;
+  font-weight: bold;
+    font-style: normal
+}
+
+
+
+

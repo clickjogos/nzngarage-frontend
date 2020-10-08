@@ -1,38 +1,40 @@
-// import React from 'react';
-// export default function teste(){
-//     return ( <h1>justin bieber lixo</h1>)}
 import React, { Component } from "react";
-// import * as authentication from "../../providers/authentication";
-import AccessButton from "../../components/Button/AccessButton"
+import Image from "react-bootstrap/Image";
+import InputLabel from "../../components/InputLabel/InputLabel";
+import AccessButton from "../../components/Button/AccessButton";
+import "bootstrap/dist/css/bootstrap.min.css";
+import backgroundLogin from "../../assets/images/brand-illustration.png";
 
-// import Button from "../../components/Button";
-// import { Redirect } from "react-router-dom";
-// import  Button  from "../../components/Button/Button";
 import "../Login/Login.scss";
+import { Button } from "react-bootstrap";
 const logoNZN = require("../../assets/images/logoNZN.png");
 
 function Login() {
-
-  
   return (
-    <div className="container-login">
-      <span className="banner">
-        <p>HELP</p>
-        <AccessButton></AccessButton>
-      </span>
-      <div className="box-form">
-        <img className="logo" alt="logo" src={logoNZN} />
-        <h1>Login</h1>
-        <form>
-          {/* <InputLabel label="Email or Phone Number" />
-          <InputLabel label="Password" /> */}
-        </form>
+    <div class="main">
+      <div class="login-information">
+        <div class="logo">
+          <Image src={logoNZN} height="44px" width="173px" />
+//         </div>
+        <div class="container">
+        <div class="user-information">
+          <p>Entrar</p>
+          <InputLabel label="E-mail" placeholder="exemplo@email.com.br"/>
+          <InputLabel label="Senha" placeholder="Senha de acesso"/>
+        </div>
+        <div class="box-button">
+          <AccessButton title="Acessar conta" />
+        </div>
+        </div>
+      </div>
+      <div class="background-information">
+      <h1>Mensurar o conhecimento e estimular o engajamento nunca foi tão simples</h1>
+        <div class="containerImage">
+          <Image src={backgroundLogin} height="544" width="727" />
+        </div>
       </div>
     </div>
-
-  )
-
+  );
 }
 
 export default Login;
-
