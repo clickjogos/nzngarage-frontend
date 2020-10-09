@@ -53,16 +53,8 @@ render(){
           </form>
           <div class="container-step">
             <p id="textStep">Passo 1 de 2</p>
-<<<<<<< HEAD
-            {/* 
-            <button id="buttonPlanning" type="submit">
-              Ver Sugestão de Planejamento ❯
-            </button> */}
-            <Button title="Ver Sugestão de Planejamento ❯" />
-=======
 
             <Button title="Ver Sugestão de Planejamento ❯"/>
->>>>>>> dev
           </div>
         </div>
       </div>
