@@ -19,7 +19,7 @@ render(){
       <Sidebar />
       <div class="container-block">
         <div class="container-back">
-          <button onClick={() => history.push("/")}>
+          <button onClick={() => history.push("/planningList")}>
             
             <img src={Backbutton} icon={<img src={Backbutton} />} />
           </button>

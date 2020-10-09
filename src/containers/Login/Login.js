@@ -10,6 +10,11 @@ import "../Login/Login.scss";
 const logoNZN = require("../../assets/images/nzn-logo.png");
 
 class Login extends Component {
+
+ redirectPage = () => {
+  history.push({
+    pathname: "/createPlanning",
+});};
   render() {
     return (
       <div class="main">
@@ -24,12 +29,9 @@ class Login extends Component {
               <InputLabel label="Senha" placeholder="Senha de acesso" />
             </div>
             <div class="box-button">
-              <button
-                id="buttonRedirect"
-                onClick={() => history.push("/create")}
-              >
-                Acessar conta
-              </button>
+      
+              <Button title="Acessar Conta" callback={this.redirectPage}>
+              </Button>
             </div>
           </div>
         </div>

@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import "./Sidebar.scss";
 import Image from "react-bootstrap/Image";
+import history from "../../containers/App/history";
 const planning = require("../../assets/icons/icon-planejamento.svg");
 const acompanhamento = require("../../assets/icons/icon-acompanhamento.svg");
 const logoNZN = require("../../assets/images/nzn-logo.png");
 
 
 export default class Sidebar extends Component {
+
+  redirectPagePlanning = () => {
+    history.push({
+      pathname: "/createPlanning",
+  });};
+
+  redirectPageList = () => {
+    history.push({
+      pathname: "/planningList",
+  });};
+
+
   render() {
     return (
       <div class="sidebar">
@@ -18,7 +31,7 @@ export default class Sidebar extends Component {
           <p id="txtplan">CRIAR</p>
           <button
             className="buttonSidebar"
-            onClick={() => this.props.callback()}
+            onClick={() => this.redirectPagePlanning()}
               >
             <img id="imgIcon"src={planning} height="16px" width="14px" />
             <p id="txtButtonPlan">Planejamento</p>
@@ -28,7 +41,7 @@ export default class Sidebar extends Component {
           <p id="txtplan">AVALIAR</p>
           <button
             className="buttonSidebar"
-            onClick={() => this.props.callback()}
+            onClick={() => this.redirectPageList()}
               >
             <img id="imgIcon"src={acompanhamento} height="16px" width="14px" />
             <p id="txtButtonGuide">Acompanhamento</p>

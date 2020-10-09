@@ -2,6 +2,8 @@ import React from 'react';
 import './App.scss';
 import Login from '../Login/Login'
 import CreatePlanning from '../CreatePlanning/CreatePlanning'
+import PlanningList from '../PlanningList/PlanningList'
+
 
 import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
 import history from './history';
@@ -21,7 +23,9 @@ function App() {
     <Router history={history}>
                 <Switch>
                     <Route path="/" exact component={Login} />
-                    <Route path="/create" component={CreatePlanning} />
+                    <Route path="/createPlanning" component={CreatePlanning} />
+                    <Route path='/planningList' exact component={PlanningList} />
+
 
                 </Switch>
          </Router>
