@@ -49,11 +49,11 @@ function CreatePanning() {
           </div>
           <div class="container-step">
             <p id="textStep">Passo 1 de 2</p>
-{/* 
+            {/* 
             <button id="buttonPlanning" type="submit">
               Ver Sugestão de Planejamento ❯
             </button> */}
-            <Button title="Ver Sugestão de Planejamento ❯"/>
+            <Button title="Ver Sugestão de Planejamento ❯" />
           </div>
         </div>
       </div>

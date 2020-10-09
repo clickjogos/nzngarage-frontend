@@ -9,7 +9,7 @@ export default class Sidebar extends Component {
     return (
       <div class="sidebar">
         <div class="logo">
-        <img src={logoNZN} height="44px" width="173px" />
+          <img src={logoNZN} height="44px" width="173px" />
         </div>
         <hr />
         <div class="icon-container">

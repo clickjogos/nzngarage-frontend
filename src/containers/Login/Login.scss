@@ -1,9 +1,9 @@
 @import "../../styles/variables";
 @import url('https://use.typekit.net/bsf1heu.css');
 
-
 .user-information {
   padding: 62px;
+
   p {
     padding-top: 57px;
 
@@ -12,12 +12,14 @@
     color: #23282d;
   }
 }
+
 .login-information {
 
   width: 50%;
   height: 100vh;
   background-color: #ffffff;
 }
+
 .background-information {
   background-color: #f1f5f8;
   width: 100%;
@@ -41,17 +43,18 @@
   padding-top: 57px;
   padding: 62px;
 }
+
 .box-button {
   display: flex;
   padding-left: 307px;
 }
 
-.container{
+.container {
   padding-left: 0px;
   margin-top: -50px;
 }
 
-h1 { 
+h1 {
   top: 71px;
   left: 729px;
   width: 405px;
@@ -63,10 +66,6 @@ h1 {
   margin-left: 300px;
   margin-right: 227px;
   margin-top: 71px;
-  font-family: "proxima-nova", sans-serif;  
+  font-family: "proxima-nova", sans-serif;
   text-align: center;
 }
-
-
-
-
