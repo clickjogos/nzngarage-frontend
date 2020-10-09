@@ -2,8 +2,12 @@ import React from 'react';
 import './App.scss';
 import Login from '../Login/Login'
 import CreatePlanning from '../CreatePlanning/CreatePlanning'
+import PlanningList from '../PlanningList/PlanningList'
 
-import { BrowserRouter, Route } from 'react-router-dom';
+
+import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
+import history from './history';
+
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -15,9 +19,18 @@ import { BrowserRouter, Route } from 'react-router-dom';
 // import Chat from '../Chat/Chat';
 function App() {
   return (
-    <BrowserRouter>
-      <Route path='/' exact component={CreatePlanning} />
-    </BrowserRouter>
+
+    <Router history={history}>
+                <Switch>
+                    <Route path="/" exact component={Login} />
+                    <Route path="/createPlanning" component={CreatePlanning} />
+                    <Route path='/planningList' exact component={PlanningList} />
+
+
+                </Switch>
+         </Router>
+ 
   );
 }
 export default App;
+

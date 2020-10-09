@@ -3,21 +3,24 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InputLabelPlanning from "../../components/InputLabel/InputLabelPlanning";
 import Button from "../../components/Button/Button";
+import history from "../App/history";
+
 
 
 import "./CreatePlanning.scss";
 
 const Backbutton = require("../../assets/icons/icon-back-button.svg");
 
-function CreatePanning() {
+class CreatePanning extends Component{
   // const [startDate, setStartDate] = useState(new Date());
-
+render(){
   return (
     <div class="main">
       <Sidebar />
       <div class="container-block">
         <div class="container-back">
-          <button>
+          <button onClick={() => history.push("/planningList")}>
+            
             <img src={Backbutton} icon={<img src={Backbutton} />} />
           </button>
           <p id="back-text"> Voltar para a Lista de Planejamento</p>
@@ -28,7 +31,7 @@ function CreatePanning() {
           <h4 style={{ fontSize: "18px", color: "#636F7A" }}>
             Vamos fazer isso em dois passos ;)
           </h4>
-
+            <form>
           <InputLabelPlanning
             label="Nome do Planejamento"
             placeholder="Mês de Outubro"
@@ -47,18 +50,17 @@ function CreatePanning() {
             <InputLabelPlanning label="Audiência" placeholder="" />
             <InputLabelPlanning label="Orçamento" placeholder="R$" />
           </div>
+          </form>
           <div class="container-step">
             <p id="textStep">Passo 1 de 2</p>
-{/* 
-            <button id="buttonPlanning" type="submit">
-              Ver Sugestão de Planejamento ❯
-            </button> */}
+
             <Button title="Ver Sugestão de Planejamento ❯"/>
           </div>
         </div>
       </div>
     </div>
   );
+}
 }
 
 export default CreatePanning;
