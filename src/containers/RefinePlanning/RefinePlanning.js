@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./RefinePlanning.scss";
 import Back from '../../components/Button/Back'
 import Forward from '../../components/Button/Button'
+import InputLabel from '../../components/InputLabel/InputLabel'
 
 function refinePlanning() {
 
@@ -47,6 +48,7 @@ function refinePlanning() {
                         <div id="forward">❯</div>
                     </div>
                     <div className="main-container">
+                        {/* /OUTRO COMPONENTE/ */}
                     </div>
                     <div className="next-step">
                         <p style={{ fontSize: "14px", color: "#B8C2CB" }}>Passo 2 de 2</p>
