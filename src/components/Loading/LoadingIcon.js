@@ -1,5 +1,5 @@
 import React from 'react'
-import './Loading.scss';
+import './LoadingIcon.scss';
 export default function Loading() {
     return (
         <div className='container-loading'>

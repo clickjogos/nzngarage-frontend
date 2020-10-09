@@ -5,6 +5,7 @@ import CreatePlanning from '../CreatePlanning/CreatePlanning'
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import PlanningList from '../PlanningList/PlanningList';
+import LoadingIcon from '../../components/Loading/LoadingIcon'
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -17,7 +18,7 @@ import PlanningList from '../PlanningList/PlanningList';
 function App() {
   return (
     <BrowserRouter>
-      <Route path='/' exact component={PlanningList} />
+      <Route path='/' exact component={LoadingIcon} />
     </BrowserRouter>
   );
 }
