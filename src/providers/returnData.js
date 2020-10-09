@@ -12,7 +12,6 @@ export function isLogin() {
     } else {
         return true
     }
-
 }
 
 export function verifyAuth(loginObj) {

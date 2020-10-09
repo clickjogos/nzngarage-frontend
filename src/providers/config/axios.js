@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-// const LOCAL = ''
+const PROD = 'http://nzn-garage-cluster-316ee121d9b40536dfeb045d2e84c949-0000.sjc03.containers.appdomain.cloud/api'
 
 const axiosProvider = axios.create({
-  baseURL: LOCAL
+  baseURL: PROD
 });
 
 axiosProvider.interceptors.response.use(
