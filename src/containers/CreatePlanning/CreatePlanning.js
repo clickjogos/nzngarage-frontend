@@ -23,7 +23,7 @@ function CreatePanning() {
           <p id="back-text"> Voltar para a Lista de Planejamento</p>
         </div>
 
-        <div class="container-planning">
+        <form class="container-planning">
           <h3 style={{ fontSize: "28px" }}>Criar novo Planejamento</h3>
           <h4 style={{ fontSize: "18px", color: "#636F7A" }}>
             Vamos fazer isso em dois passos ;)
@@ -49,13 +49,10 @@ function CreatePanning() {
           </div>
           <div class="container-step">
             <p id="textStep">Passo 1 de 2</p>
-{/* 
-            <button id="buttonPlanning" type="submit">
-              Ver Sugestão de Planejamento ❯
-            </button> */}
+
             <Button title="Ver Sugestão de Planejamento ❯"/>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

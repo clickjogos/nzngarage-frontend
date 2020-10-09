@@ -3,7 +3,9 @@ import './App.scss';
 import Login from '../Login/Login'
 import CreatePlanning from '../CreatePlanning/CreatePlanning'
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
+import history from './history';
+
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -15,9 +17,16 @@ import { BrowserRouter, Route } from 'react-router-dom';
 // import Chat from '../Chat/Chat';
 function App() {
   return (
-    <BrowserRouter>
-      <Route path='/' exact component={CreatePlanning} />
-    </BrowserRouter>
+
+    <Router history={history}>
+                <Switch>
+                    <Route path="/" exact component={Login} />
+                    <Route path="/create" component={CreatePlanning} />
+
+                </Switch>
+         </Router>
+ 
   );
 }
 export default App;
+
