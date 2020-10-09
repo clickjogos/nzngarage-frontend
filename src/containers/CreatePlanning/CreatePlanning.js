@@ -3,6 +3,8 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import InputLabelPlanning from "../../components/InputLabel/InputLabelPlanning";
 import Button from "../../components/Button/Button";
+import history from "../App/history";
+
 
 
 import "./CreatePlanning.scss";
@@ -17,7 +19,8 @@ render(){
       <Sidebar />
       <div class="container-block">
         <div class="container-back">
-          <button>
+          <button onClick={() => history.push("/")}>
+            
             <img src={Backbutton} icon={<img src={Backbutton} />} />
           </button>
           <p id="back-text"> Voltar para a Lista de Planejamento</p>
