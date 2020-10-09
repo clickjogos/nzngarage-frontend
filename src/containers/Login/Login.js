@@ -10,18 +10,6 @@ import "../Login/Login.scss";
 const logoNZN = require("../../assets/images/nzn-logo.png");
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-
- 
-      this.handleClick = this.handleClick.bind(this);
-
-    
-  }
-  handleClick() {
-    console.log('Clicado');
-  }
-
   render() {
     return (
       <div class="main">
@@ -36,14 +24,13 @@ class Login extends Component {
               <InputLabel label="Senha" placeholder="Senha de acesso" />
             </div>
             <div class="box-button">
-              {/* <Button title="Acessar conta" callback={() => this.handleClick}/> */}
-              <button id="buttonRedirect"
-              onClick={() => history.push("/create")}
-            >
-              Acessar conta
-            </button>
+              <button
+                id="buttonRedirect"
+                onClick={() => history.push("/create")}
+              >
+                Acessar conta
+              </button>
             </div>
-          
           </div>
         </div>
         <div class="background-information">

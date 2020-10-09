@@ -9,9 +9,9 @@ import "./CreatePlanning.scss";
 
 const Backbutton = require("../../assets/icons/icon-back-button.svg");
 
-function CreatePanning() {
+class CreatePanning extends Component{
   // const [startDate, setStartDate] = useState(new Date());
-
+render(){
   return (
     <div class="main">
       <Sidebar />
@@ -23,12 +23,12 @@ function CreatePanning() {
           <p id="back-text"> Voltar para a Lista de Planejamento</p>
         </div>
 
-        <form class="container-planning">
+        <div class="container-planning">
           <h3 style={{ fontSize: "28px" }}>Criar novo Planejamento</h3>
           <h4 style={{ fontSize: "18px", color: "#636F7A" }}>
             Vamos fazer isso em dois passos ;)
           </h4>
-
+            <form>
           <InputLabelPlanning
             label="Nome do Planejamento"
             placeholder="Mês de Outubro"
@@ -47,15 +47,17 @@ function CreatePanning() {
             <InputLabelPlanning label="Audiência" placeholder="" />
             <InputLabelPlanning label="Orçamento" placeholder="R$" />
           </div>
+          </form>
           <div class="container-step">
             <p id="textStep">Passo 1 de 2</p>
 
             <Button title="Ver Sugestão de Planejamento ❯"/>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
+}
 }
 
 export default CreatePanning;
