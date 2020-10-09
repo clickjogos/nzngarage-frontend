@@ -1,7 +1,8 @@
 import Sidebar from '../../components/Sidebar/Sidebar'
 import React, { Component } from "react";
 import "./RefinePlanning.scss";
-import Button from '../../components/Button/Back'
+import Back from '../../components/Button/Back'
+import Forward from '../../components/Button/Button'
 
 function refinePlanning() {
 
@@ -10,9 +11,8 @@ function refinePlanning() {
             <Sidebar></Sidebar>
             <div className="container-flex">
                 <div className="container-back-two">
-                    <div className="gambeta">
-                        <Button>
-                        </Button>
+                    <div className="adjust">
+                        <Back></Back>
                         <p id="back-text"> Voltar para a Criação do Planejamento</p>
                     </div>
                 </div>
@@ -25,7 +25,7 @@ function refinePlanning() {
                         <div className="filters">
                             <div>
                                 <h4 style={{ fontSize: "16px", color: "#414141" }}>Período</h4>
-                                <p style={{ fontSize: "14px", color: "#8995A0" }}>-- / -- / ---- até -- / -- / ----</p>
+                                <input className="date" type="date"></input>
                             </div>
                             <div>
                                 <h4 style={{ fontSize: "16px", color: "#414141" }}>Matérias</h4>
@@ -43,15 +43,22 @@ function refinePlanning() {
                     </div>
                     <div className="pagination">
                         <div id="back">❮</div>
+                        <h5 style={{ fontStyle: "normal normal 600 18px/24px Proxima Nova;", fontSize: "18px", color: "#2944D9" }}>Semana 1 de 4</h5>
                         <div id="forward">❯</div>
                     </div>
                     <div className="main-container">
+                    </div>
+                    <div className="next-step">
+                        <p style={{ fontSize: "14px", color: "#B8C2CB" }}>Passo 2 de 2</p>
+                        <div className="onlybutton">
+                            <Forward title="Rodar Planejamento ❯"></Forward>
+                            <Forward title="Salvar Planejamento ❯"></Forward>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     )
-
 }
 
 export default refinePlanning;
