@@ -3,6 +3,7 @@ import './App.scss';
 import Login from '../Login/Login'
 import CreatePlanning from '../CreatePlanning/CreatePlanning'
 import PlanningList from '../PlanningList/PlanningList'
+import RefinePlanning from '../RefinePlanning/RefinePlanning'
 import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
 import history from './history';
 
@@ -23,10 +24,10 @@ function App() {
         <Route path="/" exact component={Login} />
         <Route path="/createPlanning" component={CreatePlanning} />
         <Route path='/planningList' exact component={PlanningList} />
+        <Route path='/refinePlannig' component={RefinePlanning} />
       </Switch>
     </Router>
 
   );
 }
 export default App;
-

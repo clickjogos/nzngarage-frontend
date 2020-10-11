@@ -8,7 +8,6 @@ export default class Button extends Component {
         <button className="button" onClick={() => this.props.callback()}>
           {this.props.title}
         </button>
-
       </div>
     );
   }

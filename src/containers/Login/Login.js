@@ -11,10 +11,11 @@ const logoNZN = require("../../assets/images/nzn-logo.png");
 
 class Login extends Component {
 
- redirectPage = () => {
-  history.push({
-    pathname: "/createPlanning",
-});};
+  redirectPage = () => {
+    history.push({
+      pathname: "/createPlanning",
+    });
+  };
   render() {
     return (
       <div class="main">
@@ -29,7 +30,7 @@ class Login extends Component {
               <InputLabel label="Senha" placeholder="Senha de acesso" />
             </div>
             <div class="box-button">
-      
+
               <Button title="Acessar Conta" callback={this.redirectPage}>
               </Button>
             </div>

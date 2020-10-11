@@ -70,41 +70,37 @@ h1 {
   text-align: center;
 }
 
-#buttonRedirect{
- 
-    width: 149px;
-    height: 40px;
-    background: #2942d6 0% 0% no-repeat padding-box;
-    border-radius: 8px;
-    box-shadow: 0px 1px 2px #0000001a;
-    border: 1px solid #2942d6;
-    opacity: 1;
-    outline: 0;
-    font-size: 15px;
-    color: #ffffff;
-    font-size: 16px;
-    font-family: "proxima-nova", sans-serif;
-    font-weight: bold;
-      font-style: normal
-  
-}
-.background-information{
-h1 { 
-  top: 71px;
-  left: 729px;
-  width: 405px;
-  height: 65px;
-  letter-spacing: 0px;
-  color: #636F7A;
+#buttonRedirect {
+  width: 149px;
+  height: 40px;
+  background: #2942d6 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px #0000001a;
+  border: 1px solid #2942d6;
   opacity: 1;
-  font-size: 24px;
-  margin-left: 300px;
-  margin-right: 227px;
-  margin-top: 71px;
-  font-family: "proxima-nova", sans-serif;  
-  text-align: center;
+  outline: 0;
+  font-size: 15px;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "proxima-nova", sans-serif;
+  font-weight: bold;
+  font-style: normal
 }
+
+.background-information {
+  h1 {
+    top: 71px;
+    left: 729px;
+    width: 405px;
+    height: 65px;
+    letter-spacing: 0px;
+    color: #636F7A;
+    opacity: 1;
+    font-size: 24px;
+    margin-left: 300px;
+    margin-right: 227px;
+    margin-top: 71px;
+    font-family: "proxima-nova", sans-serif;
+    text-align: center;
+  }
 }
-
-
-

@@ -4,63 +4,106 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import InputLabelPlanning from "../../components/InputLabel/InputLabelPlanning";
 import Button from "../../components/Button/Button";
 import history from "../App/history";
-
-
-
 import "./CreatePlanning.scss";
+import { Redirect } from "react-router-dom";
+
+import * as model from '../../providers/model'
 
 const Backbutton = require("../../assets/icons/icon-back-button.svg");
 
-class CreatePanning extends Component{
+class CreatePanning extends Component {
   // const [startDate, setStartDate] = useState(new Date());
-render(){
-  return (
-    <div class="main">
-      <Sidebar />
-      <div class="container-block">
-        <div class="container-back">
-          <button onClick={() => history.push("/planningList")}>
-            
-            <img src={Backbutton} icon={<img src={Backbutton} />} />
-          </button>
-          <p id="back-text"> Voltar para a Lista de Planejamento</p>
-        </div>
+  constructor(props) {
+    super(props);
 
-        <div class="container-planning">
-          <h3 style={{ fontSize: "28px" }}>Criar novo Planejamento</h3>
-          <h4 style={{ fontSize: "18px", color: "#636F7A" }}>
-            Vamos fazer isso em dois passos ;)
-          </h4>
-            <form>
-          <InputLabelPlanning
-            label="Nome do Planejamento"
-            placeholder="Mês de Outubro"
-          />
-          <div class="flex-container">
-            <InputLabelPlanning
-              label="Data Inicial"
-              placeholder="Senha de acesso"
-              type="date"
-            />
-            <InputLabelPlanning
-              label="Data Final"
-              placeholder="Senha de acesso"
-              type="date"
-            />
-            <InputLabelPlanning label="Audiência" placeholder="" />
-            <InputLabelPlanning label="Orçamento" placeholder="R$" />
-          </div>
-          </form>
-          <div class="container-step">
-            <p id="textStep">Passo 1 de 2</p>
+    this.state = {
+      show: true
+    }
+    // handleClick = this.handleClick.bind(this)
+  }
 
-            <Button title="Ver Sugestão de Planejamento ❯"/>
-          </div>
-        </div>
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(this.state)
+    this.setState({ show: false });
+    model.makeInference(this.state).then(inference => {
+      this.setState({ data: inference });
+      this.setState({ redirect: true });
+      this.setState({ show: true });
+    }).catch(error => {
+      alert(error)
+    })
+  }
+
+  redirectPage = () => {
+    history.push({
+      pathname: "/refinePlanning",
+    });
+  };
+
+  render() {
+    if (this.state.redirect) return <Redirect to={{ pathname: "/planningList", data: this.state.data }} />
+    return (
+      <div class="main">
+        <Sidebar />
+        {this.state.show ? (
+          <>
+            <div class="container-block">
+              <div class="container-back">
+                <button onClick={() => history.push("/planningList")}>
+                  <img src={Backbutton} icon={<img src={Backbutton} />} />
+                </button>
+                <p id="back-text"> Voltar para a Lista de Planejamento</p>
+              </div>
+
+              <div class="container-planning">
+                <h3 style={{ fontSize: "28px" }}>Criar novo Planejamento</h3>
+                <h4 style={{ fontSize: "18px", color: "#636F7A" }}>
+                  Vamos fazer isso em dois passos ;)
+                </h4>
+                <form onSubmit={this.handleSubmit}>
+
+                  <InputLabelPlanning
+                    callback={(e) => this.setState({ planningName: e })}
+                    label="Nome do Planejamento"
+                    placeholder="Nome do Planejamento"
+                  />
+                  <div class="flex-container">
+                    <InputLabelPlanning
+                      callback={(e) => this.setState({ startDate: e })}
+                      label="Data Inicial"
+                      type="date"
+                    />
+                    <InputLabelPlanning
+                      callback={(e) => this.setState({ endDate: e })}
+                      label="Data Final"
+                      type="date"
+                    />
+                    <InputLabelPlanning
+                      callback={(e) => this.setState({ viewTarget: e })}
+                      label="Audiência"
+                      placeholder="" />
+                    <InputLabelPlanning
+                      callback={(e) => this.setState({ budget: e })}
+                      label="Orçamento"
+                      placeholder="R$" />
+                  </div>
+                  <div class="container-step">
+                    <p id="textStep">Passo 1 de 2</p>
+
+                    <Button callback={() => this.handleSubmit} title="Ver Sugestão de Planejamento >" />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </>
+        ) : (
+            <h1> Carregando... </h1>
+          )}
+
       </div>
-    </div>
-  );
-}
+    );
+  }
 }
 
 export default CreatePanning;

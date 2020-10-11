@@ -1,22 +1,22 @@
 @import url("https://use.typekit.net/bsf1heu.css");
 
-h1 { 
+h1 {
     font-size: 28px;
     color: #23282D;
     height: 0px;
     margin-left: 0px;
-
 }
-h2 { 
+
+h2 {
     color: #23282D;
     font-size: 16px;
 }
 
-.planning-count { 
+.planning-count {
     color: #777777;
     font-family: proxima-nova, sans-serif;
     font-weight: bolder;
-    background-color:#DDDDDD;
+    background-color: #DDDDDD;
     width: 10px;
     height: 10px;
     padding: 10px;
@@ -24,8 +24,8 @@ h2 {
     margin-left: 320px;
 }
 
-.new-planning { 
-    background:#FFFFFF;
+.new-planning {
+    background: #FFFFFF;
     top: 272px;
     left: 533px;
     width: 236px;
@@ -38,16 +38,16 @@ h2 {
     position: absolute;
     margin-left: -220px;
     margin-top: -120px;
-
 }
-.planning-title { 
+
+.planning-title {
     color: #23282D;
     font-size: 16px;
     opacity: 1;
 }
 
-.theme-list-activated { 
-    background:#FFFFFF;
+.theme-list-activated {
+    background: #FFFFFF;
     width: 236px;
     height: 150px;
     box-shadow: 0px 2px 2px #0000001A;
@@ -58,8 +58,9 @@ h2 {
     border-top: 8px solid #D6F1E2;
     list-style-type: none;
 }
-.theme-list-deactivated { 
-    background:#FFFFFF;
+
+.theme-list-deactivated {
+    background: #FFFFFF;
     width: 236px;
     height: 150px;
     box-shadow: 0px 2px 2px #0000001A;
@@ -71,14 +72,15 @@ h2 {
     list-style-type: none;
 }
 
-.dates { 
+.dates {
     color: #8995A0;
     font-size: 12px;
     margin-left: 20px;
     letter-spacing: 1px;
     margin-top: 20px;
 }
-.status { 
+
+.status {
     color: #8995A0;
     font-size: 12px;
     margin-left: 20px;
@@ -86,35 +88,38 @@ h2 {
     margin-top: 75px;
     letter-spacing: 0px;
 }
-.container-image { 
+
+.container-image {
     margin-bottom: 37px;
     margin-top: 37px;
     margin-right: 27px;
     margin-left: 27px;
 }
 
-.title { 
+.title {
     margin-left: -80px;
-    }
+}
 
-ul { 
+ul {
     display: flex;
     margin-left: -590px;
     margin-top: 250px;
 }
-li { 
+
+li {
     margin-left: 24px;
 }
-.option { 
+
+.option {
     margin-top: -22px;
     margin-left: 200px;
 }
 
 
-.card-name { 
+.card-name {
     margin-left: 20px;
 }
 
-span { 
+span {
     margin-left: 10px;
 }
