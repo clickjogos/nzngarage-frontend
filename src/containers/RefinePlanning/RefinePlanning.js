@@ -22,7 +22,7 @@ class refinePlanning extends Component {
                     </div>
                     <div className="container-refine">
                         <div className="container-filters">
-                            <div className="title">
+                            <div className="title-refine">
                                 <h3 style={{ fontSize: "28px" }}>Refinando o Planejamento</h3>
                                 <h4 style={{ fontSize: "18px", color: "#636F7A" }}>Agora você pode refinar a sugestão de planejamento</h4>
                             </div>
