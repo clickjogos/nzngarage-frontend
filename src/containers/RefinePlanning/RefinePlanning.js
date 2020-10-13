@@ -10,18 +10,13 @@ class refinePlanning extends Component {
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
             show: false,
-            data: this.data
+            data: this.props.location.state
         }
-        console.log(">>> props")
-        console.log(this.props)
-        console.log(">>> data")
-        console.log(this.data)
-
+        console.log(this.state.data, "DATA")
     }
-
 
     render() {
 
@@ -44,7 +39,8 @@ class refinePlanning extends Component {
                             <div className="filters">
                                 <div>
                                     <h4 style={{ fontSize: "16px", color: "#414141" }}>Período</h4>
-                                    <input className="date" type="date"></input>
+                                    <label>{this.state.data.startDate}</label>
+                                    <label>{this.state.data.endDate}</label>
                                 </div>
                                 <div>
                                     <h4 style={{ fontSize: "16px", color: "#414141" }}>Matérias</h4>
@@ -52,11 +48,11 @@ class refinePlanning extends Component {
                                 </div>
                                 <div>
                                     <h4 style={{ fontSize: "16px", color: "#414141" }}>Audiência</h4>
-                                    <p style={{ fontSize: "14px", color: "#8995A0" }}>117.034</p>
+                                    <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.data.viewTarget}</p>
                                 </div>
                                 <div>
                                     <h4 style={{ fontSize: "16px", color: "#414141" }}>Orçamento</h4>
-                                    <p style={{ fontSize: "14px", color: "#8995A0" }}>R$11.304</p>
+                                    <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.data.budget}</p>
                                 </div>
                             </div>
                         </div>

@@ -26,22 +26,16 @@ class CreatePanning extends Component {
     e.preventDefault()
     console.log(this.state)
     this.setState({ show: false });
-    this.setState({ redirect: true });
     model.makeInference(this.state).then(inference => {
+      this.setState({ redirect: true });
       this.setState({ data: inference });
     }).catch(error => {
       alert(error)
     })
   }
 
-  // redirectPage = () => {
-  //   history.push({
-  //     pathname: "/refinePlanning",
-  //   });
-  // };
-
   render() {
-    if (this.state.redirect) return <Redirect to={{ pathname: "/refinePlanning", data: this.state }} />
+    if (this.state.redirect) return <Redirect exact to={{ pathname: "/refinePlanning", state: this.state }} />
     return (
       <div class="main">
         <Sidebar />
