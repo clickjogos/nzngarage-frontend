@@ -38,7 +38,7 @@ class refinePlanning extends Component {
     defineWeeek() //receber parametro do componente pagination
     {
         let result
-        data.data.map(week => {
+        this.data.data.map(week => {
             result = week.week
         })
         console.log(result)
@@ -64,7 +64,7 @@ class refinePlanning extends Component {
                             viewTarget={this.state.viewTarget}
                             budget={this.state.budget}
                         />
-                        <Pagination
+                        <ContainerList
                             callback={this.teste}
                             callforward={this.teste2}
                         />
