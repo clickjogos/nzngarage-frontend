@@ -8,6 +8,8 @@ import MoreOptions from '../../assets/images/icon-more-options.svg'
 
 import * as format from "../../utils/format";
 import * as planning from '../../providers/planning'
+import * as data from "../../providers/mocks/data.json"
+
 
 export default class PlanningList extends Component {
     constructor(props) {
@@ -19,6 +21,7 @@ export default class PlanningList extends Component {
         console.log(this.props)
         console.log(">>> state")
         console.log(this.state)
+        console.log(data, "JSON")
     }
 
     componentDidMount() {

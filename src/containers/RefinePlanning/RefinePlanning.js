@@ -5,6 +5,8 @@ import Back from '../../components/Button/Back'
 import Forward from '../../components/Button/Button'
 import InputLabel from '../../components/InputLabel/InputLabel'
 import history from "../App/history";
+import Pagination from "../../components/Pagination/Pagination"
+import Filters from "../../components/Filters/Filters"
 
 class refinePlanning extends Component {
 
@@ -13,13 +15,21 @@ class refinePlanning extends Component {
 
         this.state = {
             show: false,
-            data: this.props.location.state
+            data: this.props.location.state,
+            startDate: this.props.location.state.startDate,
+            endDate: this.props.location.state.endDate,
+            viewTarget: this.props.location.state.viewTarget,
+            budget: this.props.location.state.budget
         }
+
+        console.log(this.props)
         console.log(this.state.data, "DATA")
+
+        console.log(this.state.startDate, "data")
+        console.log(this.state.budget, "budget")
     }
 
     render() {
-
         return (
             <div className="main">
                 <Sidebar></Sidebar>
@@ -31,7 +41,10 @@ class refinePlanning extends Component {
                         </div>
                     </div>
                     <div className="container-refine">
-                        <div className="container-filters">
+
+                        {/* <Filters
+                        /> */}
+                        {/* <div className="container-filters">
                             <div className="title-refine">
                                 <h3 style={{ fontSize: "28px" }}>Refinando o Planejamento</h3>
                                 <h4 style={{ fontSize: "18px", color: "#636F7A" }}>Agora você pode refinar a sugestão de planejamento</h4>
@@ -55,15 +68,8 @@ class refinePlanning extends Component {
                                     <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.data.budget}</p>
                                 </div>
                             </div>
-                        </div>
-                        <div className="pagination">
-                            <div id="back">❮</div>
-                            <h5 style={{ fontStyle: "normal normal 600 18px/24px Proxima Nova;", fontSize: "18px", color: "#2944D9" }}>Semana 1 de 4</h5>
-                            <div id="forward">❯</div>
-                        </div>
-                        <div className="main-container">
-                            {/* /OUTRO COMPONENTE/ */}
-                        </div>
+                        </div> */}
+                        <Pagination />
                         <div className="next-step">
                             <p style={{ fontSize: "14px", color: "#B8C2CB" }}>Passo 2 de 2</p>
                             <div className="onlybutton">

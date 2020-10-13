@@ -1,0 +1,28 @@
+@import "../../styles/variables";
+@import url("https://use.typekit.net/bsf1heu.css");
+
+.container-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    .title-refine {
+        width: 50%;
+    }
+
+    .filters {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        justify-content: space-around;
+
+        .date {
+            cursor: pointer;
+            border: none;
+            outline: 0;
+            background-color: $background_color;
+            color: #8995A0;
+        }
+    }
+}

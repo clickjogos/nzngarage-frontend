@@ -26,8 +26,8 @@ class CreatePanning extends Component {
     e.preventDefault()
     console.log(this.state)
     this.setState({ show: false });
+    this.setState({ redirect: true });
     model.makeInference(this.state).then(inference => {
-      this.setState({ redirect: true });
       this.setState({ data: inference });
     }).catch(error => {
       alert(error)
