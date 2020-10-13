@@ -21,12 +21,8 @@ class refinePlanning extends Component {
             viewTarget: this.props.location.state.viewTarget,
             budget: this.props.location.state.budget
         }
-
         console.log(this.props)
         console.log(this.state.data, "DATA")
-
-        console.log(this.state.startDate, "data")
-        console.log(this.state.budget, "budget")
     }
 
     render() {
@@ -42,33 +38,12 @@ class refinePlanning extends Component {
                     </div>
                     <div className="container-refine">
 
-                        {/* <Filters
-                        /> */}
-                        {/* <div className="container-filters">
-                            <div className="title-refine">
-                                <h3 style={{ fontSize: "28px" }}>Refinando o Planejamento</h3>
-                                <h4 style={{ fontSize: "18px", color: "#636F7A" }}>Agora você pode refinar a sugestão de planejamento</h4>
-                            </div>
-                            <div className="filters">
-                                <div>
-                                    <h4 style={{ fontSize: "16px", color: "#414141" }}>Período</h4>
-                                    <label>{this.state.data.startDate}</label>
-                                    <label>{this.state.data.endDate}</label>
-                                </div>
-                                <div>
-                                    <h4 style={{ fontSize: "16px", color: "#414141" }}>Matérias</h4>
-                                    <p style={{ fontSize: "14px", color: "#8995A0" }}>320</p>
-                                </div>
-                                <div>
-                                    <h4 style={{ fontSize: "16px", color: "#414141" }}>Audiência</h4>
-                                    <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.data.viewTarget}</p>
-                                </div>
-                                <div>
-                                    <h4 style={{ fontSize: "16px", color: "#414141" }}>Orçamento</h4>
-                                    <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.data.budget}</p>
-                                </div>
-                            </div>
-                        </div> */}
+                        <Filters
+                            startDate={this.state.startDate}
+                            endDate={this.state.endDate}
+                            viewTarget={this.state.viewTarget}
+                            budget={this.state.budget}
+                        />
                         <Pagination />
                         <div className="next-step">
                             <p style={{ fontSize: "14px", color: "#B8C2CB" }}>Passo 2 de 2</p>
