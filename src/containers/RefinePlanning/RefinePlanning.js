@@ -8,6 +8,21 @@ import history from "../App/history";
 
 class refinePlanning extends Component {
 
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            show: false,
+            data: this.data
+        }
+        console.log(">>> props")
+        console.log(this.props)
+        console.log(">>> data")
+        console.log(this.data)
+
+    }
+
+
     render() {
 
         return (

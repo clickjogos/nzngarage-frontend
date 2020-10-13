@@ -24,7 +24,7 @@ function App() {
         <Route path="/" exact component={Login} />
         <Route path="/createPlanning" component={CreatePlanning} />
         <Route path='/planningList' exact component={PlanningList} />
-        <Route path='/refinePlannig' component={RefinePlanning} />
+        <Route path="/refinePlanning" exact component={RefinePlanning} />
       </Switch>
     </Router>
 

@@ -6,7 +6,7 @@ import Button from "../../components/Button/Button";
 import history from "../App/history";
 import "./CreatePlanning.scss";
 import { Redirect } from "react-router-dom";
-
+import RefinePlanning from "../RefinePlanning/RefinePlanning"
 import * as model from '../../providers/model'
 
 const Backbutton = require("../../assets/icons/icon-back-button.svg");
@@ -26,23 +26,22 @@ class CreatePanning extends Component {
     e.preventDefault()
     console.log(this.state)
     this.setState({ show: false });
+    this.setState({ redirect: true });
     model.makeInference(this.state).then(inference => {
       this.setState({ data: inference });
-      this.setState({ redirect: true });
-      this.setState({ show: true });
     }).catch(error => {
       alert(error)
     })
   }
 
-  redirectPage = () => {
-    history.push({
-      pathname: "/refinePlanning",
-    });
-  };
+  // redirectPage = () => {
+  //   history.push({
+  //     pathname: "/refinePlanning",
+  //   });
+  // };
 
   render() {
-    if (this.state.redirect) return <Redirect to={{ pathname: "/planningList", data: this.state.data }} />
+    if (this.state.redirect) return <Redirect to={{ pathname: "/refinePlanning", data: this.state }} />
     return (
       <div class="main">
         <Sidebar />
