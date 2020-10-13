@@ -8,6 +8,9 @@ import history from "../App/history";
 import Pagination from "../../components/Pagination/Pagination"
 import Filters from "../../components/Filters/Filters"
 
+import * as data from '../../providers/mocks/data.json'
+
+
 class refinePlanning extends Component {
 
     constructor(props) {
@@ -21,8 +24,17 @@ class refinePlanning extends Component {
             viewTarget: this.props.location.state.viewTarget,
             budget: this.props.location.state.budget
         }
+        console.log("mock", data)
+
         console.log(this.props)
         console.log(this.state.data, "DATA")
+    }
+
+    teste(){
+        alert("ooi")
+    }
+    teste2(){
+        alert("forward 2")
     }
 
     render() {
@@ -44,7 +56,10 @@ class refinePlanning extends Component {
                             viewTarget={this.state.viewTarget}
                             budget={this.state.budget}
                         />
-                        <Pagination />
+                        <Pagination
+                        callback={this.teste}
+                        callforward={this.teste2}                        
+                        />
                         <div className="next-step">
                             <p style={{ fontSize: "14px", color: "#B8C2CB" }}>Passo 2 de 2</p>
                             <div className="onlybutton">
