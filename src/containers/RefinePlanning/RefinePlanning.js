@@ -40,7 +40,10 @@ class refinePlanning extends Component {
 	}
 
 	handleSubmit = (e) => {
-		e.preventDefault()
+		if(e == "" || !e){
+			e.preventDefault()
+		}
+		console.log("event handle", e)
 		console.log('>> Create refining page')
 		console.log(this.state)
 		this.setState({ show: false })
@@ -63,7 +66,9 @@ class refinePlanning extends Component {
 	}
 
 	handleModelSubmit = (e) => {
-		e.preventDefault()
+		// if(e == "" || !e || e==undefined){
+		// 	e.preventDefault()
+		// }
 		this.setState({ show: false })
 
 		model
@@ -75,6 +80,12 @@ class refinePlanning extends Component {
 				alert(error)
 			})
 	}
+
+	handleFormUpdate = () => {
+		console.log("INFERENCEEEEE")
+		console.log(this.state.inference)
+	}
+
 	render() {
 		if (this.state.redirect) return <Redirect exact to={{ pathname: '/PlanningList' }} />
 		return (
@@ -100,7 +111,11 @@ class refinePlanning extends Component {
 									budget={this.state.budget}
 								/>
 
-								<Prediction weeksValuesInference={this.state.inference} />
+								<Prediction 
+								weeksValuesInference={this.state.inference} 
+								onChange={this.handleFormUpdate.bind(this)}
+								
+								/>
 								{/* <ContainerList
                             callback={this.teste}
                             callforward={this.teste2}
