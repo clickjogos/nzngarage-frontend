@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import "./Pagination.scss";
 import InputLabel from "../../components/InputLabel/InputLabel";
 
-
-
 export default class Pagination extends Component {
-
 
     render() {
         return (
@@ -18,5 +15,4 @@ export default class Pagination extends Component {
             </div>
         )
     }
-
 }

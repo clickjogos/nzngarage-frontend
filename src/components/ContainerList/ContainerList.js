@@ -5,8 +5,6 @@ import InputLabel from "../../components/InputLabel/InputLabel";
 
 export default class ContainerList extends Component {
 
-
-
     render() {
         return (
             <div className="main-pagination">
