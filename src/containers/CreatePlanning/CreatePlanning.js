@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom";
 import RefinePlanning from "../RefinePlanning/RefinePlanning"
 import * as model from '../../providers/model'
 
+import data from '../../providers/mocks/data.json'
 const Backbutton = require("../../assets/icons/icon-back-button.svg");
 
 class CreatePanning extends Component {
@@ -24,14 +25,15 @@ class CreatePanning extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    console.log(">> Create planning page")
     console.log(this.state)
     this.setState({ show: false });
     this.setState({ redirect: true });
-    model.makeInference(this.state).then(inference => {
-      this.setState({ data: inference });
-    }).catch(error => {
-      alert(error)
-    })
+    // model.makeInference(this.state).then(inference => {
+      this.setState({ inference: data.data });
+    // }).catch(error => {
+    //   alert(error)
+    // })
   }
 
   render() {

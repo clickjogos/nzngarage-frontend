@@ -1,0 +1,83 @@
+.main-pagination {
+    display: flex;
+    flex-direction: column;
+
+    .pagination {
+        margin-top: 35px;
+        display: flex;
+        justify-content: space-between;
+
+        #back,
+        #forward {
+            cursor: pointer;
+            border: 1px solid #2944D9;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            color: #2944D9;
+            width: 30px;
+            align-items: center;
+            height: 30px;
+            align-content: center;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .main-container {
+        margin-top: 30px;
+        border-radius: 8px;
+        opacity: 1;
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        height: 100%;
+        background: #F6F8FA 0% 0% no-repeat padding-box;
+        box-shadow: 0px 1px 2px #00000014;
+        border: 1px solid #DBE1E5;
+
+        form {
+            width: 100%;
+            display: flex;
+            grid-column-gap:100px;
+            .tag{ 
+               width: 50%;
+
+
+                .tag-label{
+
+                }
+                .tag-content{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+
+            .others { 
+                width: 50%;
+                display: grid;
+grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .container-inputlabel{
+            
+            display: flex;
+
+            .container-input-icon{
+                width: 66px;
+                height: 40px;
+            }
+        }
+
+        .next-step {
+            margin-top: 35px;
+            display: flex;
+            justify-content: space-between;
+
+            .onlybutton {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+    }
+}

@@ -13,3 +13,15 @@ export async function makeInference(object) {
         throw (error)
     }
 }
+
+
+export async function makeSugestion(object) {
+    try {
+        let requestResponse = await axiosProvider.post('/model/sugestion/', {weekValues:object})
+
+        return requestResponse.data
+
+    } catch (error) {
+        throw (error)
+    }
+}
