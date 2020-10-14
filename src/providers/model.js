@@ -17,7 +17,7 @@ export async function makeInference(object) {
 
 export async function makeSugestion(object) {
     try {
-        let requestResponse = await axiosProvider.post('/model/sugestion/', {weekValues:object})
+        let requestResponse = await axiosProvider.post('/model/sugestion/', object)
 
         return requestResponse.data
 

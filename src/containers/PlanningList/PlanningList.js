@@ -5,6 +5,7 @@ import Activated from '../../assets/images/icon-active.svg'
 import Deactivated from '../../assets/images/icon-desactive.svg'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import MoreOptions from '../../assets/images/icon-more-options.svg'
+import history from "../App/history";
 
 import * as format from "../../utils/format";
 import * as planning from '../../providers/planning'
@@ -54,9 +55,12 @@ export default class PlanningList extends Component {
                             <span class="planning-count" > {this.state.planningList.length} </span>
                         </div>
                         <div className="new-planning">
-                            <div className="container-image">
+                        <button className="container-image" onClick={() => history.push("/createPlanning")}>
+                  <img src={PlanningButton} />
+                </button>
+                            {/* <div className="container-image">
                                 <img src={PlanningButton} alt="" />
-                            </div>
+                            </div> */}
                             <h2 className="planning-title">Criar novo planejamento</h2>
                         </div>
                         <div className="theme-list">

@@ -19,7 +19,7 @@ export default class Filters extends Component {
                     </div>
                     <div>
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Matérias</h4>
-                        <p style={{ fontSize: "14px", color: "#8995A0" }}>320</p>
+                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.props.totalArticles}</p>
                     </div>
                     <div>
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Audiência</h4>
