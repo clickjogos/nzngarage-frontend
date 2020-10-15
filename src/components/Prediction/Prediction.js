@@ -3,7 +3,7 @@ import './Prediction.scss'
 import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
 import * as model from '../../providers/model'
 
-export default class Pagination extends Component {
+export default class Prediction extends Component {
 	constructor(props) {
 		super(props)
 
@@ -11,11 +11,8 @@ export default class Pagination extends Component {
 			show: true,
 			filter: false,
 			inference: this.props.weeksValuesInference,
-			// inputsCount: [ {tag: 13}, {weekDay: 7}, {period: 3}, {type: 2 }],
 			weekIndex: 0,
 		}
-		// console.log('mock', this.state.inference)
-		console.log('mock', this.props.weeksValuesInference)
 	}
 
 	getWeekIndex(e) {
@@ -33,11 +30,9 @@ export default class Pagination extends Component {
 	}
 
 	handleChange(key, event) {
-		// // event.preventDefault()
-		// // console.log("!!! EVENT")
-		console.log("!!! EVENT")
-		console.log("key ", key)
-		console.log('event  ', event)
+		// console.log("!!! EVENT")
+		// console.log("key ", key)
+		// console.log('event  ', event)
 
 		let indexToUpdate = this.state.inference[this.state.weekIndex].predictions.findIndex((item) => item.key == key)
 		// console.log("idx ", indexToUpdate)
@@ -91,7 +86,6 @@ export default class Pagination extends Component {
 	}
 
 	handleClickLabel(event) {
-		// event.preventDefault()
 		let status = !this.state.filter.status
 		let key = event
 		let indexToGet = this.state.inference[this.state.weekIndex].predictions.findIndex((item) => item.key == key)
@@ -144,7 +138,7 @@ export default class Pagination extends Component {
 														<>
 															{filtered.key == this.state.filter.key ? (
 																<InputLabelPlanning
-																	filter={{ active: true, readOnly:true }}
+																	filter={{ active: true }}
 																	onclick={(e) => this.handleClickLabel(e)}
 																	callback={(e) => this.handleChange(filtered.key, e)}
 																	label={filtered.key}
@@ -179,10 +173,8 @@ export default class Pagination extends Component {
 										{this.state.filter.status
 											? this.state.filter.relations
 													.filter((pred) => pred.category == 'weekDay')
-													.map((insideFilter) => (
-														<>
+													.map((insideFilter) => (														
 															<InputLabelPlanning filter={{readOnly:true}} label={insideFilter.key} value={insideFilter.value} />
-														</>
 													))
 											: this.state.inference[this.state.weekIndex].predictions
 													.filter((pred) => pred.category == 'weekDay')

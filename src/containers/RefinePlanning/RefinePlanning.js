@@ -5,11 +5,10 @@ import Back from '../../components/Button/Back'
 import Forward from '../../components/Button/Button'
 import InputLabel from '../../components/InputLabel/InputLabel'
 import history from '../App/history'
-import Pagination from '../../components/Pagination/Pagination'
 import Filters from '../../components/Filters/Filters'
 import { Redirect } from 'react-router-dom'
-import ContainerList from '../../components/ContainerList/ContainerList'
 import Prediction from '../../components/Prediction/Prediction'
+
 
 import data from '../../providers/mocks/data.json'
 import * as planning from '../../providers/planning'

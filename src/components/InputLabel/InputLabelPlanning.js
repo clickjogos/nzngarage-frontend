@@ -2,17 +2,38 @@ import React, { Component } from 'react'
 
 import './InputLabelPlanning.scss'
 export default class InputLabelPlanning extends Component {
+	renderSwitchMainDiv(param) {
+		if (param.active) return {}
+		else if (param.readonly) return { pointerEvents: 'none' }
+		else if (param.disabled) return { pointerEvents: 'none', opacity: '0.4' }
+		else return { pointerEvents: 'none' }
+	}
+
+	renderSwitchLabel(param) {
+		if (param.active) return { color: '#2944D9', fontWeight: 'bold' }
+		else return { pointerEvents: 'none' }
+	}
+
+	renderSwitchInputDiv(param) {
+		if (param.active) return { border: '2px solid #2944D9', borderRadius: '8px', color: '#2944D9' }
+		else return { pointerEvents: 'none' }
+	}
+
+	renderSwitchInput(param) {
+		if (param.active) return { color: '#2944D9', fontWeight: 'bold', pointerEvents: 'none' }
+		else return { pointerEvents: 'none' }
+	}
+
 	render() {
 		return (
-			<div
-				style={this.props.filter ? (this.props.filter.disabled ? { pointerEvents: 'none', opacity: '0.4' } : this.props.filter?.readOnly ? { pointerEvents: 'none' } : {}) : {}}
-				className="container-inputlabel">
-				<label style={this.props.filter?.active ? { color: '#2944D9', fontWeight: 'bold' } : {}} onClick={(e) => this.props.onclick(this.props.label)}>
+			<div style={this.props.filter ? this.renderSwitchMainDiv(this.props.filter) : {}} className="container-inputlabel">
+				<label style={this.props.filter ? this.renderSwitchLabel(this.props.filter) : {}} onClick={(e) => this.props.onclick(this.props.label)}>
 					{this.props.label}
 				</label>
-				<div style={this.props.filter?.active ? { border: '2px solid #2944D9', borderRadius: '8px', color: '#2944D9' } : {}} className="container-input-icon">
+
+				<div style={this.props.filter ? this.renderSwitchInputDiv(this.props.filter) : {}} className="container-input-icon">
 					<input
-						style={this.props.filter?.active ? { color: '#2944D9', fontWeight: 'bold' } : {}}
+						style={this.props.filter ? this.renderSwitchInput(this.props.filter) : {}}
 						className="input"
 						value={this.props.value}
 						onChange={(e) => this.props.callback(e.target.value)}
@@ -25,16 +46,3 @@ export default class InputLabelPlanning extends Component {
 		)
 	}
 }
-
-/*
-
-readonly
-disabled
-active
-
-
-
-
-
-
-*/
