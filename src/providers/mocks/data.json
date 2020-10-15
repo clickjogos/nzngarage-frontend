@@ -1,0 +1,4118 @@
+{
+   "data": [
+      {
+         "year": 2020,
+         "week": 41,
+            "predictions": [
+               {
+                  "key": "Qui",
+                  "value": 58.366498820533614,
+                  "year": 2020,
+                  "week": 41,
+                  "category": "weekDay",
+                  "categoryPercentage": 0.2297893654351717,
+                  "normalizedValue": 58
+               },
+               {
+                  "key": "Cultura Geek",
+                  "value": 36.38242482734805,
+                  "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.1462201020032193,
+               "normalizedValue": 37,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 9,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 5,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 9,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 19,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 36,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 6,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 6,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 9,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 9,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 6,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 6,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 6,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 6,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 7,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 4,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 7,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Tarde",
+               "value": 152.2525594165259,
+               "year": 2020,
+               "week": 41,
+               "category": "dayPeriod",
+               "categoryPercentage": 0.52146080632819,
+               "normalizedValue": 132
+            },
+            {
+               "key": "Hard news",
+               "value": 245.30476025265435,
+               "year": 2020,
+               "week": 41,
+               "category": "type",
+               "categoryPercentage": 0.9604271057756343,
+               "normalizedValue": 244
+            },
+            {
+               "key": "Sab",
+               "value": 13.818442593965997,
+               "year": 2020,
+               "week": 41,
+               "category": "weekDay",
+               "categoryPercentage": 0.05440331729907873,
+               "normalizedValue": 14
+            },
+            {
+               "key": "Sex",
+               "value": 43.42141907684588,
+               "year": 2020,
+               "week": 41,
+               "category": "weekDay",
+               "categoryPercentage": 0.17095046880647985,
+               "normalizedValue": 43
+            },
+            {
+               "key": "Long tail",
+               "value": 10.107398335422925,
+               "year": 2020,
+               "week": 41,
+               "category": "type",
+               "categoryPercentage": 0.0395728942243658,
+               "normalizedValue": 10
+            },
+            {
+               "key": "Manha",
+               "value": 70.89709260695645,
+               "year": 2020,
+               "week": 41,
+               "category": "dayPeriod",
+               "categoryPercentage": 0.24282058192537048,
+               "normalizedValue": 62
+            },
+            {
+               "key": "Software",
+               "value": 36.236309241310465,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.14563286693034927,
+               "normalizedValue": 37,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 9,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 5,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 9,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 19,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 36,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 6,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 6,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 9,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 9,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 6,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 6,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 6,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 6,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 7,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 4,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 7,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Noite",
+               "value": 68.82350793190504,
+               "year": 2020,
+               "week": 41,
+               "category": "dayPeriod",
+               "categoryPercentage": 0.2357186117464395,
+               "normalizedValue": 60
+            },
+            {
+               "key": "Mercado",
+               "value": 39.69154986285903,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.1595193969933133,
+               "normalizedValue": 41,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 9,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 5,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 9,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 21,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 39,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 7,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 4,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 7,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 2,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 10,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 10,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 7,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 4,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 7,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 7,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 4,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 7,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 7,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 4,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 7,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Ciência",
+               "value": 12.6490838242916,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.05083636771908928,
+               "normalizedValue": 13,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 3,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 3,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 7,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 12,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 3,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 3,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Qua",
+               "value": 44.41631199581962,
+               "year": 2020,
+               "week": 41,
+               "category": "weekDay",
+               "categoryPercentage": 0.17486737006228195,
+               "normalizedValue": 44
+            },
+            {
+               "key": "Minha Série",
+               "value": 0,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0,
+               "normalizedValue": 0,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Voxel",
+               "value": 0,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0,
+               "normalizedValue": 0,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Dom",
+               "value": 7.624317097482309,
+               "year": 2020,
+               "week": 41,
+               "category": "weekDay",
+               "categoryPercentage": 0.030016996446780745,
+               "normalizedValue": 8
+            },
+            {
+               "key": "Seg",
+               "value": 42.19756464396406,
+               "year": 2020,
+               "week": 41,
+               "category": "weekDay",
+               "categoryPercentage": 0.16613214426757503,
+               "normalizedValue": 42
+            },
+            {
+               "key": "Ter",
+               "value": 44.635729175373406,
+               "year": 2020,
+               "week": 41,
+               "category": "weekDay",
+               "categoryPercentage": 0.17573121722587956,
+               "normalizedValue": 45
+            },
+            {
+               "key": "Produto",
+               "value": 22.408508337747783,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.09005926324136937,
+               "normalizedValue": 23,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 5,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 5,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 12,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 22,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 6,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 5,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Mobilidade Urbana/Smart Cities",
+               "value": 6.337087344825726,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.02546860365577423,
+               "normalizedValue": 6,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 3,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 6,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 1,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 1,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Dispositivos Móveis",
+               "value": 37.05198169402166,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.14891103516137372,
+               "normalizedValue": 38,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 9,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 5,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 9,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 20,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 36,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 6,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 6,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 2,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 9,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 9,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 7,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 4,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 7,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 6,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 6,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 7,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 4,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 7,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Redes Sociais",
+               "value": 14.543512599183114,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.05845003200938837,
+               "normalizedValue": 15,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 3,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 3,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 8,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 14,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 3,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 3,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 4,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 4,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 3,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 3,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 3,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 3,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Segurança",
+               "value": 20.234457140030493,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.08132180306934998,
+               "normalizedValue": 21,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 5,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 5,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 11,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 20,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 5,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 5,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 3,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 3,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Internet",
+               "value": 23.28466826987809,
+               "year": 2020,
+               "week": 41,
+               "category": "tag",
+               "categoryPercentage": 0.09358052921677316,
+               "normalizedValue": 24,
+               "relations": [
+                  {
+                     "key": "Qui",
+                     "value": 6,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 6,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Tarde",
+                     "value": 13,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 23,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Sab",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Sex",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 6,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 6,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Qua",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Dom",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  },
+                  {
+                     "key": "Ter",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 2,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "totalWeekNews": 254,
+         "totalQuantityNews": 267
+      },
+      {
+         "year": 2020,
+         "week": 42,
+         "predictions": [
+            {
+               "key": "Cultura Geek",
+               "value": 37.84508873841391,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.32930588229169117,
+               "normalizedValue": 4,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 3,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 4,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 1,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 4,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 3,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 4,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Tarde",
+               "value": 136.54889416929615,
+               "year": 2020,
+               "week": 42,
+               "category": "dayPeriod",
+               "categoryPercentage": 0.7223076262832225,
+               "normalizedValue": 9
+            },
+            {
+               "key": "Hard news",
+               "value": 179.99431746182856,
+               "year": 2020,
+               "week": 42,
+               "category": "type",
+               "categoryPercentage": 0.9642609599469415,
+               "normalizedValue": 13
+            },
+            {
+               "key": "Long tail",
+               "value": 6.671248125035748,
+               "year": 2020,
+               "week": 42,
+               "category": "type",
+               "categoryPercentage": 0.035739040053058425,
+               "normalizedValue": 0
+            },
+            {
+               "key": "Manha",
+               "value": 32.88958261460173,
+               "year": 2020,
+               "week": 42,
+               "category": "dayPeriod",
+               "categoryPercentage": 0.17397721521160944,
+               "normalizedValue": 2
+            },
+            {
+               "key": "Software",
+               "value": 10.304835966700068,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.08966667044542748,
+               "normalizedValue": 1,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 1,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Noite",
+               "value": 19.606867887230173,
+               "year": 2020,
+               "week": 42,
+               "category": "dayPeriod",
+               "categoryPercentage": 0.10371515850516806,
+               "normalizedValue": 1
+            },
+            {
+               "key": "Mercado",
+               "value": 19.306399768582263,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.1679930268789624,
+               "normalizedValue": 2,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 1,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 2,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Ciência",
+               "value": 11.886968965632466,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.1034334687403776,
+               "normalizedValue": 1,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 1,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Minha Série",
+               "value": 0,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0,
+               "normalizedValue": 0,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Voxel",
+               "value": 9.859655931491082,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.08579297350983706,
+               "normalizedValue": 1,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 1,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 1,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 1,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 1,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Seg",
+               "value": 13.348983997828748,
+               "year": 2020,
+               "week": 42,
+               "category": "weekDay",
+               "categoryPercentage": 1.0268449229099037,
+               "normalizedValue": 13
+            },
+            {
+               "key": "Produto",
+               "value": 2.9172759617169275,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.025384433396411075,
+               "normalizedValue": 0,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Mobilidade Urbana/Smart Cities",
+               "value": 1.8936222389177246,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.0164771959295478,
+               "normalizedValue": 0,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Dispositivos Móveis",
+               "value": 14.951989627077728,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.1301034903153302,
+               "normalizedValue": 2,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 1,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 2,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 2,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 1,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 2,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Redes Sociais",
+               "value": 3.3370000061515044,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.02903662715203756,
+               "normalizedValue": 0,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Segurança",
+               "value": 1.5844977466643217,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.013787374950051685,
+               "normalizedValue": 0,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            },
+            {
+               "key": "Internet",
+               "value": 1.036481395460076,
+               "year": 2020,
+               "week": 42,
+               "category": "tag",
+               "categoryPercentage": 0.009018856390326126,
+               "normalizedValue": 0,
+               "relations": [
+                  {
+                     "key": "Tarde",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Hard news",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Long tail",
+                     "value": 0,
+                     "category": "type"
+                  },
+                  {
+                     "key": "Manha",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Noite",
+                     "value": 0,
+                     "category": "dayPeriod"
+                  },
+                  {
+                     "key": "Seg",
+                     "value": 0,
+                     "category": "weekDay",
+                     "relations": [
+                        {
+                           "key": "Tarde",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Hard news",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Long tail",
+                           "value": 0,
+                           "category": "type"
+                        },
+                        {
+                           "key": "Manha",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        },
+                        {
+                           "key": "Noite",
+                           "value": 0,
+                           "category": "dayPeriod"
+                        }
+                     ]
+                  }
+               ]
+            }
+         ],
+         "totalWeekNews": 13,
+         "totalQuantityNews": 267
+      }
+   ]
+}
