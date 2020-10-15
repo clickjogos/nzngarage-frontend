@@ -16,5 +16,5 @@ spec:
      - name: nzngarage-frontend
        image: us.icr.io/nzngarage/nzngarage-frontend:latest
        ports:
-         - containerPort: 8080
+         - containerPort: 80
        imagePullPolicy: Always
