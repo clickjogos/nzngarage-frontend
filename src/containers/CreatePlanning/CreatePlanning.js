@@ -39,19 +39,19 @@ class CreatePanning extends Component {
   render() {
     if (this.state.redirect) return <Redirect exact to={{ pathname: "/refinePlanning", state: this.state }} />
     return (
-      <div class="main">
+      <div className="main">
         <Sidebar />
         {this.state.show ? (
           <>
-            <div class="container-block">
-              <div class="container-back">
+            <div className="container-block">
+              <div className="container-back">
                 <button onClick={() => history.push("/planningList")}>
                   <img src={Backbutton} icon={<img src={Backbutton} />} />
                 </button>
                 <p id="back-text"> Voltar para a Lista de Planejamento</p>
               </div>
 
-              <div class="container-planning">
+              <div className="container-planning">
                 <h3 style={{ fontSize: "28px" }}>Criar novo Planejamento</h3>
                 <h4 style={{ fontSize: "18px", color: "#636F7A" }}>
                   Vamos fazer isso em dois passos ;)
@@ -63,7 +63,7 @@ class CreatePanning extends Component {
                     label="Nome do Planejamento"
                     placeholder="Nome do Planejamento"
                   />
-                  <div class="flex-container">
+                  <div className="flex-container">
                     <InputLabelPlanning
                       callback={(e) => this.setState({ startDate: e })}
                       label="Data Inicial"
@@ -83,7 +83,7 @@ class CreatePanning extends Component {
                       label="Orçamento"
                       placeholder="R$" />
                   </div>
-                  <div class="container-step">
+                  <div className="container-step">
                     <p id="textStep">Passo 1 de 2</p>
 
                     <Button callback={() => this.handleSubmit} title="Ver Sugestão de Planejamento >" />

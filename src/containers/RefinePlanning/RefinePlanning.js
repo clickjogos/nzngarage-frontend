@@ -116,12 +116,6 @@ class refinePlanning extends Component {
 								onChange={this.handleFormUpdate.bind(this)}
 								
 								/>
-								{/* <ContainerList
-                            callback={this.teste}
-                            callforward={this.teste2}
-                        /> */}
-
-								{/* <button onClick={() => this.defineWeeek()}>Click Me</button>; */}
 								<div className="next-step">
 									<p style={{ fontSize: '14px', color: '#B8C2CB' }}>Passo 2 de 2</p>
 									<div className="onlybutton">

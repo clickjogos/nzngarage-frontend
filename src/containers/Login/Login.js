@@ -18,31 +18,31 @@ class Login extends Component {
   };
   render() {
     return (
-      <div class="main">
-        <div class="login-information">
-          <div class="logo">
+      <div className="main">
+        <div className="login-information">
+          <div className="logo">
             <Image src={logoNZN} height="44px" width="173px" />
           </div>
-          <div class="container">
-            <div class="user-information">
+          <div className="container">
+            <div className="user-information">
               <p>Entrar</p>
               <InputLabel label="E-mail" placeholder="exemplo@email.com.br" />
               <InputLabel label="Senha" placeholder="Senha de acesso" />
             </div>
-            <div class="box-button">
+            <div className="box-button">
 
               <Button title="Acessar Conta" callback={this.redirectPage}>
               </Button>
             </div>
           </div>
         </div>
-        <div class="background-information">
+        <div className="background-information">
           <h1>
             Mensurar o conhecimento e estimular o engajamento nunca foi tão
             simples
           </h1>
 
-          <div class="containerImage">
+          <div className="containerImage">
             <Image src={backgroundLogin} height="544" width="727" />
           </div>
         </div>

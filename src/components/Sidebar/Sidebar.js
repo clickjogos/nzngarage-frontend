@@ -24,12 +24,12 @@ export default class Sidebar extends Component {
 
   render() {
     return (
-      <div class="sidebar">
-        <div class="logo">
+      <div className="sidebar">
+        <div className="logo">
           <img src={LogoNZN} height="44px" width="173px" />
         </div>
         <hr />
-        <div class="icon-container">
+        <div className="icon-container">
           <p id="txtplan">CRIAR</p>
           <button
             className="buttonSidebar"
@@ -50,7 +50,7 @@ export default class Sidebar extends Component {
           </button>
         </div>
         <div id="footer">
-          <div class="information-person">
+          <div className="information-person">
             <p>Alana</p>
           </div>
         </div>

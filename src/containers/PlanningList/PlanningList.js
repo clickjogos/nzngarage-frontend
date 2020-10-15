@@ -52,7 +52,7 @@ export default class PlanningList extends Component {
                     <>
                         <div className="title">
                             <h1>Planejamentos</h1>
-                            <span class="planning-count" > {this.state.planningList.length} </span>
+                            <span className="planning-count" > {this.state.planningList.length} </span>
                         </div>
                         <div className="new-planning">
                         <button className="container-image" onClick={() => history.push("/createPlanning")}>
