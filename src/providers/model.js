@@ -25,3 +25,16 @@ export async function makeSugestion(object) {
         throw (error)
     }
 }
+
+export async function renormalize(object) {
+    try {
+        let requestResponse = await axiosProvider.post('/model/inference/renormalize', object)
+
+        return requestResponse.data
+
+    } catch (error) {
+        throw (error)
+    }
+}
+
+

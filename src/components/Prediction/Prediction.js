@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Prediction.scss'
 import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
+import * as model from '../../providers/model'
 
 export default class Pagination extends Component {
 	constructor(props) {
@@ -8,6 +9,7 @@ export default class Pagination extends Component {
 
 		this.state = {
 			show: true,
+			filter: false,
 			inference: this.props.weeksValuesInference,
 			// inputsCount: [ {tag: 13}, {weekDay: 7}, {period: 3}, {type: 2 }],
 			weekIndex: 0,
@@ -35,25 +37,63 @@ export default class Pagination extends Component {
 		// // console.log("!!! EVENT")
 		// console.log("!!! EVENT")
 		// console.log("key ", key)
-		console.log("event  ", event)
-		
+		console.log('event  ', event)
+
 		let indexToUpdate = this.state.inference[this.state.weekIndex].predictions.findIndex((item) => item.key == key)
 		// console.log("idx ", indexToUpdate)
 
 		// console.log("BEFORE")
 		// console.log(this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue)
-		if(event == "") event = 0
-		this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue = parseInt(event)
+		if (event == '') event = 0
+		event = parseInt(event)
+		let previousValue = this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue
+		let objectToRenormalize = {
+			key: key,
+			changedValue: event,
+			previousValue: previousValue,
+			category: this.state.inference[this.state.weekIndex].predictions[indexToUpdate].category,
+		}
+		this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue = event
 		this.setState({ inference: this.state.inference })
+		this.renormalizeValues(objectToRenormalize)
 		// console.log("AFTER")
 		// console.log(this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue)
 		// this.setState({value: event.target.value});
 		this.handleFormUpdate(this.state.inference)
 	}
+
+	renormalizeValues(payload) {
+		let obj = {
+			changedInformation: {
+				key: payload.key,
+				changedValue: payload.changedValue,
+				previousValue: payload.previousValue,
+				category: payload.category,
+			},
+			weekValues: this.state.inference[this.state.weekIndex],
+		}
+		model
+			.renormalize(obj)
+			.then((response) => {
+				this.state.inference[this.state.weekIndex] = response.data[0]
+				this.setState({ inference: this.state.inference })
+			})
+			.catch((error) => {
+				alert(error)
+			})
+	}
+
 	handleFormUpdate() {
 		this.props.onChange()
 	}
 
+	handleClickLabel(event) {
+		// event.preventDefault()
+		let status = !this.state.filter.status
+		let key = event
+		this.setState({ filter: { status: status, key: key } })
+		console.log(event)
+	}
 	render() {
 		return (
 			<div className="main-pagination">
@@ -76,11 +116,11 @@ export default class Pagination extends Component {
 						<> </>
 					)}
 				</div>
-				<div className="main-container" style={{height:"100%"}}>
+				<div className="main-container" style={{ height: '100%' }}>
 					{this.state.show ? (
 						<>
 							{/* <form onChange={ (e) => this.handleChange(e)}> */}
-							<form >
+							<form>
 								<div className="tag">
 									<div className="tag-label">
 										<p>Cadernos</p>
@@ -89,9 +129,36 @@ export default class Pagination extends Component {
 										{this.state.inference[this.state.weekIndex].predictions
 											.filter((pred) => pred.category == 'tag')
 											.map((filtered) => (
-												<InputLabelPlanning 
-												callback={ (e) =>this.handleChange(filtered.key, e)} 
-													label={filtered.key} value={filtered.normalizedValue} />
+												<>
+													{this.state.filter.status ? (
+														<>
+															{filtered.key == this.state.filter.key ? (
+																<InputLabelPlanning
+																	filter={{active:true}}
+																	onclick={(e) => this.handleClickLabel(e)}
+																	callback={(e) => this.handleChange(filtered.key, e)}
+																	label={filtered.key}
+																	value={filtered.normalizedValue}
+																/>
+															) : (
+																<InputLabelPlanning
+																filter={{active:false}}
+																	onclick={(e) => this.handleClickLabel(e)}
+																	callback={(e) => this.handleChange(filtered.key, e)}
+																	label={filtered.key}
+																	value={filtered.normalizedValue}
+																/>
+															)}
+														</>
+													) : (
+														<InputLabelPlanning
+															onclick={(e) => this.handleClickLabel(e)}
+															callback={(e) => this.handleChange(filtered.key, e)}
+															label={filtered.key}
+															value={filtered.normalizedValue}
+														/>
+													)}
+												</>
 											))}
 									</div>
 								</div>
@@ -101,9 +168,7 @@ export default class Pagination extends Component {
 										{this.state.inference[this.state.weekIndex].predictions
 											.filter((pred) => pred.category == 'weekDay')
 											.map((filtered) => (
-												<InputLabelPlanning 
-												callback={ (e) =>this.handleChange(filtered.key, e)}  
-												label={filtered.key} value={filtered.normalizedValue} />
+												<InputLabelPlanning callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />
 											))}
 									</div>
 									<div>
@@ -112,11 +177,7 @@ export default class Pagination extends Component {
 											{this.state.inference[this.state.weekIndex].predictions
 												.filter((pred) => pred.category == 'dayPeriod')
 												.map((filtered) => (
-													<InputLabelPlanning
-													callback={ (e) =>this.handleChange(filtered.key, e)} 
-														label={filtered.key}
-														value={filtered.normalizedValue}
-													/>
+													<InputLabelPlanning callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />
 												))}
 										</div>
 										<div>
@@ -124,11 +185,7 @@ export default class Pagination extends Component {
 											{this.state.inference[this.state.weekIndex].predictions
 												.filter((pred) => pred.category == 'type')
 												.map((filtered) => (
-													<InputLabelPlanning
-													callback={ (e) =>this.handleChange(filtered.key, e)} 
-														label={filtered.key}
-														value={filtered.normalizedValue}
-													/>
+													<InputLabelPlanning callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />
 												))}
 										</div>
 									</div>
@@ -138,13 +195,8 @@ export default class Pagination extends Component {
 					) : (
 						<h1> Carregando... </h1>
 					)}
-
-					{/* <label>{this.props.label}</label>
-                    <input value={this.props.value} /> */}
-					{/* <InputLabelPlanning callback={(e) => this.setState({ planningName: e })} label="Nome do Planejamento" placeholder="Nome do Planejamento" /> */}
-					{/* <InputLabel label="E-mail" placeholder="exemplo@email.com.br" /> */}
 				</div>
 			</div>
-		)   
+		)
 	}
 }
