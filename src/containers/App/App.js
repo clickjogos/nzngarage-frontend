@@ -6,6 +6,7 @@ import PlanningList from '../PlanningList/PlanningList'
 import RefinePlanning from '../RefinePlanning/RefinePlanning'
 import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
 import history from './history';
+import TrackPlanning from '../TrackPlanning/TrackPlanning';
 
 // import {
 //   BrowserRouter as Router,
@@ -25,6 +26,7 @@ function App() {
         <Route path="/createPlanning" component={CreatePlanning} />
         <Route path='/planningList' exact component={PlanningList} />
         <Route path="/refinePlanning" exact component={RefinePlanning} />
+        <Route path="/tracking" exact component={TrackPlanning} />
       </Switch>
     </Router>
 
