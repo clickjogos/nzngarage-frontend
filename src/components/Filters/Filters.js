@@ -3,6 +3,23 @@ import "./Filters.scss";
 
 
 export default class Filters extends Component {
+    constructor(props) {
+		super(props)
+
+		this.state = {
+            totalArticles: props.totalArticles,
+            startDate: this.props.startDate,
+            endDate: this.props.endDate,
+            viewTarget: this.props.viewTarget,
+            budget: this.props.budget
+		}
+    }
+    
+    UNSAFE_componentWillReceiveProps(props) {
+        console.log(this.props.totalArticles   )
+        console.log(props.totalArticles)
+        this.setState({totalArticles: props.totalArticles})       
+    }
 
     render() {
         return (
@@ -14,20 +31,20 @@ export default class Filters extends Component {
                 <div className="filters">
                     <div>
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Período</h4>
-                        <label>{this.props.startDate}</label>
-                        <label>{this.props.endDate}</label>
-                    </div>
+                        <label>{this.state.startDate}</label>
+                        <label>{this.state.endDate}</label>
+                    </div>  
                     <div>
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Matérias</h4>
-                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.props.totalArticles}</p>
+                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.totalArticles}</p>
                     </div>
                     <div>
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Audiência</h4>
-                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.props.viewTarget}</p>
+                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.viewTarget}</p>
                     </div>
                     <div>
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Orçamento</h4>
-                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.props.budget}</p>
+                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.budget}</p>
                     </div>
                 </div>
             </div>

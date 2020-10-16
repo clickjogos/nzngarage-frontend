@@ -25,39 +25,51 @@ export default class Prediction extends Component {
 		} else {
 			newIndex = this.state.weekIndex + 1
 		}
-		console.log(newIndex)
 		this.setState({ weekIndex: newIndex, show: true })
 	}
 
 	handleChange(key, event) {
-		// console.log("!!! EVENT")
-		// console.log("key ", key)
-		// console.log('event  ', event)
-
-		let indexToUpdate = this.state.inference[this.state.weekIndex].predictions.findIndex((item) => item.key == key)
-		// console.log("idx ", indexToUpdate)
-
-		// console.log("BEFORE")
-		// console.log(this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue)
 		if (event == '') event = 0
 		event = parseInt(event)
-		if(this.state.filter.status) {
 
-		}
+		let indexToUpdate = this.state.inference[this.state.weekIndex].predictions.findIndex((item) => item.key == key)
 		let previousValue = this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue
+		console.log("previousValue  ", previousValue)
+		console.log("newvalue  ", event)
+		this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue = event
+		
+
+		if(previousValue < event ) {
+			var differenceQuantityNews = Math.abs(previousValue - event)
+		}
+		else {
+			var differenceQuantityNews = event - previousValue
+		}
+		console.log("differenceQuantityNews  ", differenceQuantityNews)
+		
+		console.log(`${this.state.inference[this.state.weekIndex].totalWeekNews} = ${this.state.inference[this.state.weekIndex].totalWeekNews} + ${differenceQuantityNews}`)	
+		
+		this.state.inference.map( (week, indexWeek) =>{
+			if( indexWeek === this.state.weekIndex) {
+				this.state.inference[indexWeek].totalWeekNews = this.state.inference[indexWeek].totalWeekNews + differenceQuantityNews
+			} else {
+				this.state.inference[indexWeek].totalQuantityNews = this.state.inference[indexWeek].totalQuantityNews + differenceQuantityNews
+			}
+		})
 		let objectToRenormalize = {
 			key: key,
 			changedValue: event,
 			previousValue: previousValue,
 			category: this.state.inference[this.state.weekIndex].predictions[indexToUpdate].category,
 		}
-		this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue = event
-		this.setState({ inference: this.state.inference })
 		this.renormalizeValues(objectToRenormalize)
-		// console.log("AFTER")
+
+		console.log("AFTER")
 		// console.log(this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue)
+		// console.log("AFTER")
+		console.log(this.state.inference)
 		// this.setState({value: event.target.value});
-		this.handleFormUpdate(this.state.inference)
+		
 	}
 
 	renormalizeValues(payload) {
@@ -75,6 +87,7 @@ export default class Prediction extends Component {
 			.then((response) => {
 				this.state.inference[this.state.weekIndex] = response.data[0]
 				this.setState({ inference: this.state.inference })
+				this.handleFormUpdate(this.state.inference)
 			})
 			.catch((error) => {
 				alert(error)
