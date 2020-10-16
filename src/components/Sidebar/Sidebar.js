@@ -16,7 +16,7 @@ export default class Sidebar extends Component {
 
 	redirectPageList = () => {
 		history.push({
-			pathname: '/tracking',
+			pathname: '/planningList',
 		})
 	}
 
