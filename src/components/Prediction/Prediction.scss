@@ -38,32 +38,29 @@
         form {
             width: 100%;
             display: flex;
-            grid-column-gap:100px;
-            .tag{ 
-               width: 50%;
+            grid-column-gap: 100px;
 
+            .tag {
+                width: 50%;
 
-                .tag-label{
-
-                }
-                .tag-content{
+                .tag-content {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                 }
             }
 
-            .others { 
+            .others {
                 width: 50%;
                 display: grid;
-grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr;
             }
         }
 
-        .container-inputlabel{
-            
+        .container-inputlabel {
+
             display: flex;
 
-            .container-input-icon{
+            .container-input-icon {
                 width: 66px;
                 height: 40px;
             }

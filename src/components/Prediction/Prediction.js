@@ -37,20 +37,20 @@ export default class Prediction extends Component {
 		console.log("previousValue  ", previousValue)
 		console.log("newvalue  ", event)
 		this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue = event
-		
 
-		if(previousValue < event ) {
+
+		if (previousValue < event) {
 			var differenceQuantityNews = Math.abs(previousValue - event)
 		}
 		else {
 			var differenceQuantityNews = event - previousValue
 		}
 		console.log("differenceQuantityNews  ", differenceQuantityNews)
-		
-		console.log(`${this.state.inference[this.state.weekIndex].totalWeekNews} = ${this.state.inference[this.state.weekIndex].totalWeekNews} + ${differenceQuantityNews}`)	
-		
-		this.state.inference.map( (week, indexWeek) =>{
-			if( indexWeek === this.state.weekIndex) {
+
+		console.log(`${this.state.inference[this.state.weekIndex].totalWeekNews} = ${this.state.inference[this.state.weekIndex].totalWeekNews} + ${differenceQuantityNews}`)
+
+		this.state.inference.map((week, indexWeek) => {
+			if (indexWeek === this.state.weekIndex) {
 				this.state.inference[indexWeek].totalWeekNews = this.state.inference[indexWeek].totalWeekNews + differenceQuantityNews
 			} else {
 				this.state.inference[indexWeek].totalQuantityNews = this.state.inference[indexWeek].totalQuantityNews + differenceQuantityNews
@@ -69,7 +69,7 @@ export default class Prediction extends Component {
 		// console.log("AFTER")
 		console.log(this.state.inference)
 		// this.setState({value: event.target.value});
-		
+
 	}
 
 	renormalizeValues(payload) {
@@ -121,8 +121,8 @@ export default class Prediction extends Component {
 							❮
 						</button>
 					) : (
-						<> </>
-					)}
+							<> </>
+						)}
 					<h5 style={{ fontStyle: 'normal normal 600 18px/24px Proxima Nova;', fontSize: '18px', color: '#2944D9' }}>
 						Semana {this.state.weekIndex + 1} de {this.state.inference.length}
 					</h5>
@@ -131,8 +131,8 @@ export default class Prediction extends Component {
 							❯
 						</button>
 					) : (
-						<> </>
-					)}
+							<> </>
+						)}
 				</div>
 				<div className="main-container" style={{ height: '100%' }}>
 					{this.state.show ? (
@@ -158,23 +158,23 @@ export default class Prediction extends Component {
 																	value={filtered.normalizedValue}
 																/>
 															) : (
-																<InputLabelPlanning
-																	filter={{ disabled: true }}
-																	onclick={(e) => this.handleClickLabel(e)}
-																	callback={(e) => this.handleChange(filtered.key, e)}
-																	label={filtered.key}
-																	value={filtered.normalizedValue}
-																/>
-															)}
+																	<InputLabelPlanning
+																		filter={{ disabled: true }}
+																		onclick={(e) => this.handleClickLabel(e)}
+																		callback={(e) => this.handleChange(filtered.key, e)}
+																		label={filtered.key}
+																		value={filtered.normalizedValue}
+																	/>
+																)}
 														</>
 													) : (
-														<InputLabelPlanning
-															onclick={(e) => this.handleClickLabel(e)}
-															callback={(e) => this.handleChange(filtered.key, e)}
-															label={filtered.key}
-															value={filtered.normalizedValue}
-														/>
-													)}
+															<InputLabelPlanning
+																onclick={(e) => this.handleClickLabel(e)}
+																callback={(e) => this.handleChange(filtered.key, e)}
+																label={filtered.key}
+																value={filtered.normalizedValue}
+															/>
+														)}
 												</>
 											))}
 									</div>
@@ -185,42 +185,42 @@ export default class Prediction extends Component {
 
 										{this.state.filter.status
 											? this.state.filter.relations
-													.filter((pred) => pred.category === 'weekDay')
-													.map((insideFilter) => (														
-															<InputLabelPlanning filter={{readOnly:true}} label={insideFilter.key} value={insideFilter.value} />
-													))
+												.filter((pred) => pred.category === 'weekDay')
+												.map((insideFilter) => (
+													<InputLabelPlanning filter={{ readOnly: true }} label={insideFilter.key} value={insideFilter.value} />
+												))
 											: this.state.inference[this.state.weekIndex].predictions
-													.filter((pred) => pred.category === 'weekDay')
-													.map((filtered) => <InputLabelPlanning onclick={(e) =>{}} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />)}
+												.filter((pred) => pred.category === 'weekDay')
+												.map((filtered) => <InputLabelPlanning onclick={(e) => { }} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />)}
 									</div>
 									<div>
 										<div>
 											<p>Período</p>
 											{this.state.filter.status
 												? this.state.filter.relations
-														.filter((pred) => pred.category === 'dayPeriod')
-														.map((insideFilter) => <InputLabelPlanning filter={{readOnly:true}} label={insideFilter.key} value={insideFilter.value} />)
+													.filter((pred) => pred.category === 'dayPeriod')
+													.map((insideFilter) => <InputLabelPlanning filter={{ readOnly: true }} label={insideFilter.key} value={insideFilter.value} />)
 												: this.state.inference[this.state.weekIndex].predictions
-														.filter((pred) => pred.category === 'dayPeriod')
-														.map((filtered) => <InputLabelPlanning onclick={(e) =>{}} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />)}
+													.filter((pred) => pred.category === 'dayPeriod')
+													.map((filtered) => <InputLabelPlanning onclick={(e) => { }} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />)}
 										</div>
 										<div>
 											<p>Tipo</p>
 											{this.state.filter.status
 												? this.state.filter.relations
-														.filter((pred) => pred.category === 'type')
-														.map((insideFilter) => <InputLabelPlanning filter={{readOnly:true}}	 label={insideFilter.key} value={insideFilter.value} />)
+													.filter((pred) => pred.category === 'type')
+													.map((insideFilter) => <InputLabelPlanning filter={{ readOnly: true }} label={insideFilter.key} value={insideFilter.value} />)
 												: this.state.inference[this.state.weekIndex].predictions
-														.filter((pred) => pred.category === 'type')
-														.map((filtered) => <InputLabelPlanning onclick={(e) =>{}} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />)}
+													.filter((pred) => pred.category === 'type')
+													.map((filtered) => <InputLabelPlanning onclick={(e) => { }} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />)}
 										</div>
 									</div>
 								</div>
 							</form>
 						</>
 					) : (
-						<h1> Carregando... </h1>
-					)}
+							<h1> Carregando... </h1>
+						)}
 				</div>
 			</div>
 		)

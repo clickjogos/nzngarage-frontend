@@ -22,7 +22,7 @@ class TrackPlanning extends Component {
 	}
 
 	selectPeriod(e) {
-console.log(e)
+		console.log(e)
 	}
 
 	render() {
@@ -32,11 +32,11 @@ console.log(e)
 				<Sidebar />
 				{this.state.show ? (
 					<>
-					
+
 					</>
 				) : (
-					<h1> Carregando... </h1>
-				)}
+						<h1> Carregando... </h1>
+					)}
 			</div>
 		)
 	}

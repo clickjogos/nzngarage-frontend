@@ -30,7 +30,7 @@ class CreatePanning extends Component {
     this.setState({ show: false });
     this.setState({ redirect: true });
     // model.makeInference(this.state).then(inference => {
-      this.setState({ inference: data.data });
+    this.setState({ inference: data.data });
     // }).catch(error => {
     //   alert(error)
     // })

@@ -55,9 +55,9 @@ export default class PlanningList extends Component {
                             <span className="planning-count" > {this.state.planningList.length} </span>
                         </div>
                         <div className="new-planning">
-                        <button className="container-image" onClick={() => history.push("/createPlanning")}>
-                  <img src={PlanningButton} />
-                </button>
+                            <button className="container-image" onClick={() => history.push("/createPlanning")}>
+                                <img src={PlanningButton} />
+                            </button>
                             {/* <div className="container-image">
                                 <img src={PlanningButton} alt="" />
                             </div> */}

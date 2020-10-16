@@ -1,4 +1,3 @@
-
 @import "../../styles/variables";
 @import url("https://use.typekit.net/bsf1heu.css");
 
@@ -7,15 +6,14 @@
     background-color: $background_color;
 
     .container-flex {
-        
         width: 80%;
-        height: 100%;       
+        height: 100%;
         padding: 30px;
         display: grid;
         grid-template-columns: 1fr auto;
 
-      .select-period{
-          background-color: salmon;
-      }
+        .select-period {
+            background-color: salmon;
+        }
     }
 }

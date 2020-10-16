@@ -1,6 +1,5 @@
 import axiosProvider from './config/axios'
 
-
 export async function makeInference(object) {
     try {
         object.budget = parseFloat(object.budget)
@@ -36,5 +35,3 @@ export async function renormalize(object) {
         throw (error)
     }
 }
-
-

@@ -9,7 +9,6 @@ import Filters from '../../components/Filters/Filters'
 import { Redirect } from 'react-router-dom'
 import Prediction from '../../components/Prediction/Prediction'
 
-
 import data from '../../providers/mocks/data.json'
 import * as planning from '../../providers/planning'
 import * as model from '../../providers/model'
@@ -37,7 +36,7 @@ class refinePlanning extends Component {
 	}
 
 	handleSubmit = (e) => {
-		if(e == "" || !e){
+		if (e == "" || !e) {
 			e.preventDefault()
 		}
 		this.setState({ show: false })
@@ -75,7 +74,7 @@ class refinePlanning extends Component {
 	handleFormUpdate = () => {
 		console.log("INFERENCEEEEE")
 		console.log(this.state.inference)
-		this.setState({inference: this.state.inference})
+		this.setState({ inference: this.state.inference })
 	}
 
 	render() {
@@ -103,10 +102,10 @@ class refinePlanning extends Component {
 									budget={this.state.budget}
 								/>
 
-								<Prediction 
-								weeksValuesInference={this.state.inference} 
-								onChange={this.handleFormUpdate.bind(this)}
-								
+								<Prediction
+									weeksValuesInference={this.state.inference}
+									onChange={this.handleFormUpdate.bind(this)}
+
 								/>
 								<div className="next-step">
 									<p style={{ fontSize: '14px', color: '#B8C2CB' }}>Passo 2 de 2</p>
@@ -126,8 +125,8 @@ class refinePlanning extends Component {
 						</div>
 					</>
 				) : (
-					<h1> Carregando... </h1>
-				)}
+						<h1> Carregando... </h1>
+					)}
 			</div>
 		)
 	}

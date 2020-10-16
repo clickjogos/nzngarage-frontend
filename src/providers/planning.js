@@ -7,4 +7,3 @@ export function listPlannings() {
 export function savePlanning(object) {
     return axiosProvider.post('/planning/', object);
 }
-

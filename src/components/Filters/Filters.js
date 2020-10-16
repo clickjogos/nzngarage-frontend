@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import "./Filters.scss";
 
-
 export default class Filters extends Component {
     constructor(props) {
-		super(props)
+        super(props)
 
-		this.state = {
+        this.state = {
             totalArticles: props.totalArticles,
             startDate: this.props.startDate,
             endDate: this.props.endDate,
             viewTarget: this.props.viewTarget,
             budget: this.props.budget
-		}
+        }
     }
-    
+
     UNSAFE_componentWillReceiveProps(props) {
-        console.log(this.props.totalArticles   )
+        console.log(this.props.totalArticles)
         console.log(props.totalArticles)
-        this.setState({totalArticles: props.totalArticles})       
+        this.setState({ totalArticles: props.totalArticles })
     }
 
     render() {
@@ -33,7 +32,7 @@ export default class Filters extends Component {
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Período</h4>
                         <label>{this.state.startDate}</label>
                         <label>{this.state.endDate}</label>
-                    </div>  
+                    </div>
                     <div>
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Matérias</h4>
                         <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.totalArticles}</p>
@@ -50,5 +49,4 @@ export default class Filters extends Component {
             </div>
         )
     }
-
 }

@@ -3,20 +3,20 @@
       {
          "year": 2020,
          "week": 41,
-            "predictions": [
-               {
-                  "key": "Qui",
-                  "value": 58.366498820533614,
-                  "year": 2020,
-                  "week": 41,
-                  "category": "weekDay",
-                  "categoryPercentage": 0.2297893654351717,
-                  "normalizedValue": 58
-               },
-               {
-                  "key": "Cultura Geek",
-                  "value": 36.38242482734805,
-                  "year": 2020,
+         "predictions": [
+            {
+               "key": "Qui",
+               "value": 58.366498820533614,
+               "year": 2020,
+               "week": 41,
+               "category": "weekDay",
+               "categoryPercentage": 0.2297893654351717,
+               "normalizedValue": 58
+            },
+            {
+               "key": "Cultura Geek",
+               "value": 36.38242482734805,
+               "year": 2020,
                "week": 41,
                "category": "tag",
                "categoryPercentage": 0.1462201020032193,
