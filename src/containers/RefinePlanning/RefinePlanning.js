@@ -6,6 +6,8 @@ import Forward from '../../components/Button/Button'
 import InputLabel from '../../components/InputLabel/InputLabel'
 import history from '../App/history'
 import Filters from '../../components/Filters/Filters'
+import Loading from '../../components/Loading/Loading'
+
 import { Redirect } from 'react-router-dom'
 import Prediction from '../../components/Prediction/Prediction'
 
@@ -126,7 +128,7 @@ class refinePlanning extends Component {
 						</div>
 					</>
 				) : (
-					<h1> Carregando... </h1>
+					<Loading/>
 				)}
 			</div>
 		)
