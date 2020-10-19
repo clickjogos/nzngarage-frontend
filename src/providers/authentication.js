@@ -13,7 +13,7 @@ export function isLogin() {
 export function isHead() {
     let data = JSON.parse(localStorage.getItem('user'))
 
-    if (data.profile === 'head') {
+    if (data.role === 'head') {
         return true
     } else {
         return false
@@ -23,25 +23,18 @@ export function isHead() {
 export function isEditor() {
     let data = JSON.parse(localStorage.getItem('user'))
 
-    if (data.profile === 'editor') {
+    if (data.role === 'editor') {
         return true
     } else {
         return false
     }
 }
 
-export async function submitLogin(email, password) {
+export async function submitLogin(user, password) {
     try {
-        // let requestResponse = await axiosProvider.post('/model/sugestion/', object)
+        let requestResponse = await axiosProvider.post('/auth/login', {user, password})
 
-        let user = {"data": {
-            "isLogged": true,
-            "profile": "editor",
-            "name": "Alana"
-        }}
-        console.log(">>>>user")
-        console.log(user)
-        return (user)
+        return (requestResponse)
 
     } catch (error) {
         throw (error)

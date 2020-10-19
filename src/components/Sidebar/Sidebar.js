@@ -13,8 +13,8 @@ export default class Sidebar extends Component {
 		super(props)
 
 		this.state = {
-			username: JSON.parse(localStorage.getItem('user')).name,
-			profile: JSON.parse(localStorage.getItem('user')).profile,
+			username: JSON.parse(localStorage.getItem('user')).user,
+			profile: JSON.parse(localStorage.getItem('user')).role,
 		}
 	}
 
