@@ -17,7 +17,7 @@ export default class Prediction extends Component {
 	}
 
 	getWeekIndex(e) {
-		console.log(e.target.id)
+
 		let direction = e.target.id
 		this.setState({ show: false })
 		let newIndex
@@ -35,20 +35,15 @@ export default class Prediction extends Component {
 
 		let indexToUpdate = this.state.inference[this.state.weekIndex].predictions.findIndex((item) => item.key === key)
 		let previousValue = this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue
-		console.log("previousValue  ", previousValue)
-		console.log("newvalue  ", event)
+
 		this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue = event
 		
-
 		if(previousValue < event ) {
 			var differenceQuantityNews = Math.abs(previousValue - event)
 		}
 		else {
 			var differenceQuantityNews = event - previousValue
 		}
-		console.log("differenceQuantityNews  ", differenceQuantityNews)
-		
-		console.log(`${this.state.inference[this.state.weekIndex].totalWeekNews} = ${this.state.inference[this.state.weekIndex].totalWeekNews} + ${differenceQuantityNews}`)	
 		
 		this.state.inference.map( (week, indexWeek) =>{
 			if( indexWeek === this.state.weekIndex) {
@@ -64,13 +59,6 @@ export default class Prediction extends Component {
 			category: this.state.inference[this.state.weekIndex].predictions[indexToUpdate].category,
 		}
 		this.renormalizeValues(objectToRenormalize)
-
-		console.log("AFTER")
-		// console.log(this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue)
-		// console.log("AFTER")
-		console.log(this.state.inference)
-		// this.setState({value: event.target.value});
-		
 	}
 
 	renormalizeValues(payload) {
@@ -111,7 +99,6 @@ export default class Prediction extends Component {
 				relations: this.state.inference[this.state.weekIndex].predictions[indexToGet].relations,
 			},
 		})
-		console.log(event)
 	}
 	render() {
 		return (

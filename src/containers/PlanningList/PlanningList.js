@@ -29,8 +29,6 @@ export default class PlanningList extends Component {
 	}
 
 	getEvent = (e, params) => {
-		console.log('evento', e.target)
-		console.log('planning', planning)
 
 		this.setState({ show: false })
 		let obj = {
@@ -61,8 +59,6 @@ export default class PlanningList extends Component {
 				edit: true,
 			})
 		} catch (error) {}
-		console.log('planniung')
-		console.log(this.state.planningList)
 	}
 
 	formatDate(date) {

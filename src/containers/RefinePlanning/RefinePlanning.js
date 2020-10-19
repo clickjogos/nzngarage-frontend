@@ -77,8 +77,6 @@ class refinePlanning extends Component {
 	}
 
 	handleFormUpdate = () => {
-		console.log("INFERENCEEEEE")
-		console.log(this.state.inference)
 		this.setState({inference: this.state.inference})
 	}
 
