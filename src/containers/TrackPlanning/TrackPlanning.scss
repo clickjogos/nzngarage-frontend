@@ -1,19 +1,22 @@
 @import "../../styles/variables";
 @import url("https://use.typekit.net/bsf1heu.css");
 
+@mixin flex($property, $ltr-value) {
+    #{$property}: $ltr-value;
+    display: flex;
+}
+
 
 .main-content {
     background-color: $background_color;
+    display: flex;
 
-    .container-flex {
+    .container-flex-tracking {
         width: 80%;
         height: 100%;
+        display: flex;
+        flex-direction: column;
         padding: 30px;
-        display: grid;
-        grid-template-columns: 1fr auto;
 
-        .select-period {
-            background-color: salmon;
-        }
     }
 }
