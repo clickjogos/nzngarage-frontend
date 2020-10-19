@@ -5,6 +5,7 @@ import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
 import Button from '../../components/Button/Button'
 import history from '../App/history'
 import { Redirect } from 'react-router-dom'
+import Loading from '../../components/Loading/Loading'
 
 import './TrackPlanning.scss'
 // import * as tracking from '../../providers/tracking'
@@ -35,7 +36,7 @@ console.log(e)
 					
 					</>
 				) : (
-					<h1> Carregando... </h1>
+				<Loading />
 				)}
 			</div>
 		)

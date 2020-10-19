@@ -9,5 +9,13 @@ export function savePlanning(object) {
 }
 
 export function getPlanning(payload) {
-    return axiosProvider.get('/planning/'+payload.id );
+    return axiosProvider.get(`/planning/${payload.id}` );
+}
+
+export function activatePlanning(object) {
+    return axiosProvider.put('/planning/', object);
+}
+
+export function deletePlanning(object) {
+    return axiosProvider.delete(`/planning/${object['_id']}` );
 }

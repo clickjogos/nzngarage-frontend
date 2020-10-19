@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Prediction.scss'
 import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
 import * as model from '../../providers/model'
+import Loading from '../../components/Loading/Loading'
 
 export default class Prediction extends Component {
 	constructor(props) {
@@ -219,7 +220,7 @@ export default class Prediction extends Component {
 							</form>
 						</>
 					) : (
-						<h1> Carregando... </h1>
+						<Loading />
 					)}
 				</div>
 			</div>

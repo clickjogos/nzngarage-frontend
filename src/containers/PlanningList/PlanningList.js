@@ -4,6 +4,7 @@ import PlanningButton from '../../assets/images/new-planning-button.svg'
 import Activated from '../../assets/images/icon-active.svg'
 import Deactivated from '../../assets/images/icon-desactive.svg'
 import Sidebar from '../../components/Sidebar/Sidebar'
+import Loading from '../../components/Loading/Loading'
 import MoreOptions from '../../assets/images/icon-more-options.svg'
 import history from '../App/history'
 import * as format from '../../utils/format'
@@ -18,6 +19,7 @@ export default class PlanningList extends Component {
 		this.state = {
 			show: false,
 			edit: false,
+			showSelect: false,
 		}
 		console.log('>>> props')
 		console.log(this.props)
@@ -43,13 +45,6 @@ export default class PlanningList extends Component {
 			.catch((error) => {
 				alert(error)
 			})
-
-		// if (e.target) {
-		//   this.setState({ edit: true });
-		// //   history.push("/createPlanning"), this.state;
-		// history.push('/createPlanning', { edit: true, planning: planning})
-
-		// }
 	}
 
 	componentDidMount() {
@@ -72,7 +67,38 @@ export default class PlanningList extends Component {
 
 	formatDate(date) {
 		return <>{format.reformatDate(date)} </>
+  }
+  
+  handleSelectSubmit(select, key) {
+		if (select.target.value === 'activate') {
+			this.activatePlanning(key)
+		} else if (select.target.value === 'delete') {
+			this.deletePlanning(key)
+		}
 	}
+
+	deletePlanning(planningId) {
+		this.setState({ show: false })
+		let obj = { _id: planningId }
+		planning
+			.deletePlanning(obj)
+			.then(() => {
+				this.allRequest()
+			})
+			.catch((error) => {})
+	}
+
+	activatePlanning(planningId) {
+		this.setState({ show: false })
+		let obj = { _id: planningId }
+		planning
+			.activatePlanning(obj)
+			.then(() => {
+				this.allRequest()
+			})
+			.catch((error) => {})
+	}
+
 
 	render() {
 		return (
@@ -109,26 +135,38 @@ export default class PlanningList extends Component {
 														<img src={Activated} alt="status image" />
 														<span>Ativado</span>
 													</div>
-													<div className="option">
+													{/* <div className="option">
 														<img src={MoreOptions} alt="" />
-													</div>
+													</div> */}
 												</div>
 											</li>
 										)
 									} else {
 										return (
-											<li key={planning['_id']} className="theme-list-deactivated" onClick={(e) => this.getEvent(e, planning)}>
+											<li key={planning['_id']} className="theme-list-deactivated" >
 												<span className="dates">
 													{this.formatDate(planning.startDate)} até {this.formatDate(planning.endDate)}
 												</span>
-												<h2 className="card-name">{planning.planningName}</h2>
-												<div className="status-option">
+												<h2 className="card-name" onClick={(e) => this.getEvent(e, planning)}>{planning.planningName}</h2>
+												<div className="status-option" >
 													<div className="status">
 														<img src={Deactivated} alt="status image" />
 														<span>Desativado</span>
 													</div>
 													<div className="option">
-														<img src={MoreOptions} alt="e" />
+														<img onClick={() => this.setState({ showSelect: !this.state.showSelect, showSelectKey: planning['_id'] })} src={MoreOptions} alt="e" />
+														{this.state.showSelect && planning['_id'] === this.state.showSelectKey ? (
+															<select className="select" name="select">
+																<option onClick={(e) => this.handleSelectSubmit(e, planning['_id'])} value="activate" selected>
+																	Ativar
+																</option>
+																<option onClick={(e) => this.handleSelectSubmit(e, planning['_id'])} value="delete">
+																	Apagar
+																</option>
+															</select>
+														) : (
+															<></>
+														)}
 													</div>
 												</div>
 											</li>
@@ -139,7 +177,7 @@ export default class PlanningList extends Component {
 						</div>
 					</>
 				) : (
-					<h1> Carregando... </h1>
+					<Loading />
 				)}
 			</div>
 		)

@@ -11,8 +11,8 @@ import RefinePlanning from '../RefinePlanning/RefinePlanning'
 import * as model from '../../providers/model'
 import * as planning from '../../providers/planning'
 
-import data from '../../providers/mocks/data.json'
-const Backbutton = require('../../assets/icons/icon-back-button.svg')
+// import data from '../../providers/mocks/data.json'
+const Backbutton = require("../../assets/icons/icon-back-button.svg");
 
 class CreatePanning extends Component {
 	// const [startDate, setStartDate] = useState(new Date());
@@ -51,7 +51,7 @@ class CreatePanning extends Component {
       this.setState({ redirect: true, show: true })
     }  else {
       model.makeInference(this.state).then(inference => {
-        this.setState({ inference: data.data, redirect:true, show: true })
+        this.setState({ inference: inference.data, redirect:true, show: true })
       }).catch(error => {
         alert(error)
       })
