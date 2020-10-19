@@ -1,15 +1,7 @@
 @import "../../styles/variables";
-@import url("https://use.typekit.net/bsf1heu.css");
 
-@mixin flex($property, $ltr-value) {
-    #{$property}: $ltr-value;
-    display: flex;
-}
-
-
-.main-content {
+.main {
     background-color: $background_color;
-    display: flex;
 
     .container-flex-tracking {
         width: 80%;
