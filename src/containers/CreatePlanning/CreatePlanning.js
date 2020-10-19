@@ -14,8 +14,7 @@ import * as planning from '../../providers/planning'
 // import data from '../../providers/mocks/data.json'
 const Backbutton = require("../../assets/icons/icon-back-button.svg");
 
-class CreatePanning extends Component {
-	// const [startDate, setStartDate] = useState(new Date());
+class CreatePanning extends Component {	
 	constructor(props) {
 		super(props)
 

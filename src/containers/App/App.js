@@ -7,6 +7,8 @@ import RefinePlanning from '../RefinePlanning/RefinePlanning'
 import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
 import history from './history';
 import TrackPlanning from '../TrackPlanning/TrackPlanning';
+import PrivateRoute from '../../authentication/PrivateRoute';
+import PublicRoute from '../../authentication/PublicRoute';
 
 // import {
 //   BrowserRouter as Router,
@@ -22,11 +24,18 @@ function App() {
 
     <Router history={history}>
       <Switch>
-        <Route path="/" exact component={Login} />
+        {/* <Route path="/" exact component={Login} />
         <Route path="/createPlanning" component={CreatePlanning} />
         <Route path='/planningList' exact component={PlanningList} />
         <Route path="/refinePlanning" exact component={RefinePlanning} />
         <Route path="/tracking" exact component={TrackPlanning} />
+         */}
+           <PublicRoute restricted={false} component={Login} path="/" exact />
+          {/* <PublicRoute restricted={true} component={SignIn} path="/signin" exact /> */}
+          <PrivateRoute restricted={true} component={CreatePlanning} path="/createPlanning" exact />
+          <PrivateRoute restricted={true} component={PlanningList} path="/planningList" exact />
+          <PrivateRoute restricted={true} component={RefinePlanning} path="/refinePlanning" exact />
+          <PrivateRoute restricted={true} component={TrackPlanning} path="/tracking" exact />
       </Switch>
     </Router>
 
