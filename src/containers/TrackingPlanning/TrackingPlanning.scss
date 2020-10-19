@@ -10,5 +10,26 @@
         flex-direction: column;
         padding: 30px;
 
+        .container-tracking {
+            .head-tracking {
+                display: grid;
+                grid-template-columns: 1fr auto;
+
+                .filters-tracking {
+
+                    .button-filters-tracking {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr auto;
+                    }
+                }
+
+            }
+
+            .cards-tracking {
+                margin-top: 49px;
+                display: grid;
+                grid-template-columns: 1fr 1fr auto;
+            }
+        }
     }
 }
