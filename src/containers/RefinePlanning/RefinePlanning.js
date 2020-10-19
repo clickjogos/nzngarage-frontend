@@ -6,6 +6,8 @@ import Forward from '../../components/Button/Button'
 import InputLabel from '../../components/InputLabel/InputLabel'
 import history from '../App/history'
 import Filters from '../../components/Filters/Filters'
+import Loading from '../../components/Loading/Loading'
+
 import { Redirect } from 'react-router-dom'
 import Prediction from '../../components/Prediction/Prediction'
 
@@ -47,6 +49,7 @@ class refinePlanning extends Component {
 			endDate: this.state.endDate,
 			budget: this.state.budget,
 			weekValues: this.state.inference,
+			audienceValues: this.state.sugestion
 		}
 		planning
 			.savePlanning(obj)
@@ -64,7 +67,8 @@ class refinePlanning extends Component {
 		model
 			.makeSugestion({ weekValues: this.state.inference })
 			.then((response) => {
-				this.setState({ show: true, viewTarget: Math.round(response.data.totalAudience) })
+
+				this.setState({ show: true, viewTarget: Math.round(response.data.totalAudience), sugestion: response.data })
 			})
 			.catch((error) => {
 				alert(error)
@@ -125,7 +129,7 @@ class refinePlanning extends Component {
 						</div>
 					</>
 				) : (
-						<h1> Carregando... </h1>
+						<Loading />
 					)}
 			</div>
 		)

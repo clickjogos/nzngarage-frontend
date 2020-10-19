@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import './InputLabelPlanning.scss'
 export default class InputLabelPlanning extends Component {
-	
+
 	renderSwitchMainDiv(param) {
 		if (param.active) return {}
 		else if (param.readonly) return { pointerEvents: 'none' }

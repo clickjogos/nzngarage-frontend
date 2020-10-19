@@ -7,6 +7,7 @@ import history from '../App/history'
 import { Redirect } from 'react-router-dom'
 import Cards from '../../components/Cards/Cards'
 import PredictionInformation from '../../components/PredictionInformation/PredictionInformation'
+import Loading from '../../components/Loading/Loading'
 
 import './TrackPlanning.scss'
 // import * as tracking from '../../providers/tracking'
@@ -56,7 +57,7 @@ class TrackPlanning extends Component {
 
 					</>
 				) : (
-						<h1> Carregando... </h1>
+						<Loading />
 					)}
 			</div>
 		)
