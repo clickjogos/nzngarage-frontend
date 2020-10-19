@@ -15,8 +15,6 @@ export default class Filters extends Component {
     }
 
     UNSAFE_componentWillReceiveProps(props) {
-        console.log(this.props.totalArticles)
-        console.log(props.totalArticles)
         this.setState({ totalArticles: props.totalArticles })
     }
 

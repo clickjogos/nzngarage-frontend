@@ -10,7 +10,6 @@ export default class Cards extends Component {
         }
     }
 
-
     render() {
         let a = 100 * this.props.realPoints
         let b = a / this.props.estimedPoints

@@ -1,54 +1,94 @@
-import React, { Component } from "react";
-import Image from "react-bootstrap/Image";
-import InputLabel from "../../components/InputLabel/InputLabel";
-import Button from "../../components/Button/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
-import backgroundLogin from "../../assets/images/brand-illustration.png";
-import history from "../App/history";
+import React, { Component } from 'react'
+import Image from 'react-bootstrap/Image'
+import InputLabel from '../../components/InputLabel/InputLabel'
+import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
+import Loading from '../../components/Loading/Loading'
+import Button from '../../components/Button/Button'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import backgroundLogin from '../../assets/images/brand-illustration.png'
+import history from '../App/history'
 
-import "../Login/Login.scss";
-const logoNZN = require("../../assets/images/nzn-logo.png");
+import * as authentication from '../../providers/authentication'
+import { isHead } from '../../providers/authentication'
+import '../Login/Login.scss'
+import { Input } from 'reactstrap'
+const logoNZN = require('../../assets/images/nzn-logo.png')
 
 class Login extends Component {
+	constructor(props) {
+		super(props)
 
-  redirectPage = () => {
-    history.push({
-      pathname: "/createPlanning",
-    });
-  };
-  render() {
-    return (
-      <div className="main">
-        <div className="login-information">
-          <div className="logo">
-            <Image src={logoNZN} height="44px" width="173px" />
-          </div>
-          <div className="container">
-            <div className="user-information">
-              <p>Entrar</p>
-              <InputLabel label="E-mail" placeholder="exemplo@email.com.br" />
-              <InputLabel label="Senha" placeholder="Senha de acesso" />
-            </div>
-            <div className="box-button">
+		this.state = {
+			show: true,
+			email: '',
+			password: '',
+		}
+	}
 
-              <Button title="Acessar Conta" callback={this.redirectPage}>
-              </Button>
-            </div>
-          </div>
-        </div>
-        <div className="background-information">
-          <h1>
-            Mensurar o conhecimento e estimular o engajamento nunca foi tão
-            simples
-          </h1>
+	redirectPage = () => {
+		let profile = isHead()
+		if (isHead()) {
+			history.push({
+				pathname: '/createPlanning'
+			})
+		} else {
+			history.push({
+				pathname: '/tracking'
+			})
+		}
+	}
 
-          <div className="containerImage">
-            <Image src={backgroundLogin} height="544" width="727" />
-          </div>
-        </div>
-      </div>
-    );
-  }
+	handleLogin = (e) => {
+		this.setState({loading: true})
+		e.preventDefault()
+		authentication
+			.submitLogin(this.state.email, this.state.password)
+			.then((response) => {
+				if (response.data.autenticado === true) {
+					
+					localStorage.setItem('user', JSON.stringify(response.data.data))
+					this.setState({ show: true, loading: false })
+					this.redirectPage()
+				} else {
+					
+					this.setState({ error: true,  loading: false })
+				}
+			})
+			.catch((error) => {
+				this.setState({ error: true })
+			})
+	}
+
+	render() {
+		return (
+			<div className="main">
+				<div className="login-information">
+					<div className="logo">
+						<Image src={logoNZN} height="44px" width="173px" />
+					</div>
+					<form onSubmit={this.handleLogin} className="container">
+						<div className="user-information">
+							<p>Entrar</p>
+							<InputLabelPlanning callback={(e) => this.setState({ email: e })} label="E-mail" placeholder="exemplo@email.com.br" />
+							<InputLabelPlanning callback={(e) => this.setState({ password: e })} label="Senha" placeholder="Senha de acesso" />
+							{this.state.error ? <spam color="red"> usuário/senha incorreta</spam> : <></>}
+						</div>
+						{ this.state.loading ? (<Loading/>) : (<></>)}
+						<div className="box-button">
+							<Button title="Acessar Conta" callback={this.handleLogin}></Button>
+						</div>
+					</form>
+				</div>
+				<div className="background-information">
+					<h1>Mensurar o conhecimento e estimular o engajamento nunca foi tão simples</h1>
+
+					<div className="containerImage">
+						<Image src={backgroundLogin} height="544" width="727" />
+					</div>
+				</div>
+			</div>
+		)
+	}
 }
 
-export default Login;
+export default Login
