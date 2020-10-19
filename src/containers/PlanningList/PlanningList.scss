@@ -79,13 +79,29 @@ h2 {
     margin-top: 20px;
 }
 
-.status {
-    color: #8995A0;
-    font-size: 12px;
-    margin-left: 20px;
-    letter-spacing: 0px;
-    margin-top: 75px;
-    letter-spacing: 0px;
+.status-option {
+  
+    .status {
+        color: #8995A0;
+        font-size: 12px;
+        margin-left: 20px;
+        letter-spacing: 0px;
+        margin-top: 75px;
+        letter-spacing: 0px;
+    }
+     
+    .option {
+        margin-top: -22px;
+        margin-left: 200px;
+    
+        // background-image: url('../../assets/images/icon-more-options.svg') no-repeat;
+        select { 
+            -webkit-appearance: none;
+      -moz-appearance: none;
+      text-indent: 1px;
+      text-overflow: '';
+        }
+    }
 }
 
 .container-image {
@@ -108,12 +124,6 @@ ul {
 li {
     margin-left: 24px;
 }
-
-.option {
-    margin-top: -22px;
-    margin-left: 200px;
-}
-
 
 .card-name {
     margin-left: 20px;
