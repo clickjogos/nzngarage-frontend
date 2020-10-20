@@ -28,9 +28,7 @@ export default class Cards extends Component {
             console.log(this.setState.progressBarWidth)
         }
 
-
     }
-
 
     render() {
 
