@@ -3,6 +3,8 @@ import Loading from '../../components/Loading/Loading'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Cards from '../../components/Cards/Cards'
 import Button from '../../components/Button/Button'
+import PredictionInformation from '../../components/PredictionInformation/PredictionInformation'
+
 import './TrackingPlanning.scss'
 
 import * as tracking from '../../providers/tracking'
@@ -11,6 +13,7 @@ class TrackingPlanning extends Component {
 		super(props)
 		this.state = {
 			show: false,
+			period: 'day'
 		}
 	}
 
@@ -40,9 +43,11 @@ class TrackingPlanning extends Component {
 			.catch((error) => {})
 	}
 	handlePeriodSelection = (e, period) => {
-		this.setState({ show: false })
+		this.setState({ show: false, period: period })
 		this.getTrackingByPeriod(period)
 	}
+
+
 	render() {
 		return (
 			<div className="main">
@@ -68,11 +73,17 @@ class TrackingPlanning extends Component {
 										</div>
 									</div>
                                     <div className="cards-tracking">
-                                        <Cards title="Matérias" realPoints={Math.round(this.state.tracking.weekValues[0].realNews)} estimedPoints={Math.round(this.state.tracking.weekValues[0].news)} />
-                                        <Cards title="Audiência" realPoints={Math.round(this.state.tracking.weekValues[0].realAudience)} estimedPoints={Math.round(this.state.tracking.weekValues[0].audience)} />
-                                        <Cards title="Orçamento" realPoints={Math.round(this.state.tracking.weekValues[0].realBudget)} estimedPoints={Math.round(this.state.tracking.weekValues[0].budget)} />
+                                        <Cards title="Matérias" realPoints={this.state.tracking.weekValues[0].realNews} estimedPoints={this.state.tracking.weekValues[0].planNews} />
+                                        <Cards title="Audiência" realPoints={this.state.tracking.weekValues[0].realAudience} estimedPoints={this.state.tracking.weekValues[0].planAudience} />
+                                        <Cards title="Orçamento" realPoints={this.state.tracking.weekValues[0].realBudget} estimedPoints={this.state.tracking.weekValues[0].planBudget} />
 
                                     </div>
+									<div className="prediction-tracking">
+										<PredictionInformation
+											tracking={this.state.tracking}
+											period={this.state.period}
+										/>
+									</div>
 								</div>
 							</div>
 						</div>
