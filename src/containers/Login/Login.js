@@ -12,7 +12,7 @@ import * as authentication from '../../providers/authentication'
 import { isHead } from '../../providers/authentication'
 import '../Login/Login.scss'
 import { Input } from 'reactstrap'
-const logoNZN = require('../../assets/images/nzn-logo.png')
+const logoNZN = require('../../assets/images/nzn.png')
 
 class Login extends Component {
 	constructor(props) {
@@ -63,7 +63,7 @@ class Login extends Component {
 		return (
 			<div className="main">
 				<div className="login-information">
-					<div className="logo">
+					<div className="logo-login">
 						<Image src={logoNZN} height="44px" width="173px" />
 					</div>
 					<form onSubmit={this.handleLogin} className="container">
