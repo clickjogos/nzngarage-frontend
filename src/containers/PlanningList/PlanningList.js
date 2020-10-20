@@ -58,14 +58,14 @@ export default class PlanningList extends Component {
 				show: true,
 				edit: true,
 			})
-		} catch (error) {}
+		} catch (error) { }
 	}
 
 	formatDate(date) {
 		return <>{format.reformatDate(date)} </>
-  }
-  
-  handleSelectSubmit(select, key) {
+	}
+
+	handleSelectSubmit(select, key) {
 		if (select.target.value === 'activate') {
 			this.activatePlanning(key)
 		} else if (select.target.value === 'delete') {
@@ -81,7 +81,7 @@ export default class PlanningList extends Component {
 			.then(() => {
 				this.allRequest()
 			})
-			.catch((error) => {})
+			.catch((error) => { })
 	}
 
 	activatePlanning(planningId) {
@@ -92,7 +92,7 @@ export default class PlanningList extends Component {
 			.then(() => {
 				this.allRequest()
 			})
-			.catch((error) => {})
+			.catch((error) => { })
 	}
 
 
@@ -161,8 +161,8 @@ export default class PlanningList extends Component {
 																</option>
 															</select>
 														) : (
-															<></>
-														)}
+																<></>
+															)}
 													</div>
 												</div>
 											</li>
@@ -173,8 +173,8 @@ export default class PlanningList extends Component {
 						</div>
 					</>
 				) : (
-					<Loading />
-				)}
+						<Loading />
+					)}
 			</div>
 		)
 	}

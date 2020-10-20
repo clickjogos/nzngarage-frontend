@@ -29,15 +29,15 @@ class TrackingPlanning extends Component {
 				let realPoints2 = this.state.tracking.weekValues[0].realAudience
 				let estimedPoints2 = this.state.tracking.weekValues[0].audience
 				let realPoints3 = this.state.tracking.weekValues[0].realBudget
-                let estimedPoints3 = this.state.tracking.weekValues[0].budget
-                console.log("N E W S rea/extimate")
-                console.log(realPoints1, estimedPoint1)
-                console.log("A U D I E N C E rea/extimate")
-                console.log(realPoints2, estimedPoints2)
-                console.log("B U D G E T rea/extimate")
-                console.log(realPoints3, estimedPoints3)
+				let estimedPoints3 = this.state.tracking.weekValues[0].budget
+				console.log("N E W S rea/extimate")
+				console.log(realPoints1, estimedPoint1)
+				console.log("A U D I E N C E rea/extimate")
+				console.log(realPoints2, estimedPoints2)
+				console.log("B U D G E T rea/extimate")
+				console.log(realPoints3, estimedPoints3)
 			})
-			.catch((error) => {})
+			.catch((error) => { })
 	}
 	handlePeriodSelection = (e, period) => {
 		this.setState({ show: false })
@@ -59,27 +59,27 @@ class TrackingPlanning extends Component {
 										</div>
 										<div className="filters-tracking">
 											<p>Visualizar:</p>
-                                            <div className="button-filters-tracking">
-											<Button style={{width: '77px'}}title="Hoje" callback={(e) => this.handlePeriodSelection(e, 'day')}></Button>
-											<Button style={{width: '99px'}}title="Semana" callback={(e) => this.handlePeriodSelection(e, 'week')}></Button>
-											<Button style={{width: '165px'}} title="Planejamento Total" callback={(e) => this.handlePeriodSelection(e, 'all')}></Button>
+											<div className="button-filters-tracking">
+												<Button style={{ width: '77px' }} title="Hoje" callback={(e) => this.handlePeriodSelection(e, 'day')}></Button>
+												<Button style={{ width: '99px' }} title="Semana" callback={(e) => this.handlePeriodSelection(e, 'week')}></Button>
+												<Button style={{ width: '165px' }} title="Planejamento Total" callback={(e) => this.handlePeriodSelection(e, 'all')}></Button>
 
-                                            </div>
+											</div>
 										</div>
 									</div>
-                                    <div className="cards-tracking">
-                                        <Cards title="Matérias" realPoints={Math.round(this.state.tracking.weekValues[0].realNews)} estimedPoints={Math.round(this.state.tracking.weekValues[0].news)} />
-                                        <Cards title="Audiência" realPoints={Math.round(this.state.tracking.weekValues[0].realAudience)} estimedPoints={Math.round(this.state.tracking.weekValues[0].audience)} />
-                                        <Cards title="Orçamento" realPoints={Math.round(this.state.tracking.weekValues[0].realBudget)} estimedPoints={Math.round(this.state.tracking.weekValues[0].budget)} />
+									<div className="cards-tracking">
+										<Cards title="Matérias" realPoints={Math.round(this.state.tracking.weekValues[0].realNews)} estimedPoints={Math.round(this.state.tracking.weekValues[0].news)} />
+										<Cards title="Audiência" realPoints={Math.round(this.state.tracking.weekValues[0].realAudience)} estimedPoints={Math.round(this.state.tracking.weekValues[0].audience)} />
+										<Cards title="Orçamento" realPoints={Math.round(this.state.tracking.weekValues[0].realBudget)} estimedPoints={Math.round(this.state.tracking.weekValues[0].budget)} />
 
-                                    </div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</>
 				) : (
-					<Loading />
-				)}
+						<Loading />
+					)}
 			</div>
 		)
 	}
