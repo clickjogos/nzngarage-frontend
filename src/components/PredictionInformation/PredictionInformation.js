@@ -67,7 +67,7 @@ export default class PredictionInformation extends Component {
 							.filter((pred) => pred.category === 'tag')
 							.map((filtered, index) => (
 								<>
-									<li >	
+									<li>
 										{filtered.key} - {filtered.realValue}/{filtered.value}
 									</li>
 								</>
@@ -84,7 +84,6 @@ export default class PredictionInformation extends Component {
 									.map((filtered) => (
 										<>
 											<p>
-										
 												{filtered.key} - {filtered.realValue}/{filtered.value}
 											</p>
 										</>
@@ -99,30 +98,33 @@ export default class PredictionInformation extends Component {
 									.map((filtered) => (
 										<>
 											<p>
-											
 												{filtered.key} - {filtered.realValue}/{filtered.value}
 											</p>
 										</>
 									))}
 							</div>
 						</div>
-						<div>
+						{this.state.period !== 'day' ? (
 							<div>
 								<div>
-									<label>Essa semana</label>
+									<div>
+										<label>Essa semana</label>
+									</div>
+
+									{this.state.tracking.weekValues[this.state.periodIndex].reality
+										.filter((pred) => pred.category === 'weekDay')
+										.map((filtered) => (
+											<>
+												<p>
+													{filtered.key} - {filtered.realValue}/{filtered.value}
+												</p>
+											</>
+										))}
 								</div>
-								{this.state.tracking.weekValues[this.state.periodIndex].reality
-									.filter((pred) => pred.category === 'weekday')
-									.map((filtered) => (
-										<>
-											<p>
-											
-												{filtered.key} - {filtered.realValue}/{filtered.value}
-											</p>
-										</>
-									))}
 							</div>
-						</div>
+						) : (
+							<></>
+						)}
 					</div>
 				</div>
 			</div>
