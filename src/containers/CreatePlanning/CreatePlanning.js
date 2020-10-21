@@ -32,6 +32,7 @@ class CreatePanning extends Component {
 	componentDidMount() {
 		if (this.props?.location?.state) {
 			this.setState({
+				_id: this.props.location.state.planning.data._id,
 				edit: true,
 				inference: this.props.location.state.planning.data.weekValues,
 				planningName: this.props.location.state.planning.data.planningName,
@@ -52,6 +53,7 @@ class CreatePanning extends Component {
 		}
 		this.setState({ show: false })
 		if (this.state.edit) {
+			console.log("STATE EDITADO", this.state)
 			this.setState({ redirect: true, show: true })
 		} else {
 			model.makeInference(this.state).then(inference => {

@@ -21,6 +21,7 @@ class refinePlanning extends Component {
 		super(props)
 
 		this.state = {
+			_id: this.props.location.state._id,
 			show: true,
 			redirect: false,
 			data: this.props.location.state,
@@ -43,6 +44,7 @@ class refinePlanning extends Component {
 		}
 		this.setState({ show: false })
 		let obj = {
+			_id: this.state._id,
 			planningName: this.state.planningName,
 			viewTarget: this.state.viewTarget,
 			startDate: this.state.startDate,
@@ -108,8 +110,8 @@ class refinePlanning extends Component {
 								<Prediction
 									weeksValuesInference={this.state.inference}
 									onChange={this.handleFormUpdate.bind(this)}
-
 								/>
+								
 								<div className="next-step">
 									<p style={{ fontSize: '14px', color: '#B8C2CB' }}>Passo 2 de 2</p>
 									<div className="onlybutton">
