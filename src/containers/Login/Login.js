@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import Image from 'react-bootstrap/Image'
 import InputLabel from '../../components/InputLabel/InputLabel'
-import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
 import Loading from '../../components/Loading/Loading'
 import Button from '../../components/Button/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import backgroundLogin from '../../assets/images/brand-illustration.png'
 import history from '../App/history'
-
 import * as authentication from '../../providers/authentication'
 import { isHead } from '../../providers/authentication'
 import '../Login/Login.scss'

@@ -1,103 +1,106 @@
 @import "../../styles/variables";
 @import url('https://use.typekit.net/bsf1heu.css');
 
-.user-information {
-  padding: 62px;
-
-  p {
-    padding-top: 135px;
-    font-size: 32px;
-    font-weight: 600;
-    color: #23282d;
-  }
-}
-
-.login-information {
-  width: 50%;
-  height: 100vh;
-  background-color: #ffffff;
-}
-
-.background-information {
-  background-color: #f1f5f8;
-  width: 100%;
-  height: 100vh;
-}
-
 .main {
   display: flex;
-}
 
-.containerImage {
-  padding-top: 13%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .login-information {
+    width: 50%;
+    height: 100vh;
+    background-color: #ffffff;
 
-.logo-login {
-  display: flex;
-  padding-top: 65px;
-  padding-left: 62px;
-}
+    .logo-login {
+      display: flex;
+      padding-top: 65px;
+      padding-left: 62px;
+    }
 
-.box-button {
-  display: flex;
-  padding-left: 307px;
-}
+    .container {
+      padding-left: 0px;
+      margin-top: -50px;
 
-.container {
-  padding-left: 0px;
-  margin-top: -50px;
-}
+      .user-information {
+        padding: 62px;
 
-h1 {
-  top: 71px;
-  left: 729px;
-  width: 405px;
-  height: 65px;
-  letter-spacing: 0px;
-  color: #636F7A;
-  opacity: 1;
-  font-size: 24px;
-  margin-left: 300px;
-  margin-right: 227px;
-  margin-top: 71px;
-  font-family: "proxima-nova", sans-serif;
-  text-align: center;
-}
+        p {
+          padding-top: 135px;
+          font-size: 32px;
+          font-weight: 600;
+          color: #23282d;
+        }
+      }
 
-#buttonRedirect {
-  width: 149px;
-  height: 40px;
-  background: #2942d6 0% 0% no-repeat padding-box;
-  border-radius: 8px;
-  box-shadow: 0px 1px 2px #0000001a;
-  border: 1px solid #2942d6;
-  opacity: 1;
-  outline: 0;
-  font-size: 15px;
-  color: #ffffff;
-  font-size: 16px;
-  font-family: "proxima-nova", sans-serif;
-  font-weight: bold;
-  font-style: normal
-}
+      .box-button {
+        display: flex;
+        padding-left: 307px;
+      }
+    }
+  }
 
-.background-information {
-  h1 {
-    top: 71px;
-    left: 729px;
-    width: 405px;
-    height: 65px;
-    letter-spacing: 0px;
-    color: #636F7A;
-    opacity: 1;
-    font-size: 24px;
-    margin-left: 300px;
-    margin-right: 227px;
-    margin-top: 71px;
-    font-family: "proxima-nova", sans-serif;
-    text-align: center;
+
+  .background-information {
+    background-color: #f1f5f8;
+    width: 100%;
+    height: 100vh;
+
+    h1 {
+      top: 71px;
+      left: 729px;
+      width: 405px;
+      height: 65px;
+      letter-spacing: 0px;
+      color: #636F7A;
+      opacity: 1;
+      font-size: 24px;
+      margin-left: 300px;
+      margin-right: 227px;
+      margin-top: 71px;
+      font-family: "proxima-nova", sans-serif;
+      text-align: center;
+    }
+
+    .containerImage {
+      padding-top: 13%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
   }
 }
+
+// #buttonRedirect {
+//   width: 149px;
+//   height: 40px;
+//   background: #2942d6 0% 0% no-repeat padding-box;
+//   border-radius: 8px;
+//   box-shadow: 0px 1px 2px #0000001a;
+//   border: 1px solid #2942d6;
+//   opacity: 1;
+//   outline: 0;
+//   font-size: 15px;
+//   color: #ffffff;
+//   font-size: 16px;
+//   font-family: "proxima-nova", sans-serif;
+//   font-weight: bold;
+//   font-style: normal
+// }
+
+// .background-information {
+//   h1 {
+//     top: 71px;
+//     left: 729px;
+//     width: 405px;
+//     height: 65px;
+//     letter-spacing: 0px;
+//     color: #636F7A;
+//     opacity: 1;
+//     font-size: 24px;
+//     margin-left: 300px;
+//     margin-right: 227px;
+//     margin-top: 71px;
+//     font-family: "proxima-nova", sans-serif;
+//     text-align: center;
+//   }
+// }
