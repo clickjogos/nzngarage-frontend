@@ -66,6 +66,7 @@ export default class PlanningList extends Component {
 	}
 
 	handleSelectSubmit(select, key) {
+		console.log("handle select chegou", select.currentTarget)
 		if (select.target.value === 'activate') {
 			this.activatePlanning(key)
 		} else if (select.target.value === 'delete') {
@@ -115,7 +116,7 @@ export default class PlanningList extends Component {
 									<h2 className="planning-title">Criar novo planejamento</h2>
 								</div>
 							</div>
-							
+
 							<div className="content-theme-list">
 								<div className="theme-list">
 									<ul>
@@ -150,11 +151,11 @@ export default class PlanningList extends Component {
 															<div className="option">
 																<img onClick={() => this.setState({ showSelect: !this.state.showSelect, showSelectKey: planning['_id'] })} src={MoreOptions} alt="e" />
 																{this.state.showSelect && planning['_id'] === this.state.showSelectKey ? (
-																	<select className="select" name="select">
-																		<option onClick={(e) => this.handleSelectSubmit(e, planning['_id'])} value="activate" selected>
+																	<select className="select" name="select" onClick={(e) => this.handleSelectSubmit(e, planning['_id'])} size="2">
+																		<option value="activate">
 																			Ativar
 																</option>
-																		<option onClick={(e) => this.handleSelectSubmit(e, planning['_id'])} value="delete">
+																		<option value="delete">
 																			Apagar
 																</option>
 																	</select>
