@@ -69,8 +69,8 @@ class Login extends Component {
 					<form onSubmit={this.handleLogin} className="container">
 						<div className="user-information">
 							<p>Entrar</p>
-							<InputLabelPlanning callback={(e) => this.setState({ email: e })} label="E-mail" placeholder="exemplo@email.com.br" />
-							<InputLabelPlanning callback={(e) => this.setState({ password: e })} label="Senha" placeholder="Senha de acesso" />
+							<InputLabel callback={(e) => this.setState({ email: e })} label="E-mail" placeholder="exemplo@email.com.br" />
+							<InputLabel callback={(e) => this.setState({ password: e })} label="Senha" placeholder="Senha de acesso" type="password" />
 							{this.state.error ? <spam color="red"> usuário/senha incorreta</spam> : <></>}
 						</div>
 						{this.state.loading ? (<Loading />) : (<></>)}

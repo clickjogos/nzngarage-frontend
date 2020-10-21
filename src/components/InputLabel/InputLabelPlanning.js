@@ -32,7 +32,7 @@ export default class InputLabelPlanning extends Component {
 					{this.props.label}
 				</label>
 
-				<div style={this.props.filter ? this.renderSwitchInputDiv(this.props.filter) : {}} className="container-input-icon">
+				<div style={this.props.filter ? this.renderSwitchInputDiv(this.props.filter) : {}} className="container-input-icon-planning">
 					<input
 						style={this.props.filter ? this.renderSwitchInput(this.props.filter) : {}}
 						className="input"

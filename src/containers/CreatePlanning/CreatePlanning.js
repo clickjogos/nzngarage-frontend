@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
+
 import Button from '../../components/Button/Button'
 import history from '../App/history'
 import './CreatePlanning.scss'
