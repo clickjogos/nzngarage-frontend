@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import './InputLabelPlanning.scss'
-export default class InputLabelPlanning extends Component {
+import './InputLabelRefine.scss'
+export default class InputLabelRefine extends Component {
 
 	renderSwitchMainDiv(param) {
 		if (param.active) return {}
@@ -24,6 +24,7 @@ export default class InputLabelPlanning extends Component {
 		if (param.active) return { color: '#2944D9', fontWeight: 'bold', pointerEvents: 'none' }
 		else return { pointerEvents: 'none' }
 	}
+	
 
 	render() {
 		return (
@@ -31,18 +32,22 @@ export default class InputLabelPlanning extends Component {
 				<label style={this.props.filter ? this.renderSwitchLabel(this.props.filter) : {}} onClick={(e) => this.props.onclick(this.props.label)}>
 					{this.props.label}
 				</label>
-
-				<div style={this.props.filter ? this.renderSwitchInputDiv(this.props.filter) : {}} className="container-input-icon-planning">
-					<input
-						style={this.props.filter ? this.renderSwitchInput(this.props.filter) : {}}
-						className="input"
-						value={this.props.value}
-						onChange={(e) => this.props.callback(e.target.value)}
-						placeholder={this.props.placeholder}
-						type={this.props.type}
-					/>
-					{this.props.icon && this.props.icon}
+				<div style={
+					this.props.width ? { width: "30px" } : {}
+				}>
+					<div style={this.props.filter ? this.renderSwitchInputDiv(this.props.filter) : {}} className="container-input-icon-refine">
+						<input
+							style={this.props.filter ? this.renderSwitchInput(this.props.filter) : {}}
+							className="input"
+							value={this.props.value}
+							onChange={(e) => this.props.callback(e.target.value)}
+							placeholder={this.props.placeholder}
+							type={this.props.type}
+						/>
+						{this.props.icon && this.props.icon}
+					</div>
 				</div>
+
 			</div>
 		)
 	}

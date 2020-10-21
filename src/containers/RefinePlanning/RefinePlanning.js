@@ -11,7 +11,6 @@ import Loading from '../../components/Loading/Loading'
 import { Redirect } from 'react-router-dom'
 import Prediction from '../../components/Prediction/Prediction'
 
-
 import data from '../../providers/mocks/data.json'
 import * as planning from '../../providers/planning'
 import * as model from '../../providers/model'
@@ -39,7 +38,7 @@ class refinePlanning extends Component {
 	}
 
 	handleSubmit = (e) => {
-		if(e == "" || !e){
+		if (e == "" || !e) {
 			e.preventDefault()
 		}
 		this.setState({ show: false })
@@ -69,7 +68,7 @@ class refinePlanning extends Component {
 			.makeSugestion({ weekValues: this.state.inference })
 			.then((response) => {
 
-				this.setState({ show: true, viewTarget: Math.round(response.data.totalAudience), sugestion: response.data})
+				this.setState({ show: true, viewTarget: Math.round(response.data.totalAudience), sugestion: response.data })
 			})
 			.catch((error) => {
 				alert(error)
@@ -77,9 +76,7 @@ class refinePlanning extends Component {
 	}
 
 	handleFormUpdate = () => {
-		console.log("INFERENCEEEEE")
-		console.log(this.state.inference)
-		this.setState({inference: this.state.inference})
+		this.setState({ inference: this.state.inference })
 	}
 
 	render() {
@@ -105,12 +102,13 @@ class refinePlanning extends Component {
 									endDate={this.state.endDate}
 									viewTarget={this.state.viewTarget}
 									budget={this.state.budget}
+									modelBudget={this.state.inference[0].modelBudget}
 								/>
 
-								<Prediction 
-								weeksValuesInference={this.state.inference} 
-								onChange={this.handleFormUpdate.bind(this)}
-								
+								<Prediction
+									weeksValuesInference={this.state.inference}
+									onChange={this.handleFormUpdate.bind(this)}
+
 								/>
 								<div className="next-step">
 									<p style={{ fontSize: '14px', color: '#B8C2CB' }}>Passo 2 de 2</p>
@@ -130,8 +128,8 @@ class refinePlanning extends Component {
 						</div>
 					</>
 				) : (
-					<Loading/>
-				)}
+						<Loading />
+					)}
 			</div>
 		)
 	}
