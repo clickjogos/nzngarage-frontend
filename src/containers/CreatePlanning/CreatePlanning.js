@@ -25,6 +25,9 @@ class CreatePanning extends Component {
 		console.log('props', this.props)
 		console.log('state aqui do create', this.state)
 	}
+	componentDidUpdate() {
+		console.log("componentDidUpdate")
+	}
 
 	componentDidMount() {
 		if (this.props?.location?.state) {
@@ -99,12 +102,12 @@ class CreatePanning extends Component {
 											<h3 style={{ fontSize: '28px' }}>Editar Planejamento</h3>
 											<h4 style={{ fontSize: '18px', color: '#636F7A' }}>Vamos fazer isso em dois passos ;)</h4>
 											<form onSubmit={this.handleSubmit}>
-												<InputLabelPlanning value={this.props.location.state.planning.data.planningName} placeholder="Nome do Planejamento" />
+												<InputLabelPlanning callback={(e) => this.setState({ planningName: e })} value={this.state.planningName} placeholder="Nome do Planejamento" />
 												<div className="flex-container">
-													<InputLabelPlanning value={this.props.location.state.planning.data.startDate} label="Data Inicial" type="date" />
-													<InputLabelPlanning value={this.props.location.state.planning.data.endDate} label="Data Final" type="date" />
-													<InputLabelPlanning value={this.props.location.state.planning.data.viewTarget} label="Audiência" placeholder="" />
-													<InputLabelPlanning value={this.props.location.state.planning.data.budget} label="Orçamento" placeholder="R$" />
+													<InputLabelPlanning callback={(e) => this.setState({ startDate: e })} value={this.state.startDate} label="Data Inicial" type="date" />
+													<InputLabelPlanning callback={(e) => this.setState({ endDate: e })} value={this.state.endDate} label="Data Final" type="date" />
+													<InputLabelPlanning callback={(e) => this.setState({ viewTarget: e })} value={this.state.viewTarget} label="Audiência" placeholder="" />
+													<InputLabelPlanning callback={(e) => this.setState({ budget: e })} value={this.state.budget} label="Orçamento" placeholder="R$" />
 												</div>
 												<div className="container-step">
 													<p id="textStep">Passo 1 de 2</p>
