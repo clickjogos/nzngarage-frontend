@@ -5,6 +5,10 @@
   background-color: $background_color;
 }
 
+.input-create-planning {
+  width: 236px;
+}
+
 .container-back {
   display: flex;
   flex-wrap: wrap;
@@ -28,8 +32,7 @@
 
 .container-planning {
   font-family: proxima-nova, sans-serif;
-
-  padding-left: 39px;
+  padding-left: 55px;
   padding-top: 120px;
 }
 
@@ -75,11 +78,10 @@
 
 .button {
   font-weight: bold;
-
   background-color: #2942D6;
   top: 0px;
   left: 0px;
-  width: 282px;
+  width: 150px;
   text-align: center;
   font-family: proxima-nova, sans-serif;
   letter-spacing: 0px;

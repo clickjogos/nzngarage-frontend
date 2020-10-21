@@ -102,6 +102,7 @@ class refinePlanning extends Component {
 									endDate={this.state.endDate}
 									viewTarget={this.state.viewTarget}
 									budget={this.state.budget}
+									modelBudget={this.state.inference[0].modelBudget}
 								/>
 
 								<Prediction
