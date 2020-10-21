@@ -21,6 +21,54 @@
 
     }
 
+    .tracking-header-card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+
+        span {
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border-radius: 15px;
+            box-shadow: 0px 1px 2px #0303031A;
+            border: 1px solid #DBE1E5;
+
+            width: 162px;
+            height: 45px;
+            position: relative;
+            bottom: 75px;
+            display: none
+        }
+
+        span:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+
+            position: absolute;
+
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #FFFFFF;
+
+            bottom: -20px;
+            left: 20%;
+        }
+
+        a {
+            color: #000;
+            display: inline-block;
+
+        }
+
+        a:hover,
+        a:hover span {
+            color: #9A1A4A;
+            display: block;
+
+
+        }
+    }
+
     .points {
         top: 191px;
         left: 321px;
