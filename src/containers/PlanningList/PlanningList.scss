@@ -92,6 +92,11 @@ h2 {
         margin-left: 200px;
         z-index: 9999;
         // background-image: url('../../assets/images/icon-more-options.svg') no-repeat;
+
+        img {
+            cursor: pointer;
+        }
+
         select {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -103,6 +108,10 @@ h2 {
             overflow: hidden;
             font-family: proxima-nova;
             padding: 4px;
+
+            option {
+                cursor: pointer;
+            }
         }
     }
 }
@@ -146,6 +155,7 @@ h2 {
 
 ul {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
