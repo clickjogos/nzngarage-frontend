@@ -90,13 +90,19 @@ h2 {
     .option {
         margin-top: -22px;
         margin-left: 200px;
-
+        z-index: 9999;
         // background-image: url('../../assets/images/icon-more-options.svg') no-repeat;
         select {
             -webkit-appearance: none;
             -moz-appearance: none;
             text-indent: 1px;
             text-overflow: '';
+            border-radius: 3px;
+            background-color: #fff;
+            border: none;
+            overflow: hidden;
+            font-family: proxima-nova;
+            padding: 4px;
         }
     }
 }
