@@ -5,13 +5,14 @@ import { formatTrackingDayFilter } from '../../utils/format'
 export default class PredictionInformation extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {
+		this.state = {			
 			show: false,
 			tracking: this.props.tracking,
 			period: this.props.period,
 			periodIndex: 0,
 		}
 
+		console.log(">>> state do predic")
 		console.log(this.state)
 	}
 
@@ -24,7 +25,13 @@ export default class PredictionInformation extends Component {
 		} else {
 			newIndex = this.state.periodIndex + 1
 		}
-		this.setState({ periodIndex: newIndex, show: true })
+		this.setState({ periodIndex: newIndex, show: true }, ()=>{
+			this.handlePeriodIndex(this.state.periodIndex)
+		})
+	}
+
+	handlePeriodIndex(e){
+		this.props.onChange(e)
 	}
 
 	defineFilterHeader() {
