@@ -54,11 +54,8 @@ class TrackingPlanning extends Component {
 			})
 			.catch((error) => { })
 	}
-	handlePeriodSelection = (e, period) => {
-		console.log(period)
-		console.log(this.state.period)
-		this.setState({ show: false, period: period })
-		console.log(this.state.period)
+	handlePeriodSelection = (e, period) => {		
+		this.setState({ show: false, period: period, periodIndex:0 })		
 		this.getTrackingByPeriod(period)
 	}
 
