@@ -10,7 +10,8 @@ export default class Filters extends Component {
             startDate: this.props.startDate,
             endDate: this.props.endDate,
             viewTarget: this.props.viewTarget,
-            budget: this.props.budget
+            budget: this.props.budget,
+            modelBudget: this.props.modelBudget
         }
     }
 
@@ -40,8 +41,12 @@ export default class Filters extends Component {
                         <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.viewTarget}</p>
                     </div>
                     <div>
-                        <h4 style={{ fontSize: "16px", color: "#414141" }}>Orçamento</h4>
+                        <h4 style={{ fontSize: "16px", color: "#414141" }}>Orçamento Disponível</h4>
                         <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.budget}</p>
+                    </div>
+                    <div>
+                        <h4 style={{ fontSize: "16px", color: "#414141" }}>Orçamento Planejado</h4>
+                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.modelBudget}</p>
                     </div>
                 </div>
             </div>

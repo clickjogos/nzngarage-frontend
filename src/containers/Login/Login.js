@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import Image from 'react-bootstrap/Image'
 import InputLabel from '../../components/InputLabel/InputLabel'
-import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
 import Loading from '../../components/Loading/Loading'
 import Button from '../../components/Button/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import backgroundLogin from '../../assets/images/brand-illustration.png'
 import history from '../App/history'
-
 import * as authentication from '../../providers/authentication'
 import { isHead } from '../../providers/authentication'
 import '../Login/Login.scss'
 import { Input } from 'reactstrap'
-const logoNZN = require('../../assets/images/nzn-logo.png')
+const logoNZN = require('../../assets/images/nzn.png')
 
 class Login extends Component {
 	constructor(props) {
@@ -39,19 +37,19 @@ class Login extends Component {
 	}
 
 	handleLogin = (e) => {
-		this.setState({loading: true})
+		this.setState({ loading: true })
 		e.preventDefault()
 		authentication
 			.submitLogin(this.state.email, this.state.password)
 			.then((response) => {
 				if (response.data.autenticado === true) {
-					
+
 					localStorage.setItem('user', JSON.stringify(response.data.data))
 					this.setState({ show: true, loading: false })
 					this.redirectPage()
 				} else {
-					
-					this.setState({ error: true,  loading: false })
+
+					this.setState({ error: true, loading: false })
 				}
 			})
 			.catch((error) => {
@@ -63,17 +61,17 @@ class Login extends Component {
 		return (
 			<div className="main">
 				<div className="login-information">
-					<div className="logo">
+					<div className="logo-login">
 						<Image src={logoNZN} height="44px" width="173px" />
 					</div>
 					<form onSubmit={this.handleLogin} className="container">
 						<div className="user-information">
 							<p>Entrar</p>
-							<InputLabelPlanning callback={(e) => this.setState({ email: e })} label="E-mail" placeholder="exemplo@email.com.br" />
-							<InputLabelPlanning callback={(e) => this.setState({ password: e })} label="Senha" placeholder="Senha de acesso" />
+							<InputLabel callback={(e) => this.setState({ email: e })} label="E-mail" placeholder="exemplo@email.com.br" />
+							<InputLabel callback={(e) => this.setState({ password: e })} label="Senha" placeholder="Senha de acesso" type="password" />
 							{this.state.error ? <spam color="red"> usuário/senha incorreta</spam> : <></>}
 						</div>
-						{ this.state.loading ? (<Loading/>) : (<></>)}
+						{this.state.loading ? (<Loading />) : (<></>)}
 						<div className="box-button">
 							<Button title="Acessar Conta" callback={this.handleLogin}></Button>
 						</div>

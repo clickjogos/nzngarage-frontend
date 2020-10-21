@@ -88,8 +88,15 @@ hr {
 #footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 20%;
   height: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+
+  img {
+    cursor: pointer;
+  }
 }
 
 .information-person {

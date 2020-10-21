@@ -52,7 +52,7 @@ class TrackingPlanning extends Component {
                 // console.log("B U D G E T rea/extimate")
                 // console.log(realPoints3, estimedPoints3)
 			})
-			.catch((error) => {})
+			.catch((error) => { })
 	}
 	handlePeriodSelection = (e, period) => {
 		console.log(period)
@@ -104,7 +104,7 @@ class TrackingPlanning extends Component {
 											<Button style={{width: '99px'}}title="Semana" callback={(e) => this.handlePeriodSelection(e, 'week')}></Button>
 											<Button style={{width: '165px'}} title="Planejamento Total" callback={(e) => this.handlePeriodSelection(e, 'all')}></Button>
 
-                                            </div>
+											</div>
 										</div>
 									</div>
                                     <div className="cards-tracking">
@@ -125,7 +125,7 @@ class TrackingPlanning extends Component {
 										<Cards title="Audiência" points={this.calculatePoints('realAudience', 'planAudience')} />
 										<Cards title="Orçamento" points={this.calculatePoints('realBudget', 'planBudget')} /> */}
 
-                                    </div>
+									</div>
 									<div className="prediction-tracking">
 										<PredictionInformation
 											tracking={this.state.tracking}
@@ -138,8 +138,8 @@ class TrackingPlanning extends Component {
 						</div>
 					</>
 				) : (
-					<Loading />
-				)}
+						<Loading />
+					)}
 			</div>
 		)
 	}

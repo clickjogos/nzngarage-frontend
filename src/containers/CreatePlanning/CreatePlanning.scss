@@ -3,95 +3,52 @@
 
 .main {
   background-color: $background_color;
-}
 
-.container-back {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 39px;
-  padding-top: 39px;
-  height: 70px;
-  flex-direction: column;
-}
+  .container-block {
+    display: block;
 
-#back-text {
-  color: #777777;
-  padding-top: 4px;
-  padding-right: 300px;
-  font-family: proxima-nova, sans-serif;
+    .container-back {
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 39px;
+      padding-top: 39px;
+      height: 70px;
+      flex-direction: column;
 
-}
+      button {
+        background-color: Transparent;
+        border: none;
+        outline: none;
+      }
 
-.container-block {
-  display: block;
-}
+      #back-text {
+        color: #777777;
+        padding-top: 4px;
+        padding-right: 300px;
+        font-family: proxima-nova, sans-serif;
+      }
+    }
+  }
 
-.container-planning {
-  font-family: proxima-nova, sans-serif;
+  .container-planning {
+    font-family: proxima-nova, sans-serif;
+    padding-left: 55px;
+    padding-top: 120px;
 
-  padding-left: 39px;
-  padding-top: 120px;
-}
+    .flex-container {
+      display: grid;
+      grid-column-gap: 15px;
+      grid-row-gap: 15px;
+      grid-template-columns: repeat(2, 1fr);
+    }
 
-.flex-container {
-  display: grid;
-  grid-column-gap: 15px;
-  grid-row-gap: 15px;
-  grid-template-columns: repeat(2, 1fr);
+    .container-step {
+      padding-top: 130px;
+      display: grid;
+      grid-column-gap: 15px;
+      grid-row-gap: 15px;
+      grid-template-columns: repeat(2, 1fr);
+    }
 
-
-}
-
-.container-step {
-  padding-top: 130px;
-  display: grid;
-  grid-column-gap: 15px;
-  grid-row-gap: 15px;
-  grid-template-columns: repeat(2, 1fr);
-
-}
-
-#buttonPlanning {
-  font-weight: bold;
-  background-color: #2942D6;
-  top: 0px;
-  left: 0px;
-  width: 282px;
-  text-align: center;
-  font-family: proxima-nova, sans-serif;
-  letter-spacing: 0px;
-  color: $light_color;
-  border-radius: 8px;
-  opacity: 1;
-
-}
-
-#textStep {
-  color: #777777;
-  padding-top: 16px;
-  font-family: proxima-nova, sans-serif;
-  // width: 90px;
-}
-
-.button {
-  font-weight: bold;
-
-  background-color: #2942D6;
-  top: 0px;
-  left: 0px;
-  width: 282px;
-  text-align: center;
-  font-family: proxima-nova, sans-serif;
-  letter-spacing: 0px;
-  color: $light_color;
-  border-radius: 8px;
-  opacity: 1;
-}
-
-.container-back {
-  button {
-    background-color: Transparent;
-    border: none;
-    outline: none;
   }
 }

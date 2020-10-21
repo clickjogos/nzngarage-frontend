@@ -4,6 +4,7 @@ import Image from 'react-bootstrap/Image'
 import history from '../../containers/App/history'
 import LogoNZN from '../../assets/images/nzn.png'
 import { isHead } from '../../providers/authentication'
+import Exit from '../../assets/icons/logout.svg'
 
 const planning = require('../../assets/icons/icon-planejamento.svg')
 const acompanhamento = require('../../assets/icons/icon-acompanhamento.svg')
@@ -27,6 +28,13 @@ export default class Sidebar extends Component {
 	redirectPageList = () => {
 		history.push({
 			pathname: '/tracking',
+		})
+	}
+
+	logout = () => {
+		localStorage.clear()
+		history.push({
+			pathname: '/'
 		})
 	}
 
@@ -57,6 +65,9 @@ export default class Sidebar extends Component {
 				<div id="footer">
 					<div className="information-person">
 						<p>{this.state.username}</p>
+					</div>
+					<div>
+						<img src={Exit} onClick={() => this.logout()} width="20px" height="20px" />
 					</div>
 				</div>
 			</div>
