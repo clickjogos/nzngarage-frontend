@@ -38,7 +38,7 @@
         form {
             width: 100%;
             display: flex;
-            grid-column-gap: 100px;
+            grid-column-gap: 60px;
 
             .tag {
                 width: 50%;
@@ -58,6 +58,8 @@
 
         .container-inputlabel {
             display: flex;
+            align-items: center;
+            justify-content: space-evenly;
 
             .container-input-icon {
                 width: 66px;

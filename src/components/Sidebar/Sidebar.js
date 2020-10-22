@@ -62,12 +62,16 @@ export default class Sidebar extends Component {
 						</button>
 					</div>
 				</div>
+
 				<div id="footer">
-					<div className="information-person">
-						<p>{this.state.username}</p>
-					</div>
-					<div>
-						<img src={Exit} onClick={() => this.logout()} width="20px" height="20px" />
+					<hr />
+					<div className="footer-minor">
+						<div className="information-person">
+							<p>{this.state.username}</p>
+						</div>
+						<div>
+							<img src={Exit} onClick={() => this.logout()} width="20px" height="20px" />
+						</div>
 					</div>
 				</div>
 			</div>
