@@ -100,22 +100,24 @@ export default class Cards extends Component {
 		return (
 			this.state.show ? (
 				<div className="card">
-					
-						<div className="tracking-header-card">
-							<div >
-								<h4>{this.state.title}</h4>
-								<div className="points">
-									<p>{this.state.realPoints}</p> /<p>{this.state.estimedPoints}</p>
-								</div>
+
+					<div className="tracking-header-card">
+						<div >
+							<h4>{this.state.title}</h4>
+							<div className="points">
+								<p>{this.state.realPoints}</p> /<p>{this.state.estimedPoints}</p>
 							</div>
-							<div>{this.state.alert ? <a> !!! <span>Você está abaixo do esperado!</span> </a> : <></>}</div>
 						</div>
+						<div>{this.state.alert ? <a> !!! <span>Você está abaixo do esperado!</span> </a> : <></>}</div>
+					</div>
+					<div className="progress-information">
 						<div className="progressBar">
 							<div style={this.state.progressBarWidth} className="percentageItem"></div>
 						</div>
-					
 					</div>
-				) : (
+
+				</div>
+			) : (
 					<Loading />
 				)
 		)

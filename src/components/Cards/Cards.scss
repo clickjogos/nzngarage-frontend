@@ -83,16 +83,21 @@
         padding: 5px;
     }
 
-    .progressBar {
-        width: 90%;
-        border-radius: 8px;
-        background-color: #EFEFEF;
-        height: 16px;
+    .progress-information {
+        display: flex;
+        justify-content: center;
 
-        .percentageItem {
-            background-color: #00A648;
-            height: 16px;
+        .progressBar {
+            width: 90%;
             border-radius: 8px;
+            background-color: #EFEFEF;
+            height: 16px;
+
+            .percentageItem {
+                background-color: #00A648;
+                height: 16px;
+                border-radius: 8px;
+            }
         }
     }
 
