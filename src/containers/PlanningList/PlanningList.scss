@@ -101,6 +101,7 @@ h2 {
         }
 
         select {
+            position: relative;
             -webkit-appearance: none;
             -moz-appearance: none;
             text-indent: 1px;
@@ -128,7 +129,6 @@ h2 {
 }
 
 .title-planning {
-    // margin-left: -80px;
     display: flex;
     margin-left: 42px;
     margin-top: 42px;
