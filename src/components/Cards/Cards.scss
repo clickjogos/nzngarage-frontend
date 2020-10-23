@@ -15,10 +15,10 @@
         padding: 5px;
         height: 20px;
         text-align: left;
-        font: normal normal bold 16px/20px Proxima Nova;
+        font-family: proxima-nova;
+        font-size: 16px;
         letter-spacing: 0.29px;
         color: #414141;
-
     }
 
     .tracking-header-card {
@@ -113,7 +113,8 @@
                 }
 
                 .expectedMark {
-                    max-width: 5%;
+                    width: 8px;
+                    border-radius: 8px;
                     background: #CF8402 0% 0% no-repeat padding-box;
                     height: 20px;
                 }

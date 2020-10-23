@@ -5,7 +5,8 @@ export default class ButtonCreate extends Component {
   render() {
     return (
       <div >
-        <button style={this.props.style ? this.props.style : {}} className="createButton" onClick={(e) => this.props.callback(e)}>
+        <button style={this.props.style ? this.props.style : {}} className="createButton" onClick={(e) => this.props.callback(e)}
+          disabled={this.props.enabled}>
           {this.props.title}
         </button>
       </div>

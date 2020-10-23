@@ -5,7 +5,7 @@ import { formatTrackingDayFilter } from '../../utils/format'
 export default class PredictionInformation extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {			
+		this.state = {
 			show: false,
 			tracking: this.props.tracking,
 			period: this.props.period,
@@ -25,12 +25,12 @@ export default class PredictionInformation extends Component {
 		} else {
 			newIndex = this.state.periodIndex + 1
 		}
-		this.setState({ periodIndex: newIndex, show: true }, ()=>{
+		this.setState({ periodIndex: newIndex, show: true }, () => {
 			this.handlePeriodIndex(this.state.periodIndex)
 		})
 	}
 
-	handlePeriodIndex(e){
+	handlePeriodIndex(e) {
 		this.props.onChange(e)
 	}
 
@@ -52,13 +52,15 @@ export default class PredictionInformation extends Component {
 						<button onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">❮</button>
 					) : (
 						<button disabled style={ {pointerEvents: 'none', opacity: '0.4'}}onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">❮</button>
-					)}
-					<h5>{this.defineFilterHeader()}</h5>
+					)}				
+					<h5>
+						{this.defineFilterHeader()}
+					</h5>
 					{this.state.periodIndex < this.state.tracking.weekValues.length - 1 ? (
 						<button onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">❯</button>
-					) : (
-						<button disabled style={ {pointerEvents: 'none', opacity: '0.4'}} onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">❯</button>
-					)}
+					) : (<button disabled style={ {pointerEvents: 'none', opacity: '0.4'}} onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">
+						❯
+					</button>)}
 				</div>
 				<div className="prediction-information-container">
 					<div className="only-tag-content">
@@ -126,8 +128,8 @@ export default class PredictionInformation extends Component {
 								</div>
 							</div>
 						) : (
-							<></>
-						)}
+								<></>
+							)}
 					</div>
 				</div>
 			</div>

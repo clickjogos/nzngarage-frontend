@@ -17,6 +17,7 @@ import * as model from '../../providers/model'
 const Backbutton = require('../../assets/icons/icon-back-button.svg')
 
 class refinePlanning extends Component {
+	step = "2"
 	constructor(props) {
 		super(props)
 
@@ -64,6 +65,9 @@ class refinePlanning extends Component {
 	}
 
 	handleModelSubmit = (e) => {
+		this.enabled = true
+		this.step = "3"
+
 		this.setState({ show: false })
 
 		model
@@ -111,16 +115,16 @@ class refinePlanning extends Component {
 									weeksValuesInference={this.state.inference}
 									onChange={this.handleFormUpdate.bind(this)}
 								/>
-								
+
 								<div className="next-step">
-									<p style={{ fontSize: '14px', color: '#B8C2CB' }}>Passo 2 de 2</p>
+									<p style={{ fontSize: '14px', color: '#B8C2CB' }}>Passo {this.step} de 3</p>
 									<div className="onlybutton">
 										{/* <Forward title="Rodar Planejamento ❯"></Forward> */}
-										<button className="butaum" onClick={this.handleModelSubmit}>
+										<button className="refineButton" onClick={this.handleModelSubmit}>
 											{' '}
 											Rodar Planejamento ❯{' '}
 										</button>
-										<button className="butaum" onClick={this.handleSubmit}>
+										<button disabled={!this.enabled} className="refineButton" onClick={this.handleSubmit}>
 											{' '}
 											Salvar Planejamento ❯
 										</button>
