@@ -107,7 +107,6 @@ class CreatePanning extends Component {
 												</div>
 												<div className="container-step">
 													<p id="textStep">Passo 1 de 2</p>
-
 													<Button callback={() => this.handleSubmit} title="Ver Sugestão de Planejamento >" />
 												</div>
 											</form>
