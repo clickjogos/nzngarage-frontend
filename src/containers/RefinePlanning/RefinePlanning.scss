@@ -29,9 +29,20 @@
                 align-items: center;
                 align-content: center;
 
+                button {
+                    background-color: Transparent;
+                    border: none;
+                    outline: none;
+                }
+
                 #back-text {
                     color: #777777;
                     font-family: proxima-nova, sans-serif;
+                }
+
+                p {
+                    margin: initial;
+                    margin-left: 10px;
                 }
             }
         }

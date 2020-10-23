@@ -31,9 +31,6 @@ export default class Cards extends Component {
 				expectedPoints: this.props.expectedPoints,
 			},
 			(e) => {
-				// console.log('estadoooooo')
-				// console.log(this.state)
-				// console.log(e)
 				this.checkConditions(this.props)
 				this.verifyAlerts()
 			}
@@ -68,12 +65,10 @@ export default class Cards extends Component {
 		// console.log('percentage', percentage)
 		if (percentage >= 100) {
 			this.setState({ progressBarWidth: { width: '100%' }, show: true }, (e) => {
-				// console.log('>>>maior que 100')
 				// console.log(`${this.props.title}`, 'progressBarWidth', this.state.progressBarWidth)
 			})
 		} else {
 			this.setState({ progressBarWidth: { width: `${percentage}%` }, show: true }, (e) => {
-				// console.log('>>>menor que 100')
 				// console.log(`${this.props.title}`, 'progressBarWidth', this.state.progressBarWidth)
 			})
 		}
@@ -100,7 +95,6 @@ export default class Cards extends Component {
 		return (
 			this.state.show ? (
 				<div className="card">
-
 					<div className="tracking-header-card">
 						<div >
 							<h4>{this.state.title}</h4>
