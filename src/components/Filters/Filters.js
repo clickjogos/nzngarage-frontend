@@ -42,11 +42,11 @@ export default class Filters extends Component {
                     </div>
                     <div>
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Orçamento Disponível</h4>
-                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.budget}</p>
+                        <p style={{ fontSize: "14px", color: "#8995A0" }}>R$ {this.state.budget}</p>
                     </div>
                     <div>
                         <h4 style={{ fontSize: "16px", color: "#414141" }}>Orçamento Planejado</h4>
-                        <p style={{ fontSize: "14px", color: "#8995A0" }}>{this.state.modelBudget}</p>
+                        <p style={{ fontSize: "14px", color: "#8995A0" }}>R$ {this.state.modelBudget}</p>
                     </div>
                 </div>
             </div>
