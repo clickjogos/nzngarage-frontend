@@ -105,23 +105,20 @@ export default class Prediction extends Component {
 		return (
 			<div className="main-pagination">
 				<div className="pagination">
-					{this.state.weekIndex > 0 ? (
-						<button onClick={(e) => this.getWeekIndex(e)} value="back" id="back">
-							❮
-						</button>
-					) : (
-							<> </>
-						)}
+
+					{this.state.weekIndex <= 0 ? (
+						<button disabled value="back" id="back">❮</button>
+					) : (<button onClick={(e) => this.getWeekIndex(e)} value="back" id="back">
+						❮
+					</button>)}
 					<h5 style={{ fontStyle: 'normal normal 600 18px/24px Proxima Nova;', fontSize: '18px', color: '#2944D9' }}>
 						Semana {this.state.weekIndex + 1} de {this.state.inference.length}
 					</h5>
-					{this.state.weekIndex < this.state.inference.length - 1 ? (
-						<button onClick={(e) => this.getWeekIndex(e)} value="forward" id="forward">
-							❯
-						</button>
-					) : (
-							<> </>
-						)}
+					{this.state.weekIndex >= this.state.inference.length - 1 ? (
+						<button disabled value="forward" id="forward">❯</button>
+					) : (<button onClick={(e) => this.getWeekIndex(e)} value="forward" id="forward">
+						❯
+					</button>)}
 				</div>
 				<div className="main-container" style={{ height: '100%' }}>
 					{this.state.show ? (
