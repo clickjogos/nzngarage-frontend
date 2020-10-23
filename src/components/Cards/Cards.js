@@ -26,6 +26,7 @@ export default class Cards extends Component {
 				expectedPoints: this.props.expectedPoints,
 			},
 			(e) => {
+				console.log(this.state)
 				this.checkConditions(this.props)
 				this.verifyAlerts()
 			}
@@ -52,9 +53,12 @@ export default class Cards extends Component {
 	checkConditions = (props) => {
 		let percentage = parseInt((this.state.realPoints * 100) / this.state.plannedPoints)
 
+		console.log("percentage",percentage)
 		if (percentage >= 100) {
+			console.log("caso1")
 			this.setState({ progressBarWidth: { width: '100%' }, show: true }, (e) => { })
 		} else {
+			console.log("caso2")
 			this.setState({ progressBarWidth: { width: `${percentage}%` }, show: true }, (e) => {
 
 			})

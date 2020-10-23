@@ -26,6 +26,7 @@ export default class PredictionInformation extends Component {
 			newIndex = this.state.periodIndex + 1
 		}
 		this.setState({ periodIndex: newIndex, show: true }, () => {
+			console.log("periodIndex", newIndex)
 			this.handlePeriodIndex(this.state.periodIndex)
 		})
 	}

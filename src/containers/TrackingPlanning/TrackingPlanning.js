@@ -52,23 +52,29 @@ class TrackingPlanning extends Component {
 
 	checkIfIsPastDate(indexToCompare){
 		let indexActualDate = this.state.tracking.weekValues.findIndex((item) => item.actual === true)
-		if(indexToCompare) {
+		console.log("indexToCompare", indexToCompare, "indexActualDate", indexActualDate)
+		if(indexToCompare !== null) {
 			if(indexActualDate === -1){
+				console.log("caso 1")
 				this.setState({isPast: true, show: true})
 				return true
 			}
 			else if(indexToCompare < indexActualDate) {
+				console.log("caso 2")
 				this.setState({isPast: true, show: true})
 				return true
 			} else {
+				console.log("caso 3")
 				this.setState({isPast: false, show: true})
 				return false
 			}
 		} else {
-			if(indexActualDate === -1) {				
+			if(indexActualDate === -1) {	
+				console.log("caso 4")			
 				this.setState({isPast: true, show: true, periodIndex: 0})
 				return true 
 			} else {
+				console.log("caso 5")
 				this.setState({isPast: false, periodIndex: indexActualDate,  show: true})
 				return false
 			}
@@ -80,9 +86,9 @@ class TrackingPlanning extends Component {
 	handlePeriodIndex = (e) => {
 		// console.log("e", e)
 		this.checkIfIsPastDate(e)
-		console.log('periodIndex before', this.state.periodIndex)
+		// console.log('periodIndex before', this.state.periodIndex)
 		this.setState({ periodIndex: e }, () => {
-			console.log('periodIndex after', this.state.periodIndex)
+			// console.log('periodIndex after', this.state.periodIndex)
 		})
 	}
 
