@@ -22,7 +22,7 @@ class CreatePanning extends Component {
 		this.state = {
 			show: true,
 		}
-	}	
+	}
 
 	componentDidMount() {
 		if (this.props?.location?.state) {
@@ -59,8 +59,14 @@ class CreatePanning extends Component {
 		}
 	}
 
+	// handleChange = (e) => {
+	// 	const { name, value } = e.target
+	// 	this.setState({ [name]: value })
+	// }
+
 	render() {
 		if (this.state.redirect) return <Redirect exact to={{ pathname: '/refinePlanning', state: this.state }} />
+		const enabled = !this.state.planningName || !this.state.startDate || !this.state.endDate || !this.state.viewTarget || !this.state.budget
 		return (
 			<div className="main">
 				<Sidebar />
@@ -80,17 +86,19 @@ class CreatePanning extends Component {
 										<h3 style={{ fontSize: '28px' }}>Criar novo Planejamento</h3>
 										<h4 style={{ fontSize: '18px', color: '#636F7A' }}>Vamos fazer isso em dois passos ;)</h4>
 										<form onSubmit={this.handleSubmit}>
-											<InputLabelPlanning callback={(e) => this.setState({ planningName: e })} label="Nome do Planejamento" placeholder="Nome do Planejamento" />
+											<InputLabelPlanning callback={(e) => this.setState({ planningName: e })} value={this.state.planningName} label="Nome do Planejamento" placeholder="Nome do Planejamento" />
 											<div className="flex-container">
-												<InputLabelPlanning callback={(e) => this.setState({ startDate: e })} label="Data Inicial" type="date" />
-												<InputLabelPlanning callback={(e) => this.setState({ endDate: e })} label="Data Final" type="date" />
-												<InputLabelPlanning callback={(e) => this.setState({ viewTarget: e })} label="Audiência" placeholder="" />
-												<InputLabelPlanning callback={(e) => this.setState({ budget: e })} label="Orçamento" placeholder="R$" />
+												<InputLabelPlanning callback={(e) => this.setState({ startDate: e })} value={this.state.startDate} label="Data Inicial" type="date" />
+												<InputLabelPlanning callback={(e) => this.setState({ endDate: e })} value={this.state.endDate} label="Data Final" type="date" />
+												<InputLabelPlanning callback={(e) => this.setState({ viewTarget: e })} value={this.state.viewTarget} label="Audiência" placeholder="" />
+												<InputLabelPlanning callback={(e) => this.setState({ budget: e })} value={this.state.budget} label="Orçamento" placeholder="R$" />
 											</div>
 											<div className="container-step">
 												<p id="textStep">Passo 1 de 2</p>
 
-												<Button callback={() => this.handleSubmit} title="Ver Sugestão de Planejamento >" />
+												<Button callback={() => this.handleSubmit} enabled={enabled} title="Ver Sugestão de Planejamento >" />
+												{/* <button style={{ width: "200px", height: "200px" }} onClick={this.example} > */}
+												{/* </button> */}
 											</div>
 										</form>
 									</>
