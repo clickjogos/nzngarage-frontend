@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Sidebar.scss'
 import Image from 'react-bootstrap/Image'
 import history from '../../containers/App/history'
-import LogoNZN from '../../assets/images/nzn.png'
+import LogoNZN from '../../assets/images/logo-nzn.svg'
 import { isHead } from '../../providers/authentication'
 import Exit from '../../assets/icons/logout.svg'
 
