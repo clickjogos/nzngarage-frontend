@@ -53,81 +53,24 @@
             padding-right: 60px;
             padding-left: 60px;
 
-            .container-filters {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                width: 100%;
-
-                .title-refine {
-                    width: 50%;
-                }
-
-                .filters {
-                    display: flex;
-                    flex-direction: row;
-                    width: 50%;
-                    justify-content: space-around;
-
-                    .date {
-                        cursor: pointer;
-                        border: none;
-                        outline: 0;
-                        background-color: $background_color;
-                        color: #8995A0;
-                    }
-                }
-            }
-
-            .pagination {
-                margin-top: 35px;
-                display: flex;
-                justify-content: space-between;
-
-                #back,
-                #forward {
-                    cursor: pointer;
-                    border: 1px solid #2944D9;
-                    background-color: #FFFFFF;
-                    border-radius: 50%;
-                    color: #2944D9;
-                    width: 30px;
-                    align-items: center;
-                    height: 30px;
-                    align-content: center;
-                    display: flex;
-                    justify-content: center;
-                    outline: 0;
-                }
-            }
-
-            .main-container {
-                margin-top: 30px;
-                border-radius: 8px;
-                opacity: 1;
-                display: flex;
-                flex-direction: row;
-                padding: 10px;
-                height: 412px;
-                background: #F6F8FA 0% 0% no-repeat padding-box;
-                box-shadow: 0px 1px 2px #00000014;
-                border: 1px solid #DBE1E5;
-            }
-
             .next-step {
                 margin-top: 35px;
                 display: flex;
                 justify-content: space-between;
 
+                p {
+                    margin: revert;
+                }
+
                 .onlybutton {
                     display: flex;
                     flex-direction: row;
-                    width: 30%;
+                    width: 47%;
                     justify-content: space-between;
 
-                    .butaum {
+                    .refineButton {
                         z-index: 999999;
-                        width: 200px;
+                        width: 210px;
                         height: 40px;
                         background: #2942d6 0% 0% no-repeat padding-box;
                         border-radius: 8px;
@@ -141,6 +84,11 @@
                         font-family: "proxima-nova", sans-serif;
                         font-weight: bold;
                         font-style: normal
+                    }
+
+                    .refineButton:disabled {
+                        background-color: #909CE6;
+                        border: 1px solid #909CE6;
                     }
                 }
 
