@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
-
 import Button from '../../components/Button/ButtonCreate'
 import history from '../App/history'
 import './CreatePlanning.scss'
@@ -59,11 +58,6 @@ class CreatePanning extends Component {
 		}
 	}
 
-	// handleChange = (e) => {
-	// 	const { name, value } = e.target
-	// 	this.setState({ [name]: value })
-	// }
-
 	render() {
 		if (this.state.redirect) return <Redirect exact to={{ pathname: '/refinePlanning', state: this.state }} />
 		const enabled = !this.state.planningName || !this.state.startDate || !this.state.endDate || !this.state.viewTarget || !this.state.budget
@@ -95,10 +89,7 @@ class CreatePanning extends Component {
 											</div>
 											<div className="container-step">
 												<p id="textStep">Passo 1 de 2</p>
-
 												<Button callback={() => this.handleSubmit} enabled={enabled} title="Ver Sugestão de Planejamento >" />
-												{/* <button style={{ width: "200px", height: "200px" }} onClick={this.example} > */}
-												{/* </button> */}
 											</div>
 										</form>
 									</>
