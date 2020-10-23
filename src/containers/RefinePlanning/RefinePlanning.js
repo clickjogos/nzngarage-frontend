@@ -17,9 +17,10 @@ import * as model from '../../providers/model'
 const Backbutton = require('../../assets/icons/icon-back-button.svg')
 
 class refinePlanning extends Component {
+	step = "2"
 	constructor(props) {
 		super(props)
-		let enabled = false
+
 		this.state = {
 			_id: this.props.location.state._id,
 			show: true,
@@ -65,6 +66,7 @@ class refinePlanning extends Component {
 
 	handleModelSubmit = (e) => {
 		this.enabled = true
+		this.step = "3"
 
 		this.setState({ show: false })
 
@@ -115,7 +117,7 @@ class refinePlanning extends Component {
 								/>
 
 								<div className="next-step">
-									<p style={{ fontSize: '14px', color: '#B8C2CB' }}>Passo 2 de 2</p>
+									<p style={{ fontSize: '14px', color: '#B8C2CB' }}>Passo {this.step} de 3</p>
 									<div className="onlybutton">
 										{/* <Forward title="Rodar Planejamento ❯"></Forward> */}
 										<button className="refineButton" onClick={this.handleModelSubmit}>
