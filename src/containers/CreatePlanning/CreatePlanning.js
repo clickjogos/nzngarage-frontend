@@ -22,12 +22,7 @@ class CreatePanning extends Component {
 		this.state = {
 			show: true,
 		}
-		console.log('props', this.props)
-		console.log('state aqui do create', this.state)
-	}
-	componentDidUpdate() {
-		console.log("componentDidUpdate")
-	}
+	}	
 
 	componentDidMount() {
 		if (this.props?.location?.state) {

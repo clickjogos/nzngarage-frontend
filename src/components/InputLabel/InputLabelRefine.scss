@@ -1,8 +1,10 @@
 @import "../../styles/variables";
 
-.container-inputlabel {
+.container-inputlabel-refine {
     width: 100%;
-    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
     label {
         text-align: left;
@@ -37,6 +39,7 @@
         }
 
         .input {
+           
             text-align: left;
             font-family: proxima-nova, sans-serif;
             font-weight: 400;

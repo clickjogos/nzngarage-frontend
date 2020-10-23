@@ -5,8 +5,8 @@
     box-shadow: 0px 1px 2px #0000001A;
     border-radius: 8px;
     opacity: 1;
-    // display: flex;
-    // flex-direction: column;
+    border: none;
+    padding: 10px;
 
     h4 {
         top: 167px;
@@ -30,7 +30,6 @@
             border-radius: 15px;
             box-shadow: 0px 1px 2px #0303031A;
             border: 1px solid #DBE1E5;
-
             width: 162px;
             height: 45px;
             position: relative;
@@ -43,13 +42,10 @@
             display: block;
             width: 0;
             height: 0;
-
             position: absolute;
-
             border-left: 20px solid transparent;
             border-right: 20px solid transparent;
             border-top: 20px solid #FFFFFF;
-
             bottom: -20px;
             left: 20%;
         }
@@ -64,8 +60,6 @@
         a:hover span {
             color: #9A1A4A;
             display: block;
-
-
         }
     }
 
@@ -83,17 +77,47 @@
         padding: 5px;
     }
 
-    .progressBar {
-        width: 90%;
-        border-radius: 8px;
-        background-color: #EFEFEF;
-        height: 10px;
+    .progress-information {
+        display: flex;
+        justify-content: center;
 
-        .percentageItem {
-            background-color: #00A648;
-            height: 10px;
-            border-bottom-left-radius: 8px;
-            border-top-left-radius: 8px;
+        .progressBar {
+            width: 90%;
+            border-radius: 8px;
+            background-color: #EFEFEF;
+            height: 16px;
+
+            .percentageItem {
+                background-color: #00A648;
+                height: 16px;
+                border-radius: 8px;
+            }
+
+            .expectedItem {
+                width: 50%;
+                height: 20px;
+                margin-bottom: 0px;
+                position: relative;
+                bottom: 15px;
+
+                .expectedValue {
+                    margin-bottom: 0px;
+                    position: absolute;
+                    bottom: 40px;
+                    text-align: center;
+                    font-weight: bold;
+                    // font: normal normal bold 12px/36px Proxima Nova;
+                    letter-spacing: 0px;
+                    color: #CF8422;
+                    opacity: 1;
+                }
+
+                .expectedMark {
+                    max-width: 5%;
+                    background: #CF8402 0% 0% no-repeat padding-box;
+                    height: 20px;
+                }
+            }
         }
     }
 
