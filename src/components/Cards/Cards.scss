@@ -83,20 +83,41 @@
         padding: 5px;
     }
 
-    .progress-information {
-        display: flex;
-        justify-content: center;
+    .progressBar {
+        width: 90%;
+        border-radius: 8px;
+        background-color: #EFEFEF;
+        height: 16px;
 
-        .progressBar {
-            width: 90%;
-            border-radius: 8px;
-            background-color: #EFEFEF;
+        .percentageItem {
+            background-color: #00A648;
             height: 16px;
+            border-radius: 8px;
+        }
 
-            .percentageItem {
-                background-color: #00A648;
-                height: 16px;
-                border-radius: 8px;
+        .expectedItem {
+            width: 50%;
+            height: 20px;
+            margin-bottom: 0px;
+            position: relative;
+            bottom: 15px;
+
+            .expectedValue {
+                margin-bottom: 0px;
+                position: absolute;
+                bottom: 40px;
+                text-align: center;
+                font-weight: bold;
+                // font: normal normal bold 12px/36px Proxima Nova;
+                letter-spacing: 0px;
+                color: #CF8422;
+                opacity: 1;
+            }
+
+            .expectedMark {
+                max-width: 5%;
+                background: #CF8402 0% 0% no-repeat padding-box;
+                height: 20px;
             }
         }
     }

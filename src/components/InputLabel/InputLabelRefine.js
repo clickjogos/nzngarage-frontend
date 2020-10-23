@@ -28,7 +28,7 @@ export default class InputLabelRefine extends Component {
 
 	render() {
 		return (
-			<div style={this.props.filter ? this.renderSwitchMainDiv(this.props.filter) : {}} className="container-inputlabel">
+			<div style={this.props.filter ? this.renderSwitchMainDiv(this.props.filter) : {}} className="container-inputlabel-refine">
 				<label style={this.props.filter ? this.renderSwitchLabel(this.props.filter) : {}} onClick={(e) => this.props.onclick(this.props.label)}>
 					{this.props.label}
 				</label>
