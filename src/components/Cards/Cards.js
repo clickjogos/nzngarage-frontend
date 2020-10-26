@@ -3,6 +3,8 @@ import './Cards.scss'
 import Loading from '../../components/Loading/Loading'
 import { isHead, isEditor } from '../../providers/authentication'
 import Modal from '../../components/Modal/Modal'
+import warning from '../../assets/images/warning.svg'
+
 export default class Cards extends Component {
 	constructor(props) {
 		super(props)
@@ -62,6 +64,7 @@ export default class Cards extends Component {
 	}
 
 	verifyAlerts() {
+
 		let marginMarker = parseInt((this.state.expectedPoints * 100) / this.state.plannedPoints)
 		if (isHead()) {
 			// console.log('lets verify alerts')
@@ -100,8 +103,9 @@ export default class Cards extends Component {
 					<div>
 						{this.state.alert ? (
 							<a>
+								<span>{this.state.spanAlertText}</span>{' '}
+								<img src={warning} alt="" />
 								{' '}
-								!!! <span>{this.state.spanAlertText}</span>{' '}
 							</a>
 
 						) : (

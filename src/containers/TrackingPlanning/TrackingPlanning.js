@@ -147,8 +147,8 @@ class TrackingPlanning extends Component {
 								<div className="container-tracking">
 									<div className="head-tracking">
 										<div className="title-tracking">
-											<h3 style={{ fontSize: '28px' }}>Visão Geral do Planejamento</h3>
-											<h4 style={{ fontSize: '18px' }}>Você pode refinar a sugestão de planejamento</h4>
+											<h2 style={{ fontSize: '28px' }}>Visão Geral do Planejamento</h2>
+											<h4 style={{ fontSize: '18px', color: "#636F7A" }}>Você pode refinar a sugestão de planejamento</h4>
 										</div>
 										<div className="filters-tracking">
 											<p>Visualizar:</p>
