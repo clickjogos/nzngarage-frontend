@@ -24,7 +24,7 @@ export default class InputLabelRefine extends Component {
 		if (param.active) return { color: '#2944D9', fontWeight: 'bold', pointerEvents: 'none' }
 		else return { pointerEvents: 'none' }
 	}
-	
+
 
 	render() {
 		return (

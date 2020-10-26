@@ -96,7 +96,7 @@ class CreatePanning extends Component {
 								) : (
 										<>
 											<h3 style={{ fontSize: '28px' }}>Editar Planejamento</h3>
-											<h4 style={{ fontSize: '18px', color: '#636F7A' }}>Vamos fazer isso em dois passos ;)</h4>
+											<h4 style={{ fontSize: '18px', color: '#636F7A' }}>Vamos fazer isso em três passos ;)</h4>
 											<form onSubmit={this.handleSubmit}>
 												<InputLabelPlanning callback={(e) => this.setState({ planningName: e })} value={this.state.planningName} placeholder="Nome do Planejamento" />
 												<div className="flex-container">

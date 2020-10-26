@@ -9,7 +9,7 @@ export default class PredictionInformation extends Component {
 			show: false,
 			tracking: this.props.tracking,
 			period: this.props.period,
-			periodIndex:this.props.periodIndex,
+			periodIndex: this.props.periodIndex,
 		}
 
 		console.log(">>> state do predic")
@@ -52,14 +52,14 @@ export default class PredictionInformation extends Component {
 					{this.state.periodIndex > 0 ? (
 						<button onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">❮</button>
 					) : (
-						<button disabled style={ {pointerEvents: 'none', opacity: '0.4'}}onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">❮</button>
-					)}				
+							<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">❮</button>
+						)}
 					<h5>
 						{this.defineFilterHeader()}
 					</h5>
 					{this.state.periodIndex < this.state.tracking.weekValues.length - 1 ? (
 						<button onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">❯</button>
-					) : (<button disabled style={ {pointerEvents: 'none', opacity: '0.4'}} onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">
+					) : (<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">
 						❯
 					</button>)}
 				</div>
