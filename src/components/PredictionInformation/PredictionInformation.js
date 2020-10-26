@@ -47,7 +47,7 @@ export default class PredictionInformation extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="information-content-main">
 				<div className="pagination">
 					{this.state.periodIndex > 0 ? (
 						<button onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">❮</button>
@@ -89,9 +89,9 @@ export default class PredictionInformation extends Component {
 									.filter((pred) => pred.category === 'dayPeriod')
 									.map((filtered) => (
 										<>
-											<p>
+											<li>
 												{filtered.key} - {filtered.realValue}/{filtered.value}
-											</p>
+											</li>
 										</>
 									))}
 							</div>
@@ -103,9 +103,9 @@ export default class PredictionInformation extends Component {
 									.filter((pred) => pred.category === 'type')
 									.map((filtered) => (
 										<>
-											<p>
+											<li>
 												{filtered.key} - {filtered.realValue}/{filtered.value}
-											</p>
+											</li>
 										</>
 									))}
 							</div>
@@ -121,9 +121,9 @@ export default class PredictionInformation extends Component {
 										.filter((pred) => pred.category === 'weekDay')
 										.map((filtered) => (
 											<>
-												<p>
+												<li>
 													{filtered.key} - {filtered.realValue}/{filtered.value}
-												</p>
+												</li>
 											</>
 										))}
 								</div>
