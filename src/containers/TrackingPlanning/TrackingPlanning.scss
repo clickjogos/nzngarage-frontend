@@ -12,6 +12,7 @@
 
         .container-tracking {
             box-sizing: 0;
+
             .head-tracking {
                 display: grid;
                 grid-template-columns: 1fr auto;
@@ -23,7 +24,6 @@
                         grid-template-columns: 1fr 1fr auto;
                     }
                 }
-
             }
 
             .cards-tracking {
