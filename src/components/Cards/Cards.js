@@ -10,7 +10,8 @@ export default class Cards extends Component {
 		this.state = {
 			show: true,
 			title: this.props.title,
-			order: this.props.order
+			order: this.props.order,
+			isPast: this.props.isPast
 		}
 		console.log(this.state.title)
 	}
@@ -18,7 +19,6 @@ export default class Cards extends Component {
 	componentDidMount() {
 		// console.log('did mount')
 		// console.log(this.props)
-
 		this.setState(
 			{
 				realPoints: this.props.realPoints,
@@ -26,6 +26,7 @@ export default class Cards extends Component {
 				expectedPoints: this.props.expectedPoints,
 			},
 			(e) => {
+				console.log(this.state)
 				this.checkConditions(this.props)
 				this.verifyAlerts()
 			}
@@ -40,6 +41,7 @@ export default class Cards extends Component {
 				realPoints: props.realPoints,
 				plannedPoints: props.plannedPoints,
 				expectedPoints: props.expectedPoints,
+				isPast: props.isPast
 			},
 			(e) => {
 				this.checkConditions(props)
@@ -51,9 +53,12 @@ export default class Cards extends Component {
 	checkConditions = (props) => {
 		let percentage = parseInt((this.state.realPoints * 100) / this.state.plannedPoints)
 
+		console.log("percentage",percentage)
 		if (percentage >= 100) {
+			console.log("caso1")
 			this.setState({ progressBarWidth: { width: '100%' }, show: true }, (e) => { })
 		} else {
+			console.log("caso2")
 			this.setState({ progressBarWidth: { width: `${percentage}%` }, show: true }, (e) => {
 
 			})
@@ -114,7 +119,7 @@ export default class Cards extends Component {
 				<div className="progress-information">
 					<div className="progressBar">
 						<div style={this.state.progressBarWidth} className="percentageItem"></div>
-						{isHead() ? (<div style={this.state.expectedBarWidth} className="expectedItem">
+						{(isHead() && !this.state.isPast) ? (<div style={this.state.expectedBarWidth} className="expectedItem">
 							<p className="expectedValue">{this.state.expectedPoints}</p>
 							<p className="expectedMark">{''}</p></div>) : (<></>)}
 					</div>

@@ -31,7 +31,7 @@ class TrackingPlanning extends Component {
 	}
 
 	handlePeriodSelection = (e, period) => {
-		this.setState({ show: false, period: period, periodIndex: 0 })
+		this.setState({ show: false, period: period })
 		this.getTrackingByPeriod(period)
 	}
 
@@ -40,25 +40,59 @@ class TrackingPlanning extends Component {
 		tracking
 			.trackingByPeriod({ period: period })
 			.then((response) => {
-				this.setState({ show: true, tracking: response.data.data, period: period }, (r) => {
+				this.setState({ tracking: response.data.data, period: period }, (r) => {
 					console.log('periodIndex before', this.state)
+					let isPast = this.checkIfIsPastDate(null)
+					if(!isPast) 
 					this.isOnAlert(r)
 				})
 			})
 			.catch((error) => {})
 	}
+
+	checkIfIsPastDate(indexToCompare){
+		let indexActualDate = this.state.tracking.weekValues.findIndex((item) => item.actual === true)
+		console.log("indexToCompare", indexToCompare, "indexActualDate", indexActualDate)
+		if(indexToCompare !== null) {
+			if(indexActualDate === -1){
+				console.log("caso 1")
+				this.setState({isPast: true, show: true})
+				return true
+			}
+			else if(indexToCompare < indexActualDate) {
+				console.log("caso 2")
+				this.setState({isPast: true, show: true})
+				return true
+			} else {
+				console.log("caso 3")
+				this.setState({isPast: false, show: true})
+				return false
+			}
+		} else {
+			if(indexActualDate === -1) {	
+				console.log("caso 4")			
+				this.setState({isPast: true, show: true, periodIndex: 0})
+				return true 
+			} else {
+				console.log("caso 5")
+				this.setState({isPast: false, periodIndex: indexActualDate,  show: true})
+				return false
+			}
+		}
+		
+		
+	}
+
 	handlePeriodIndex = (e) => {
 		// console.log("e", e)
-		console.log('periodIndex before', this.state.periodIndex)
+		this.checkIfIsPastDate(e)
+		// console.log('periodIndex before', this.state.periodIndex)
 		this.setState({ periodIndex: e }, () => {
-			console.log('periodIndex after', this.state.periodIndex)
+			// console.log('periodIndex after', this.state.periodIndex)
 		})
 	}
 
 	showModal() {
-		console.log('show modal')
-		console.log(this.state)
-		console.log(this.props)
 		this.setState({ showModal: !this.state.showModal })
 	}
 
@@ -67,18 +101,18 @@ class TrackingPlanning extends Component {
 		console.log(this.state)
 		console.log(this.props)
 
-		// let obj = {
-		// 	id: this.state.tracking['_id'],
-		// }
-		// planning
-		// 	.getPlanning(obj)
-		// 	.then((response) => {
-		// 		this.setState({ edit: true })
-		// 		history.push('/createPlanning', { edit: true, planning: response.data })
-		// 	})
-		// 	.catch((error) => {
-		// 		alert(error)
-		// 	})
+		let obj = {
+			id: this.state.tracking['_id'],
+		}
+		planning
+			.getPlanning(obj)
+			.then((response) => {
+				this.setState({ edit: true })
+				history.push('/createPlanning', { edit: true, planning: response.data })
+			})
+			.catch((error) => {
+				alert(error)
+			})
 	}
 
 	isOnAlert(r) {
@@ -134,6 +168,7 @@ class TrackingPlanning extends Component {
 										<Cards
 											order={'asc'}
 											title="Matérias"
+											isPast={this.state.isPast}
 											realPoints={this.state.tracking.weekValues[this.state.periodIndex].realNews}
 											plannedPoints={this.state.tracking.weekValues[this.state.periodIndex].planNews}
 											expectedPoints={this.state.tracking.weekValues[this.state.periodIndex].expectedNews}
@@ -141,6 +176,7 @@ class TrackingPlanning extends Component {
 										<Cards
 											order={'asc'}
 											title="Audiência"
+											isPast={this.state.isPast}
 											realPoints={this.state.tracking.weekValues[this.state.periodIndex].realAudience}
 											plannedPoints={this.state.tracking.weekValues[this.state.periodIndex].planAudience}
 											expectedPoints={this.state.tracking.weekValues[this.state.periodIndex].expectedAudience}
@@ -148,6 +184,7 @@ class TrackingPlanning extends Component {
 										<Cards
 											order={'desc'}
 											title="Orçamento"
+											isPast={this.state.isPast}
 											realPoints={this.state.tracking.weekValues[this.state.periodIndex].realBudget}
 											plannedPoints={this.state.tracking.weekValues[this.state.periodIndex].planBudget}
 											expectedPoints={this.state.tracking.weekValues[this.state.periodIndex].expectedBudget}
@@ -155,7 +192,7 @@ class TrackingPlanning extends Component {
 										/>
 									</div>
 									<div className="prediction-tracking">
-										<PredictionInformation tracking={this.state.tracking} period={this.state.period} onChange={this.handlePeriodIndex.bind(this)} />
+										<PredictionInformation periodIndex={this.state.periodIndex} tracking={this.state.tracking} period={this.state.period} onChange={this.handlePeriodIndex.bind(this)} />
 									</div>
 								</div>
 							</div>

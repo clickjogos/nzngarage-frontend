@@ -10,7 +10,8 @@ import * as authentication from '../../providers/authentication'
 import { isHead } from '../../providers/authentication'
 import '../Login/Login.scss'
 import { Input } from 'reactstrap'
-const logoNZN = require('../../assets/images/nzn.png')
+// const logoNZN = require('../../assets/images/nzn.png')
+const logoNZN = require('../../assets/images/logo-nzn.svg')
 
 class Login extends Component {
 	constructor(props) {
