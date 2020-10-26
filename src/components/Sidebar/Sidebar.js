@@ -50,7 +50,7 @@ export default class Sidebar extends Component {
 						<p id="txtplan">CRIAR</p>
 						<button className="buttonSidebar" onClick={() => this.redirectPagePlanning()}>
 							<img id="imgIcon" src={planning} height="16px" width="14px" />
-							<p id="txtButtonPlan">Planejamento</p>
+							<p id="txtButtonPlan">Planejamentos</p>
 						</button>
 					</div>) : (<></>)}
 

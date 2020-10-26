@@ -20,8 +20,8 @@
                 .filters-tracking {
 
                     .button-filters-tracking {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr auto;
+                        display: flex;
+                        gap: 15px;
                     }
                 }
             }
