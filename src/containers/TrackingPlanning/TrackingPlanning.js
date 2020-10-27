@@ -36,6 +36,7 @@ class TrackingPlanning extends Component {
 	}
 
 	getTrackingByPeriod(period) {
+		this.setState({periodIndex: 0})
 		console.log(period)
 		tracking
 			.trackingByPeriod({ period: period })
@@ -43,7 +44,7 @@ class TrackingPlanning extends Component {
 				this.setState({ tracking: response.data.data, period: period }, (r) => {
 					console.log('periodIndex before', this.state)
 					let isPast = this.checkIfIsPastDate(null)
-					if(!isPast) 
+					// if(!isPast) 
 					this.isOnAlert(r)
 				})
 			})
@@ -73,7 +74,8 @@ class TrackingPlanning extends Component {
 				console.log("caso 4")			
 				this.setState({isPast: true, show: true, periodIndex: 0})
 				return true 
-			} else {
+			} 
+			else {
 				console.log("caso 5")
 				this.setState({isPast: false, periodIndex: indexActualDate,  show: true})
 				return false
@@ -117,6 +119,7 @@ class TrackingPlanning extends Component {
 
 	isOnAlert(r) {
 		if (this.state.isInitial) {
+			console.log("periodIndex", this.state.periodIndex)
 			let newsAlertMargin = this.state.tracking.weekValues[this.state.periodIndex].expectedNews - this.state.tracking.weekValues[this.state.periodIndex].expectedNews * 0.05
 			let audienceAlertMargin = this.state.tracking.weekValues[this.state.periodIndex].expectedAudience - this.state.tracking.weekValues[this.state.periodIndex].expectedAudience * 0.05
 			let budgetAlertMargin = this.state.tracking.weekValues[this.state.periodIndex].expectedBudget + this.state.tracking.weekValues[this.state.periodIndex].expectedBudget * 0.01
