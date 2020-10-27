@@ -68,16 +68,18 @@ export default class PredictionInformation extends Component {
 						<div>
 							<label>Cadernos</label>
 						</div>
-
-						{this.state.tracking.weekValues[this.state.periodIndex].reality
-							.filter((pred) => pred.category === 'tag')
-							.map((filtered, index) => (
-								<>
-									<li>
-										{filtered.key} - {filtered.realValue}/{filtered.value}
-									</li>
-								</>
-							))}
+						<div className="li-content">
+							{this.state.tracking.weekValues[this.state.periodIndex].reality
+								.filter((pred) => pred.category === 'tag')
+								.map((filtered, index) => (
+									<>
+										<li>
+											<p>{filtered.key}</p>
+											<p>{filtered.realValue}/{filtered.value}</p>
+										</li>
+									</>
+								))}
+						</div>
 					</div>
 					<div className="others-categories-content">
 						<div>
@@ -90,7 +92,9 @@ export default class PredictionInformation extends Component {
 									.map((filtered) => (
 										<>
 											<li>
-												{filtered.key} - {filtered.realValue}/{filtered.value}
+												<p>{filtered.key}</p>
+												<p>{filtered.realValue}/{filtered.value}
+												</p>
 											</li>
 										</>
 									))}
@@ -104,7 +108,9 @@ export default class PredictionInformation extends Component {
 									.map((filtered) => (
 										<>
 											<li>
-												{filtered.key} - {filtered.realValue}/{filtered.value}
+												<p>{filtered.key}</p>
+												<p>{filtered.realValue}/{filtered.value}
+												</p>
 											</li>
 										</>
 									))}
@@ -122,7 +128,9 @@ export default class PredictionInformation extends Component {
 										.map((filtered) => (
 											<>
 												<li>
-													{filtered.key} - {filtered.realValue}/{filtered.value}
+													<p>{filtered.key} </p>
+													<p>{filtered.realValue}/{filtered.value}</p>
+
 												</li>
 											</>
 										))}
