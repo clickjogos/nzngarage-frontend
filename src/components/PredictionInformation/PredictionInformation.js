@@ -74,7 +74,7 @@ export default class PredictionInformation extends Component {
 						<div>
 							<label>Cadernos</label>
 						</div>
-
+						<div className="li-content">
 						{this.state.tracking.weekValues[this.state.periodIndex].reality
 							.filter((pred) => pred.category === 'tag')
 							.map((filtered, index) => (
@@ -89,6 +89,7 @@ export default class PredictionInformation extends Component {
 									</li>
 								</>
 							))}
+					</div>
 					</div>
 					<div className="others-categories-content">
 						<div>
