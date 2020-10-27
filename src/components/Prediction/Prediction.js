@@ -215,11 +215,11 @@ export default class Prediction extends Component {
 											{this.state.filter.status
 												? this.state.filter.relations
 														.filter((pred) => pred.category === 'dayPeriod')
-														.map((insideFilter) => <InputLabelRefine filter={{ readOnly: true }} label={insideFilter.key} value={insideFilter.value} />)
+														.map((insideFilter) => <InputLabelRefine category={insideFilter.category} filter={{ readOnly: true }} label={insideFilter.key} value={insideFilter.value} />)
 												: this.state.inference[this.state.weekIndex].predictions
 														.filter((pred) => pred.category === 'dayPeriod')
 														.map((filtered) => (
-															<InputLabelRefine onclick={(e) => {}} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />
+															<InputLabelRefine category={filtered.category} onclick={(e) => {}} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />
 														))}
 										</div>
 										<div>

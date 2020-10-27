@@ -55,31 +55,50 @@ class TrackingPlanning extends Component {
 		let indexActualDate = this.state.tracking.weekValues.findIndex((item) => item.actual === true)
 		console.log("indexToCompare", indexToCompare, "indexActualDate", indexActualDate)
 		if (indexToCompare !== null) {
-			if (indexActualDate === -1) {
+			if(indexToCompare === indexActualDate) {
 				console.log("caso 1")
-				this.setState({ isPast: true, show: true })
-				return true
-			}
-			else if (indexToCompare < indexActualDate) {
-				console.log("caso 2")
-				this.setState({ isPast: true, show: true })
-				return true
-			} else {
-				console.log("caso 3")
 				this.setState({ isPast: false, show: true })
 				return false
-			}
-		} else {
-			if (indexActualDate === -1) {
-				console.log("caso 4")
-				this.setState({ isPast: true, show: true, periodIndex: 0 })
-				return true
 			} else {
-				console.log("caso 5")
-				this.setState({ isPast: false, periodIndex: indexActualDate, show: true })
-				return false
+				console.log("caso 2")
+						this.setState({ isPast: true, show: true })
+						return true
 			}
-		}
+		// 	if (indexActualDate === -1) {
+		// 		console.log("caso 1")
+		// 		this.setState({ isPast: true, show: true })
+		// 		return true
+		// 	}
+		// 	else if (indexToCompare < indexActualDate) {
+		// 		console.log("caso 2")
+		// 		this.setState({ isPast: true, show: true })
+		// 		return true
+		// 	} else {
+		// 		console.log("caso 3")
+		// 		this.setState({ isPast: false, show: true })
+		// 		return false
+		// 	}
+		// } else {
+		// 	if (indexActualDate === -1) {
+		// 		console.log("caso 4")
+		// 		this.setState({ isPast: true, show: true, periodIndex: 0 })
+		// 		return true
+			} else {
+				if(indexActualDate === -1) {
+					console.log("caso 3")
+					this.setState({ isPast: true, periodIndex: 0, show: true })
+					return true
+				} else {
+					console.log("caso 4")
+					this.setState({ isPast: false, periodIndex: indexActualDate, show: true })
+					return false
+				}
+
+				// console.log("caso 5")
+				// this.setState({ isPast: false, periodIndex: indexActualDate, show: true })
+				// return false
+			}
+		// }
 	}
 
 	handlePeriodIndex = (e) => {

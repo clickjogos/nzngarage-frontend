@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import './PredictionInformation.scss'
-import { formatTrackingDayFilter, formatWeekDay } from '../../utils/format'
+import { formatTrackingDayFilter, formatWeekDayLabel } from '../../utils/format'
 export default class PredictionInformation extends Component {
 	constructor(props) {
 		super(props)
@@ -103,7 +103,7 @@ export default class PredictionInformation extends Component {
 										<>
 											<li>
 												<div className="row-key">
-													<p>{filtered.key}</p>
+													<p>{formatWeekDayLabel(filtered.key, filtered.category)}</p>
 												</div>
 												<div className="row-values">
 													<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
@@ -145,7 +145,7 @@ export default class PredictionInformation extends Component {
 											<>
 												<li>
 													<div className="row-key">
-														<p>{formatWeekDay(filtered.key)}</p>
+														<p>{formatWeekDayLabel(filtered.key, filtered.category)}</p>
 													</div>
 													<div className="row-values">
 										<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
