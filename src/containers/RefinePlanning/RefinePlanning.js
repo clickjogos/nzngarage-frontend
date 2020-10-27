@@ -33,10 +33,7 @@ class refinePlanning extends Component {
 			inference: this.props.location.state.inference,
 			planningName: this.props.location.state.planningName,
 		}
-		console.log('>>> props')
-		console.log(this.props)
-		console.log('>>> state')
-		console.log(this.state)
+	
 	}
 
 	handleSubmit = (e) => {

@@ -15,7 +15,7 @@ export default class Cards extends Component {
 			order: this.props.order,
 			isPast: this.props.isPast
 		}
-		console.log(this.state.title)
+		
 	}
 
 	componentDidMount() {
@@ -26,7 +26,7 @@ export default class Cards extends Component {
 				expectedPoints: this.props.expectedPoints,
 			},
 			(e) => {
-				console.log(this.state)
+			
 				this.checkConditions(this.props)
 				this.verifyAlerts()
 			}
@@ -51,12 +51,10 @@ export default class Cards extends Component {
 	checkConditions = (props) => {
 		let percentage = parseInt((this.state.realPoints * 100) / this.state.plannedPoints)
 
-		console.log("percentage", percentage)
+	
 		if (percentage >= 100) {
-			// console.log("caso1")
 			this.setState({ progressBarWidth: { width: '100%' }, show: true }, (e) => { })
 		} else {
-			// console.log("caso2")
 			this.setState({ progressBarWidth: { width: `${percentage}%` }, show: true }, (e) => {
 
 			})
@@ -67,23 +65,15 @@ export default class Cards extends Component {
 
 		let marginMarker = parseInt((this.state.expectedPoints * 100) / this.state.plannedPoints)
 		if (isHead()) {
-			// console.log('lets verify alerts')
-			// console.log(marginMarker)
 			if (marginMarker >= 100) marginMarker = 100
-			// console.log(marginMarker)
 			this.setState({ expectedBarWidth: { 'left': `${marginMarker}%` } }, () => {
-				// console.log("leeeeft",this.state.expectedBarWidth)
 				if (this.state.order === 'asc') {
-					// console.log('it is asc')
 					if (this.state.expectedPoints >= this.state.realPoints) {
 						this.setState({ alert: true, spanAlertText: 'Você está abaixo do esperado!' })
-						// this.props.onAlert()
 					}
 				} else if (this.state.order === 'desc') {
-					// console.log('it is desc')
 					if (this.state.expectedPoints <= this.state.realPoints) {
 						this.setState({ alert: true, spanAlertText: 'Você está acima do esperado!' })
-						// this.props.onAlert
 					}
 				}
 			})

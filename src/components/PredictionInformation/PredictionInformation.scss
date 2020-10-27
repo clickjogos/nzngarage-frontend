@@ -54,11 +54,11 @@
             display: flex; 
             margin-right: 24px;      
             line-height: 36px;
-            // font-family: proxima-nova, sans-serif;
+           
         }
 
         .row-values{
-            // background-color: #2944D9;
+            
             display: inline-flex;
             margin: 0 0 0 auto;
             p:not(:first-child){
@@ -66,9 +66,7 @@
             } 
         }
         .only-tag-content {
-            // display: flex;
-            // flex-direction: column;
-            // gap: 5px;
+            
             flex-wrap: wrap;
             flex-basis: 50%;
             margin-right: 24px;

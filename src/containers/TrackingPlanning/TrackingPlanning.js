@@ -37,14 +37,13 @@ class TrackingPlanning extends Component {
 
 	getTrackingByPeriod(period) {
 		this.setState({periodIndex: 0})
-		console.log(period)
+		
 		tracking
 			.trackingByPeriod({ period: period })
 			.then((response) => {
 				this.setState({ tracking: response.data.data, period: period }, (r) => {
-					console.log('periodIndex before', this.state)
+					
 					let isPast = this.checkIfIsPastDate(null)
-					// if(!isPast) 
 					this.isOnAlert(r)
 				})
 			})
@@ -53,52 +52,29 @@ class TrackingPlanning extends Component {
 
 	checkIfIsPastDate(indexToCompare) {
 		let indexActualDate = this.state.tracking.weekValues.findIndex((item) => item.actual === true)
-		console.log("indexToCompare", indexToCompare, "indexActualDate", indexActualDate)
+		
 		if (indexToCompare !== null) {
 			if(indexToCompare === indexActualDate) {
-				console.log("caso 1")
+				
 				this.setState({ isPast: false, show: true })
 				return false
 			} else {
-				console.log("caso 2")
+				
 						this.setState({ isPast: true, show: true })
 						return true
-			}
-		// 	if (indexActualDate === -1) {
-		// 		console.log("caso 1")
-		// 		this.setState({ isPast: true, show: true })
-		// 		return true
-		// 	}
-		// 	else if (indexToCompare < indexActualDate) {
-		// 		console.log("caso 2")
-		// 		this.setState({ isPast: true, show: true })
-		// 		return true
-		// 	} else {
-		// 		console.log("caso 3")
-		// 		this.setState({ isPast: false, show: true })
-		// 		return false
-		// 	}
-		// } else {
-		// 	if (indexActualDate === -1) {
-		// 		console.log("caso 4")
-		// 		this.setState({ isPast: true, show: true, periodIndex: 0 })
-		// 		return true
+		}
 			} else {
 				if(indexActualDate === -1) {
-					console.log("caso 3")
+					
 					this.setState({ isPast: true, periodIndex: 0, show: true })
 					return true
 				} else {
-					console.log("caso 4")
+					
 					this.setState({ isPast: false, periodIndex: indexActualDate, show: true })
 					return false
 				}
 
-				// console.log("caso 5")
-				// this.setState({ isPast: false, periodIndex: indexActualDate, show: true })
-				// return false
 			}
-		// }
 	}
 
 	handlePeriodIndex = (e) => {
@@ -112,10 +88,6 @@ class TrackingPlanning extends Component {
 	}
 
 	handleModalSubmit() {
-		console.log('handle submit')
-		console.log(this.state)
-		console.log(this.props)
-
 		let obj = {
 			id: this.state.tracking['_id'],
 		}
@@ -132,7 +104,7 @@ class TrackingPlanning extends Component {
 
 	isOnAlert(r) {
 		if (this.state.isInitial) {
-			console.log("periodIndex", this.state.periodIndex)
+			
 			let newsAlertMargin = this.state.tracking.weekValues[this.state.periodIndex].expectedNews - this.state.tracking.weekValues[this.state.periodIndex].expectedNews * 0.05
 			let audienceAlertMargin = this.state.tracking.weekValues[this.state.periodIndex].expectedAudience - this.state.tracking.weekValues[this.state.periodIndex].expectedAudience * 0.05
 			let budgetAlertMargin = this.state.tracking.weekValues[this.state.periodIndex].expectedBudget + this.state.tracking.weekValues[this.state.periodIndex].expectedBudget * 0.01

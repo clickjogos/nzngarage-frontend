@@ -21,11 +21,7 @@ export default class PlanningList extends Component {
 			edit: false,
 			showSelect: false,
 		}
-		console.log('>>> props')
-		console.log(this.props)
-		console.log('>>> state')
-		console.log(this.state)
-		console.log(data, 'JSON')
+	
 	}
 
 	getEvent = (e, params) => {
@@ -66,7 +62,7 @@ export default class PlanningList extends Component {
 	}
 
 	handleSelectSubmit(select, key) {
-		console.log("handle select chegou", select.currentTarget)
+		
 		if (select.target.value === 'activate') {
 			this.activatePlanning(key)
 		} else if (select.target.value === 'delete') {

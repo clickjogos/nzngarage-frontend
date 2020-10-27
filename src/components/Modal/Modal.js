@@ -6,7 +6,7 @@ export default class Modal extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
-		console.log(this.props)
+
 	}
 
 	render() {

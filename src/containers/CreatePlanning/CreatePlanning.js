@@ -39,7 +39,7 @@ class CreatePanning extends Component {
 		} else {
 			this.setState({ edit: false })
 		}
-		console.log('state aqui do createeeee', this.state)
+	
 	}
 	handleSubmit = (e) => {
 		if (e == '' || !e) {
@@ -47,7 +47,7 @@ class CreatePanning extends Component {
 		}
 		this.setState({ show: false })
 		if (this.state.edit) {
-			console.log("STATE EDITADO", this.state)
+
 			this.setState({ redirect: true, show: true })
 		} else {
 			model.makeInference(this.state).then(inference => {

@@ -33,16 +33,14 @@ export default class Prediction extends Component {
 
 	handleChange(key, event) {
 		const self = this
-		console.log(event, 'event antes ')
+	
 
 		let indexToUpdate = this.state.inference[this.state.weekIndex].predictions.findIndex((item) => item.key === key)
-		// console.log(typeof this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue)
 		if (typeof this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue === 'number')
 			this.setState({ previousValue: this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue }, () => {
-				console.log(this.state.previousValue)
+			
 			})
 		this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue = event
-		console.log(this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue)
 
 		if (self.state.typingTimeout) {
 			clearTimeout(self.state.typingTimeout)
@@ -52,7 +50,7 @@ export default class Prediction extends Component {
 			name: event,
 			typing: false,
 			typingTimeout: setTimeout(function () {
-				console.log('faz seila o que')
+			
 
 				if (event === '') event = 0
 				event = parseInt(event)
@@ -80,7 +78,7 @@ export default class Prediction extends Component {
 				}
 				self.renormalizeValues(objectToRenormalize)
 
-				console.log(event, 'event depois ')
+			
 			}, 800),
 		})
 	}
