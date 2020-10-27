@@ -53,10 +53,10 @@ export default class Cards extends Component {
 
 		console.log("percentage", percentage)
 		if (percentage >= 100) {
-			console.log("caso1")
+			// console.log("caso1")
 			this.setState({ progressBarWidth: { width: '100%' }, show: true }, (e) => { })
 		} else {
-			console.log("caso2")
+			// console.log("caso2")
 			this.setState({ progressBarWidth: { width: `${percentage}%` }, show: true }, (e) => {
 
 			})
