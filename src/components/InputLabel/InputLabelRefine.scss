@@ -5,11 +5,12 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 8px;
 
     label {
-        text-align: left;
+        // text-align: left;
         width: 146px;
-        height: 18px;
+        // height: 18px;
         font-size: 14px;
         font-weight: normal;
         font-stretch: normal;
@@ -17,11 +18,12 @@
         line-height: normal;
         letter-spacing: normal;
         color: #636f7a;
+        margin-bottom: 0;
     }
 
     .container-input-icon-refine {
         background: #ffffff;
-        margin-top: 10px;
+        // margin-top: 10px;
         display: flex;
         justify-content: center;
         height: 40px;
