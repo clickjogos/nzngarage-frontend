@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-
 import './InputLabelRefine.scss'
+import {formatWeekDay} from '../../utils/format'
+
 export default class InputLabelRefine extends Component {
 
 	renderSwitchMainDiv(param) {
@@ -30,7 +31,7 @@ export default class InputLabelRefine extends Component {
 		return (
 			<div style={this.props.filter ? this.renderSwitchMainDiv(this.props.filter) : {}} className="container-inputlabel-refine">
 				<label style={this.props.filter ? this.renderSwitchLabel(this.props.filter) : {}} onClick={(e) => this.props.onclick(this.props.label)}>
-					{this.props.label}
+					{this.props.category ? (formatWeekDay(this.props.label)) : this.props.label}
 				</label>
 				<div style={
 					this.props.width ? { width: "30px" } : {}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import './PredictionInformation.scss'
-import { formatTrackingDayFilter } from '../../utils/format'
+import { formatTrackingDayFilter, formatWeekDay } from '../../utils/format'
 export default class PredictionInformation extends Component {
 	constructor(props) {
 		super(props)
@@ -12,7 +12,7 @@ export default class PredictionInformation extends Component {
 			periodIndex: this.props.periodIndex,
 		}
 
-		console.log(">>> state do predic")
+		console.log('>>> state do predic')
 		console.log(this.state)
 	}
 
@@ -26,7 +26,7 @@ export default class PredictionInformation extends Component {
 			newIndex = this.state.periodIndex + 1
 		}
 		this.setState({ periodIndex: newIndex, show: true }, () => {
-			console.log("periodIndex", newIndex)
+			console.log('periodIndex', newIndex)
 			this.handlePeriodIndex(this.state.periodIndex)
 		})
 	}
@@ -50,18 +50,24 @@ export default class PredictionInformation extends Component {
 			<div className="information-content-main">
 				<div className="pagination">
 					{this.state.periodIndex > 0 ? (
-						<button onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">❮</button>
+						<button onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">
+							❮
+						</button>
 					) : (
-							<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">❮</button>
-						)}
-					<h5>
-						{this.defineFilterHeader()}
-					</h5>
+						<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">
+							❮
+						</button>
+					)}
+					<h5>{this.defineFilterHeader()}</h5>
 					{this.state.periodIndex < this.state.tracking.weekValues.length - 1 ? (
-						<button onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">❯</button>
-					) : (<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">
-						❯
-					</button>)}
+						<button onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">
+							❯
+						</button>
+					) : (
+						<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">
+							❯
+						</button>
+					)}
 				</div>
 				<div className="prediction-information-container">
 					<div className="only-tag-content">
@@ -74,7 +80,12 @@ export default class PredictionInformation extends Component {
 							.map((filtered, index) => (
 								<>
 									<li>
-										{filtered.key} - {filtered.realValue}/{filtered.value}
+										<div className="row-key">
+											<p>{filtered.key}</p>
+										</div>
+										<div className="row-values">
+											<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
+										</div>
 									</li>
 								</>
 							))}
@@ -90,7 +101,12 @@ export default class PredictionInformation extends Component {
 									.map((filtered) => (
 										<>
 											<li>
-												{filtered.key} - {filtered.realValue}/{filtered.value}
+												<div className="row-key">
+													<p>{filtered.key}</p>
+												</div>
+												<div className="row-values">
+													<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
+												</div>
 											</li>
 										</>
 									))}
@@ -104,7 +120,12 @@ export default class PredictionInformation extends Component {
 									.map((filtered) => (
 										<>
 											<li>
-												{filtered.key} - {filtered.realValue}/{filtered.value}
+												<div className="row-key">
+													<p>{filtered.key}</p>
+												</div>
+												<div className="row-values">
+													<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
+												</div>
 											</li>
 										</>
 									))}
@@ -122,15 +143,20 @@ export default class PredictionInformation extends Component {
 										.map((filtered) => (
 											<>
 												<li>
-													{filtered.key} - {filtered.realValue}/{filtered.value}
+													<div className="row-key">
+														<p>{formatWeekDay(filtered.key)}</p>
+													</div>
+													<div className="row-values">
+										<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
+													</div>
 												</li>
 											</>
 										))}
 								</div>
 							</div>
 						) : (
-								<></>
-							)}
+							<></>
+						)}
 					</div>
 				</div>
 			</div>

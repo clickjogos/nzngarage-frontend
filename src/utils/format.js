@@ -38,3 +38,22 @@ export function defineMonth(value) {
 			return 'dezembro'
 	}
 }
+
+export function formatWeekDay(str) {
+	switch (str) {
+		case 'Dom':
+			return 'Domingo'
+		case 'Seg':
+			return 'Segunda-feira'
+		case 'Ter':
+			return 'Terça-feira'
+		case 'Qua':
+			return 'Quarta-feira'
+		case 'Qui':
+			return 'Quinta-feira'
+		case 'Sex':
+			return 'Sexta-feira'
+		case 'Sab':
+			return 'Sábado'
+	}		
+}

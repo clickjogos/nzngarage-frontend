@@ -40,7 +40,7 @@ export default class Prediction extends Component {
 		if (typeof this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue === 'number')
 			this.setState({ previousValue: this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue }, () => {
 				console.log(this.state.previousValue)
-		})
+			})
 		this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue = event
 		console.log(this.state.inference[this.state.weekIndex].predictions[indexToUpdate].normalizedValue)
 
@@ -82,7 +82,7 @@ export default class Prediction extends Component {
 
 				console.log(event, 'event depois ')
 			}, 800),
-		})	
+		})
 	}
 
 	renormalizeValues(payload) {
@@ -129,17 +129,25 @@ export default class Prediction extends Component {
 			<div className="main-pagination">
 				<div className="pagination">
 					{this.state.weekIndex <= 0 ? (
-						<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} value="back" id="back">❮</button>
+						<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} value="back" id="back">
+							❮
+						</button>
 					) : (
-						<button onClick={(e) => this.getWeekIndex(e)} value="back" id="back">❮</button>
+						<button onClick={(e) => this.getWeekIndex(e)} value="back" id="back">
+							❮
+						</button>
 					)}
 					<h5 style={{ fontStyle: 'normal normal 600 18px/24px Proxima Nova;', fontSize: '18px', color: '#2944D9' }}>
 						Semana {this.state.weekIndex + 1} de {this.state.inference.length}
 					</h5>
 					{this.state.weekIndex >= this.state.inference.length - 1 ? (
-						<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} value="forward" id="forward">❯</button>
+						<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} value="forward" id="forward">
+							❯
+						</button>
 					) : (
-						<button onClick={(e) => this.getWeekIndex(e)} value="forward" id="forward">❯</button>
+						<button onClick={(e) => this.getWeekIndex(e)} value="forward" id="forward">
+							❯
+						</button>
 					)}
 				</div>
 				<div className="main-container" style={{ height: '100%' }}>
@@ -194,11 +202,11 @@ export default class Prediction extends Component {
 										{this.state.filter.status
 											? this.state.filter.relations
 													.filter((pred) => pred.category === 'weekDay')
-													.map((insideFilter) => <InputLabelRefine filter={{ readOnly: true }} label={insideFilter.key} value={insideFilter.value} />)
+													.map((insideFilter) => <InputLabelRefine category={insideFilter.category} filter={{ readOnly: true }} label={insideFilter.key} value={insideFilter.value} />)
 											: this.state.inference[this.state.weekIndex].predictions
 													.filter((pred) => pred.category === 'weekDay')
 													.map((filtered) => (
-														<InputLabelRefine onclick={(e) => {}} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />
+														<InputLabelRefine category={filtered.category} onclick={(e) => {}} callback={(e) => this.handleChange(filtered.key, e)} label={filtered.key} value={filtered.normalizedValue} />
 													))}
 									</div>
 									<div>

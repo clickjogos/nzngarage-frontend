@@ -104,7 +104,7 @@ export default class Cards extends Component {
 						{this.state.alert ? (
 							<a>
 								<span>{this.state.spanAlertText}</span>{' '}
-								<img src={warning} alt="" />
+								<img className="warningColor" src={warning} alt="" />
 								{' '}
 							</a>
 
