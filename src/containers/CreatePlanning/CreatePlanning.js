@@ -32,14 +32,14 @@ class CreatePanning extends Component {
 				planningName: this.props.location.state.planning.data.planningName,
 				startDate: this.props.location.state.planning.data.startDate,
 				endDate: this.props.location.state.planning.data.endDate,
-				viewTarget: this.props.location.state.planning.data.viewTarget,
-				budget: this.props.location.state.planning.data.budget,
+				viewTarget: (this.props.location.state.planning.data.viewTarget).toString(),
+				budget: (this.props.location.state.planning.data.budget).toString(),
 				modelBudget: this.props.location.state.planning.data.modelBudget
 			})
 		} else {
 			this.setState({ edit: false })
 		}
-	
+
 	}
 	handleSubmit = (e) => {
 		if (e == '' || !e) {

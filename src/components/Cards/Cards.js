@@ -15,18 +15,18 @@ export default class Cards extends Component {
 			order: this.props.order,
 			isPast: this.props.isPast
 		}
-		
+
 	}
 
 	componentDidMount() {
 		this.setState(
 			{
-				realPoints: this.props.realPoints,
-				plannedPoints: this.props.plannedPoints,
+				realPoints: (this.props.realPoints).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+				plannedPoints: (this.props.plannedPoints).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
 				expectedPoints: this.props.expectedPoints,
 			},
 			(e) => {
-			
+
 				this.checkConditions(this.props)
 				this.verifyAlerts()
 			}
@@ -36,9 +36,9 @@ export default class Cards extends Component {
 	UNSAFE_componentWillReceiveProps(props) {
 		this.setState(
 			{
-				realPoints: props.realPoints,
-				plannedPoints: props.plannedPoints,
-				expectedPoints: props.expectedPoints,
+				realPoints: ((props.realPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+				plannedPoints: ((props.plannedPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+				expectedPoints: ((props.expectedPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, "."),
 				isPast: props.isPast
 			},
 			(e) => {
@@ -51,7 +51,7 @@ export default class Cards extends Component {
 	checkConditions = (props) => {
 		let percentage = parseInt((this.state.realPoints * 100) / this.state.plannedPoints)
 
-	
+
 		if (percentage >= 100) {
 			this.setState({ progressBarWidth: { width: '100%' }, show: true }, (e) => { })
 		} else {
@@ -86,9 +86,14 @@ export default class Cards extends Component {
 				<div className="tracking-header-card">
 					<div>
 						<h4>{this.state.title}</h4>
-						<div className="points">
-							<p>{this.state.realPoints}</p> /<p>{this.state.plannedPoints}</p>
-						</div>
+						{this.state.title === "Orçamento"
+							? <div className="points">
+								<p> R$ {this.state.realPoints}</p> /<p> R$ {this.state.plannedPoints}</p>
+							</div>
+							: <div className="points">
+								<p>{this.state.realPoints}</p> /<p>{this.state.plannedPoints}</p>
+							</div>
+						}
 					</div>
 					<div>
 						{this.state.alert ? (

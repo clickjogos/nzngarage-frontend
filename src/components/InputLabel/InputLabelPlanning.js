@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import InputBudget from '../../components/Mask/Mask'
+import InputTarget from '../../components/Mask/MaskTarget'
 import './InputLabelPlanning.scss'
 export default class InputLabelPlanning extends Component {
 
@@ -26,24 +27,70 @@ export default class InputLabelPlanning extends Component {
 	}
 
 	render() {
-		return (
-			<div style={this.props.filter ? this.renderSwitchMainDiv(this.props.filter) : {}} className="container-inputlabel">
-				<label style={this.props.filter ? this.renderSwitchLabel(this.props.filter) : {}} onClick={(e) => this.props.onclick(this.props.label)}>
-					{this.props.label}
-				</label>
+		console.log(this.props, "PROPS INPUT ANTES MASK")
+		if (this.props.label === "Orçamento") {
+			return (
+				<div style={this.props.filter ? this.renderSwitchMainDiv(this.props.filter) : {}} className="container-inputlabel">
+					<label style={this.props.filter ? this.renderSwitchLabel(this.props.filter) : {}} onClick={(e) => this.props.onclick(this.props.label)}>
+						{this.props.label}
+					</label>
 
-				<div style={this.props.filter ? this.renderSwitchInputDiv(this.props.filter) : {}} className="container-input-icon-planning">
-					<input
-						style={this.props.filter ? this.renderSwitchInput(this.props.filter) : {}}
-						className="input"
-						value={this.props.value}
-						onChange={(e) => this.props.callback(e.target.value)}
-						placeholder={this.props.placeholder}
-						type={this.props.type}
-					/>
-					{this.props.icon && this.props.icon}
+					<div style={this.props.filter ? this.renderSwitchInputDiv(this.props.filter) : {}} className="container-input-icon-planning">
+						<InputBudget
+							style={this.props.filter ? this.renderSwitchInput(this.props.filter) : {}}
+							className="input"
+							value={this.props.value}
+							onChange={(e) => this.props.callback(e.target.value)}
+							placeholder={this.props.placeholder}
+							type="text"
+						/>
+						{this.props.icon && this.props.icon}
+					</div>
+					{console.log(this.props, "DPS MASK BUDGET")}
 				</div>
-			</div>
-		)
+			)
+		} else if (this.props.label === "Audiência") {
+			return (
+				<div style={this.props.filter ? this.renderSwitchMainDiv(this.props.filter) : {}} className="container-inputlabel">
+					<label style={this.props.filter ? this.renderSwitchLabel(this.props.filter) : {}} onClick={(e) => this.props.onclick(this.props.label)}>
+						{this.props.label}
+					</label>
+
+					<div style={this.props.filter ? this.renderSwitchInputDiv(this.props.filter) : {}} className="container-input-icon-planning">
+						<InputTarget
+							style={this.props.filter ? this.renderSwitchInput(this.props.filter) : {}}
+							className="input"
+							value={this.props.value}
+							onChange={(e) => this.props.callback(e.target.value)}
+							placeholder={this.props.placeholder}
+							type="text"
+						/>
+						{this.props.icon && this.props.icon}
+					</div>
+					{console.log(this.props, "DPS MASK TARGET")}
+				</div>
+			)
+
+		} else {
+			return (
+				<div style={this.props.filter ? this.renderSwitchMainDiv(this.props.filter) : {}} className="container-inputlabel">
+					<label style={this.props.filter ? this.renderSwitchLabel(this.props.filter) : {}} onClick={(e) => this.props.onclick(this.props.label)}>
+						{this.props.label}
+					</label>
+
+					<div style={this.props.filter ? this.renderSwitchInputDiv(this.props.filter) : {}} className="container-input-icon-planning">
+						<input
+							style={this.props.filter ? this.renderSwitchInput(this.props.filter) : {}}
+							className="input"
+							value={this.props.value}
+							onChange={(e) => this.props.callback(e.target.value)}
+							placeholder={this.props.placeholder}
+							type={this.props.type}
+						/>
+						{this.props.icon && this.props.icon}
+					</div>
+				</div>
+			)
+		}
 	}
 }
