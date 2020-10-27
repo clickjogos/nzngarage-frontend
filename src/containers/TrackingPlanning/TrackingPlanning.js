@@ -48,49 +48,43 @@ class TrackingPlanning extends Component {
 					this.isOnAlert(r)
 				})
 			})
-			.catch((error) => {})
+			.catch((error) => { })
 	}
 
-	checkIfIsPastDate(indexToCompare){
+	checkIfIsPastDate(indexToCompare) {
 		let indexActualDate = this.state.tracking.weekValues.findIndex((item) => item.actual === true)
 		console.log("indexToCompare", indexToCompare, "indexActualDate", indexActualDate)
-		if(indexToCompare !== null) {
-			if(indexActualDate === -1){
+		if (indexToCompare !== null) {
+			if (indexActualDate === -1) {
 				console.log("caso 1")
-				this.setState({isPast: true, show: true})
+				this.setState({ isPast: true, show: true })
 				return true
 			}
-			else if(indexToCompare < indexActualDate) {
+			else if (indexToCompare < indexActualDate) {
 				console.log("caso 2")
-				this.setState({isPast: true, show: true})
+				this.setState({ isPast: true, show: true })
 				return true
 			} else {
 				console.log("caso 3")
-				this.setState({isPast: false, show: true})
+				this.setState({ isPast: false, show: true })
 				return false
 			}
 		} else {
-			if(indexActualDate === -1) {	
-				console.log("caso 4")			
-				this.setState({isPast: true, show: true, periodIndex: 0})
-				return true 
-			} 
-			else {
+			if (indexActualDate === -1) {
+				console.log("caso 4")
+				this.setState({ isPast: true, show: true, periodIndex: 0 })
+				return true
+			} else {
 				console.log("caso 5")
-				this.setState({isPast: false, periodIndex: indexActualDate,  show: true})
+				this.setState({ isPast: false, periodIndex: indexActualDate, show: true })
 				return false
 			}
 		}
-		
-		
 	}
 
 	handlePeriodIndex = (e) => {
-		// console.log("e", e)
 		this.checkIfIsPastDate(e)
-		// console.log('periodIndex before', this.state.periodIndex)
 		this.setState({ periodIndex: e }, () => {
-			// console.log('periodIndex after', this.state.periodIndex)
 		})
 	}
 
@@ -148,15 +142,15 @@ class TrackingPlanning extends Component {
 								onClose={this.showModal.bind(this)}
 							/>
 						) : (
-							<></>
-						)}
+								<></>
+							)}
 						<div className="container-flex-tracking">
 							<div className="container-block-tracking">
 								<div className="container-tracking">
 									<div className="head-tracking">
 										<div className="title-tracking">
-											<h3 style={{ fontSize: '28px' }}>Visão Geral do Planejamento</h3>
-											<h4 style={{ fontSize: '18px' }}>Você pode refinar a sugestão de planejamento</h4>
+											<h2 style={{ fontSize: '28px' }}>Visão Geral do Planejamento</h2>
+											<h4 style={{ fontSize: '18px', color: "#636F7A" }}>Você pode refinar a sugestão de planejamento</h4>
 										</div>
 										<div className="filters-tracking">
 											<p>Visualizar:</p>
@@ -191,7 +185,7 @@ class TrackingPlanning extends Component {
 											realPoints={this.state.tracking.weekValues[this.state.periodIndex].realBudget}
 											plannedPoints={this.state.tracking.weekValues[this.state.periodIndex].planBudget}
 											expectedPoints={this.state.tracking.weekValues[this.state.periodIndex].expectedBudget}
-											// onAlert={this.onAlert.bind(this)}
+										// onAlert={this.onAlert.bind(this)}
 										/>
 									</div>
 									<div className="prediction-tracking">
@@ -202,8 +196,8 @@ class TrackingPlanning extends Component {
 						</div>
 					</>
 				) : (
-					<Loading />
-				)}
+						<Loading />
+					)}
 			</div>
 		)
 	}

@@ -88,7 +88,7 @@ class CreatePanning extends Component {
 												<InputLabelPlanning callback={(e) => this.setState({ budget: e })} value={this.state.budget} label="Orçamento" placeholder="R$" />
 											</div>
 											<div className="container-step">
-												<p id="textStep">Passo 1 de 2</p>
+												<p id="textStep">Passo 1 de 3</p>
 												<Button callback={() => this.handleSubmit} enabled={enabled} title="Ver Sugestão de Planejamento >" />
 											</div>
 										</form>
@@ -96,7 +96,7 @@ class CreatePanning extends Component {
 								) : (
 										<>
 											<h3 style={{ fontSize: '28px' }}>Editar Planejamento</h3>
-											<h4 style={{ fontSize: '18px', color: '#636F7A' }}>Vamos fazer isso em dois passos ;)</h4>
+											<h4 style={{ fontSize: '18px', color: '#636F7A' }}>Vamos fazer isso em três passos ;)</h4>
 											<form onSubmit={this.handleSubmit}>
 												<InputLabelPlanning callback={(e) => this.setState({ planningName: e })} value={this.state.planningName} placeholder="Nome do Planejamento" />
 												<div className="flex-container">

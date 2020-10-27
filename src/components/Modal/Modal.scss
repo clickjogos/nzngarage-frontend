@@ -15,7 +15,6 @@
   justify-content: center;
   align-items: center;
 
-  // /* Black w/ opacity */
   img {
     display: block;
     margin: 0 auto;
@@ -24,15 +23,8 @@
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    // margin: 15% auto;
-    // /* 15% from the top and centered */
-    // padding: 20px;
-    // border: 1px solid #888;
-    // width: 45rem;
-    // height: 30rem;
     width: 548px;
     height: 500px;
-    /* UI Properties */
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
 
@@ -48,10 +40,6 @@
       margin-right: 15px;
       margin-top: 5px;
 
-
-
-
-      /* The Close Button */
       .close {
         color: #aaa;
         float: right;
@@ -72,14 +60,12 @@
       border: 0;
 
       .modal-title {
-        // padding: 1rem 0rem 1rem 0rem;
         font-size: 22px;
         font-weight: 600;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
         letter-spacing: 0px;
-        // font: normal normal 600 24px/32px Proxima Nova;
         color: #23282D;
         margin: 0 auto;
       }
@@ -98,6 +84,4 @@
     }
 
   }
-
-
 }

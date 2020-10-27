@@ -8,14 +8,15 @@
     width: 100%;
 
     .title-refine {
-        width: 50%;
+        width: 40%;
     }
 
     .filters {
         display: flex;
-        flex-direction: row;
-        width: 50%;
-        justify-content: space-around;
+        // flex-direction: row;
+        width: 60%;
+        // justify-content: space-around;
+        grid-gap: 45px;
 
         .date {
             cursor: pointer;

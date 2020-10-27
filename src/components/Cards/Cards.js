@@ -3,6 +3,8 @@ import './Cards.scss'
 import Loading from '../../components/Loading/Loading'
 import { isHead, isEditor } from '../../providers/authentication'
 import Modal from '../../components/Modal/Modal'
+import warning from '../../assets/images/warning.svg'
+
 export default class Cards extends Component {
 	constructor(props) {
 		super(props)
@@ -17,8 +19,6 @@ export default class Cards extends Component {
 	}
 
 	componentDidMount() {
-		// console.log('did mount')
-		// console.log(this.props)
 		this.setState(
 			{
 				realPoints: this.props.realPoints,
@@ -34,8 +34,6 @@ export default class Cards extends Component {
 	}
 
 	UNSAFE_componentWillReceiveProps(props) {
-		// console.log('veioaqui tbm')
-		// console.log(props)
 		this.setState(
 			{
 				realPoints: props.realPoints,
@@ -53,7 +51,7 @@ export default class Cards extends Component {
 	checkConditions = (props) => {
 		let percentage = parseInt((this.state.realPoints * 100) / this.state.plannedPoints)
 
-		console.log("percentage",percentage)
+		console.log("percentage", percentage)
 		if (percentage >= 100) {
 			// console.log("caso1")
 			this.setState({ progressBarWidth: { width: '100%' }, show: true }, (e) => { })
@@ -66,7 +64,7 @@ export default class Cards extends Component {
 	}
 
 	verifyAlerts() {
-		// console.log("x da questao")
+
 		let marginMarker = parseInt((this.state.expectedPoints * 100) / this.state.plannedPoints)
 		if (isHead()) {
 			// console.log('lets verify alerts')
@@ -104,11 +102,10 @@ export default class Cards extends Component {
 					</div>
 					<div>
 						{this.state.alert ? (
-
-
 							<a>
+								<span>{this.state.spanAlertText}</span>{' '}
+								<img src={warning} alt="" />
 								{' '}
-								!!! <span>{this.state.spanAlertText}</span>{' '}
 							</a>
 
 						) : (

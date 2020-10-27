@@ -119,7 +119,6 @@ class refinePlanning extends Component {
 								<div className="next-step">
 									<p style={{ fontSize: '14px', color: '#B8C2CB' }}>Passo {this.step} de 3</p>
 									<div className="onlybutton">
-										{/* <Forward title="Rodar Planejamento ❯"></Forward> */}
 										<button className="refineButton" onClick={this.handleModelSubmit}>
 											{' '}
 											Rodar Planejamento ❯{' '}

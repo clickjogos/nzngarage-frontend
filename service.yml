@@ -9,6 +9,6 @@ spec:
   - port: 80
     protocol: TCP
     targetPort: 80
+  type: LoadBalancer
   selector:
-    app: nzngarage-frontend
-  type: NodePort
+    app: nzngarage-frontend 
