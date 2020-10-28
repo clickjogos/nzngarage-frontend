@@ -32,8 +32,8 @@ class CreatePanning extends Component {
 				planningName: this.props.location.state.planning.data.planningName,
 				startDate: this.props.location.state.planning.data.startDate,
 				endDate: this.props.location.state.planning.data.endDate,
-				viewTarget: (this.props.location.state.planning.data.viewTarget).toString(),
-				budget: (this.props.location.state.planning.data.budget).toString(),
+				viewTarget: this.props.location.state.planning.data.viewTarget,
+				budget: this.props.location.state.planning.data.budget,
 				modelBudget: this.props.location.state.planning.data.modelBudget
 			})
 		} else {

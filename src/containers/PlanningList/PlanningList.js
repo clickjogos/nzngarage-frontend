@@ -27,9 +27,11 @@ export default class PlanningList extends Component {
 	getEvent = (e, params) => {
 
 		this.setState({ show: false })
+
 		let obj = {
 			id: params['_id'],
 		}
+		
 		planning
 			.getPlanning(obj)
 			.then((response) => {
