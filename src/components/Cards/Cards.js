@@ -66,7 +66,7 @@ export default class Cards extends Component {
 	verifyAlerts() {
 
 		let marginMarker = parseInt((this.state.expectedPoints * 100) / this.state.plannedPoints)
-		if (isHead()) {
+		if (isHead() && !this.state.isPast) {
 			if (marginMarker >= 100) marginMarker = 100
 			this.setState({ expectedBarWidth: { 'left': `${marginMarker}%` } }, () => {
 				if (this.state.order === 'asc') {
