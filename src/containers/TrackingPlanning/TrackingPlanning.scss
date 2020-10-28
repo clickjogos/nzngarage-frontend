@@ -1,7 +1,8 @@
 @import "../../styles/variables";
 
-.main {
+.tracking-main {
     background-color: $background_color;
+    display: flex;
 
     .container-flex-tracking {
         width: 80%;

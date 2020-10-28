@@ -97,7 +97,7 @@ export default class PlanningList extends Component {
 
 	render() {
 		return (
-			<div className="main">
+			<div className="list-planning-main">
 				<Sidebar />
 				{this.state.show ? (
 					<>

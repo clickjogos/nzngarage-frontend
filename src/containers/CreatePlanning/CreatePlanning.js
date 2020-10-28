@@ -62,7 +62,7 @@ class CreatePanning extends Component {
 		if (this.state.redirect) return <Redirect exact to={{ pathname: '/refinePlanning', state: this.state }} />
 		const enabled = !this.state.planningName || !this.state.startDate || !this.state.endDate || !this.state.viewTarget || !this.state.budget
 		return (
-			<div className="main">
+			<div className="create-planning-main">
 				<Sidebar />
 				{this.state.show ? (
 					<>

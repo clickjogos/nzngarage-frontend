@@ -85,7 +85,7 @@ class refinePlanning extends Component {
 	render() {
 		if (this.state.redirect) return <Redirect exact to={{ pathname: '/PlanningList' }} />
 		return (
-			<div className="main">
+			<div className="refine-planning-main">
 				<Sidebar></Sidebar>
 				{this.state.show ? (
 					<>

@@ -59,7 +59,7 @@ class Login extends Component {
 
 	render() {
 		return (
-			<div className="main">
+			<div className="login-main">
 				<div className="login-information">
 					<div className="logo-login">
 						<Image src={logoNZN} height="44px" width="173px" />

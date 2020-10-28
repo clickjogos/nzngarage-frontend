@@ -1,8 +1,10 @@
 @import "../../styles/variables";
 @import url('https://use.typekit.net/bsf1heu.css');
 
-.main {
+.login-main {
   display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   .login-information {
     width: 50%;

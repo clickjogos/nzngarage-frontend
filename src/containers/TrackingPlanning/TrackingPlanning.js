@@ -121,7 +121,7 @@ class TrackingPlanning extends Component {
 
 	render() {
 		return (
-			<div className="main">
+			<div className="tracking-main">
 				<Sidebar />
 				{this.state.show ? (
 					<>
