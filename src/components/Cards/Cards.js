@@ -98,13 +98,12 @@ export default class Cards extends Component {
 						}
 					</div>
 					<div>
-						{this.state.alert ? (
+						{ (this.state.alert && !this.state.isPast) ? (
 							<a>
 								<span>{this.state.spanAlertText}</span>{' '}
 								<img className="warningColor" src={warning} alt="" />
 								{' '}
 							</a>
-
 						) : (
 								<></>
 							)}
