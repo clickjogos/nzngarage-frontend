@@ -21,8 +21,8 @@ export default class Cards extends Component {
 	componentDidMount() {
 		this.setState(
 			{
-				realPoints: (this.props.realPoints).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
-				plannedPoints: (this.props.plannedPoints).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+				realPoints: this.props.realPoints,
+				plannedPoints: this.props.plannedPoints,
 				expectedPoints: this.props.expectedPoints,
 			},
 			(e) => {
@@ -36,9 +36,9 @@ export default class Cards extends Component {
 	UNSAFE_componentWillReceiveProps(props) {
 		this.setState(
 			{
-				realPoints: ((props.realPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, "."),
-				plannedPoints: ((props.plannedPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, "."),
-				expectedPoints: ((props.expectedPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+				realPoints: props.realPoints,
+				plannedPoints: props.plannedPoints,
+				expectedPoints: props.expectedPoints,
 				isPast: props.isPast
 			},
 			(e) => {
@@ -55,9 +55,11 @@ export default class Cards extends Component {
 		if (percentage >= 100) {
 			this.setState({ progressBarWidth: { width: '100%' }, show: true }, (e) => { })
 		} else {
-			this.setState({ progressBarWidth: { width: `${percentage}%` }, show: true }, (e) => {
-
-			})
+			if (percentage <= 0 || percentage === null || percentage === "") {
+				this.setState({ progressBarWidth: { width: '0%' }, show: true }, (e) => { })
+			} else {
+				this.setState({ progressBarWidth: { width: `${percentage}%` }, show: true }, (e) => { })
+			}
 		}
 	}
 
@@ -88,10 +90,10 @@ export default class Cards extends Component {
 						<h4>{this.state.title}</h4>
 						{this.state.title === "Orçamento"
 							? <div className="points">
-								<p> R$ {this.state.realPoints}</p> /<p> R$ {this.state.plannedPoints}</p>
+								<p> R$ {this.state.realPoints ? ((this.state.realPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : this.state.realPoints}</p> /<p> R$ {this.state.plannedPoints ? ((this.state.plannedPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : this.state.plannedPoints}</p>
 							</div>
 							: <div className="points">
-								<p>{this.state.realPoints}</p> /<p>{this.state.plannedPoints}</p>
+								<p>{this.state.realPoints ? ((this.state.realPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : this.state.realPoints}</p> /<p>{this.state.plannedPoints ? ((this.state.plannedPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : this.state.plannedPoints}</p>
 							</div>
 						}
 					</div>
@@ -112,7 +114,7 @@ export default class Cards extends Component {
 					<div className="progressBar">
 						<div style={this.state.progressBarWidth} className="percentageItem"></div>
 						{(isHead() && !this.state.isPast) ? (<div style={this.state.expectedBarWidth} className="expectedItem">
-							<p className="expectedValue">{this.state.expectedPoints}</p>
+							<p className="expectedValue">{this.state.expectedPoints ? ((this.state.expectedPoints).toString().replace(".", ",")).replace(/\B(?=(\d{3})+(?!\d))/g, ".") : this.state.expectedPoints}</p>
 							<p className="expectedMark">{''}</p></div>) : (<></>)}
 					</div>
 				</div>
