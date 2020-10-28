@@ -21,7 +21,7 @@ export default class PlanningList extends Component {
 			edit: false,
 			showSelect: false,
 		}
-	
+
 	}
 
 	getEvent = (e, params) => {
@@ -62,7 +62,7 @@ export default class PlanningList extends Component {
 	}
 
 	handleSelectSubmit(select, key) {
-		
+
 		if (select.target.value === 'activate') {
 			this.activatePlanning(key)
 		} else if (select.target.value === 'delete') {

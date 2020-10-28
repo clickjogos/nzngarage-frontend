@@ -5,8 +5,6 @@ export default class Filters extends Component {
     constructor(props) {
         super(props)
 
-
-
         this.state = {
             totalArticles: props.totalArticles,
             startDate: this.props.startDate.split("-")[2] + "/" + this.props.startDate.split("-")[1] + "/" + this.props.startDate.split("-")[0],

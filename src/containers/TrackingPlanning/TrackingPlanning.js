@@ -36,13 +36,13 @@ class TrackingPlanning extends Component {
 	}
 
 	getTrackingByPeriod(period) {
-		this.setState({periodIndex: 0})
-		
+		this.setState({ periodIndex: 0 })
+
 		tracking
 			.trackingByPeriod({ period: period })
 			.then((response) => {
 				this.setState({ tracking: response.data.data, period: period }, (r) => {
-					
+
 					let isPast = this.checkIfIsPastDate(null)
 					this.isOnAlert(r)
 				})
@@ -52,29 +52,29 @@ class TrackingPlanning extends Component {
 
 	checkIfIsPastDate(indexToCompare) {
 		let indexActualDate = this.state.tracking.weekValues.findIndex((item) => item.actual === true)
-		
+
 		if (indexToCompare !== null) {
-			if(indexToCompare === indexActualDate) {
-				
+			if (indexToCompare === indexActualDate) {
+
 				this.setState({ isPast: false, show: true })
 				return false
 			} else {
-				
-						this.setState({ isPast: true, show: true })
-						return true
-		}
-			} else {
-				if(indexActualDate === -1) {
-					
-					this.setState({ isPast: true, periodIndex: 0, show: true })
-					return true
-				} else {
-					
-					this.setState({ isPast: false, periodIndex: indexActualDate, show: true })
-					return false
-				}
 
+				this.setState({ isPast: true, show: true })
+				return true
 			}
+		} else {
+			if (indexActualDate === -1) {
+
+				this.setState({ isPast: true, periodIndex: 0, show: true })
+				return true
+			} else {
+
+				this.setState({ isPast: false, periodIndex: indexActualDate, show: true })
+				return false
+			}
+
+		}
 	}
 
 	handlePeriodIndex = (e) => {
@@ -104,7 +104,7 @@ class TrackingPlanning extends Component {
 
 	isOnAlert(r) {
 		if (this.state.isInitial) {
-			
+
 			let newsAlertMargin = this.state.tracking.weekValues[this.state.periodIndex].expectedNews - this.state.tracking.weekValues[this.state.periodIndex].expectedNews * 0.05
 			let audienceAlertMargin = this.state.tracking.weekValues[this.state.periodIndex].expectedAudience - this.state.tracking.weekValues[this.state.periodIndex].expectedAudience * 0.05
 			let budgetAlertMargin = this.state.tracking.weekValues[this.state.periodIndex].expectedBudget + this.state.tracking.weekValues[this.state.periodIndex].expectedBudget * 0.01

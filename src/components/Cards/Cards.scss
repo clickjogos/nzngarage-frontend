@@ -25,9 +25,10 @@
         display: grid;
         grid-template-columns: 1fr auto;
 
-        .warningColor { 
+        .warningColor {
             filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(18deg) brightness(102%) contrast(101%);
         }
+
         span {
             background: #FFFFFF 0% 0% no-repeat padding-box;
             border-radius: 7px;
@@ -37,7 +38,7 @@
             height: 45px;
             position: relative;
             display: none;
-            line-height:45px;
+            line-height: 45px;
             bottom: 40px;
             z-index: 99999;
         }

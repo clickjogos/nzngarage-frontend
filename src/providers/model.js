@@ -2,7 +2,7 @@ import axiosProvider from './config/axios'
 
 export async function makeInference(object) {
     try {
-       
+
         object.viewTarget = (object.viewTarget).replaceAll(".", "")
         object.viewTarget = parseInt(object.viewTarget)
         object.budget = ((object.budget).replaceAll("R$", "")).replaceAll(" ", "")
@@ -17,7 +17,6 @@ export async function makeInference(object) {
         throw (error)
     }
 }
-
 
 export async function makeSugestion(object) {
     try {

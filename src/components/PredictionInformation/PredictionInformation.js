@@ -24,7 +24,7 @@ export default class PredictionInformation extends Component {
 			newIndex = this.state.periodIndex + 1
 		}
 		this.setState({ periodIndex: newIndex, show: true }, () => {
-			
+
 			this.handlePeriodIndex(this.state.periodIndex)
 		})
 	}
@@ -52,20 +52,20 @@ export default class PredictionInformation extends Component {
 							❮
 						</button>
 					) : (
-						<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">
-							❮
-						</button>
-					)}
+							<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="back" id="back">
+								❮
+							</button>
+						)}
 					<h5>{this.defineFilterHeader()}</h5>
 					{this.state.periodIndex < this.state.tracking.weekValues.length - 1 ? (
 						<button onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">
 							❯
 						</button>
 					) : (
-						<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">
-							❯
-						</button>
-					)}
+							<button disabled style={{ pointerEvents: 'none', opacity: '0.4' }} onClick={(e) => this.getPeriodIndex(e)} value="forward" id="forward">
+								❯
+							</button>
+						)}
 				</div>
 				<div className="prediction-information-container">
 					<div className="only-tag-content">
@@ -73,21 +73,21 @@ export default class PredictionInformation extends Component {
 							<label>Cadernos</label>
 						</div>
 						<div className="li-content">
-						{this.state.tracking.weekValues[this.state.periodIndex].reality
-							.filter((pred) => pred.category === 'tag')
-							.map((filtered, index) => (
-								<>
-									<li>
-										<div className="row-key">
-											<p>{filtered.key}</p>
-										</div>
-										<div className="row-values">
-											<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
-										</div>
-									</li>
-								</>
-							))}
-					</div>
+							{this.state.tracking.weekValues[this.state.periodIndex].reality
+								.filter((pred) => pred.category === 'tag')
+								.map((filtered, index) => (
+									<>
+										<li>
+											<div className="row-key">
+												<p>{filtered.key}</p>
+											</div>
+											<div className="row-values">
+												<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
+											</div>
+										</li>
+									</>
+								))}
+						</div>
 					</div>
 					<div className="others-categories-content">
 						<div>
@@ -146,7 +146,7 @@ export default class PredictionInformation extends Component {
 														<p>{formatWeekDayLabel(filtered.key, filtered.category)}</p>
 													</div>
 													<div className="row-values">
-										<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
+														<p>{filtered.realValue} / </p> <p>{filtered.value}</p>
 													</div>
 												</li>
 											</>
@@ -154,8 +154,8 @@ export default class PredictionInformation extends Component {
 								</div>
 							</div>
 						) : (
-							<></>
-						)}
+								<></>
+							)}
 					</div>
 				</div>
 			</div>

@@ -27,7 +27,7 @@ export default class InputLabelPlanning extends Component {
 	}
 
 	render() {
-		console.log(this.props, "PROPS INPUT ANTES MASK")
+
 		if (this.props.label === "Orçamento") {
 			return (
 				<div style={this.props.filter ? this.renderSwitchMainDiv(this.props.filter) : {}} className="container-inputlabel">
@@ -46,7 +46,6 @@ export default class InputLabelPlanning extends Component {
 						/>
 						{this.props.icon && this.props.icon}
 					</div>
-					{console.log(this.props, "DPS MASK BUDGET")}
 				</div>
 			)
 		} else if (this.props.label === "Audiência") {
@@ -67,7 +66,6 @@ export default class InputLabelPlanning extends Component {
 						/>
 						{this.props.icon && this.props.icon}
 					</div>
-					{console.log(this.props, "DPS MASK TARGET")}
 				</div>
 			)
 

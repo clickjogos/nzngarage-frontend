@@ -40,7 +40,7 @@ export function defineMonth(value) {
 }
 
 export function formatWeekDayLabel(str, category) {
-	if(category === 'dayPeriod') {
+	if (category === 'dayPeriod') {
 		switch (str) {
 			case 'Manha':
 				return 'Manhã'
@@ -63,6 +63,6 @@ export function formatWeekDayLabel(str, category) {
 				return 'Sexta-feira'
 			case 'Sab':
 				return 'Sábado'
-		}		
+		}
 	}
 }

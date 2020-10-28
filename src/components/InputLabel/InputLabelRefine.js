@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './InputLabelRefine.scss'
-import {formatWeekDayLabel} from '../../utils/format'
+import { formatWeekDayLabel } from '../../utils/format'
 
 export default class InputLabelRefine extends Component {
 
