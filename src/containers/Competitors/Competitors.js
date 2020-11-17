@@ -32,8 +32,8 @@ export default class Competitors extends Component {
     try {
       const result = await competitorsService.getKeyWordsList(this.state.competitorUrl)
       const keyWordArray = result.data.keyWordsArray
-
-      if (keyWordArray.length > 0) this.setState({ competitorResult: keyWordArray })
+      console.log(keyWordArray)
+      if (keyWordArray.length > 0) this.setState({ competitor: keyWordArray })
       else this.setState({ competitorResult: null })
 
       this.setState({ loading: false })
@@ -44,28 +44,28 @@ export default class Competitors extends Component {
 
   }
 
-  showCompetitor(url) {
-    var competitor = this.state.competitorResult.filter((el) => {
-      return el.competitor === url
-    });
-    this.setState({ competitor: competitor[0] })
-  }
+  // showCompetitor(url) {
+  //   // var competitor = this.state.competitorResult.filter((el) => {
+  //   //   return el.competitor === url
+  //   // });
+  //   this.setState({ competitor: competitor[0] })
+  // }
 
-  selectCompetitor = () => (
-    <React.Fragment>
-      <label>Nome do concorrente:</label>
-      <select defaultValue={''} onClick={(e) => this.showCompetitor(e.target.value)} >
-        <option selected disabled>Selecione o concorrente</option>
-        {this.state.competitorResult.map(e => (
-          <option
-            key={e._id}
-            value={e.competitor}>
-            {e.competitor}
-          </option>
-        ))}
-      </select>
-    </React.Fragment>
-  )
+  // selectCompetitor = () => (
+  //   <React.Fragment>
+  //     <label>Nome do concorrente:</label>
+  //     <select defaultValue={''} onClick={(e) => this.showCompetitor(e.target.value)} >
+  //       <option selected disabled>Selecione o concorrente</option>
+  //       {this.state.competitorResult.map(e => (
+  //         <option
+  //           key={e._id}
+  //           value={e.competitor}>
+  //           {e.competitor}
+  //         </option>
+  //       ))}
+  //     </select>
+  //   </React.Fragment>
+  // )
 
   searchCompetitor = () => (
     <div className="container-flex">
@@ -78,7 +78,7 @@ export default class Competitors extends Component {
             label="Selecione a URL do Concorrente"
             placeholder="http://..." />
 
-          {this.state.competitorResult && this.selectCompetitor()}
+          {/* {this.state.competitorResult && this.selectCompetitor()} */}
           <div className="container-step">
             <Button callback={() => this.handleSubmit} title="Visualizar a listagem de Keywords >" />
           </div>
@@ -112,7 +112,7 @@ export default class Competitors extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.competitor.keywords.slice(0, 5).map(e => (
+            {this.state.competitor.slice(0, 5).map(e => (
               <tr>
                 <td>{e.Keyword}</td>
                 <td>{e['Search Volume']}</td>
@@ -123,14 +123,13 @@ export default class Competitors extends Component {
             ))}
           </tbody>
         </table>
-        {this.pagination()}
       </div>
     </div>
   )
 
   pagination = () => {
     let pages = []
-    const qtdPages = (this.state.competitor.keywords.length / 5).toFixed(0);
+    const qtdPages = (this.state.competitor.length / 5).toFixed(0);
     for (let index = 0; index < qtdPages; index++) { pages.push(index) }
     return (
       <div className="container-pagination">
