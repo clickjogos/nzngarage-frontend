@@ -1,14 +1,19 @@
 import React from 'react';
-import './App.scss';
+
+import { Switch, Router } from 'react-router-dom';
+import PrivateRoute from '../../authentication/PrivateRoute';
+import PublicRoute from '../../authentication/PublicRoute';
+
 import Login from '../Login/Login'
 import CreatePlanning from '../CreatePlanning/CreatePlanning'
 import PlanningList from '../PlanningList/PlanningList'
 import RefinePlanning from '../RefinePlanning/RefinePlanning'
-import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
-import history from './history';
 import TrackingPlanning from '../TrackingPlanning/TrackingPlanning';
-import PrivateRoute from '../../authentication/PrivateRoute';
-import PublicRoute from '../../authentication/PublicRoute';
+import Competitors from '../Competitors/Competitors';
+
+import history from './history';
+
+import './App.scss';
 
 function App() {
   return (
@@ -20,6 +25,7 @@ function App() {
         <PrivateRoute restricted={true} component={PlanningList} path="/planningList" exact />
         <PrivateRoute restricted={true} component={RefinePlanning} path="/refinePlanning" exact />
         <PrivateRoute restricted={true} component={TrackingPlanning} path="/tracking" exact />
+        <PrivateRoute restricted={true} component={Competitors} path="/competitors" exact />
       </Switch>
     </Router>
 

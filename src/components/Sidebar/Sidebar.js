@@ -19,22 +19,10 @@ export default class Sidebar extends Component {
 		}
 	}
 
-	redirectPagePlanning = () => {
+	redirectPage = (pathname) => {
+		if(pathname === '/') localStorage.clear()
 		history.push({
-			pathname: '/createPlanning',
-		})
-	}
-
-	redirectPageList = () => {
-		history.push({
-			pathname: '/tracking',
-		})
-	}
-
-	logout = () => {
-		localStorage.clear()
-		history.push({
-			pathname: '/'
+			pathname,
 		})
 	}
 
@@ -48,7 +36,7 @@ export default class Sidebar extends Component {
 				<div className="icon-container">
 					{isHead() ? (<div>
 						<p id="txtplan">CRIAR</p>
-						<button className="buttonSidebar" onClick={() => this.redirectPagePlanning()}>
+						<button className="buttonSidebar" onClick={() => this.redirectPage('/createPlanning')}>
 							<img id="imgIcon" src={planning} height="16px" width="14px" />
 							<p id="txtButtonPlan">Planejamentos</p>
 						</button>
@@ -56,9 +44,13 @@ export default class Sidebar extends Component {
 
 					<div>
 						<p id="txtplan">AVALIAR</p>
-						<button className="buttonSidebar" onClick={() => this.redirectPageList()}>
+						<button className="buttonSidebar" onClick={() => this.redirectPage('/tracking')}>
 							<img id="imgIcon" src={acompanhamento} height="16px" width="14px" />
 							<p id="txtButtonGuide">Acompanhamento</p>
+						</button>
+						<button className="buttonSidebar" onClick={() => this.redirectPage('/competitors')}>
+							<img id="imgIcon" src={acompanhamento} height="16px" width="14px" />
+							<p id="txtButtonGuide">Concorrentes</p>
 						</button>
 					</div>
 				</div>
@@ -70,7 +62,7 @@ export default class Sidebar extends Component {
 							<p>{this.state.username}</p>
 						</div>
 						<div>
-							<img src={Exit} onClick={() => this.logout()} width="20px" height="20px" />
+							<img src={Exit} onClick={() => this.redirectPage('/')} width="20px" height="20px" />
 						</div>
 					</div>
 				</div>
