@@ -44,29 +44,6 @@ export default class Competitors extends Component {
 
   }
 
-  // showCompetitor(url) {
-  //   // var competitor = this.state.competitorResult.filter((el) => {
-  //   //   return el.competitor === url
-  //   // });
-  //   this.setState({ competitor: competitor[0] })
-  // }
-
-  // selectCompetitor = () => (
-  //   <React.Fragment>
-  //     <label>Nome do concorrente:</label>
-  //     <select defaultValue={''} onClick={(e) => this.showCompetitor(e.target.value)} >
-  //       <option selected disabled>Selecione o concorrente</option>
-  //       {this.state.competitorResult.map(e => (
-  //         <option
-  //           key={e._id}
-  //           value={e.competitor}>
-  //           {e.competitor}
-  //         </option>
-  //       ))}
-  //     </select>
-  //   </React.Fragment>
-  // )
-
   searchCompetitor = () => (
     <div className="container-flex">
       <div className="container-competitors">
@@ -95,7 +72,7 @@ export default class Competitors extends Component {
           <button onClick={() => this.setState({competitor: null})}>
             <img src={Backbutton} icon={<img src={Backbutton} />} />
           </button>
-          <p id="back-text"> Voltar para a Lista de Planejamento</p>
+          <p id="back-text"> Voltar para a seleção do Concorrente</p>
         </div>
         <div className="competitors-title">
           <h3 style={{ fontSize: '28px' }}>Selecionar a(s) Keywords(s)</h3>
