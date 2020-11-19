@@ -20,53 +20,55 @@ export default class Competitors extends Component {
     this.state = {
       competitorUrl: '',
       currentPage: 1,
-      resultsPerPage: 5,
-      orderBy: '',
-      orderType: 'desc',
-      loading: false,
+      resultsPerPage: 15,
+      orderBy: 'Search Volume,competitorPosition',
+      orderType: 'desc,asc',
+      loading: true,
       competitorResult: null,
       competitor: null
     }
   }
 
-  handleSubmit = async (e) => {
-    e.preventDefault()
-    this.setState({ loading: true })
+  componentDidMount() {
+    // this.setState({ loading: true })
 
-    try {
-      const result = await competitorsService.getKeyWordsList(this.state.competitorUrl,this.state.currentPage,this.state.resultsPerPage,this.state.orderBy,this.state.orderType)
+		this.allRequest()
+	}
+
+	async allRequest() {
+		try {
+		  const result = await competitorsService.getKeyWordsList(this.state.currentPage,this.state.resultsPerPage,this.state.orderBy,this.state.orderType)
       const keyWordArray = result.data.keyWordsArray
       console.log(keyWordArray)
       if (keyWordArray.length > 0) this.setState({ competitor: keyWordArray })
       else this.setState({ competitorResult: null })
 
       this.setState({ loading: false })
-    } catch (error) {
+		} catch (error) { 
       this.setState({ loading: false, competitorResult: null })
       console.log(error)
     }
-
   }
 
-  searchCompetitor = () => (
-    <div className="container-flex">
-      <div className="container-competitors">
-        <h3 style={{ fontSize: '28px' }}>Selecione o Concorrente</h3>
-        <form onSubmit={this.handleSubmit}>
-          <InputLabelPlanning
-            callback={(e) => this.setState({ competitorUrl: e })}
-            value={this.state.competitorUrl}
-            label="Selecione a URL do Concorrente"
-            placeholder="http://..." />
+  // searchCompetitor = () => (
+  //   <div className="container-flex">
+  //     <div className="container-competitors">
+  //       <h3 style={{ fontSize: '28px' }}>Selecione o Concorrente</h3>
+  //       <form onSubmit={this.handleSubmit}>
+  //         <InputLabelPlanning
+  //           callback={(e) => this.setState({ competitorUrl: e })}
+  //           value={this.state.competitorUrl}
+  //           label="Selecione a URL do Concorrente"
+  //           placeholder="http://..." />
 
-          {/* {this.state.competitorResult && this.selectCompetitor()} */}
-          <div className="container-step">
-            <Button callback={() => this.handleSubmit} title="Visualizar a listagem de Keywords >" />
-          </div>
-        </form>
-      </div>
-    </div>
-  )
+  //         {/* {this.state.competitorResult && this.selectCompetitor()} */}
+  //         <div className="container-step">
+  //           <Button callback={() => this.handleSubmit} title="Visualizar a listagem de Keywords >" />
+  //         </div>
+  //       </form>
+  //     </div>
+  //   </div>
+  // )
 
   showCompetitorKeyWords = () => (
     <div className="container-flex">
@@ -86,16 +88,18 @@ export default class Competitors extends Component {
             <tr>
               <th>Keyword</th>
               <th>Volume de Busca</th>
+              <th>Pos. Concorrente</th>
               <th>Pos. NZN</th>
               <th>TItulo Concorrente</th>
               <th>URL Concorrente</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.competitor.slice(0, 5).map(e => (
+            {this.state.competitor.slice(0, this.state.resultsPerPage).map(e => (
               <tr>
                 <td>{e.Keyword}</td>
                 <td>{e['Search Volume']}</td>
+                <td>{e.competitorPosition}</td>
                 <td>{e.nznPosition}</td>
                 <td>{e.competitorInfo.title}</td>
                 <td><a target="_blank" href={e.competitorInfo.Url}>{e.competitorInfo.Url}</a></td>
@@ -126,10 +130,12 @@ export default class Competitors extends Component {
     return (
       <div className="refine-planning-main">
         <Sidebar></Sidebar>
-        {!this.state.loading ?
+        {/* {!this.state.loading ?
           this.state.competitor ? this.showCompetitorKeyWords() : this.searchCompetitor()
           :
           <Loading />
+        } */}
+          { !this.state.loading ? this.showCompetitorKeyWords() :  <Loading />
         }
       </div>
     )

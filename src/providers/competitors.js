@@ -1,7 +1,7 @@
 import axiosProvider from './config/backend2';
 
-export function getKeyWordsList(url, currentPage, resultsPerPage, orderBy, orderType) {
-    return axiosProvider.get(`/keyWords/getKeyWordsList/${url}`,{
+export function getKeyWordsList(currentPage, resultsPerPage, orderBy, orderType) {
+    return axiosProvider.get(`/keyWords/getKeyWordsList/`,{
         params:{
             currentPage,
             resultsPerPage,
