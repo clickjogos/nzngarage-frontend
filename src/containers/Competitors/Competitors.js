@@ -19,6 +19,10 @@ export default class Competitors extends Component {
 
     this.state = {
       competitorUrl: '',
+      currentPage: 1,
+      resultsPerPage: 5,
+      orderBy: '',
+      orderType: 'desc',
       loading: false,
       competitorResult: null,
       competitor: null
@@ -30,7 +34,7 @@ export default class Competitors extends Component {
     this.setState({ loading: true })
 
     try {
-      const result = await competitorsService.getKeyWordsList(this.state.competitorUrl)
+      const result = await competitorsService.getKeyWordsList(this.state.competitorUrl,this.state.currentPage,this.state.resultsPerPage,this.state.orderBy,this.state.orderType)
       const keyWordArray = result.data.keyWordsArray
       console.log(keyWordArray)
       if (keyWordArray.length > 0) this.setState({ competitor: keyWordArray })
@@ -60,7 +64,6 @@ export default class Competitors extends Component {
             <Button callback={() => this.handleSubmit} title="Visualizar a listagem de Keywords >" />
           </div>
         </form>
-
       </div>
     </div>
   )
@@ -99,11 +102,13 @@ export default class Competitors extends Component {
               </tr>
             ))}
           </tbody>
+          <div className= "container-send-button">
+          <Button callback={() => this.handleSubmit} title="Enviar para sugestão de produção>" style={{fontSize: '16px', width: '307px'}}/>
+          </div>
         </table>
       </div>
     </div>
   )
-
   pagination = () => {
     let pages = []
     const qtdPages = (this.state.competitor.length / 5).toFixed(0);
