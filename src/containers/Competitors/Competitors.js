@@ -28,7 +28,8 @@ export default class Competitors extends Component {
       loading: true,
       competitorResult: null,
       arraySelect: [],
-      review: false
+      review: false,
+      disabledButton: false
     }
   }
 
@@ -73,7 +74,55 @@ export default class Competitors extends Component {
       if (index !== -1) arraySelect.splice(index, 1);
     }
 
-    this.setState({arraySelect})
+    this.setState({ arraySelect })
+  }
+
+
+  sendToReview = () => {
+    let arraySelect = this.state.arraySelect;
+
+    arraySelect.map(e => {
+      e.checked = true
+    })
+
+    this.setState({ arraySelect, review: true })
+  }
+
+  changeChecked = (element, checked) => {
+    let arraySelect = this.state.arraySelect;
+
+    arraySelect.map(e => {
+      if (e._id === element._id) e.checked = checked
+    })
+
+    let disabledButton = true
+    this.state.arraySelect.forEach(element => {
+      if (element.checked) disabledButton = false
+    });
+
+
+    this.setState({ arraySelect, disabledButton })
+  }
+
+  async sendKeywords() {
+    this.setState({ loading: true })
+    let array = this.state.arraySelect;
+    var selectedKeywords = array.filter(function (el) {
+      return el.checked = true
+    });
+
+    selectedKeywords.forEach(element => {
+      delete element.checked;
+    });
+
+    console.log(selectedKeywords)
+
+    try {
+      const result = await competitorsService.weeklyschedule()
+      this.setState({loading: false})
+    } catch (error) {
+      this.setState({loading: false})
+    }
   }
 
   pagination = () => {
@@ -146,10 +195,9 @@ export default class Competitors extends Component {
         </table>
         {this.pagination()}
         <div className="container-send-button">
-          <Button callback={() => this.setState({review: true})} title="Continuar >" style={{ fontSize: '16px', width: '307px' }} />
+          <Button callback={() => this.sendToReview()} disabled={this.state.arraySelect.length > 0 ? false : true} title="Continuar >" style={{ fontSize: '16px', width: '307px' }} />
         </div>
       </div>
-      <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
     </div>
   )
 
@@ -157,6 +205,12 @@ export default class Competitors extends Component {
   showReview = () => (
     <div className="container-flex">
       <div className="container-competitors">
+        <div className="container-back">
+          <button onClick={() => this.setState({ review: false })}>
+            <img src={Backbutton} icon={<img src={Backbutton} />} />
+          </button>
+          <p id="back-text"> Voltar para a seleção do Concorrente</p>
+        </div>
         <div className="competitors-title">
           <h3 style={{ fontSize: '28px' }}>Revisão da(s) Keyword(s) selecionada(s)</h3>
           <h4 style={{ fontSize: '18px', color: '#636F7A' }}>Vamos fazer isso em dois passos ;)</h4>
@@ -177,7 +231,7 @@ export default class Competitors extends Component {
             {this.state.arraySelect.map(e => (
               <React.Fragment>
                 <tr>
-                  <td><input checked={true} onChange={() => this.addArraySelect(e)} type="checkbox" /></td>
+                  <td><input checked={e.checked} onChange={(event) => this.changeChecked(e, event.target.checked)} type="checkbox" /></td>
                   <td>{e.Keyword}</td>
                   <td>{e['Search Volume']}</td>
                   <td>{e.competitorPosition}</td>
@@ -191,10 +245,9 @@ export default class Competitors extends Component {
           </tbody>
         </table>
         <div className="container-send-button">
-          <Button callback={() => this.handleSubmit} title="Enviar para sugestão de produção ❯" style={{ fontSize: '16px', width: '307px' }} />
+          <Button disabled={this.state.disabledButton} callback={() => this.sendKeywords()} title="Enviar para sugestão de produção ❯" style={{ fontSize: '16px', width: '307px' }} />
         </div>
       </div>
-      <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
     </div>
   )
 
@@ -202,15 +255,16 @@ export default class Competitors extends Component {
     return (
       <div className="refine-planning-main">
         <Sidebar></Sidebar>
-        { !this.state.loading ? 
+        { !this.state.loading ?
           <React.Fragment>
-              {this.state.review ? 
-                this.showReview()
-                :
-                this.showCompetitorKeyWords()
-              }
+            {this.state.review ?
+              this.showReview()
+              :
+              this.showCompetitorKeyWords()
+            }
           </React.Fragment>
-        : <Loading />}
+          : <Loading />}
+        <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
       </div>
     )
   }

@@ -10,3 +10,7 @@ export function getKeyWordsList(currentPage, resultsPerPage, orderBy, orderType)
         }
     });
 }
+
+export function weeklyschedule(body) {
+    return axiosProvider.post('/keyWords/weeklyschedule', body)
+}
