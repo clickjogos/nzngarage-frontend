@@ -3,9 +3,10 @@
 .tracking-main {
     background-color: $background_color;
     display: flex;
-
+    height: 100%;
     .container-flex-tracking {
         width: 80%;
+        margin-left: 20%;
         height: 100%;
         display: flex;
         flex-direction: column;

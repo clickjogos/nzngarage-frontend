@@ -71,10 +71,10 @@ class Login extends Component {
 							<InputLabel callback={(e) => this.setState({ password: e })} label="Senha" placeholder="Senha de acesso" type="password" />
 							{this.state.error ? <spam color="red"> usuário/senha incorreta</spam> : <></>}
 						</div>
-						{this.state.loading ? (<Loading />) : (<></>)}
 						<div className="box-button">
 							<Button title="Acessar Conta" callback={this.handleLogin}></Button>
 						</div>
+						{this.state.loading && (<Loading />) }
 					</form>
 				</div>
 				<div className="background-information">

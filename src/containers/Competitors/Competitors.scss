@@ -4,30 +4,9 @@
   padding-left: 55px;
   max-height: 100%;
   overflow-y: scroll;
-  .container-back {
-    display: flex;
-    padding-top: 39px;
-    height: 70px;
-    width: 100%;
-    flex-direction: row;
 
-    button {
-      background-color: Transparent;
-      border: none;
-      outline: none;
-      margin: 0 10px 0 0;
-    }
-
-    #back-text {
-      color: #777777;
-      padding-top: 4px;
-      padding-right: 300px;
-      font-family: proxima-nova, sans-serif;
-    }
-  }
-
-  .competitors-title{
-    margin-top: 105px;
+  .competitors-title {
+    margin-top: 50px;
   }
 
   .defaultButton {
@@ -71,32 +50,76 @@
     }
   }
 
-  .container-pagination{
+  .container-pagination {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    button{
+    align-items: center;
+    justify-content: space-between;
+    margin: 21px 0;
+    button {
       border: none;
       background-color: transparent;
     }
+
+    .pagination-info{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .pagination-input{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 10px;
+        p{
+          margin: 0;
+          color: #B8C2CB;
+          font-size: 14px;
+        }
+
+        input {
+          text-align: center;
+          width: 40px;
+          color: #707070;
+          margin: 0 5px; 
+          border: 1px solid #B8C2CB ;
+
+          &:focus{
+            outline: none;
+          }
+      }
+      }
+    }
   }
 
-  table{
+  table {
+    width: 100%;
     margin-top: 50px;
-    tr th{
+    table-layout: fixed;
+    tr th {
       font-size: 13px;
     }
     tr td {
       font-size: 14px;
-      padding: 20px 0px;
+      padding: 15px 10px;
       box-sizing: border-box;
       border-bottom: 1px solid rgba(128, 128, 128, 0.253);
-      a{
+      a {
         font-size: 11px;
+        text-align: left;
+        font: normal normal medium 9px/20px Proxima Nova;
+        letter-spacing: 0.16px;
+        color: #414141;
+        text-decoration: underline;
       }
     }
   }
-  .container-send-button{ 
-    margin-top: 100px;
+
+  .container-send-button {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
   }
 }

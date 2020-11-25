@@ -4,10 +4,10 @@
 .create-planning-main {
   background-color: $background_color;
   display: flex;
- 
+  height: 100%;
   .container-block {
     display: block;
-
+    margin-left: 20%;
     .container-back {
       display: flex;
       flex-wrap: wrap;
