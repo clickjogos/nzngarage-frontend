@@ -1,0 +1,71 @@
+@import '../../styles/variables';
+
+.suggestion-container-search{
+  width: 100%;
+  display: flex;
+  margin: 30px 0;
+
+  .search{
+    background-color: white;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    input[type=text]{
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      width: 100%;
+
+      &:focus{
+        outline: none;
+      }
+    }
+    span{
+      padding: 3px;
+      box-sizing: border-box;
+    }
+  }
+
+  .title {
+    width: 200px;
+    margin-left: 20px;
+  }
+
+
+}
+
+.suggestion-title {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h3{
+    font-size: 28px
+  }
+  h4{
+    font-size: 18px;
+    color: #636F7A 
+  }
+  .suggestion-filters{
+    display: flex;
+
+    button {
+      background: white;
+      color: $color-buttom;
+      margin: 0 5px;
+    }
+    select{
+      background: white;
+      color: $color-buttom;
+      border: 1px solid $color-buttom;
+      border-radius: 8px;
+      width: 130px;
+      margin: 0 5px;
+      font-weight: bold;
+    }
+  }
+
+}

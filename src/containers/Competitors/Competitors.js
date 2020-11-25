@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Button from '../../components/Button/Button'
-import InputLabelPlanning from '../../components/InputLabel/InputLabelPlanning'
 import Loading from '../../components/Loading/Loading'
 
 import ReactTooltip from 'react-tooltip';
 
-import history from '../App/history'
 import { Redirect } from 'react-router-dom'
 
 import * as competitorsService from '../../providers/competitors'
@@ -20,93 +18,108 @@ export default class Competitors extends Component {
     super(props)
 
     this.state = {
-      competitorUrl: '',
-      currentPage: 1,
-      resultsPerPage: 10,
-      orderBy: 'Search Volume,competitorPosition',
-      orderType: 'desc,asc',
-      loading: true,
-      competitorResult: null,
-      arraySelect: [],
+      filter: {
+        currentPage: 1,
+        resultsPerPage: 10,
+        orderBy: 'Search Volume,competitorPosition',
+        orderType: 'desc,asc',
+      },
+      loading: false,
+      keyWordsList: [],
+      keyWordsSelected: [],
+      buttonKeywordDisabled: true,
+      buttonSuggestionDisabled: false,
       review: false,
-      disabledButton: false
+      redirect: false
     }
   }
 
   componentDidMount() {
-    this.allRequest()
+    this.allKeywordsList()
   }
 
-  async allRequest() {
+  async allKeywordsList() {
     try {
-      const result = await competitorsService.getKeyWordsList(this.state.currentPage, this.state.resultsPerPage, this.state.orderBy, this.state.orderType)
-      const keyWordArray = result.data.keyWordsArray
-      if (keyWordArray.length > 0) this.setState({ competitorResult: keyWordArray })
-      else this.setState({ competitorResult: null })
+      const result = await competitorsService.getKeyWordsList(this.state.filter)
+      const keyWordsList = result.data.keyWordsArray
+
+      if (keyWordsList.length > 0) {
+        // added checked in object
+        keyWordsList.forEach(element => {
+          element.competitors.forEach(c => {
+            c.checked = false
+          })
+        });
+        this.setState({ keyWordsList })
+      }
+      else this.setState({ keyWordsList: null })
 
       this.setState({ loading: false })
     } catch (error) {
-      this.setState({ loading: false, competitorResult: null })
+      this.setState({ loading: false, keyWordsList: null })
       console.log(error)
     }
   }
 
   orderArrayBy(key) {
-    let competitorResult = this.state.competitorResult
-    competitorResult.sort(function (a, b) {
+    let keyWordsList = this.state.keyWordsList
+    keyWordsList.sort(function (a, b) {
       return parseFloat(a[key]) - parseFloat(b[key]);
     });
-    this.setState({ competitorResult })
+    this.setState({ keyWordsList })
   }
 
-  addArraySelect = (element) => {
+  keyWordCheck = (checked, _id) => {
 
-    let arraySelect = this.state.arraySelect;
+    let keyWordsList = this.state.keyWordsList;
+    let buttonKeywordDisabled = true;
 
-    const isOnArray = (arraySelect.findIndex(e => e._id === element._id));
+    keyWordsList.forEach(element => {
+      element.competitors.forEach(c => {
+        if (c._id === _id) c.checked = checked
+        if (c.checked) buttonKeywordDisabled = false
+      });
+    })
 
-    if (isOnArray === -1) {
-      arraySelect.push(element)
-    } else {
-      var index = arraySelect.findIndex(function (o) {
-        return o._id === element._id;
-      })
-      if (index !== -1) arraySelect.splice(index, 1);
-    }
+    this.setState({ keyWordsList, buttonKeywordDisabled })
+  }
 
-    this.setState({ arraySelect })
+  keyWordCheckSelect = (checked, _id) => {
+
+    let keyWordsSelected = this.state.keyWordsSelected;
+    let buttonSuggestionDisabled = true;
+
+    keyWordsSelected.forEach(element => {
+      if (element._id === _id) element.checked = checked
+      if (element.checked) buttonSuggestionDisabled = false
+    })
+
+    this.setState({ keyWordsSelected, buttonSuggestionDisabled })
   }
 
 
   sendToReview = () => {
-    let arraySelect = this.state.arraySelect;
+    let keyWordsList = this.state.keyWordsList;
+    let keyWordsSelected = []
+    keyWordsList.forEach(element => {
+      element.competitors.forEach(c => {
+        if (c.checked === true) {
+          c.Keyword = element.Keyword
+          c['Number of Results'] = element['Number of Results']
+          c['Search Volume'] = element['Search Volume']
+          c.nznPosition = element.nznPosition
 
-    arraySelect.map(e => {
-      e.checked = true
+          keyWordsSelected.push(c)
+        }
+      });
     })
 
-    this.setState({ arraySelect, review: true })
-  }
-
-  changeChecked = (element, checked) => {
-    let arraySelect = this.state.arraySelect;
-
-    arraySelect.map(e => {
-      if (e._id === element._id) e.checked = checked
-    })
-
-    let disabledButton = true
-    this.state.arraySelect.forEach(element => {
-      if (element.checked) disabledButton = false
-    });
-
-
-    this.setState({ arraySelect, disabledButton })
+    this.setState({ keyWordsSelected, review: true })
   }
 
   async sendKeywords() {
     this.setState({ loading: true })
-    let array = this.state.arraySelect;
+    let array = this.state.keyWordsSelected;
     var selectedKeywords = array.filter(function (el) {
       return el.checked = true
     });
@@ -115,12 +128,16 @@ export default class Competitors extends Component {
       delete element.checked;
     });
 
-    console.log(selectedKeywords)
+    const obj = {
+      selectedKeywords
+    }
 
     try {
-      const result = await competitorsService.weeklyschedule()
-      this.setState({loading: false})
+      const result = await competitorsService.weeklyschedule(obj)
+      console.log(result)
+      this.setState({loading: false, redirect: true})
     } catch (error) {
+      console.log(error)
       this.setState({loading: false})
     }
   }
@@ -137,7 +154,7 @@ export default class Competitors extends Component {
           </div>
           <div className="pagination-input">
             <p>Exibindo</p>
-            <input onChange={(e) => this.setState({ resultsPerPage: e.target.value })} value={this.state.resultsPerPage} type="number" />
+            <input value={this.state.filter.resultsPerPage} type="number" />
             <p>por página</p>
           </div>
         </div>
@@ -166,7 +183,7 @@ export default class Competitors extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.competitorResult.map(e => (
+            {this.state.keyWordsList.map(e => (
               <React.Fragment>
                 <tr>
                   <td>{'>'}</td>
@@ -179,7 +196,7 @@ export default class Competitors extends Component {
                 </tr>
                 {e.competitors.map(c => (
                   <tr>
-                    <td><input onChange={() => this.addArraySelect(c)} type="checkbox" /></td>
+                    <td><input checked={c.checked} onChange={(event) => this.keyWordCheck(event.target.checked, c._id)} type="checkbox" /></td>
                     <td>{c.Keyword}</td>
                     <td>{c['Search Volume']}</td>
                     <td>{c.competitorPosition}</td>
@@ -195,9 +212,13 @@ export default class Competitors extends Component {
         </table>
         {this.pagination()}
         <div className="container-send-button">
-          <Button callback={() => this.sendToReview()} disabled={this.state.arraySelect.length > 0 ? false : true} title="Continuar >" style={{ fontSize: '16px', width: '307px' }} />
+          <Button
+            callback={() => this.sendToReview()}
+            disabled={this.state.buttonKeywordDisabled}
+            title="Continuar >" />
         </div>
       </div>
+      <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
     </div>
   )
 
@@ -228,10 +249,10 @@ export default class Competitors extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.arraySelect.map(e => (
+            {this.state.keyWordsSelected.map(e => (
               <React.Fragment>
                 <tr>
-                  <td><input checked={e.checked} onChange={(event) => this.changeChecked(e, event.target.checked)} type="checkbox" /></td>
+                  <td><input checked={e.checked} onChange={(event) => this.keyWordCheckSelect(event.target.checked, e._id)} type="checkbox" /></td>
                   <td>{e.Keyword}</td>
                   <td>{e['Search Volume']}</td>
                   <td>{e.competitorPosition}</td>
@@ -245,13 +266,20 @@ export default class Competitors extends Component {
           </tbody>
         </table>
         <div className="container-send-button">
-          <Button disabled={this.state.disabledButton} callback={() => this.sendKeywords()} title="Enviar para sugestão de produção ❯" style={{ fontSize: '16px', width: '307px' }} />
+          <Button
+            disabled={this.state.buttonSuggestionDisabled}
+            callback={() => this.sendKeywords()}
+            title="Enviar para sugestão de produção ❯" />
         </div>
       </div>
+      <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
     </div>
   )
 
   render() {
+    const { redirect } = this.state
+    if(redirect) return (<Redirect to="/suggestion" />)
+
     return (
       <div className="refine-planning-main">
         <Sidebar></Sidebar>
@@ -264,7 +292,6 @@ export default class Competitors extends Component {
             }
           </React.Fragment>
           : <Loading />}
-        <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
       </div>
     )
   }

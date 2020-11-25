@@ -52,6 +52,10 @@ export default class Sidebar extends Component {
 							<img id="imgIcon" src={acompanhamento} height="16px" width="14px" />
 							<p id="txtButtonGuide">Concorrentes</p>
 						</button>
+						<button className="buttonSidebar" onClick={() => this.redirectPage('/suggestion')}>
+							<img id="imgIcon" src={acompanhamento} height="16px" width="14px" />
+							<p id="txtButtonGuide">Sugestão de produção</p>
+						</button>
 					</div>
 				</div>
 
