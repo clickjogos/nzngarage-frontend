@@ -11,7 +11,11 @@ import { Redirect } from 'react-router-dom'
 import * as competitorsService from '../../providers/competitors'
 
 import './Competitors.scss'
-const Backbutton = require("../../assets/icons/icon-back-button.svg");
+
+const Backbutton = require("../../assets/icons/icon-back-button.svg")
+const ButtonChevronLeft = require('../../assets/icons/icon-button-left-arrow.svg')
+const ButtonChevronRight = require('../../assets/icons/icon-button-right-arrow.svg')
+const Chevron = require('../../assets/icons/chevron-right.svg')
 
 export default class Competitors extends Component {
   constructor(props) {
@@ -20,9 +24,15 @@ export default class Competitors extends Component {
     this.state = {
       filter: {
         currentPage: 1,
+        totalPages: 0,
         resultsPerPage: 10,
         orderBy: 'Search Volume,competitorPosition',
         orderType: 'desc,asc',
+      },
+      orderArray: {
+        volume: true,
+        pos: true, 
+        posNzn: true
       },
       loading: false,
       keyWordsList: [],
@@ -43,14 +53,23 @@ export default class Competitors extends Component {
       const result = await competitorsService.getKeyWordsList(this.state.filter)
       const keyWordsList = result.data.keyWordsArray
 
+      let filter = this.state.filter
+      let currentPage = result.data.currentPage
+      let totalPages = result.data.totalPages
+      filter.currentPage = currentPage
+      filter.totalPages = totalPages
+
+      console.log(filter)
       if (keyWordsList.length > 0) {
         // added checked in object
         keyWordsList.forEach(element => {
           element.competitors.forEach(c => {
             c.checked = false
+            c.show = false
+            element.competitorPosition = c.competitorPosition
           })
         });
-        this.setState({ keyWordsList })
+        this.setState({ keyWordsList, filter })
       }
       else this.setState({ keyWordsList: null })
 
@@ -63,10 +82,33 @@ export default class Competitors extends Component {
 
   orderArrayBy(key) {
     let keyWordsList = this.state.keyWordsList
-    keyWordsList.sort(function (a, b) {
-      return parseFloat(a[key]) - parseFloat(b[key]);
-    });
-    this.setState({ keyWordsList })
+    let orderArray = this.state.orderArray
+    let status = true
+    if(key === 'Search Volume'){
+      orderArray.volume = !orderArray.volume
+      status = !orderArray.volume
+    }
+    if(key === 'competitorPosition'){
+      orderArray.pos = !orderArray.pos
+      status = !orderArray.pos
+    }
+    if(key === 'nznPosition'){
+      orderArray.posNzn = !orderArray.posNzn
+      status = !orderArray.posNzn
+    }
+
+    if(status){
+      keyWordsList.sort(function (a, b) {
+        return parseFloat(a[key]) - parseFloat(b[key]);
+      });
+    } else {
+      keyWordsList.sort(function (a, b) {
+        return parseFloat(b[key]) - parseFloat(a[key]);
+      });
+    }
+  
+
+    this.setState({ keyWordsList, orderArray })
   }
 
   keyWordCheck = (checked, _id) => {
@@ -126,6 +168,7 @@ export default class Competitors extends Component {
 
     selectedKeywords.forEach(element => {
       delete element.checked;
+      delete element.show;
     });
 
     const obj = {
@@ -142,15 +185,39 @@ export default class Competitors extends Component {
     }
   }
 
+  actionCollapse = (element) => {
+    let keyWordsList = this.state.keyWordsList;
+
+    keyWordsList.forEach(e => {
+      if(e.Keyword === element.Keyword) {
+        e.show = !e.show
+      }
+    });
+
+    this.setState({keyWordsList})
+  }
+
+  actionPage = (status) => {
+    let filter = this.state.filter
+    if(!status && filter.currentPage !== 1) filter.currentPage -= 1
+    if(status && filter.currentPage < filter.totalPages) filter.currentPage +=1
+    this.setState({filter}, r=> {
+      this.allKeywordsList()
+    })
+  }
+
   pagination = () => {
     return (
       <div className="container-pagination">
-        <button> {'<'} Pagina Anterior</button>
+        <div onClick={() => this.actionPage(true)} className="container-pagination-button">
+          <img src={ButtonChevronLeft} />
+          <p>Próxima Página</p>
+        </div>
         <div className="pagination-info">
           <div className="pagination-input">
             <p>Página</p>
-            <input type="text" />
-            <p>de 20</p>
+            <input value={this.state.filter.currentPage} type="number" />
+            <p>de {this.state.filter.totalPages}</p>
           </div>
           <div className="pagination-input">
             <p>Exibindo</p>
@@ -158,7 +225,10 @@ export default class Competitors extends Component {
             <p>por página</p>
           </div>
         </div>
-        <button> Próxima página {'>'} </button>
+        <div onClick={() => this.actionPage(true)} className="container-pagination-button">
+          <p>Próxima Página</p>
+          <img src={ButtonChevronRight} />
+        </div>
       </div>
     )
   }
@@ -174,10 +244,10 @@ export default class Competitors extends Component {
           <thead>
             <tr>
               <th width="30"></th>
-              <th onClick={() => this.orderArrayBy('Keyword')}>Keyword</th>
-              <th onClick={() => this.orderArrayBy('Search Volume')}>Volume de Busca</th>
-              <th>Pos. Concorrente</th>
-              <th onClick={() => this.orderArrayBy('nznPosition')}>Pos. NZN</th>
+              <th>Keyword</th>
+              <th onClick={() => this.orderArrayBy('Search Volume')}>Volume de Busca <img style={this.state.orderArray.volume ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
+              <th onClick={() => this.orderArrayBy('competitorPosition')}>Pos. Concorrente <img style={this.state.orderArray.pos ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
+              <th onClick={() => this.orderArrayBy('nznPosition')}>Pos. NZN <img style={this.state.orderArray.posNzn ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
               <th width="250">TItulo Concorrente</th>
               <th width="400">URL Concorrente</th>
             </tr>
@@ -186,7 +256,7 @@ export default class Competitors extends Component {
             {this.state.keyWordsList.map(e => (
               <React.Fragment>
                 <tr>
-                  <td>{'>'}</td>
+                  <td onClick={() => this.actionCollapse(e)}><img id="toggleImage" src={Chevron}/></td>
                   <td>{e.Keyword}</td>
                   <td>{e['Search Volume']}</td>
                   <td>{e.competitors.length > 0 && e.competitors[0].competitorPosition}</td>
@@ -195,15 +265,16 @@ export default class Competitors extends Component {
                   <td><a target="_blank" href={e.competitors[0].competitorInfo.Url}>{e.competitors[0].competitorInfo.Url}</a></td>
                 </tr>
                 {e.competitors.map(c => (
-                  <tr>
-                    <td><input checked={c.checked} onChange={(event) => this.keyWordCheck(event.target.checked, c._id)} type="checkbox" /></td>
-                    <td>{c.Keyword}</td>
-                    <td>{c['Search Volume']}</td>
-                    <td>{c.competitorPosition}</td>
-                    <td>{c.nznPosition}</td>
-                    <td><p data-tip={c.competitorInfo.title}>{(c.competitorInfo.title).substring(0, 29)}{(c.competitorInfo.title).length > 29 && '...'} </p> </td>
-                    <td><a target="_blank" href={c.competitorInfo.Url}>{c.competitorInfo.Url}</a></td>
-                  </tr>
+                  e.show && 
+                    <tr key={c._id}>
+                      <td><input checked={c.checked} onChange={(event) => this.keyWordCheck(event.target.checked, c._id)} type="checkbox" /></td>
+                      <td>{e.Keyword}</td>
+                      <td>{c['Search Volume']}</td>
+                      <td>{c.competitorPosition}</td>
+                      <td>{c.nznPosition}</td>
+                      <td><p data-tip={c.competitorInfo.title}>{(c.competitorInfo.title).substring(0, 29)}{(c.competitorInfo.title).length > 29 && '...'} </p> </td>
+                      <td><a target="_blank" href={c.competitorInfo.Url}>{c.competitorInfo.Url}</a></td>
+                    </tr>
                 ))}
               </React.Fragment>
 
