@@ -8,6 +8,8 @@ import Exit from '../../assets/icons/logout.svg'
 
 const planning = require('../../assets/icons/icon-planejamento.svg')
 const acompanhamento = require('../../assets/icons/icon-acompanhamento.svg')
+const concorrente = require('../../assets/icons/icon-competitor.svg')
+const sugestao = require('../../assets/icons/icon-sugestion.svg')
 
 export default class Sidebar extends Component {
 	constructor(props) {
@@ -49,11 +51,11 @@ export default class Sidebar extends Component {
 							<p id="txtButtonGuide">Acompanhamento</p>
 						</button>
 						<button className="buttonSidebar" onClick={() => this.redirectPage('/competitors')}>
-							<img id="imgIcon" src={acompanhamento} height="16px" width="14px" />
+							<img id="imgIcon" src={concorrente} height="16px" width="14px" />
 							<p id="txtButtonGuide">Concorrentes</p>
 						</button>
 						<button className="buttonSidebar" onClick={() => this.redirectPage('/suggestion')}>
-							<img id="imgIcon" src={acompanhamento} height="16px" width="14px" />
+							<img id="imgIcon" src={sugestao} height="16px" width="14px" />
 							<p id="txtButtonGuide">Sugestão de produção</p>
 						</button>
 					</div>

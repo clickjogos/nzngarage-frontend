@@ -16,13 +16,15 @@ const Backbutton = require("../../assets/icons/icon-back-button.svg")
 const ButtonChevronLeft = require('../../assets/icons/icon-button-left-arrow.svg')
 const ButtonChevronRight = require('../../assets/icons/icon-button-right-arrow.svg')
 const Chevron = require('../../assets/icons/chevron-right.svg')
+const Tooltip = require('../../assets/icons/icon-tooltip.svg')
+const Trash = require('../../assets/icons/icon-config.svg')
 
 export default class Competitors extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      filter: {
+      page: {
         currentPage: 1,
         totalPages: 0,
         resultsPerPage: 10,
@@ -50,16 +52,16 @@ export default class Competitors extends Component {
 
   async allKeywordsList() {
     try {
-      const result = await competitorsService.getKeyWordsList(this.state.filter)
+      const result = await competitorsService.getKeyWordsList(this.state.page)
       const keyWordsList = result.data.keyWordsArray
-
-      let filter = this.state.filter
+      
+      let page = this.state.page
       let currentPage = result.data.currentPage
       let totalPages = result.data.totalPages
-      filter.currentPage = currentPage
-      filter.totalPages = totalPages
+      page.currentPage = currentPage
+      page.totalPages = totalPages
 
-      console.log(filter)
+      console.log(page)
       if (keyWordsList.length > 0) {
         // added checked in object
         keyWordsList.forEach(element => {
@@ -69,7 +71,7 @@ export default class Competitors extends Component {
             element.competitorPosition = c.competitorPosition
           })
         });
-        this.setState({ keyWordsList, filter })
+        this.setState({ keyWordsList, page })
       }
       else this.setState({ keyWordsList: null })
 
@@ -118,7 +120,7 @@ export default class Competitors extends Component {
 
     keyWordsList.forEach(element => {
       element.competitors.forEach(c => {
-        if (c._id === _id) c.checked = checked
+        if (c._id === _id) c.checked = !c.checked
         if (c.checked) buttonKeywordDisabled = false
       });
     })
@@ -132,7 +134,7 @@ export default class Competitors extends Component {
     let buttonSuggestionDisabled = true;
 
     keyWordsSelected.forEach(element => {
-      if (element._id === _id) element.checked = checked
+      if (element._id === _id) element.checked = !element.checked
       if (element.checked) buttonSuggestionDisabled = false
     })
 
@@ -156,13 +158,13 @@ export default class Competitors extends Component {
       });
     })
 
-    this.setState({ keyWordsSelected, review: true })
+    this.setState({ keyWordsSelected, review: true, buttonSuggestionDisabled: false })
   }
 
   async sendKeywords() {
     this.setState({ loading: true })
     let array = this.state.keyWordsSelected;
-    var selectedKeywords = array.filter(function (el) {
+    var selectedKeywords = array.page(function (el) {
       return el.checked = true
     });
 
@@ -177,7 +179,6 @@ export default class Competitors extends Component {
 
     try {
       const result = await competitorsService.weeklyschedule(obj)
-      console.log(result)
       this.setState({loading: false, redirect: true})
     } catch (error) {
       console.log(error)
@@ -193,35 +194,67 @@ export default class Competitors extends Component {
         e.show = !e.show
       }
     });
-
-    this.setState({keyWordsList})
+    
+    this.setState({keyWordsList},r => {
+      ReactTooltip.rebuild();
+    })
   }
 
   actionPage = (status) => {
-    let filter = this.state.filter
-    if(!status && filter.currentPage !== 1) filter.currentPage -= 1
-    if(status && filter.currentPage < filter.totalPages) filter.currentPage +=1
-    this.setState({filter}, r=> {
+    let page = this.state.page
+    if(!status && page.currentPage !== 1) page.currentPage -= 1
+    if(status && page.currentPage < page.totalPages) page.currentPage +=1
+    this.setState({page}, r=> {
       this.allKeywordsList()
     })
+  }
+
+  actionChangePage = (currentPage) => {
+    let page = this.state.page
+    if(currentPage > 0 && currentPage <= page.totalPages){
+      page.currentPage = currentPage
+      this.setState({page}, r=> {
+        this.allKeywordsList()
+      })
+    }
+  }
+
+  actionRows = (rows) => {
+    let page = this.state.page
+    if(rows <= 50 && rows >= 10){
+      page.resultsPerPage = rows 
+      this.setState({page}, r=> {
+        this.allKeywordsList()
+      })
+    }
+  }
+
+  deleteKeyword = async (keyword, domain) => {
+    try {
+      const result = await competitorsService.deleteUniqueKeyword(keyword, domain)
+      console.log(result)
+      this.allKeywordsList()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   pagination = () => {
     return (
       <div className="container-pagination">
-        <div onClick={() => this.actionPage(true)} className="container-pagination-button">
+        <div onClick={() => this.actionPage(false)} className="container-pagination-button">
           <img src={ButtonChevronLeft} />
-          <p>Próxima Página</p>
+          <p>Página Anterior</p>
         </div>
         <div className="pagination-info">
           <div className="pagination-input">
             <p>Página</p>
-            <input value={this.state.filter.currentPage} type="number" />
-            <p>de {this.state.filter.totalPages}</p>
+            <input onChange={(e) => this.actionChangePage(e.target.value)} value={this.state.page.currentPage} type="number" />
+            <p>de {this.state.page.totalPages}</p>
           </div>
           <div className="pagination-input">
             <p>Exibindo</p>
-            <input value={this.state.filter.resultsPerPage} type="number" />
+            <input onChange={(e) => this.actionRows(e.target.value)} value={this.state.page.resultsPerPage} type="number" />
             <p>por página</p>
           </div>
         </div>
@@ -243,39 +276,46 @@ export default class Competitors extends Component {
         <table>
           <thead>
             <tr>
-              <th width="30"></th>
+              <th></th>
+              <th></th>
               <th>Keyword</th>
               <th onClick={() => this.orderArrayBy('Search Volume')}>Volume de Busca <img style={this.state.orderArray.volume ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
               <th onClick={() => this.orderArrayBy('competitorPosition')}>Pos. Concorrente <img style={this.state.orderArray.pos ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
               <th onClick={() => this.orderArrayBy('nznPosition')}>Pos. NZN <img style={this.state.orderArray.posNzn ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
-              <th width="250">TItulo Concorrente</th>
-              <th width="400">URL Concorrente</th>
+              <th>TItulo Concorrente</th>
+              <th >URL Concorrente</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {this.state.keyWordsList.map(e => (
               <React.Fragment>
                 <tr>
-                  <td onClick={() => this.actionCollapse(e)}><img id="toggleImage" src={Chevron}/></td>
-                  <td>{e.Keyword}</td>
+                  <td onClick={() => this.actionCollapse(e)}><img style={e.show ? {transform: 'rotate(0deg)'} : null} id="toggleImage" src={Chevron}/></td>
+                  <td className="competitors-length">{e.competitors.length}</td>
+                  <td className={e.show ? 'keyword-text' : null}>{e.Keyword}</td>
                   <td>{e['Search Volume']}</td>
                   <td>{e.competitors.length > 0 && e.competitors[0].competitorPosition}</td>
                   <td>{e.nznPosition}</td>
-                  <td><p data-tip={e.competitors[0].competitorInfo.title}>{(e.competitors[0].competitorInfo.title).substring(0, 29)}{(e.competitors[0].competitorInfo.title).length > 29 && '...'} </p> </td>
-                  <td><a target="_blank" href={e.competitors[0].competitorInfo.Url}>{e.competitors[0].competitorInfo.Url}</a></td>
+                  <td><p data-tip={e.competitors[0].competitorInfo.title}>{(e.competitors[0].competitorInfo.title).substring(0, 29)}{(e.competitors[0].competitorInfo.title).length > 29 && '...'} <img src={Tooltip} /> </p> </td>
+                  <td><a target="_blank" href={e.competitors[0].competitorInfo.Url}>{e.competitors[0].competitorInfo.Url} ↗</a></td>
+                  <td></td>
                 </tr>
                 {e.competitors.map(c => (
                   e.show && 
                     <tr key={c._id}>
-                      <td><input checked={c.checked} onChange={(event) => this.keyWordCheck(event.target.checked, c._id)} type="checkbox" /></td>
+                      <td></td>
+                      <td><div onClick={() => this.keyWordCheck(c.checked, c._id)} id="checkbox"> {c.checked && <span></span>} </div></td>
                       <td>{e.Keyword}</td>
                       <td>{c['Search Volume']}</td>
                       <td>{c.competitorPosition}</td>
                       <td>{c.nznPosition}</td>
-                      <td><p data-tip={c.competitorInfo.title}>{(c.competitorInfo.title).substring(0, 29)}{(c.competitorInfo.title).length > 29 && '...'} </p> </td>
-                      <td><a target="_blank" href={c.competitorInfo.Url}>{c.competitorInfo.Url}</a></td>
+                      <td><p data-tip={c.competitorInfo.title}>{(c.competitorInfo.title).substring(0, 29)}{(c.competitorInfo.title).length > 29 && '...'} <img src={Tooltip} /> </p> </td>
+                      <td><a target="_blank" href={c.competitorInfo.Url}>{c.competitorInfo.Url} ↗</a></td>
+                      <td onClick={() => this.deleteKeyword(e.Keyword, c.competitor)}><img src={Trash} /></td>
                     </tr>
                 ))}
+                <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
               </React.Fragment>
 
             ))}
@@ -289,7 +329,6 @@ export default class Competitors extends Component {
             title="Continuar >" />
         </div>
       </div>
-      <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
     </div>
   )
 
@@ -301,7 +340,7 @@ export default class Competitors extends Component {
           <button onClick={() => this.setState({ review: false })}>
             <img src={Backbutton} icon={<img src={Backbutton} />} />
           </button>
-          <p id="back-text"> Voltar para a seleção do Concorrente</p>
+          <p id="back-text"> Voltar para a seleção de Keywords</p>
         </div>
         <div className="competitors-title">
           <h3 style={{ fontSize: '28px' }}>Revisão da(s) Keyword(s) selecionada(s)</h3>
@@ -310,27 +349,28 @@ export default class Competitors extends Component {
         <table>
           <thead>
             <tr>
-              <th width="30"></th>
+              <th></th>
               <th>Keyword</th>
               <th>Volume de Busca</th>
               <th>Pos. Concorrente</th>
               <th>Pos. NZN</th>
-              <th width="250">TItulo Concorrente</th>
-              <th width="400">URL Concorrente</th>
+              <th >TItulo Concorrente</th>
+              <th>URL Concorrente</th>
             </tr>
           </thead>
           <tbody>
             {this.state.keyWordsSelected.map(e => (
               <React.Fragment>
                 <tr>
-                  <td><input checked={e.checked} onChange={(event) => this.keyWordCheckSelect(event.target.checked, e._id)} type="checkbox" /></td>
+                  <td><div onClick={() => this.keyWordCheckSelect(e.checked, e._id)} id="checkbox"> {e.checked && <span></span>} </div></td>
                   <td>{e.Keyword}</td>
                   <td>{e['Search Volume']}</td>
                   <td>{e.competitorPosition}</td>
                   <td>{e.nznPosition}</td>
                   <td><p data-tip={e.competitorInfo.title}>{(e.competitorInfo.title).substring(0, 29)}{(e.competitorInfo.title).length > 29 && '...'} </p> </td>
-                  <td><a target="_blank" href={e.competitorInfo.Url}>{e.competitorInfo.Url}</a></td>
+                  <td><a target="_blank" href={e.competitorInfo.Url}>{e.competitorInfo.Url} ↗</a></td>
                 </tr>
+                <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
               </React.Fragment>
 
             ))}
@@ -343,7 +383,6 @@ export default class Competitors extends Component {
             title="Enviar para sugestão de produção ❯" />
         </div>
       </div>
-      <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
     </div>
   )
 

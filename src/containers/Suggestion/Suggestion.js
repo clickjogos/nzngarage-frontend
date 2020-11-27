@@ -2,12 +2,49 @@ import React, { Component } from 'react'
 
 import ReactTooltip from 'react-tooltip'
 
+import * as ServiceSuggestion from '../../providers/competitors';
+
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Button from '../../components/Button/Button'
 
 import './Suggestion.scss'
 
+const IconEdit = require('../../assets/icons/icon-edit.svg')
+
 export default class Suggestion extends Component {
+
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      scheduledKeywords: []
+    }
+  }
+  
+
+  componentDidMount() {
+    this.getSuggestions()
+  }
+
+  async getSuggestions() {
+    try {
+      const result = await ServiceSuggestion.searchWeeklySchedule({})
+      let schedule = result.data.schedule
+      let scheduledKeywords = []
+
+      schedule.forEach(element => {
+        element.scheduledKeywords.forEach(e => {
+          scheduledKeywords.push(e)
+        });
+      });
+      console.log(scheduledKeywords)
+      this.setState({scheduledKeywords})
+    } catch (error) {
+      
+    }
+  }
+
+
   render() {
     return (
       <div className="refine-planning-main">
@@ -40,30 +77,32 @@ export default class Suggestion extends Component {
             <table>
               <thead>
                 <tr>
-                  <th width="30"></th>
+                  <th >Caderno</th>
                   <th>Keyword</th>
                   <th>Volume de Busca</th>
-                  <th>Pos. Concorrente</th>
-                  <th>Pos. NZN</th>
-                  <th width="250">TItulo Concorrente</th>
-                  <th width="400">URL Concorrente</th>
+                  <th>Qtd. Título</th>
+                  <th>Status</th>
+                  <th >Título Sugerido</th>
+                  <th>URL Concorrente</th>
+                  <th>Editar</th>
                 </tr>
               </thead>
               <tbody>
-                {/* {this.state.keyWordsSelected.map(e => (
+                {this.state.scheduledKeywords.map(e => (
                   <React.Fragment>
                     <tr>
-                      <td><input checked={e.checked} onChange={(event) => this.keyWordCheckSelect(event.target.checked, e._id)} type="checkbox" /></td>
+                      <td>Caderno</td>
                       <td>{e.Keyword}</td>
                       <td>{e['Search Volume']}</td>
-                      <td>{e.competitorPosition}</td>
-                      <td>{e.nznPosition}</td>
+                      <td>x</td>
+                      <td>Status</td>
                       <td><p data-tip={e.competitorInfo.title}>{(e.competitorInfo.title).substring(0, 29)}{(e.competitorInfo.title).length > 29 && '...'} </p> </td>
                       <td><a target="_blank" href={e.competitorInfo.Url}>{e.competitorInfo.Url}</a></td>
+                      <td><img className="edit-icon" src={IconEdit} /></td>
                     </tr>
                   </React.Fragment>
 
-                ))} */}
+                ))}
               </tbody>
             </table>
             {/* <div className="container-send-button">
