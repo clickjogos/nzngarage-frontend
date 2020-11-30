@@ -25,7 +25,7 @@
     background-color: #fefefe;
     width: 548px;
     height: 500px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: #ffffff 0% 0% no-repeat padding-box;
     opacity: 1;
 
     .center-modal {
@@ -66,7 +66,7 @@
         font-style: normal;
         line-height: normal;
         letter-spacing: 0px;
-        color: #23282D;
+        color: #23282d;
         margin: 0 auto;
       }
 
@@ -77,11 +77,46 @@
         font-style: normal;
         line-height: normal;
         letter-spacing: normal;
-        color: #636F7A;
+        color: #636f7a;
         margin: 0 auto;
       }
-
     }
+  }
+}
 
+.modal-content-confirm {
+  background-color: #fefefe;
+  width: 400px;
+  height: 150px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
+  padding: 5px;
+  
+  .header-top{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    p{
+      font-size: 18px;
+      margin: 0;
+    }
+  }
+  .center-modal-confirm{
+    width: 100%;
+    height: 45%;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    color: #636f7a;
+    font-size: 15px;
+  }
+  .bottom-modal-confirm{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    padding: 0 10px;
+    justify-content: space-between;
   }
 }

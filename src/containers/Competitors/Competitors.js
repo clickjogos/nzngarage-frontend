@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Button from '../../components/Button/Button'
 import Loading from '../../components/Loading/Loading'
+import ModalConfirm from '../../components/Modal/ModalConfirm'
 
 import ReactTooltip from 'react-tooltip';
 
@@ -42,7 +43,10 @@ export default class Competitors extends Component {
       buttonKeywordDisabled: true,
       buttonSuggestionDisabled: false,
       review: false,
-      redirect: false
+      redirect: false,
+      showModalConfirm: false,
+      keywordDelete: null,
+      pathDelete: null
     }
   }
 
@@ -61,7 +65,6 @@ export default class Competitors extends Component {
       page.currentPage = currentPage
       page.totalPages = totalPages
 
-      console.log(page)
       if (keyWordsList.length > 0) {
         // added checked in object
         keyWordsList.forEach(element => {
@@ -164,7 +167,7 @@ export default class Competitors extends Component {
   async sendKeywords() {
     this.setState({ loading: true })
     let array = this.state.keyWordsSelected;
-    var selectedKeywords = array.page(function (el) {
+    var selectedKeywords = array.filter(function (el) {
       return el.checked = true
     });
 
@@ -229,14 +232,24 @@ export default class Competitors extends Component {
     }
   }
 
-  deleteKeyword = async (keyword, domain) => {
+  deleteKeyword = async () => {
+    const keyword = this.state.keywordDelete
+    const domain = this.state.pathDelete
+    this.setState({showModalConfirm: false})
     try {
       const result = await competitorsService.deleteUniqueKeyword(keyword, domain)
-      console.log(result)
       this.allKeywordsList()
     } catch (error) {
       console.log(error)
     }
+  }
+
+  openModalConfirm = (element, competitor) => {
+    this.setState({
+      keywordDelete: element.Keyword,
+      pathDelete: competitor.competitor,
+      showModalConfirm: true
+    })
   }
 
   pagination = () => {
@@ -299,8 +312,8 @@ export default class Competitors extends Component {
                   <td>{e.nznPosition}</td>
                   <td><p data-tip={e.competitors[0].competitorInfo.title}>{(e.competitors[0].competitorInfo.title).substring(0, 29)}{(e.competitors[0].competitorInfo.title).length > 29 && '...'} <img src={Tooltip} /> </p> </td>
                   <td><a target="_blank" href={e.competitors[0].competitorInfo.Url}>{e.competitors[0].competitorInfo.Url} ↗</a></td>
-                  <td></td>
-                </tr>
+                  <td>{e.competitors.length === 1 && <img onClick={() => this.openModalConfirm(e, e.competitors[0])} src={Trash} /> }</td>
+                                  </tr>
                 {e.competitors.map(c => (
                   e.show && 
                     <tr key={c._id}>
@@ -312,7 +325,7 @@ export default class Competitors extends Component {
                       <td>{c.nznPosition}</td>
                       <td><p data-tip={c.competitorInfo.title}>{(c.competitorInfo.title).substring(0, 29)}{(c.competitorInfo.title).length > 29 && '...'} <img src={Tooltip} /> </p> </td>
                       <td><a target="_blank" href={c.competitorInfo.Url}>{c.competitorInfo.Url} ↗</a></td>
-                      <td onClick={() => this.deleteKeyword(e.Keyword, c.competitor)}><img src={Trash} /></td>
+                      <td onClick={() => this.openModalConfirm(e, c)}><img src={Trash} /></td>
                     </tr>
                 ))}
                 <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
@@ -329,6 +342,7 @@ export default class Competitors extends Component {
             title="Continuar >" />
         </div>
       </div>
+      {this.state.showModalConfirm &&  <ModalConfirm cancel={() => this.setState({showModalConfirm: false})} confirm={() => this.deleteKeyword()} />}
     </div>
   )
 
