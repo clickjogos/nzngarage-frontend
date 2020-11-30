@@ -6,6 +6,7 @@ import * as ServiceSuggestion from '../../providers/competitors';
 
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Button from '../../components/Button/Button'
+import ModalEdit from '../../components/Modal/ModalEdit'
 
 import './Suggestion.scss'
 
@@ -32,15 +33,15 @@ export default class Suggestion extends Component {
       let schedule = result.data.schedule
       let scheduledKeywords = []
 
-      schedule.forEach(element => {
-        element.scheduledKeywords.forEach(e => {
-          scheduledKeywords.push(e)
-        });
+      schedule[0].scheduledKeywords.forEach(element => {
+        // element.scheduledKeywords.forEach(e => {
+          scheduledKeywords.push(element)
+        // });
       });
       console.log(scheduledKeywords)
       this.setState({scheduledKeywords})
     } catch (error) {
-      
+      console.log(error)
     }
   }
 
@@ -80,9 +81,9 @@ export default class Suggestion extends Component {
                   <th >Caderno</th>
                   <th>Keyword</th>
                   <th>Volume de Busca</th>
-                  <th>Qtd. Título</th>
                   <th>Status</th>
                   <th >Título Sugerido</th>
+                  <th>Qtd. Título</th>
                   <th>URL Concorrente</th>
                   <th>Editar</th>
                 </tr>
@@ -94,9 +95,9 @@ export default class Suggestion extends Component {
                       <td>Caderno</td>
                       <td>{e.Keyword}</td>
                       <td>{e['Search Volume']}</td>
-                      <td>x</td>
                       <td>Status</td>
                       <td><p data-tip={e.competitorInfo.title}>{(e.competitorInfo.title).substring(0, 29)}{(e.competitorInfo.title).length > 29 && '...'} </p> </td>
+                      <td>x</td>
                       <td><a target="_blank" href={e.competitorInfo.Url}>{e.competitorInfo.Url}</a></td>
                       <td><img className="edit-icon" src={IconEdit} /></td>
                     </tr>
@@ -114,6 +115,7 @@ export default class Suggestion extends Component {
           </div>
           <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
         </div>
+        {/* <ModalEdit /> */}
       </div>
     )
   }

@@ -29,13 +29,13 @@ export default class Competitors extends Component {
         currentPage: 1,
         totalPages: 0,
         resultsPerPage: 10,
-        orderBy: 'Search Volume,competitorPosition',
-        orderType: 'desc,asc',
+        orderBy: 'Search Volume',
+        orderType: 'desc',
       },
       orderArray: {
         volume: true,
-        pos: true, 
-        posNzn: true
+        pos: false, 
+        posNzn: false
       },
       loading: false,
       keyWordsList: [],
@@ -86,34 +86,36 @@ export default class Competitors extends Component {
   }
 
   orderArrayBy(key) {
-    let keyWordsList = this.state.keyWordsList
+    // let keyWordsList = this.state.keyWordsList
     let orderArray = this.state.orderArray
+    let page = this.state.page
     let status = true
+
     if(key === 'Search Volume'){
       orderArray.volume = !orderArray.volume
       status = !orderArray.volume
+      page.orderBy = 'Search Volume'
     }
     if(key === 'competitorPosition'){
       orderArray.pos = !orderArray.pos
       status = !orderArray.pos
+      page.orderBy = 'competitorPosition'
     }
     if(key === 'nznPosition'){
       orderArray.posNzn = !orderArray.posNzn
       status = !orderArray.posNzn
+      page.orderBy = 'nznPosition'
     }
 
-    if(status){
-      keyWordsList.sort(function (a, b) {
-        return parseFloat(a[key]) - parseFloat(b[key]);
-      });
+    if(status) {
+      page.orderType = 'asc'
     } else {
-      keyWordsList.sort(function (a, b) {
-        return parseFloat(b[key]) - parseFloat(a[key]);
-      });
+      page.orderType = 'desc'
     }
-  
 
-    this.setState({ keyWordsList, orderArray })
+    this.setState({ orderArray, page }, r=> {
+      this.allKeywordsList()
+    })
   }
 
   keyWordCheck = (checked, _id) => {
@@ -155,7 +157,7 @@ export default class Competitors extends Component {
           c['Number of Results'] = element['Number of Results']
           c['Search Volume'] = element['Search Volume']
           c.nznPosition = element.nznPosition
-
+          c.simplyfiedKeyword = element.simplyfiedKeyword
           keyWordsSelected.push(c)
         }
       });
@@ -176,11 +178,20 @@ export default class Competitors extends Component {
       delete element.show;
     });
 
-    const obj = {
+    let obj = {
       selectedKeywords
     }
 
     try {
+      const weekSchedule = await competitorsService.searchWeeklySchedule()
+      const keywords = weekSchedule.data.schedule
+
+      if(keywords.length > 0){
+        keywords[0].scheduledKeywords.forEach(element => {
+          obj.selectedKeywords.push(element)
+        });
+      }
+     
       const result = await competitorsService.weeklyschedule(obj)
       this.setState({loading: false, redirect: true})
     } catch (error) {

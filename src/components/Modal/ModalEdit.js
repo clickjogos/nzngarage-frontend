@@ -7,7 +7,7 @@ export default function ModalEdit() {
     <div className="modal-main">
     <div className="modal-content">
       <div className="header-top">
-        <span className="close" onClick={this.props.onClose}>
+        <span className="close" >
           &times;
         </span>
       </div>
