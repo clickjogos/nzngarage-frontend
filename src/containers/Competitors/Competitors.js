@@ -158,6 +158,7 @@ export default class Competitors extends Component {
           c['Search Volume'] = element['Search Volume']
           c.nznPosition = element.nznPosition
           c.simplyfiedKeyword = element.simplyfiedKeyword
+          c.ctr = element.ctr
           keyWordsSelected.push(c)
         }
       });

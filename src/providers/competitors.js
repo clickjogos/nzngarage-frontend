@@ -14,6 +14,10 @@ export function weeklyschedule(body) {
     return axiosProvider.post('/keyWords/weeklyschedule', body)
 }
 
+export function weeklyscheduleEdit(body) {
+    return axiosProvider.put('/keyWords/weeklyschedule', body)
+}
+
 export function searchWeeklySchedule(params) {
     return axiosProvider.get('/keyWords/weeklyschedule', {
         params

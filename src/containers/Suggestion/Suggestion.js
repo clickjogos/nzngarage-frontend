@@ -16,12 +16,14 @@ export default class Suggestion extends Component {
 
   constructor(props) {
     super(props)
-  
+
     this.state = {
-      scheduledKeywords: []
+      scheduledKeywords: [],
+      showModalEdit: false,
+      dataModalEdit: null
     }
   }
-  
+
 
   componentDidMount() {
     this.getSuggestions()
@@ -33,18 +35,57 @@ export default class Suggestion extends Component {
       let schedule = result.data.schedule
       let scheduledKeywords = []
 
-      schedule[0].scheduledKeywords.forEach(element => {
-        // element.scheduledKeywords.forEach(e => {
-          scheduledKeywords.push(element)
-        // });
+      schedule.forEach(element => {
+        element.scheduledKeywords.forEach(e => {
+          scheduledKeywords.push(e)
+        });
       });
       console.log(scheduledKeywords)
-      this.setState({scheduledKeywords})
+      this.setState({ scheduledKeywords })
     } catch (error) {
       console.log(error)
     }
   }
 
+  openModalEdit(dataModalEdit) {
+    console.log(dataModalEdit)
+    this.setState({ dataModalEdit, showModalEdit: true })
+  }
+
+  closeModalEdit() {
+    this.setState({
+      dataModalEdit: null,
+      showModalEdit: false
+    })
+  }
+
+  sendEditKeyword = async (objKeyword) => {
+    let scheduledKeywords = this.state.scheduledKeywords
+
+    let selectedKeywords = scheduledKeywords.map(e => {
+      if (e._id === objKeyword._id) {
+        e = objKeyword
+      }
+
+      return e;
+    })
+
+    const obj = {
+      selectedKeywords
+    }
+
+    this.setState({ showModalEdit: false })
+
+    try {
+      let result = await ServiceSuggestion.weeklyschedule(obj)
+      console.log(result)
+      this.getSuggestions()
+    } catch (error) {
+      console.log(error)
+    }
+
+
+  }
 
   render() {
     return (
@@ -61,8 +102,8 @@ export default class Suggestion extends Component {
                 <select>
                   <option>Caderno</option>
                 </select>
-                <Button title="Semana" style={{ width: '99px' }}  />
-                <Button title="Mês" style={{ width: '99px' }}  />
+                <Button title="Semana" style={{ width: '99px' }} />
+                <Button title="Mês" style={{ width: '99px' }} />
               </div>
             </div>
             <div className="suggestion-container-search">
@@ -89,17 +130,17 @@ export default class Suggestion extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.scheduledKeywords.map(e => (
-                  <React.Fragment>
+                {this.state.scheduledKeywords.map((e, i) => (
+                  <React.Fragment key={i}>
                     <tr>
-                      <td>Caderno</td>
+                      <td>{e.tag === '' ? '-' : e.tag}</td>
                       <td>{e.Keyword}</td>
                       <td>{e['Search Volume']}</td>
-                      <td>Status</td>
-                      <td><p data-tip={e.competitorInfo.title}>{(e.competitorInfo.title).substring(0, 29)}{(e.competitorInfo.title).length > 29 && '...'} </p> </td>
-                      <td>x</td>
+                      <td>{e.status ? e.status : "-"}</td>
+                      <td><p data-tip={e.title}>{(e.title).substring(0, 29)}{(e.title).length > 29 && '...'} </p> </td>
+                      <td>{e.title.length}</td>
                       <td><a target="_blank" href={e.competitorInfo.Url}>{e.competitorInfo.Url}</a></td>
-                      <td><img className="edit-icon" src={IconEdit} /></td>
+                      <td><img onClick={() => this.openModalEdit(e)} className="edit-icon" src={IconEdit} /></td>
                     </tr>
                   </React.Fragment>
 
@@ -115,7 +156,7 @@ export default class Suggestion extends Component {
           </div>
           <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
         </div>
-        {/* <ModalEdit /> */}
+        {this.state.showModalEdit && <ModalEdit callback={this.sendEditKeyword} data={this.state.dataModalEdit} close={() => this.closeModalEdit()} />}
       </div>
     )
   }
