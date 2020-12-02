@@ -20,3 +20,16 @@ export function searchWeeklySchedule(keywordFilter, titleFilter,) {
     if (titleFilter) URL += `titleFilter=${titleFilter}`
     return axiosProvider.get(URL)
 }
+
+// export function searchWeeklySchedule(params) {
+//     return axiosProvider.get('/keyWords/weeklyschedule', {
+//         params
+//     })
+// }
+
+export function getTags(filter) {
+    let url = '/tags'
+    if(filter) url = '/tags/?filter=true'
+    
+    return axiosProvider.get(url)
+}

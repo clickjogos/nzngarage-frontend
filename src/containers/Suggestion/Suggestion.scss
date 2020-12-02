@@ -73,3 +73,53 @@
 .edit-icon{
   cursor: pointer;
 }
+
+
+.container-pagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 21px 0;
+  
+  .container-pagination-button{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    p{
+      margin: 0 10px;
+      font-size: 12px;
+      color: $color-buttom;
+    }
+  }
+
+  .pagination-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .pagination-input{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 10px;
+      p{
+        margin: 0;
+        color: #B8C2CB;
+        font-size: 14px;
+      }
+
+      input {
+        text-align: center;
+        width: 60px;
+        color: #707070;
+        margin: 0 5px; 
+        border: 1px solid #B8C2CB ;
+
+        &:focus{
+          outline: none;
+        }
+    }
+    }
+  }
+}

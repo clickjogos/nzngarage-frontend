@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { getTags } from '../../providers/competitors'
+
 import Button from '../../components/Button/ButtonCreate'
 
 import './Modal.scss'
@@ -10,7 +12,8 @@ export default class ModalEdit extends Component {
     super(props)
 
     this.state = {
-      objKeyword: null
+      objKeyword: null,
+      tags: []
     }
   }
 
@@ -20,6 +23,7 @@ export default class ModalEdit extends Component {
     if(objKeyword.internalBacklinks.length === 0){
       objKeyword.internalBacklinks.push('')
     }
+    this.biddingTags()
     this.setState({objKeyword})
   }
 
@@ -73,7 +77,17 @@ export default class ModalEdit extends Component {
       } 
     });
 
-    this.props.callback(objKeyword)
+    console.log(objKeyword)
+   // this.props.callback(objKeyword)
+  }
+
+  biddingTags = async () => {
+    try {
+      let result = await getTags(false)
+      this.setState({tags: result.data})
+    } catch (error) {
+      
+    }
   }
 
   render() {
@@ -91,7 +105,10 @@ export default class ModalEdit extends Component {
             <div className="input-edit">
               <label>Caderno</label>
               <select name={'tag'} onChange={this.handleInput}>
-                <option value="Internet">Internet</option>
+                <option value="-" selected>-</option>
+                {this.state.tags.map(e => 
+                  <option value={e}>{e}</option>
+                  )}
               </select>
             </div>
             <div className="input-edit-elements">
@@ -106,7 +123,7 @@ export default class ModalEdit extends Component {
               </div>
               <div className="group">
                 <label>Data de Publicação</label>
-                <input type="date" />
+                <input onChange={this.handleInput} value={this.state.objKeyword['datePublish']} name={'datePublish'} type="date" />
               </div>
               <div className="group">
                 <label>Esti. de tráfego</label>

@@ -11,6 +11,10 @@ import ModalEdit from '../../components/Modal/ModalEdit'
 import './Suggestion.scss'
 
 const IconEdit = require('../../assets/icons/icon-edit.svg')
+const ButtonChevronLeft = require('../../assets/icons/icon-button-left-arrow.svg')
+const ButtonChevronRight = require('../../assets/icons/icon-button-right-arrow.svg')
+const Chevron = require('../../assets/icons/chevron-right.svg')
+const Tooltip = require('../../assets/icons/icon-tooltip.svg')
 
 export default class Suggestion extends Component {
 
@@ -19,10 +23,23 @@ export default class Suggestion extends Component {
 
     this.state = {
       scheduledKeywords: [],
+      tags: [],
       showModalEdit: false,
       dataModalEdit: null,
       keywordFilter: null,
       titleFilter: null,
+      orderArray: {
+        volume: true,
+        status: false, 
+        qtdTitle: false
+      },
+      page: {
+        currentPage: 1,
+        totalPages: 0,
+        resultsPerPage: 10,
+        orderBy: 'Search Volume',
+        orderType: 'desc',
+      }
     }
   }
 
@@ -50,6 +67,8 @@ export default class Suggestion extends Component {
       });
       if(filter) this.setState({ scheduledKeywords:scheduledWithFilter })
       else this.setState({ scheduledKeywords })
+      this.biddingTags()
+      this.setState({ scheduledKeywords })
     } catch (error) {
       console.log(error)
     }
@@ -92,7 +111,106 @@ export default class Suggestion extends Component {
       console.log(error)
     }
 
+  }
 
+  biddingTags = async () => {
+    try {
+      let result = await ServiceSuggestion.getTags(true)
+      this.setState({tags: result.data})
+    } catch (error) {
+      
+    }
+  }
+
+  orderArrayBy(key) {
+    // let keyWordsList = this.state.keyWordsList
+    // let orderArray = this.state.orderArray
+    // let page = this.state.page
+    // let status = true
+
+    // if(key === 'Search Volume'){
+    //   orderArray.volume = !orderArray.volume
+    //   status = !orderArray.volume
+    //   page.orderBy = 'Search Volume'
+    // }
+    // if(key === 'competitorPosition'){
+    //   orderArray.pos = !orderArray.pos
+    //   status = !orderArray.pos
+    //   page.orderBy = 'competitorPosition'
+    // }
+    // if(key === 'nznPosition'){
+    //   orderArray.posNzn = !orderArray.posNzn
+    //   status = !orderArray.posNzn
+    //   page.orderBy = 'nznPosition'
+    // }
+
+    // if(status) {
+    //   page.orderType = 'asc'
+    // } else {
+    //   page.orderType = 'desc'
+    // }
+
+    // this.setState({ orderArray, page }, r=> {
+    //   this.allKeywordsList()
+    // })
+  }
+
+
+  actionPage = (status) => {
+    // let page = this.state.page
+    // if(!status && page.currentPage !== 1) page.currentPage -= 1
+    // if(status && page.currentPage < page.totalPages) page.currentPage +=1
+    // this.setState({page}, r=> {
+    //   this.allKeywordsList()
+    // })
+  }
+
+  actionChangePage = (currentPage) => {
+    // let page = this.state.page
+    // if(currentPage > 0 && currentPage <= page.totalPages){
+    //   page.currentPage = currentPage
+    //   this.setState({page}, r=> {
+    //     this.allKeywordsList()
+    //   })
+    // }
+  }
+
+  actionRows = (rows) => {
+    // let page = this.state.page
+    // if(rows <= 50 && rows >= 10){
+    //   page.resultsPerPage = rows 
+    //   this.setState({page}, r=> {
+    //     this.allKeywordsList()
+    //   })
+    // }
+  }
+
+
+  pagination = () => {
+    return (
+      <div className="container-pagination">
+        <div onClick={() => this.actionPage(false)} className="container-pagination-button">
+          <img src={ButtonChevronLeft} />
+          <p>Página Anterior</p>
+        </div>
+        <div className="pagination-info">
+          <div className="pagination-input">
+            <p>Página</p>
+            <input onChange={(e) => this.actionChangePage(e.target.value)} value={this.state.page.currentPage} type="number" />
+            <p>de {this.state.page.totalPages}</p>
+          </div>
+          <div className="pagination-input">
+            <p>Exibindo</p>
+            <input onChange={(e) => this.actionRows(e.target.value)} value={this.state.page.resultsPerPage} type="number" />
+            <p>por página</p>
+          </div>
+        </div>
+        <div onClick={() => this.actionPage(true)} className="container-pagination-button">
+          <p>Próxima Página</p>
+          <img src={ButtonChevronRight} />
+        </div>
+      </div>
+    )
   }
   _handleKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -112,7 +230,10 @@ export default class Suggestion extends Component {
               </span>
               <div className="suggestion-filters">
                 <select>
-                  <option>Caderno</option>
+                  <option value="" selected>Caderno</option>
+                  {this.state.tags.map(e => (
+                    <option value={e}>{e}</option>
+                  ))}
                 </select>
                 <Button title="Semana" style={{ width: '99px' }} />
                 <Button title="Mês" style={{ width: '99px' }} />
@@ -133,10 +254,10 @@ export default class Suggestion extends Component {
                 <tr>
                   <th >Caderno</th>
                   <th>Keyword</th>
-                  <th>Volume de Busca</th>
-                  <th>Status</th>
+                  <th onClick={() => this.orderArrayBy('Search Volume')}>Volume de Busca <img style={this.state.orderArray.volume ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
+                  <th onClick={() => this.orderArrayBy('Status')}>Status <img style={this.state.orderArray.status ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
                   <th >Título Sugerido</th>
-                  <th>Qtd. Título</th>
+                  <th onClick={() => this.orderArrayBy('titleLength')}>Qtd. Título <img style={this.state.orderArray.qtdTitle ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
                   <th>URL Concorrente</th>
                   <th>Editar</th>
                 </tr>
@@ -151,22 +272,16 @@ export default class Suggestion extends Component {
                       <td>{e.status ? e.status : "-"}</td>
                       <td><p data-tip={e.title}>{(e.title).substring(0, 29)}{(e.title).length > 29 && '...'} </p> </td>
                       <td>{e.title.length}</td>
-                      <td><a target="_blank" href={e.competitorInfo.Url}>{e.competitorInfo.Url}</a></td>
+                      <td><a target="_blank" href={e.competitorInfo.Url}>{e.competitorInfo.Url} ↗</a></td>
                       <td><img onClick={() => this.openModalEdit(e)} className="edit-icon" src={IconEdit} /></td>
                     </tr>
+                    <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
                   </React.Fragment>
-
                 ))}
               </tbody>
             </table>
-            {/* <div className="container-send-button">
-              <Button
-                // disabled={this.state.buttonSuggestionDisabled}
-                // callback={() => this.sendKeywords()}
-                title="Enviar para sugestão de produção ❯" />
-            </div> */}
           </div>
-          <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
+          {this.pagination()}
         </div>
         {this.state.showModalEdit && <ModalEdit callback={this.sendEditKeyword} data={this.state.dataModalEdit} close={() => this.closeModalEdit()} />}
       </div>
