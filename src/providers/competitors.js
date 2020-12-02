@@ -23,3 +23,10 @@ export function searchWeeklySchedule(params) {
         params
     })
 }
+
+export function getTags(filter) {
+    let url = '/tags'
+    if(filter) url = '/tags/?filter=true'
+    
+    return axiosProvider.get(url)
+}
