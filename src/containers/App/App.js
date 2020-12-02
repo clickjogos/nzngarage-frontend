@@ -11,6 +11,7 @@ import RefinePlanning from '../RefinePlanning/RefinePlanning'
 import TrackingPlanning from '../TrackingPlanning/TrackingPlanning';
 import Competitors from '../Competitors/Competitors';
 import Suggestion from '../Suggestion/Suggestion';
+import Audience from '../Audience/Audience';
 
 import history from './history';
 
@@ -28,6 +29,7 @@ function App() {
         <PrivateRoute restricted={true} component={TrackingPlanning} path="/tracking" exact />
         <PrivateRoute restricted={true} component={Competitors} path="/competitors" exact />
         <PrivateRoute restricted={true} component={Suggestion} path="/suggestion" exact />
+        <PrivateRoute restricted={true} component={Audience} path="/competitors" exact/> 
       </Switch>
     </Router>
 
