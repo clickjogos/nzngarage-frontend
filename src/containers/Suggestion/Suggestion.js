@@ -20,7 +20,9 @@ export default class Suggestion extends Component {
     this.state = {
       scheduledKeywords: [],
       showModalEdit: false,
-      dataModalEdit: null
+      dataModalEdit: null,
+      keywordFilter: null,
+      titleFilter: null,
     }
   }
 
@@ -31,17 +33,23 @@ export default class Suggestion extends Component {
 
   async getSuggestions() {
     try {
-      const result = await ServiceSuggestion.searchWeeklySchedule({})
+      const result = await ServiceSuggestion.searchWeeklySchedule(this.state.keywordFilter, this.state.titleFilter)
       let schedule = result.data.schedule
       let scheduledKeywords = []
+      let scheduledWithFilter = []
+      let filter = false
 
       schedule.forEach(element => {
         element.scheduledKeywords.forEach(e => {
+          if(e['filter']){
+            scheduledWithFilter.push(e)
+            filter = true
+          }
           scheduledKeywords.push(e)
         });
       });
-      console.log(scheduledKeywords)
-      this.setState({ scheduledKeywords })
+      if(filter) this.setState({ scheduledKeywords:scheduledWithFilter })
+      else this.setState({ scheduledKeywords })
     } catch (error) {
       console.log(error)
     }
@@ -86,7 +94,11 @@ export default class Suggestion extends Component {
 
 
   }
-
+  _handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      this.getSuggestions()
+    }
+  }
   render() {
     return (
       <div className="refine-planning-main">
@@ -109,11 +121,11 @@ export default class Suggestion extends Component {
             <div className="suggestion-container-search">
               <div className="search">
                 <span>Y</span>
-                <input placeholder="Buscar por Keyword" type="text" />
+                <input onKeyDown={this._handleKeyDown} onChange={(e) => this.setState({keywordFilter: e.target.value})} placeholder="Buscar por Keyword" type="text" />
               </div>
               <div className="search title">
                 <span>Y</span>
-                <input placeholder="Buscar por Título da Página" type="text" />
+                <input onKeyDown={this._handleKeyDown} onChange={(e) => this.setState({titleFilter: e.target.value})} placeholder="Buscar por Título da Página" type="text" />
               </div>
             </div>
             <table>
