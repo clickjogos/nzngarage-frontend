@@ -7,6 +7,9 @@ import * as ServiceSuggestion from '../../providers/competitors';
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Button from '../../components/Button/Button'
 import ModalEdit from '../../components/Modal/ModalEdit'
+import DateRange from '../../components/DateRange/DateRage'
+
+import * as formart from '../../utils/format'
 
 import './Suggestion.scss'
 
@@ -28,9 +31,12 @@ export default class Suggestion extends Component {
       dataModalEdit: null,
       keywordFilter: null,
       titleFilter: null,
+      tagFilter: null,
+      startDate: null,
+      endDate: null,
       orderArray: {
         volume: true,
-        status: false, 
+        status: false,
         qtdTitle: false
       },
       page: {
@@ -39,7 +45,13 @@ export default class Suggestion extends Component {
         resultsPerPage: 10,
         orderBy: 'Search Volume',
         orderType: 'desc',
-      }
+      },
+      selectionRange: {
+        startDate: new Date(),
+        endDate: new Date(),
+        key: 'selection',
+      },
+      showDateRange: false,
     }
   }
 
@@ -50,7 +62,13 @@ export default class Suggestion extends Component {
 
   async getSuggestions() {
     try {
-      const result = await ServiceSuggestion.searchWeeklySchedule(this.state.keywordFilter, this.state.titleFilter)
+      const result = await ServiceSuggestion.searchWeeklySchedule(
+        this.state.keywordFilter, 
+        this.state.titleFilter, 
+        this.state.tagFilter, 
+        this.state.startDate,
+        this.state.endDate)
+
       let schedule = result.data.schedule
       let scheduledKeywords = []
       let scheduledWithFilter = []
@@ -58,24 +76,22 @@ export default class Suggestion extends Component {
 
       schedule.forEach(element => {
         element.scheduledKeywords.forEach(e => {
-          if(e['filter']){
+          if (e['filter']) {
             scheduledWithFilter.push(e)
             filter = true
           }
           scheduledKeywords.push(e)
         });
       });
-      if(filter) this.setState({ scheduledKeywords:scheduledWithFilter })
+      if (filter) this.setState({ scheduledKeywords: scheduledWithFilter })
       else this.setState({ scheduledKeywords })
       this.biddingTags()
-      this.setState({ scheduledKeywords })
     } catch (error) {
       console.log(error)
     }
   }
 
   openModalEdit(dataModalEdit) {
-    console.log(dataModalEdit)
     this.setState({ dataModalEdit, showModalEdit: true })
   }
 
@@ -116,9 +132,9 @@ export default class Suggestion extends Component {
   biddingTags = async () => {
     try {
       let result = await ServiceSuggestion.getTags(true)
-      this.setState({tags: result.data})
+      this.setState({ tags: result.data })
     } catch (error) {
-      
+
     }
   }
 
@@ -217,6 +233,40 @@ export default class Suggestion extends Component {
       this.getSuggestions()
     }
   }
+  handleSelect = (ranges) => {
+    console.log(ranges)
+
+    // let selectionRange = ranges
+    // this.setState({selectionRange})
+
+    let selectionRange = {
+      startDate: ranges.selection.startDate,
+      endDate: ranges.selection.endDate,
+      key: 'selection'
+    }
+    this.setState({ selectionRange })
+  }
+
+  sendRangeDate = () => {
+    if(this.state.showDateRange){
+      this.setState({showDateRange: false})
+      let startDate = formart.formatDate(this.state.selectionRange.startDate)
+      let endDate = formart.formatDate(this.state.selectionRange.endDate)
+
+      this.setState({startDate, endDate}, r=> {
+        this.getSuggestions()
+      })
+    } else {
+      this.setState({showDateRange: true})
+    }
+  }
+
+  handleTag = (e) => {
+    this.setState({tagFilter: e.target.value}, r=> {
+      this.getSuggestions()
+    })
+  }
+
   render() {
     return (
       <div className="refine-planning-main">
@@ -229,24 +279,24 @@ export default class Suggestion extends Component {
                 <h4>Nessa parte se encontram as keywords selecionadas.</h4>
               </span>
               <div className="suggestion-filters">
-                <select>
+                <select onChange={this.handleTag}>
                   <option value="" selected>Caderno</option>
                   {this.state.tags.map(e => (
                     <option value={e}>{e}</option>
                   ))}
                 </select>
-                <Button title="Semana" style={{ width: '99px' }} />
-                <Button title="Mês" style={{ width: '99px' }} />
+                <Button callback={() => this.sendRangeDate()} title={this.state.showDateRange ? 'Enviar' : 'Selecionar Data'} style={{ width: '150px' }} />
+                {this.state.showDateRange && <DateRange handleSelect={this.handleSelect} selectionRange={this.state.selectionRange} />}
               </div>
             </div>
             <div className="suggestion-container-search">
               <div className="search">
                 <span>Y</span>
-                <input onKeyDown={this._handleKeyDown} onChange={(e) => this.setState({keywordFilter: e.target.value})} placeholder="Buscar por Keyword" type="text" />
+                <input onKeyDown={this._handleKeyDown} onChange={(e) => this.setState({ keywordFilter: e.target.value })} placeholder="Buscar por Keyword" type="text" />
               </div>
               <div className="search title">
                 <span>Y</span>
-                <input onKeyDown={this._handleKeyDown} onChange={(e) => this.setState({titleFilter: e.target.value})} placeholder="Buscar por Título da Página" type="text" />
+                <input onKeyDown={this._handleKeyDown} onChange={(e) => this.setState({ titleFilter: e.target.value })} placeholder="Buscar por Título da Página" type="text" />
               </div>
             </div>
             <table>
@@ -254,10 +304,10 @@ export default class Suggestion extends Component {
                 <tr>
                   <th >Caderno</th>
                   <th>Keyword</th>
-                  <th onClick={() => this.orderArrayBy('Search Volume')}>Volume de Busca <img style={this.state.orderArray.volume ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
-                  <th onClick={() => this.orderArrayBy('Status')}>Status <img style={this.state.orderArray.status ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
+                  <th onClick={() => this.orderArrayBy('Search Volume')}>Volume de Busca <img style={this.state.orderArray.volume ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
+                  <th onClick={() => this.orderArrayBy('Status')}>Status <img style={this.state.orderArray.status ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
                   <th >Título Sugerido</th>
-                  <th onClick={() => this.orderArrayBy('titleLength')}>Qtd. Título <img style={this.state.orderArray.qtdTitle ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
+                  <th onClick={() => this.orderArrayBy('titleLength')}>Qtd. Título <img style={this.state.orderArray.qtdTitle ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
                   <th>URL Concorrente</th>
                   <th>Editar</th>
                 </tr>
