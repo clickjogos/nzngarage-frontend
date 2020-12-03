@@ -10,6 +10,7 @@ const planning = require('../../assets/icons/icon-planejamento.svg')
 const acompanhamento = require('../../assets/icons/icon-acompanhamento.svg')
 const concorrente = require('../../assets/icons/icon-competitor.svg')
 const sugestao = require('../../assets/icons/icon-sugestion.svg')
+const audiencia = require ('../../assets/icons/icon-analytics.svg')
 
 export default class Sidebar extends Component {
 	constructor(props) {
@@ -58,6 +59,10 @@ export default class Sidebar extends Component {
 							<img id="imgIcon" src={sugestao} height="16px" width="14px" />
 							<p id="txtButtonGuide">Sugestão de produção</p>
 						</button>
+						<button className="buttonSidebar" onClick={() => this.redirectPage('/audience')}>
+							<img id="imgIcon" src={audiencia} height="16px" width="14px" />
+							<p id="txtButtonGuide">Verificar audiência</p>
+							</button>
 					</div>
 				</div>
 
