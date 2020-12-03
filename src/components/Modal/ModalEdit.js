@@ -18,13 +18,13 @@ export default class ModalEdit extends Component {
   }
 
 
-  componentDidMount(){
+  componentDidMount() {
     let objKeyword = this.props.data
-    if(objKeyword.internalBacklinks.length === 0){
+    if (objKeyword.internalBacklinks.length === 0) {
       objKeyword.internalBacklinks.push('')
     }
     this.biddingTags()
-    this.setState({objKeyword})
+    this.setState({ objKeyword })
   }
 
   handleInput = (e) => {
@@ -34,14 +34,25 @@ export default class ModalEdit extends Component {
 
     objKeyword[name] = value;
 
-    if(name === 'cmsLink'){
+    if (name === 'cmsLink') {
       var re = /(post=[0-9]+)/;
       var found = objKeyword.cmsLink.match(re);
       let articleId = found[0].split(/=/)
       objKeyword['articleId'] = Number(articleId[1])
     }
     objKeyword['titleLength'] = objKeyword.title.length
-    
+    objKeyword.competitorInfo.titleLength = objKeyword.competitorInfo.title.length
+
+    this.setState({ objKeyword })
+  }
+
+  handleCheck = (e) => {
+    const value = e.target.checked
+    const name = e.target.name
+
+    let objKeyword = this.state.objKeyword;
+    objKeyword[name] = value
+
     this.setState({ objKeyword })
   }
 
@@ -49,7 +60,7 @@ export default class ModalEdit extends Component {
     let objKeyword = this.state.objKeyword;
 
     objKeyword.internalBacklinks.push("")
-    this.setState({objKeyword})
+    this.setState({ objKeyword })
   }
 
   changeLinkInt = (index, value) => {
@@ -57,42 +68,41 @@ export default class ModalEdit extends Component {
 
     objKeyword.internalBacklinks[index] = value;
 
-    this.setState({objKeyword})
+    this.setState({ objKeyword })
   }
 
   deleteLinkInt = (index) => {
     let objKeyword = this.state.objKeyword;
 
-    objKeyword.internalBacklinks.splice(index, 1 );
+    objKeyword.internalBacklinks.splice(index, 1);
 
-    this.setState({objKeyword})
+    this.setState({ objKeyword })
   }
 
   sendKeywordEdit = () => {
     let objKeyword = this.state.objKeyword;
 
     objKeyword.internalBacklinks.forEach((element, index) => {
-      if(element.trim() === ""){
-        objKeyword.internalBacklinks.splice(index, 1 );
-      } 
+      if (element.trim() === "") {
+        objKeyword.internalBacklinks.splice(index, 1);
+      }
     });
 
-    console.log(objKeyword)
-   // this.props.callback(objKeyword)
+    this.props.callback(objKeyword)
   }
 
   biddingTags = async () => {
     try {
       let result = await getTags(false)
-      this.setState({tags: result.data})
+      this.setState({ tags: result.data })
     } catch (error) {
-      
+
     }
   }
 
   render() {
     return (
-      this.state.objKeyword && 
+      this.state.objKeyword &&
       <div className="modal-main">
         <div className="modal-content-edit">
           <div className="header-top">
@@ -102,48 +112,63 @@ export default class ModalEdit extends Component {
         </span>
           </div>
           <div className="center-modal-edit">
-            <div className="input-edit">
-              <label>Caderno</label>
-              <select name={'tag'} onChange={this.handleInput}>
-                <option value="-" selected>-</option>
-                {this.state.tags.map(e => 
-                  <option value={e}>{e}</option>
-                  )}
-              </select>
-            </div>
             <div className="input-edit-elements">
               <div className="group">
+                <label>Caderno</label>
+                <select value={this.state.objKeyword['tag']} name={'tag'} onChange={this.handleInput}>
+                  <option value="-" selected>-</option>
+                  {this.state.tags.map(e =>
+                    <option value={e}>{e}</option>
+                  )}
+                </select>
+              </div>
+              <div className="group">
                 <label>Status</label>
-                <select name={'status'} onChange={this.handleInput}>
+                <select value={this.state.objKeyword['status']} name={'status'} onChange={this.handleInput}>
                   <option value={""} selected> - </option>
                   <option value="Em produção">Em produção</option>
                   <option value="Agendado">Agendado</option>
                   <option value="Publicado">Publicado</option>
                 </select>
               </div>
-              <div className="group">
-                <label>Data de Publicação</label>
-                <input onChange={this.handleInput} value={this.state.objKeyword['datePublish']} name={'datePublish'} type="date" />
-              </div>
+
+              {this.state.objKeyword['status'] === 'Agendado' || this.state.objKeyword['status'] === 'Publicado' ?
+                <div className="group">
+                  <label>Data de Publicação</label>
+                  <input onChange={this.handleInput} value={this.state.objKeyword['datePublish']} name={'datePublish'} type="date" />
+                </div>
+                : null
+              }
+
+            </div>
+            <div className="input-edit-elements">
+             
               <div className="group">
                 <label>Esti. de tráfego</label>
-                <input disabled value={this.state.objKeyword.ctr} type="text" />
+                <input disabled value={`${this.state.objKeyword.ctr}%`} type="text" />
+              </div>
+              <div className="group">
+                <label>Vol. de Busca</label>
+                <input disabled value={this.state.objKeyword['Search Volume']} type="text" />
               </div>
               <div className="group">
                 <label>Posição</label>
                 <input disabled value={this.state.objKeyword.competitorPosition} disabled type="number" />
               </div>
             </div>
-            <div className="input-duo">
-              <div className="input-duo-camp">
-                <label>Linkagem CMS</label>
-                <input onChange={this.handleInput} value={this.state.objKeyword['cmsLink']} name={'cmsLink'} type="text" />
+            {this.state.objKeyword['status'] === 'Agendado' || this.state.objKeyword['status'] === 'Publicado' ?
+              <div className="input-duo">
+                <div className="input-duo-camp">
+                  <label>Linkagem CMS</label>
+                  <input onChange={this.handleInput} value={this.state.objKeyword['cmsLink']} name={'cmsLink'} type="text" />
+                </div>
+                <div className="input-unique-camp">
+                  <label>Código da Matéria</label>
+                  <input value={this.state.objKeyword['articleId']} name={'articleId'} disabled type="text" />
+                </div>
               </div>
-              <div className="input-unique-camp">
-                <label>Código da Matéria</label>
-                <input value={this.state.objKeyword['articleId']} name={'articleId'} disabled type="text" />
-              </div>
-            </div>
+              : null
+            }
             <div className="input-unique-count">
               <span>
                 <label>Título Sugerido</label>
@@ -164,12 +189,16 @@ export default class ModalEdit extends Component {
             <div className="input-unique-count">
               <span>
                 <label>Título do concorrente</label>
-                <p>{this.state.objKeyword.competitorInfo.titleLength} caracteres</p>
+                <p>{this.state.objKeyword.competitorInfo.title.length} caracteres</p>
               </span>
               <input disabled value={this.state.objKeyword.competitorInfo.title} type="text" />
             </div>
           </div>
           <div className="bottom-modal-edit">
+            <span>
+              <label>Revisado:</label>
+              <input onChange={this.handleCheck} type="checkbox" checked={this.state.objKeyword['revisidedArticle']} name="revisidedArticle" />
+            </span>
             <Button callback={() => this.sendKeywordEdit()} title='Concluir Edição' />
           </div>
         </div>

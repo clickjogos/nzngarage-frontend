@@ -21,14 +21,13 @@ export function searchWeeklySchedule(keywordFilter, titleFilter, tagFilter, star
     if (tagFilter) URL += `&tag=${tagFilter}`
     if (startDate) URL += `&startDate=${startDate}`
     if (endDate) URL += `&endDate=${endDate}`
+
     return axiosProvider.get(URL)
 }
 
-// export function searchWeeklySchedule(params) {
-//     return axiosProvider.get('/keyWords/weeklyschedule', {
-//         params
-//     })
-// }
+export function weeklyscheduleEdit(body) {
+    return axiosProvider.put('/keyWords/weeklyschedule', body)
+}
 
 export function getTags(filter) {
     let url = '/tags'

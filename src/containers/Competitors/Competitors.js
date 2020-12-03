@@ -18,7 +18,7 @@ const ButtonChevronLeft = require('../../assets/icons/icon-button-left-arrow.svg
 const ButtonChevronRight = require('../../assets/icons/icon-button-right-arrow.svg')
 const Chevron = require('../../assets/icons/chevron-right.svg')
 const Tooltip = require('../../assets/icons/icon-tooltip.svg')
-const Trash = require('../../assets/icons/icon-config.svg')
+const Trash = require('../../assets/icons/icon-trash-can.svg')
 
 export default class Competitors extends Component {
   constructor(props) {

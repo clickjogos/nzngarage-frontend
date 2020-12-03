@@ -52,6 +52,7 @@ export default class Suggestion extends Component {
         key: 'selection',
       },
       showDateRange: false,
+      schedule: []
     }
   }
 
@@ -61,6 +62,7 @@ export default class Suggestion extends Component {
   }
 
   async getSuggestions() {
+    console.log(this.state.tagFilter)
     try {
       const result = await ServiceSuggestion.searchWeeklySchedule(
         this.state.keywordFilter, 
@@ -73,9 +75,10 @@ export default class Suggestion extends Component {
       let scheduledKeywords = []
       let scheduledWithFilter = []
       let filter = false
-
+       
       schedule.forEach(element => {
         element.scheduledKeywords.forEach(e => {
+          e.ref = element._id
           if (e['filter']) {
             scheduledWithFilter.push(e)
             filter = true
@@ -85,6 +88,8 @@ export default class Suggestion extends Component {
       });
       if (filter) this.setState({ scheduledKeywords: scheduledWithFilter })
       else this.setState({ scheduledKeywords })
+
+      this.setState({schedule})
       this.biddingTags()
     } catch (error) {
       console.log(error)
@@ -104,6 +109,7 @@ export default class Suggestion extends Component {
 
   sendEditKeyword = async (objKeyword) => {
     let scheduledKeywords = this.state.scheduledKeywords
+    let schedule = this.state.schedule
 
     let selectedKeywords = scheduledKeywords.map(e => {
       if (e._id === objKeyword._id) {
@@ -117,10 +123,26 @@ export default class Suggestion extends Component {
       selectedKeywords
     }
 
+    schedule.forEach(element => {
+      scheduledKeywords.forEach((e, i) => {
+        if(element._id === e.ref) {
+          if(e._id === element.scheduledKeywords[i]){
+            element.scheduledKeywords[i] = e
+          }
+        }
+      });
+    });
+
+    schedule.forEach(element => {
+      element.scheduledKeywords.forEach(e=>{
+        delete e['ref']
+      })
+    })
+
     this.setState({ showModalEdit: false })
 
     try {
-      let result = await ServiceSuggestion.weeklyschedule(obj)
+      let result = await ServiceSuggestion.weeklyscheduleEdit({schedule})
       console.log(result)
       this.getSuggestions()
     } catch (error) {
@@ -234,11 +256,6 @@ export default class Suggestion extends Component {
     }
   }
   handleSelect = (ranges) => {
-    console.log(ranges)
-
-    // let selectionRange = ranges
-    // this.setState({selectionRange})
-
     let selectionRange = {
       startDate: ranges.selection.startDate,
       endDate: ranges.selection.endDate,
@@ -280,12 +297,12 @@ export default class Suggestion extends Component {
               </span>
               <div className="suggestion-filters">
                 <select onChange={this.handleTag}>
-                  <option value="" selected>Caderno</option>
+                  <option value="" selected disabled>Caderno</option>
                   {this.state.tags.map(e => (
                     <option value={e}>{e}</option>
                   ))}
                 </select>
-                <Button callback={() => this.sendRangeDate()} title={this.state.showDateRange ? 'Enviar' : 'Selecionar Data'} style={{ width: '150px' }} />
+                <Button callback={() => this.sendRangeDate()} title={this.state.showDateRange ? 'Enviar' : 'Filtro por Data'} style={{ width: '150px' }} />
                 {this.state.showDateRange && <DateRange handleSelect={this.handleSelect} selectionRange={this.state.selectionRange} />}
               </div>
             </div>
