@@ -29,7 +29,7 @@ function App() {
         <PrivateRoute restricted={true} component={TrackingPlanning} path="/tracking" exact />
         <PrivateRoute restricted={true} component={Competitors} path="/competitors" exact />
         <PrivateRoute restricted={true} component={Suggestion} path="/suggestion" exact />
-        <PrivateRoute restricted={true} component={Audience} path="/competitors" exact/> 
+        <PrivateRoute restricted={true} component={Audience} path="/audience" exact/> 
       </Switch>
     </Router>
 
