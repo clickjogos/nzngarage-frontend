@@ -62,14 +62,14 @@ export default class Suggestion extends Component {
   }
 
   async getSuggestions() {
-    console.log(this.state.tagFilter)
     try {
       const result = await ServiceSuggestion.searchWeeklySchedule(
         this.state.keywordFilter, 
         this.state.titleFilter, 
         this.state.tagFilter, 
         this.state.startDate,
-        this.state.endDate)
+        this.state.endDate,
+        this.state.page)
 
       let schedule = result.data.schedule
       let scheduledKeywords = []
@@ -160,40 +160,6 @@ export default class Suggestion extends Component {
     }
   }
 
-  orderArrayBy(key) {
-    // let keyWordsList = this.state.keyWordsList
-    // let orderArray = this.state.orderArray
-    // let page = this.state.page
-    // let status = true
-
-    // if(key === 'Search Volume'){
-    //   orderArray.volume = !orderArray.volume
-    //   status = !orderArray.volume
-    //   page.orderBy = 'Search Volume'
-    // }
-    // if(key === 'competitorPosition'){
-    //   orderArray.pos = !orderArray.pos
-    //   status = !orderArray.pos
-    //   page.orderBy = 'competitorPosition'
-    // }
-    // if(key === 'nznPosition'){
-    //   orderArray.posNzn = !orderArray.posNzn
-    //   status = !orderArray.posNzn
-    //   page.orderBy = 'nznPosition'
-    // }
-
-    // if(status) {
-    //   page.orderType = 'asc'
-    // } else {
-    //   page.orderType = 'desc'
-    // }
-
-    // this.setState({ orderArray, page }, r=> {
-    //   this.allKeywordsList()
-    // })
-  }
-
-
   actionPage = (status) => {
     // let page = this.state.page
     // if(!status && page.currentPage !== 1) page.currentPage -= 1
@@ -283,6 +249,38 @@ export default class Suggestion extends Component {
       this.getSuggestions()
     })
   }
+  orderArrayBy(key) {
+    // let keyWordsList = this.state.keyWordsList
+    let orderArray = this.state.orderArray
+    let page = this.state.page
+    let status = true
+
+    if(key === 'Search Volume'){
+      orderArray.volume = !orderArray.volume
+      status = !orderArray.volume
+      page.orderBy = 'Search Volume'
+    }
+    if(key === 'status'){
+      orderArray.status = !orderArray.status
+      status = !orderArray.status
+      page.orderBy = 'status'
+    }
+    if(key === 'titleLength'){
+      orderArray.qtdTitle = !orderArray.qtdTitle
+      status = !orderArray.qtdTitle
+      page.orderBy = 'titleLength'
+    }
+
+    if(status) {
+      page.orderType = 'asc'
+    } else {
+      page.orderType = 'desc'
+    }
+
+    this.setState({ orderArray, page }, r=> {
+      this.getSuggestions()
+    })
+  }
 
   render() {
     return (
@@ -322,7 +320,7 @@ export default class Suggestion extends Component {
                   <th >Caderno</th>
                   <th>Keyword</th>
                   <th onClick={() => this.orderArrayBy('Search Volume')}>Volume de Busca <img style={this.state.orderArray.volume ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
-                  <th onClick={() => this.orderArrayBy('Status')}>Status <img style={this.state.orderArray.status ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
+                  <th onClick={() => this.orderArrayBy('status')}>Status <img style={this.state.orderArray.status ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
                   <th >Título Sugerido</th>
                   <th onClick={() => this.orderArrayBy('titleLength')}>Qtd. Título <img style={this.state.orderArray.qtdTitle ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
                   <th>URL Concorrente</th>

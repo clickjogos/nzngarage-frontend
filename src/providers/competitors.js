@@ -14,7 +14,7 @@ export function weeklyschedule(body) {
     return axiosProvider.post('/keyWords/weeklyschedule', body)
 }
 
-export function searchWeeklySchedule(keywordFilter, titleFilter, tagFilter, startDate, endDate) {
+export function searchWeeklySchedule(keywordFilter, titleFilter, tagFilter, startDate, endDate, params) {
     var URL = `/keyWords/weeklyschedule?`
     if (keywordFilter) URL += `keywordFilter=${keywordFilter}`
     if (titleFilter) URL += `&titleFilter=${titleFilter}`
@@ -22,7 +22,7 @@ export function searchWeeklySchedule(keywordFilter, titleFilter, tagFilter, star
     if (startDate) URL += `&startDate=${startDate}`
     if (endDate) URL += `&endDate=${endDate}`
 
-    return axiosProvider.get(URL)
+    return axiosProvider.get(URL, {params})
 }
 
 export function weeklyscheduleEdit(body) {
