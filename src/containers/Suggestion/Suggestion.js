@@ -136,6 +136,7 @@ export default class Suggestion extends Component {
     schedule.forEach(element => {
       element.scheduledKeywords.forEach(e=>{
         delete e['ref']
+        delete e['filter']
       })
     })
 
@@ -295,7 +296,7 @@ export default class Suggestion extends Component {
               </span>
               <div className="suggestion-filters">
                 <select onChange={this.handleTag}>
-                  <option value="" selected disabled>Caderno</option>
+                  <option value="" selected>Caderno</option>
                   {this.state.tags.map(e => (
                     <option value={e}>{e}</option>
                   ))}
