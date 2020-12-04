@@ -135,7 +135,7 @@ export default class ModalEdit extends Component {
               {this.state.objKeyword['status'] === 'Agendado' || this.state.objKeyword['status'] === 'Publicado' ?
                 <div className="group">
                   <label>Data de Publicação</label>
-                  <input onChange={this.handleInput} value={this.state.objKeyword['datePublish']} name={'datePublish'} type="date" />
+                  <input onChange={this.handleInput} value={this.state.objKeyword['publishDate']} name={'publishDate'} type="date" />
                 </div>
                 : null
               }
