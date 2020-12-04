@@ -73,6 +73,11 @@ export default class Competitors extends Component {
             c.show = false
             element.competitorPosition = c.competitorPosition
           })
+
+          element.competitors.sort(function(a, b) {
+            return a.competitorPosition - b.competitorPosition
+          });
+
         });
         this.setState({ keyWordsList, page })
       }
