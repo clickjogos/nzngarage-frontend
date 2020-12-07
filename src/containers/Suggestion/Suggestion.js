@@ -368,7 +368,7 @@ export default class Suggestion extends Component {
 									</th>
 									<th>Título Sugerido</th>
 									<th onClick={() => this.orderArrayBy('titleLength')}>
-										Qtd. Título <img style={this.state.orderArray.qtdTitle ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+										Caracteres Título <img style={this.state.orderArray.qtdTitle ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
 									</th>
 									<th>URL Concorrente</th>
 									<th>Editar</th>

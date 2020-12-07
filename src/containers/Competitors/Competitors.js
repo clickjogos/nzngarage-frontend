@@ -40,6 +40,7 @@ export default class Competitors extends Component {
       loading: false,
       keyWordsList: [],
       keyWordsSelected: [],
+      preSelectedKeywords: [],
       buttonKeywordDisabled: true,
       buttonSuggestionDisabled: false,
       review: false,
@@ -72,13 +73,21 @@ export default class Competitors extends Component {
             c.checked = false
             c.show = false
             element.competitorPosition = c.competitorPosition
+
+            this.state.keyWordsSelected.forEach( kwSelected =>{
+              if(kwSelected.Keyword == element.Keyword && kwSelected.competitor==c.competitor){
+                c.checked = true
+              }
+            })
           })
+
+         
 
           element.competitors.sort(function(a, b) {
             return a.competitorPosition - b.competitorPosition
-          });
+          })
 
-        });
+        })
         this.setState({ keyWordsList, page })
       }
       else this.setState({ keyWordsList: null })
@@ -127,15 +136,24 @@ export default class Competitors extends Component {
 
     let keyWordsList = this.state.keyWordsList;
     let buttonKeywordDisabled = true;
+    
+    let preSelectedKeywords = this.state.preSelectedKeywords
 
     keyWordsList.forEach(element => {
       element.competitors.forEach(c => {
         if (c._id === _id) c.checked = !c.checked
-        if (c.checked) buttonKeywordDisabled = false
-      });
+        if (c.checked) {
+          buttonKeywordDisabled = false
+          if(preSelectedKeywords.length > 0) {
+            let found = preSelectedKeywords.find( item=> item.Keyword == element.Keyword && item.competitors.includes(c.competitor))
+            if(!found) preSelectedKeywords.push(element)
+          } else {
+            preSelectedKeywords.push(element)
+          }
+        }
+      })
     })
-
-    this.setState({ keyWordsList, buttonKeywordDisabled })
+    this.setState({ preSelectedKeywords, buttonKeywordDisabled })
   }
 
   keyWordCheckSelect = (checked, _id) => {
@@ -143,17 +161,34 @@ export default class Competitors extends Component {
     let keyWordsSelected = this.state.keyWordsSelected;
     let buttonSuggestionDisabled = true;
 
+    let preSelectedKeywords = this.state.preSelectedKeywords
+
     keyWordsSelected.forEach(element => {
       if (element._id === _id) element.checked = !element.checked
-      if (element.checked) buttonSuggestionDisabled = false
+      if (element.checked) {
+        buttonSuggestionDisabled = false
+      } else {
+        if(preSelectedKeywords.length > 0) {
+          let indexToRemove
+          preSelectedKeywords.map( (item, index)=> {
+            if(item.Keyword == element.Keyword && item.competitors.includes(element.competitor)){
+              indexToRemove = index
+            }
+          })
+          if(indexToRemove !== -1) preSelectedKeywords.splice(indexToRemove, 1)
+        } else {
+          preSelectedKeywords.splice(0, 1)
+        }
+      }
+
     })
 
-    this.setState({ keyWordsSelected, buttonSuggestionDisabled })
+    this.setState({ keyWordsSelected, preSelectedKeywords, buttonSuggestionDisabled })
   }
 
 
   sendToReview = () => {
-    let keyWordsList = this.state.keyWordsList;
+    let keyWordsList = this.state.preSelectedKeywords;
     let keyWordsSelected = []
     keyWordsList.forEach(element => {
       element.competitors.forEach(c => {
@@ -269,6 +304,15 @@ export default class Competitors extends Component {
     })
   }
 
+  backPage(){
+    let buttonKeywordDisabled = this.state.buttonKeywordDisabled
+    if(this.state.keyWordsSelected.length == 0 || this.state.preSelectedKeywords.length == 0) {
+      buttonKeywordDisabled = true
+    }
+    this.setState({ review: false, buttonKeywordDisabled })
+
+  }
+
   pagination = () => {
     return (
       <div className="container-pagination">
@@ -368,7 +412,7 @@ export default class Competitors extends Component {
     <div className="container-flex">
       <div className="container-competitors">
         <div className="container-back">
-          <button onClick={() => this.setState({ review: false })}>
+          <button onClick={() => this.backPage()}>
             <img src={Backbutton} icon={<img src={Backbutton} />} />
           </button>
           <p id="back-text"> Voltar para a seleção de Keywords</p>
