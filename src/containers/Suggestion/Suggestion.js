@@ -323,7 +323,7 @@ export default class Suggestion extends Component {
                   <th onClick={() => this.orderArrayBy('Search Volume')}>Volume de Busca <img style={this.state.orderArray.volume ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
                   <th onClick={() => this.orderArrayBy('status')}>Status <img style={this.state.orderArray.status ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
                   <th >Título Sugerido</th>
-                  <th onClick={() => this.orderArrayBy('titleLength')}>Qtd. Título <img style={this.state.orderArray.qtdTitle ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
+                  <th onClick={() => this.orderArrayBy('titleLength')}>Caracteres Título <img style={this.state.orderArray.qtdTitle ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} /></th>
                   <th>URL Concorrente</th>
                   <th>Editar</th>
                 </tr>
