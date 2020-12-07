@@ -11,33 +11,53 @@ export function formatTrackingDayFilter(str) {
 }
 
 export function defineMonth(value) {
-	switch (value) {
-		case '01':
-			return 'janeiro'
-		case '02':
-			return 'fevereiro'
-		case '03':
-			return 'março'
-		case '04':
-			return 'abril'
-		case '05':
-			return 'maio'
-		case '06':
-			return 'junho'
-		case '07':
-			return 'julho'
-		case '08':
-			return 'agosto'
-		case '09':
-			return 'setembro'
-		case '10':
-			return 'outubro'
-		case '11':
-			return 'novembro'
-		case '12':
-			return 'dezembro'
-	}
-}
+    switch (value.toString()) {
+      case '01':
+        return 'janeiro'
+      case '1':
+          return 'janeiro'
+      case '02':
+        return 'fevereiro'
+      case '2':
+        return 'fevereiro'
+      case '03':
+        return 'março'
+      case '3':
+          return 'março'
+      case '04':
+        return 'abril'
+      case '4':
+          return 'abril'
+      case '05':
+        return 'maio'
+      case '5':
+          return 'maio'
+      case '06':
+        return 'junho'
+      case '6':
+        return 'junho'
+      case '07':
+        return 'julho'
+      case '7':
+          return 'julho'
+      case '08':
+        return 'agosto'
+      case '8':
+        return 'agosto'
+      case '09':
+        return 'setembro'
+      case '9':
+        return 'setembro'
+      case '10':
+        return 'outubro'
+      case '11':
+        return 'novembro'
+      case '12':
+        return 'dezembro'
+    }
+  }
+
+
 
 export function formatWeekDayLabel(str, category) {
 	if (category === 'dayPeriod') {

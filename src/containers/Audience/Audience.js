@@ -100,8 +100,13 @@ export default class Audience extends Component {
       let resultChart = result.data.chartInfo
       let chartData = []
 
-      resultChart.forEach(element => {
-        let month = format.capitalizeFirstLetter(format.defineMonth(String(element.month)))
+      resultChart.forEach( element => {
+        
+        // console.log(element)
+        let monthString =  this.defineMonth(element.month.toString())
+        // console.log('monthString', monthString)
+        let month = this.capitalizeFirstLetter(monthString)
+        // console.log('month', month)
         chartData.push({
           group: month,
           value: element.totalMonthAudience
@@ -115,7 +120,58 @@ export default class Audience extends Component {
     }
   }
 
+  defineMonth(value) {
+    switch (value.toString()) {
+      case '01':
+        return 'janeiro'
+      case '1':
+          return 'janeiro'
+      case '02':
+        return 'fevereiro'
+      case '2':
+        return 'fevereiro'
+      case '03':
+        return 'março'
+      case '3':
+          return 'março'
+      case '04':
+        return 'abril'
+      case '4':
+          return 'abril'
+      case '05':
+        return 'maio'
+      case '5':
+          return 'maio'
+      case '06':
+        return 'junho'
+      case '6':
+        return 'junho'
+      case '07':
+        return 'julho'
+      case '7':
+          return 'julho'
+      case '08':
+        return 'agosto'
+      case '8':
+        return 'agosto'
+      case '09':
+        return 'setembro'
+      case '9':
+        return 'setembro'
+      case '10':
+        return 'outubro'
+      case '11':
+        return 'novembro'
+      case '12':
+        return 'dezembro'
+    }
+  }
 
+
+  capitalizeFirstLetter(string) {
+    console.log("capitalizeFirstLetter", string)
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   biddingTags = async () => {
     try {
       let result = await ServiceSuggestion.getTags(true)
@@ -256,7 +312,7 @@ export default class Audience extends Component {
                         <td>{e.Keyword}</td>
                         <td>{e.tag}</td>
                         <td>{e.publishDate}</td>
-                        <td>-</td>
+                        <td>{e.totalAudience}</td>
                         <td><p data-tip={e.title}>{(e.title).substring(0, 29)}{(e.title).length > 29 && '...'} </p> </td>
                         <a target="_blank" href={e.cmsLink}>{e.cmsLink} ↗</a>
                         <td>{e.meanAudience}</td>
