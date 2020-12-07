@@ -101,11 +101,11 @@ export default class Suggestion extends Component {
 
 
 			if (filter) {
-				scheduledWithFilter = this.applyOrderingToScheduledKeywords(scheduledWithFilter,this.state.orderArray)
+				scheduledWithFilter = this.applyOrderingToScheduledKeywords(scheduledWithFilter, this.state.orderArray)
 				this.setState({ scheduledKeywords: scheduledWithFilter })
 			}
 			else {
-				scheduledKeywords = this.applyOrderingToScheduledKeywords(scheduledKeywords,this.state.orderArray)
+				scheduledKeywords = this.applyOrderingToScheduledKeywords(scheduledKeywords, this.state.orderArray)
 				this.setState({ scheduledKeywords })
 			}
 
@@ -131,32 +131,37 @@ export default class Suggestion extends Component {
 		let fieldArray = []
 		let orderArray = []
 
-		fieldArray.push('Search Volume')
-		if (orderingObject.volume) {
-			orderArray.push('asc')
+		if (orderingObject.volume != null) {
+			fieldArray.push('Search Volume')
+			if (orderingObject.volume) {
+				orderArray.push('asc')
+			}
+			else {
+				orderArray.push('desc')
+			}
 		}
-		else {
-			orderArray.push('desc')
-		}
-
-		fieldArray.push('status')
-		if (orderingObject.status) {
-			orderArray.push('asc')
-		}
-		else {
-			orderArray.push('desc')
-		}
-
-		fieldArray.push('titleLength')
-		if (orderingObject.qtdTitle) {
-			orderArray.push('asc')
-		}
-		else {
-			orderArray.push('desc')
+		if (orderingObject.status != null) {
+			fieldArray.push('status')
+			if (orderingObject.status) {
+				orderArray.push('asc')
+			}
+			else {
+				orderArray.push('desc')
+			}
 		}
 
+		if (orderingObject.qtdTitle != null) {
+			fieldArray.push('titleLength')
+			if (orderingObject.qtdTitle) {
+				orderArray.push('asc')
+			}
+			else {
+				orderArray.push('desc')
+			}
+		}
 
-		return _.orderBy(keywordsArray,fieldArray,orderArray)
+
+		return _.orderBy(keywordsArray, fieldArray, orderArray)
 	}
 
 	sendEditKeyword = async (objKeyword) => {
@@ -331,17 +336,38 @@ export default class Suggestion extends Component {
 		let status = true
 
 		if (key === 'Search Volume') {
-			orderArray.volume = !orderArray.volume
+			// orderArray.volume = !orderArray.volume
+			if (orderArray.volume == true) orderArray.volume = !orderArray.volume;
+			else {
+				if (orderArray.volume == false) orderArray.volume = null;
+				else {
+					orderArray.volume = true;
+				}
+			}
 			status = !orderArray.volume
 			page.orderBy = 'Search Volume'
 		}
 		if (key === 'status') {
-			orderArray.status = !orderArray.status
+			// orderArray.status = !orderArray.status
+			if (orderArray.status == true) orderArray.status = !orderArray.status;
+			else {
+				if (orderArray.status == false) orderArray.status = null;
+				else {
+					orderArray.status = true;
+				}
+			}
 			status = !orderArray.status
 			page.orderBy = 'status'
 		}
 		if (key === 'titleLength') {
-			orderArray.qtdTitle = !orderArray.qtdTitle
+			// orderArray.qtdTitle = !orderArray.qtdTitle
+			if (orderArray.qtdTitle == true) orderArray.qtdTitle = !orderArray.qtdTitle;
+			else {
+				if (orderArray.qtdTitle == false) orderArray.qtdTitle = null;
+				else {
+					orderArray.qtdTitle = true;
+				}
+			}
 			status = !orderArray.qtdTitle
 			page.orderBy = 'titleLength'
 		}
@@ -401,14 +427,29 @@ export default class Suggestion extends Component {
 									<th>Caderno</th>
 									<th>Keyword</th>
 									<th onClick={() => this.orderArrayBy('Search Volume')}>
-										Volume de Busca <img style={this.state.orderArray.volume ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+										Volume de Busca
+										<div style={this.state.orderArray.volume != null ? null : { display: 'none' }}>
+											<img style={this.state.orderArray.volume ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+										</div>
+										<p style={this.state.orderArray.volume == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
 									</th>
 									<th onClick={() => this.orderArrayBy('status')}>
-										Status <img style={this.state.orderArray.status ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+										Status
+										<div style={this.state.orderArray.status != null ? null : { display: 'none' }}>
+											<img style={this.state.orderArray.status ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+										</div>
+										<p style={this.state.orderArray.status == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+
 									</th>
 									<th>Título Sugerido</th>
 									<th onClick={() => this.orderArrayBy('titleLength')}>
-										Caracteres Título <img style={this.state.orderArray.qtdTitle ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+										Caracteres Título
+										<div style={this.state.orderArray.qtdTitle != null ? null : { display: 'none' }}>
+
+											<img style={this.state.orderArray.qtdTitle ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+										</div>
+										<p style={this.state.orderArray.qtdTitle == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+
 									</th>
 									<th>URL Concorrente</th>
 									<th>Editar</th>

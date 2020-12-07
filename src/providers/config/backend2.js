@@ -4,7 +4,7 @@ const PROD = 'https://nzn-garage-cluster-316ee121d9b40536dfeb045d2e84c949-0000.s
 const LOCAL = 'http://localhost:6005/backend2'
 
 const axiosProvider = axios.create({
-  baseURL: LOCAL
+  baseURL: PROD
 });
 
 export default axiosProvider;
