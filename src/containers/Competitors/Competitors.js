@@ -329,7 +329,7 @@ export default class Competitors extends Component {
                   <td>{e.nznPosition}</td>
                   <td><p data-tip={e.competitors[0].competitorInfo.title}>{(e.competitors[0].competitorInfo.title).substring(0, 29)}{(e.competitors[0].competitorInfo.title).length > 29 && '...'} <img src={Tooltip} /> </p> </td>
                   <td><a target="_blank" href={e.competitors[0].competitorInfo.Url}>{e.competitors[0].competitorInfo.Url} ↗</a></td>
-                  <td>{e.competitors.length === 1 && <img onClick={() => this.openModalConfirm(e, e.competitors[0])} src={Trash} /> }</td>
+                  {/* <td>{e.competitors.length === 1 && <img onClick={() => this.openModalConfirm(e, e.competitors[0])} src={Trash} /> }</td> */}
                                   </tr>
                 {e.competitors.map(c => (
                   e.show && 

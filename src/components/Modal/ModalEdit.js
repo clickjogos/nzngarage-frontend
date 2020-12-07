@@ -144,7 +144,7 @@ export default class ModalEdit extends Component {
             <div className="input-edit-elements">
              
               <div className="group">
-                <label>Esti. de tráfego</label>
+                <label>CTR</label>
                 <input disabled value={`${this.state.objKeyword.ctr}%`} type="text" />
               </div>
               <div className="group">
@@ -152,7 +152,7 @@ export default class ModalEdit extends Component {
                 <input disabled value={this.state.objKeyword['Search Volume']} type="text" />
               </div>
               <div className="group">
-                <label>Posição</label>
+                <label>Posição concorrente</label>
                 <input disabled value={this.state.objKeyword.competitorPosition} disabled type="number" />
               </div>
             </div>

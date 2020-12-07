@@ -2,13 +2,21 @@ import React, { Component } from 'react'
 
 import ReactTooltip from 'react-tooltip'
 
+import { SimpleBarChart } from '@carbon/charts-react'
+import DateRange from '../../components/DateRange/DateRage'
+
+import * as ServiceAudience from '../../providers/audience';
 import * as ServiceSuggestion from '../../providers/competitors';
+
+import * as format from '../../utils/format'
 
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Button from '../../components/Button/Button'
-import ModalEdit from '../../components/Modal/ModalEdit'
-import { SimpleBarChart } from "@carbon/charts-react";
+import Loading from '../../components/Loading/Loading'
+
 import './Audience.scss'
+import "@carbon/charts/styles.css";
+// import "@carbon/charts/styles/styles.scss";
 
 const IconEdit = require('../../assets/icons/icon-edit.svg')
 const ButtonChevronLeft = require('../../assets/icons/icon-button-left-arrow.svg')
@@ -22,15 +30,19 @@ export default class Audience extends Component {
     super(props)
 
     this.state = {
-      scheduledKeywords: [],
       tags: [],
-      showModalEdit: false,
-      dataModalEdit: null,
+      loading: false,
+      selectionRange: {
+        startDate: new Date(),
+        endDate: new Date(),
+        key: 'selection',
+      },
+      showDateRange: false,
       keywordFilter: null,
       titleFilter: null,
       orderArray: {
         volume: true,
-        status: false, 
+        status: false,
         qtdTitle: false
       },
       page: {
@@ -39,85 +51,77 @@ export default class Audience extends Component {
         resultsPerPage: 10,
         orderBy: 'Search Volume',
         orderType: 'desc',
-      }
+      },
+      tableData: [],
+      backupData: [],
+      chartData: [],
+      options: {
+        "title": "",
+        "axes": {
+          "left": {
+            "mapsTo": "value"
+          },
+          "bottom": {
+            "mapsTo": "group",
+            "scaleType": "labels"
+          }
+        },
+        bars: {
+          width: 100,
+        },
+        color: {
+          pairing: {
+            numberOfVariants: 1,
+            option: 5
+          }
+        },
+        width: '100%',
+        "height": "260px"
+      },
+      tags: []
     }
   }
-  
+
 
   componentDidMount() {
-    this.getSuggestions()
+    this.getAudience()
+    this.biddingTags()
   }
-  async getSuggestions() {
+
+  async getAudience() {
+    this.setState({loading: true})
     try {
-      const result = await ServiceSuggestion.searchWeeklySchedule(this.state.keywordFilter, this.state.titleFilter)
-      let schedule = result.data.schedule
-      let scheduledKeywords = []
-      let scheduledWithFilter = []
-      let filter = false
-
-      schedule.forEach(element => {
-        element.scheduledKeywords.forEach(e => {
-          if(e['filter']){
-            scheduledWithFilter.push(e)
-            filter = true
-          }
-          scheduledKeywords.push(e)
-        });
-      });
-      if(filter) this.setState({ scheduledKeywords:scheduledWithFilter })
-      else this.setState({ scheduledKeywords })
-      this.biddingTags()
-      this.setState({ scheduledKeywords })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  openModalEdit(dataModalEdit) {
-    console.log(dataModalEdit)
-    this.setState({ dataModalEdit, showModalEdit: true })
-  }
-
-  closeModalEdit() {
-    this.setState({
-      dataModalEdit: null,
-      showModalEdit: false
-    })
-  }
-
-  sendEditKeyword = async (objKeyword) => {
-    let scheduledKeywords = this.state.scheduledKeywords
-
-    let selectedKeywords = scheduledKeywords.map(e => {
-      if (e._id === objKeyword._id) {
-        e = objKeyword
+      let filter = {
+        startDate: this.state.startDate,
+        endDate: this.state.endDate
       }
+      const result = await ServiceAudience.getAudience(filter)
+      let tableData = result.data.tableInfo
+      let resultChart = result.data.chartInfo
+      let chartData = []
 
-      return e;
-    })
+      resultChart.forEach(element => {
+        let month = format.capitalizeFirstLetter(format.defineMonth(String(element.month)))
+        chartData.push({
+          group: month,
+          value: element.totalMonthAudience
+        })
+      });
 
-    const obj = {
-      selectedKeywords
-    }
+      this.setState({ tableData, backupData: tableData, chartData, loading: false })
 
-    this.setState({ showModalEdit: false })
-
-    try {
-      let result = await ServiceSuggestion.weeklyschedule(obj)
-      console.log(result)
-      this.getSuggestions()
     } catch (error) {
-      console.log(error)
+      this.setState({ loading: false, tableData: [], chartData: [] })
     }
-
   }
+
 
   biddingTags = async () => {
     try {
       let result = await ServiceSuggestion.getTags(true)
-      this.setState({tags: result.data})
+      this.setState({ tags: result.data })
     } catch (error) {
-      
+
     }
   }
 
@@ -134,6 +138,16 @@ export default class Audience extends Component {
   actionRows = (rows) => {
   }
 
+  filterByTag = (event) => {
+    let tag = event.target.value
+    let data = this.state.backupData;
+
+    let tableData = data.filter(e => {
+      return e.tag === tag
+    })
+
+    this.setState({tableData})
+  }
 
   pagination = () => {
     return (
@@ -163,68 +177,101 @@ export default class Audience extends Component {
   }
   _handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      this.getSuggestions()
+      // this.getSuggestions()
     }
   }
+
+  handleSelect = (ranges) => {
+    let selectionRange = {
+      startDate: ranges.selection.startDate,
+      endDate: ranges.selection.endDate,
+      key: 'selection'
+    }
+    this.setState({ selectionRange })
+  }
+
+  sendRangeDate = () => {
+    if (this.state.showDateRange) {
+      this.setState({ showDateRange: false })
+      let startDate = format.formatDate(this.state.selectionRange.startDate)
+      let endDate = format.formatDate(this.state.selectionRange.endDate)
+
+      this.setState({ startDate, endDate }, r => {
+          this.getAudience()
+      })
+    } else {
+      this.setState({ showDateRange: true })
+    }
+  }
+
   render() {
     return (
-        <div className="refine-planning-main">
-            <Sidebar></Sidebar>
-            <div className="container-flex">
+      <div className="refine-planning-main">
+        <Sidebar></Sidebar>
+        {!this.state.loading ?
+          <div className="container-flex">
             <div className="container-competitors">
-                <div className="audience-title">
+              <div className="audience-title">
                 <span>
-                    <h3>Verificar audiência</h3>
-                    <h4>Nessa parte se encontram as keywords selecionadas.</h4>
+                  <h3>Verificar audiência</h3>
+                  <h4>Nessa parte se encontram as keywords selecionadas.</h4>
                 </span>
-                <span className="filter-title"> Visualizar: </span>
+                {/* <span className="filter-title"> Visualizar: </span> */}
                 <div className="audience-filters">
-                    <select>
+                  <select onChange={this.filterByTag}>
                     <option value="" selected>Caderno</option>
                     {this.state.tags.map(e => (
-                        <option value={e}>{e}</option>
+                      <option value={e}>{e}</option>
                     ))}
-                    </select>
-                    <Button title="Semana" style={{ width: '99px' }} />
-                    <Button title="Mês" style={{ width: '99px' }} />
+                  </select>
+                  <Button callback={() => this.sendRangeDate()} title={this.state.showDateRange ? 'Enviar' : 'Filtro por Data'} style={{ width: '150px' }} />
+                  {this.state.showDateRange && <DateRange handleSelect={this.handleSelect} selectionRange={this.state.selectionRange} />}
                 </div>
-                </div>
-                <table>
+              </div>
+              <div className="container-chart-audience">
+                <SimpleBarChart
+                  data={this.state.chartData}
+                  options={this.state.options}>
+                </SimpleBarChart>
+              </div>
+              <table>
                 <thead>
-                    <tr>
-                    <th >Caderno</th>
+                  <tr>
+                    <th >Cód. Matéria</th>
                     <th>Keyword</th>
-                    <th onClick={() => this.orderArrayBy('Search Volume')}>Volume de Busca <img style={this.state.orderArray.volume ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
-                    <th onClick={() => this.orderArrayBy('Status')}>Status <img style={this.state.orderArray.status ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
-                    <th >Título Sugerido</th>
-                    <th onClick={() => this.orderArrayBy('titleLength')}>Qtd. Título <img style={this.state.orderArray.qtdTitle ? {transform: 'rotate(180deg)'} : null} className="chevron" src={Chevron}/></th>
-                    <th>URL Concorrente</th>
-                    <th>Editar</th>
-                    </tr>
+                    <th>Caderno</th>
+                    <th>Data de Publi.</th>
+                    <th>Page Views</th>
+                    <th>Título da Matéria</th>
+                    <th>Link CMS</th>
+                    <th>Média Mensal</th>
+                    <th>Últimos 30 dias</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    {this.state.scheduledKeywords.map((e, i) => (
+                  {this.state.tableData.map((e, i) => (
                     <React.Fragment key={i}>
-                        <tr>
-                        <td>{e.tag === '' ? '-' : e.tag}</td>
+                      <tr>
+                        <td>{e.articleId}</td>
                         <td>{e.Keyword}</td>
-                        <td>{e['Search Volume']}</td>
-                        <td>{e.status ? e.status : "-"}</td>
+                        <td>{e.tag}</td>
+                        <td>{e.publishDate}</td>
+                        <td>-</td>
                         <td><p data-tip={e.title}>{(e.title).substring(0, 29)}{(e.title).length > 29 && '...'} </p> </td>
-                        <td>{e.title.length}</td>
-                        <td><a target="_blank" href={e.competitorInfo.Url}>{e.competitorInfo.Url} ↗</a></td>
-                        <td><img onClick={() => this.openModalEdit(e)} className="edit-icon" src={IconEdit} /></td>
-                        </tr>
-                        <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
+                        <a target="_blank" href={e.cmsLink}>{e.cmsLink} ↗</a>
+                        <td>{e.meanAudience}</td>
+                        <td>{e.last30DaysAudience}</td>
+                      </tr>
+                      <ReactTooltip backgroundColor={'white'} textColor={'#414141'} borderColor={'#DBE1E5'} />
                     </React.Fragment>
-                    ))}
+                  ))}
                 </tbody>
-                </table>
+              </table>
             </div>
             {this.pagination()}
-            </div>
-            {this.state.showModalEdit && <ModalEdit callback={this.sendEditKeyword} data={this.state.dataModalEdit} close={() => this.closeModalEdit()} />}
-        </div>
+          </div>
+          : <Loading />}
+      </div>
     )
   }
 }

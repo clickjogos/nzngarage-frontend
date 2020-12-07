@@ -42,8 +42,8 @@ export default class Suggestion extends Component {
 			page: {
 				pageNumber: 1,
 				totalPages: 0,
-				rowsInPage: 2,
-				limit: 2,
+				rowsInPage: 10,
+				limit: 10,
 				offset: 0,
 				orderBy: 'Search Volume',
 				orderType: 'desc',
@@ -208,7 +208,7 @@ export default class Suggestion extends Component {
 
 	actionRows = (rows) => {
 		let page = this.state.page
-		if (rows <= 50 && rows >= 2) { // TODO: trocar o mínimo por 10
+		if (rows <= 50 && rows >= 10) { // TODO: trocar o mínimo por 10
 			page.limit = rows
 			this.setState({ page }, (r) => {
 				this.getSuggestions()
@@ -247,8 +247,8 @@ export default class Suggestion extends Component {
 		let page = this.state.page
 			page.pageNumber = 1
 			page.totalPages = 0
-			page.rowsInPage = 2
-			page.limit = 2
+			page.rowsInPage = 10
+			page.limit = 10
 			page.offset = 0
 		if (e.key === 'Enter') {
 			this.getSuggestions()
@@ -329,9 +329,9 @@ export default class Suggestion extends Component {
 								<h4>Nessa parte se encontram as keywords selecionadas.</h4>
 							</span>
 							<div className="suggestion-filters">
-								{this.state.filterRows ? (
+								{/* {this.state.filterRows ? (
 									<></>
-								) : (
+								) : ( */}
 									<select onChange={this.handleTag}>
 										<option value="" selected>
 											Caderno
@@ -340,7 +340,7 @@ export default class Suggestion extends Component {
 											<option value={e}>{e}</option>
 										))}
 									</select>
-								)}
+								{/* // )} */}
 								<Button callback={() => this.sendRangeDate()} title={this.state.showDateRange ? 'Enviar' : 'Filtro por Data'} style={{ width: '150px' }} />
 								{this.state.showDateRange && <DateRange handleSelect={this.handleSelect} selectionRange={this.state.selectionRange} />}
 							</div>
