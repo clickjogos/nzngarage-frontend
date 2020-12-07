@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import _ from 'lodash'
 import ReactTooltip from 'react-tooltip'
 
 import * as ServiceSuggestion from '../../providers/competitors'
@@ -98,8 +98,16 @@ export default class Suggestion extends Component {
 					scheduledKeywords.push(e)
 				})
 			})
-			if (filter) this.setState({ scheduledKeywords: scheduledWithFilter })
-			else this.setState({ scheduledKeywords })
+
+
+			if (filter) {
+				scheduledWithFilter = this.applyOrderingToScheduledKeywords(scheduledWithFilter,this.state.orderArray)
+				this.setState({ scheduledKeywords: scheduledWithFilter })
+			}
+			else {
+				scheduledKeywords = this.applyOrderingToScheduledKeywords(scheduledKeywords,this.state.orderArray)
+				this.setState({ scheduledKeywords })
+			}
 
 			this.setState({ schedule })
 			this.biddingTags()
@@ -119,55 +127,87 @@ export default class Suggestion extends Component {
 		})
 	}
 
-  sendEditKeyword = async (objKeyword) => {
-    let scheduledKeywords = this.state.scheduledKeywords
-    let schedule = this.state.schedule
+	applyOrderingToScheduledKeywords(keywordsArray, orderingObject) {
+		let fieldArray = []
+		let orderArray = []
 
-    let selectedKeywords = scheduledKeywords.map(e => {
-      if (e._id === objKeyword._id) {
-        e = objKeyword
-      }
+		fieldArray.push('Search Volume')
+		if (orderingObject.volume) {
+			orderArray.push('asc')
+		}
+		else {
+			orderArray.push('desc')
+		}
 
-      return e;
-    })
+		fieldArray.push('status')
+		if (orderingObject.status) {
+			orderArray.push('asc')
+		}
+		else {
+			orderArray.push('desc')
+		}
 
-    const obj = {
-      selectedKeywords
-    }
+		fieldArray.push('titleLength')
+		if (orderingObject.qtdTitle) {
+			orderArray.push('asc')
+		}
+		else {
+			orderArray.push('desc')
+		}
 
-    schedule.forEach(element => {
-      scheduledKeywords.forEach((e, i) => {
-        if(element._id === e.ref) {
-          if(e._id === element.scheduledKeywords[i]){
-            element.scheduledKeywords[i] = e
-          }
-        }
-      });
-    });
 
-    schedule.forEach(element => {
-      element.scheduledKeywords.forEach(e=>{
-        delete e['ref']
-        delete e['filter']
-      })
-    })
+		return _.orderBy(keywordsArray,fieldArray,orderArray)
+	}
 
-    this.setState({ showModalEdit: false })
+	sendEditKeyword = async (objKeyword) => {
+		let scheduledKeywords = this.state.scheduledKeywords
+		let schedule = this.state.schedule
 
-    try {
-      let result = await ServiceSuggestion.weeklyscheduleEdit({schedule})
-      console.log(result)
-      this.getSuggestions()
-    } catch (error) {
-      console.log(error)
-    }
-  }
+		let selectedKeywords = scheduledKeywords.map(e => {
+			if (e._id === objKeyword._id) {
+				e = objKeyword
+			}
+
+			return e;
+		})
+
+		const obj = {
+			selectedKeywords
+		}
+
+		schedule.forEach(element => {
+			scheduledKeywords.forEach((e, i) => {
+				if (element._id === e.ref) {
+					if (e._id === element.scheduledKeywords[i]) {
+						element.scheduledKeywords[i] = e
+					}
+				}
+			});
+		});
+
+		schedule.forEach(element => {
+			element.scheduledKeywords.forEach(e => {
+				delete e['ref']
+				delete e['filter']
+			})
+		})
+
+		this.setState({ showModalEdit: false })
+
+		try {
+			let result = await ServiceSuggestion.weeklyscheduleEdit({ schedule })
+			console.log(result)
+			this.getSuggestions()
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	biddingTags = async () => {
 		try {
 			let result = await ServiceSuggestion.getTags(true, this.state.startDate, this.state.endDate)
 			this.setState({ tags: result.data })
-		} catch (error) {}
+		} catch (error) { }
 	}
 
 	actionPage = (status) => {
@@ -245,11 +285,11 @@ export default class Suggestion extends Component {
 
 	_handleKeyDown = (e) => {
 		let page = this.state.page
-			page.pageNumber = 1
-			page.totalPages = 0
-			page.rowsInPage = 10
-			page.limit = 10
-			page.offset = 0
+		page.pageNumber = 1
+		page.totalPages = 0
+		page.rowsInPage = 10
+		page.limit = 10
+		page.offset = 0
 		if (e.key === 'Enter') {
 			this.getSuggestions()
 		}
@@ -332,14 +372,14 @@ export default class Suggestion extends Component {
 								{/* {this.state.filterRows ? (
 									<></>
 								) : ( */}
-									<select onChange={this.handleTag}>
-										<option value="" selected>
-											Caderno
+								<select onChange={this.handleTag}>
+									<option value="" selected>
+										Caderno
 										</option>
-										{this.state.tags.map((e) => (
-											<option value={e}>{e}</option>
-										))}
-									</select>
+									{this.state.tags.map((e) => (
+										<option value={e}>{e}</option>
+									))}
+								</select>
 								{/* // )} */}
 								<Button callback={() => this.sendRangeDate()} title={this.state.showDateRange ? 'Enviar' : 'Filtro por Data'} style={{ width: '150px' }} />
 								{this.state.showDateRange && <DateRange handleSelect={this.handleSelect} selectionRange={this.state.selectionRange} />}
