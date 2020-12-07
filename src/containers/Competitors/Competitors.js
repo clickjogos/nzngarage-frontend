@@ -154,7 +154,6 @@ export default class Competitors extends Component {
 				if (c.checked) {
 					buttonKeywordDisabled = false
 					if (preSelectedKeywords.length > 0) {
-            // let found = preSelectedKeywords.find((item) => item.Keyword == element.Keyword && item.competitors.includes(c.competitor))
             let pushed 
             preSelectedKeywords.forEach((kwSelected) => {
               if (kwSelected.Keyword == element.Keyword) {
