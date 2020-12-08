@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 
 import ReactTooltip from 'react-tooltip'
 
@@ -41,9 +42,15 @@ export default class Audience extends Component {
       keywordFilter: null,
       titleFilter: null,
       orderArray: {
-        volume: true,
-        status: false,
-        qtdTitle: false
+        codMat: null,
+        keyword: null,
+        caderno: null,
+        datePub: null,
+        pageViews: null,
+        title: null,
+        monthAvg: null,
+        lastMonth: null
+
       },
       page: {
         currentPage: 1,
@@ -88,8 +95,8 @@ export default class Audience extends Component {
     this.biddingTags()
   }
 
-  async getAudience() {
-    this.setState({loading: true})
+  async getAudience(reset) {
+    this.setState({ loading: true })
     try {
       let filter = {
         startDate: this.state.startDate,
@@ -100,10 +107,11 @@ export default class Audience extends Component {
       let resultChart = result.data.chartInfo
       let chartData = []
 
-      resultChart.forEach( element => {
-        
+      resultChart = _.orderBy(resultChart, ['month'], ['asc'])
+      resultChart.forEach(element => {
+
         // console.log(element)
-        let monthString =  this.defineMonth(element.month.toString())
+        let monthString = this.defineMonth(element.month.toString())
         // console.log('monthString', monthString)
         let month = this.capitalizeFirstLetter(monthString)
         // console.log('month', month)
@@ -113,6 +121,8 @@ export default class Audience extends Component {
         })
       });
 
+
+      tableData = this.applyOrderingToTableData(tableData, this.state.orderArray)
       this.setState({ tableData, backupData: tableData, chartData, loading: false })
 
     } catch (error) {
@@ -120,12 +130,45 @@ export default class Audience extends Component {
     }
   }
 
+
+
+  applyOrderingToTableData(tableData, orderingObject) {
+    let fieldArray = []
+    let orderArray = []
+
+    let fieldsToOrder = Object.keys(orderingObject)
+
+    fieldsToOrder.forEach((field) => {
+      let fieldValue = orderingObject[field]
+      if (fieldValue != null) {
+
+        if (field == 'codMat') fieldArray.push('articleId')
+        if (field == 'keyword') fieldArray.push('keyword')
+        if (field == 'caderno') fieldArray.push('tag')
+        if (field == 'datePub') fieldArray.push('publishDate')
+        if (field == 'pageViews') fieldArray.push('totalAudience')
+        if (field == 'title') fieldArray.push('title')
+        if (field == 'monthAvg') fieldArray.push('meanAudience')
+        if (field == 'lastMonth') fieldArray.push('last30DaysAudience')
+
+        if (fieldValue) {
+          orderArray.push('asc')
+        }
+        else {
+          orderArray.push('desc')
+        }
+      }
+    })
+
+    return _.orderBy(tableData, fieldArray, orderArray)
+  }
+
   defineMonth(value) {
     switch (value.toString()) {
       case '01':
         return 'janeiro'
       case '1':
-          return 'janeiro'
+        return 'janeiro'
       case '02':
         return 'fevereiro'
       case '2':
@@ -133,15 +176,15 @@ export default class Audience extends Component {
       case '03':
         return 'março'
       case '3':
-          return 'março'
+        return 'março'
       case '04':
         return 'abril'
       case '4':
-          return 'abril'
+        return 'abril'
       case '05':
         return 'maio'
       case '5':
-          return 'maio'
+        return 'maio'
       case '06':
         return 'junho'
       case '6':
@@ -149,7 +192,7 @@ export default class Audience extends Component {
       case '07':
         return 'julho'
       case '7':
-          return 'julho'
+        return 'julho'
       case '08':
         return 'agosto'
       case '8':
@@ -181,10 +224,6 @@ export default class Audience extends Component {
     }
   }
 
-  orderArrayBy(key) {
-  }
-
-
   actionPage = (status) => {
   }
 
@@ -202,7 +241,7 @@ export default class Audience extends Component {
       return e.tag === tag
     })
 
-    this.setState({tableData})
+    this.setState({ tableData })
   }
 
   pagination = () => {
@@ -253,10 +292,57 @@ export default class Audience extends Component {
       let endDate = format.formatDate(this.state.selectionRange.endDate)
 
       this.setState({ startDate, endDate }, r => {
-          this.getAudience()
+        this.getAudience()
       })
     } else {
       this.setState({ showDateRange: true })
+    }
+  }
+
+  orderArrayBy(key) {
+    // let keyWordsList = this.state.keyWordsList
+    console.log('orderBy', key)
+    let orderArray = this.state.orderArray
+    let page = this.state.page
+    let status = true
+    if (key === 'codMat') {
+      orderArray.codMat = this.toggleOrderValue(orderArray.codMat)
+    }
+    if (key === 'keyword') {
+      orderArray.keyword = this.toggleOrderValue(orderArray.keyword)
+    }
+    if (key === 'caderno') {
+      orderArray.caderno = this.toggleOrderValue(orderArray.caderno)
+    }
+
+    if (key === 'datePub') {
+      orderArray.datePub = this.toggleOrderValue(orderArray.datePub)
+    }
+    if (key === 'pageViews') {
+      orderArray.pageViews = this.toggleOrderValue(orderArray.pageViews)
+    }
+    if (key === 'title') {
+      orderArray.title = this.toggleOrderValue(orderArray.title)
+    }
+    if (key === 'monthAvg') {
+      orderArray.monthAvg = this.toggleOrderValue(orderArray.monthAvg)
+    }
+    if (key === 'lastMonth') {
+      orderArray.lastMonth = this.toggleOrderValue(orderArray.lastMonth)
+    }
+
+    this.setState({ orderArray, page }, (r) => {
+      this.getAudience()
+    })
+  }
+
+  toggleOrderValue(objectValue) {
+    if (objectValue == true) return !objectValue;
+    else {
+      if (objectValue == false) return null;
+      else {
+        return true;
+      }
     }
   }
 
@@ -293,15 +379,55 @@ export default class Audience extends Component {
               <table>
                 <thead>
                   <tr>
-                    <th >Cód. Matéria</th>
-                    <th>Keyword</th>
-                    <th>Caderno</th>
-                    <th>Data de Publi.</th>
-                    <th>Page Views</th>
-                    <th>Título da Matéria</th>
+                    <th onClick={() => this.orderArrayBy('codMat')}>Cód. Matéria
+                    <div style={this.state.orderArray.codMat != null ? null : { display: 'none' }}>
+                        <img style={this.state.orderArray.codMat ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+                      </div>
+                      <p style={this.state.orderArray.codMat == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+                    </th>
+                    <th onClick={() => this.orderArrayBy('keyword')}>Keyword
+                    <div style={this.state.orderArray.keyword != null ? null : { display: 'none' }}>
+                        <img style={this.state.orderArray.keyword ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+                      </div>
+                      <p style={this.state.orderArray.keyword == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+                    </th>
+                    <th onClick={() => this.orderArrayBy('caderno')}>Caderno
+                      <div style={this.state.orderArray.caderno != null ? null : { display: 'none' }}>
+                        <img style={this.state.orderArray.caderno ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+                      </div>
+                      <p style={this.state.orderArray.caderno == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+                    </th>
+                    <th onClick={() => this.orderArrayBy('datePub')}>Data de Publi.
+                    <div style={this.state.orderArray.datePub != null ? null : { display: 'none' }}>
+                        <img style={this.state.orderArray.datePub ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+                      </div>
+                      <p style={this.state.orderArray.datePub == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+                    </th>
+                    <th onClick={() => this.orderArrayBy('pageViews')}>Page Views
+                    <div style={this.state.orderArray.pageViews != null ? null : { display: 'none' }}>
+                        <img style={this.state.orderArray.pageViews ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+                      </div>
+                      <p style={this.state.orderArray.pageViews == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+                    </th>
+                    <th onClick={() => this.orderArrayBy('title')}>Título da Matéria
+                    <div style={this.state.orderArray.title != null ? null : { display: 'none' }}>
+                        <img style={this.state.orderArray.title ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+                      </div>
+                      <p style={this.state.orderArray.title == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+                    </th>
                     <th>Link CMS</th>
-                    <th>Média Mensal</th>
-                    <th>Últimos 30 dias</th>
+                    <th onClick={() => this.orderArrayBy('monthAvg')}>Média Mensal
+                    <div style={this.state.orderArray.monthAvg != null ? null : { display: 'none' }}>
+                        <img style={this.state.orderArray.monthAvg ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+                      </div>
+                      <p style={this.state.orderArray.monthAvg == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+                    </th>
+                    <th onClick={() => this.orderArrayBy('lastMonth')}>Últimos 30 dias
+                    <div style={this.state.orderArray.lastMonth != null ? null : { display: 'none' }}>
+                        <img style={this.state.orderArray.lastMonth ? { transform: 'rotate(180deg)' } : null} className="chevron" src={Chevron} />
+                      </div>
+                      <p style={this.state.orderArray.lastMonth == null ? { color: '#c1cad2' } : { display: 'none' }} >-</p>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
