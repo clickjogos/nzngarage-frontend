@@ -236,10 +236,17 @@ export default class Audience extends Component {
     let tag = event.target.value
     let data = this.state.backupData;
 
-    let tableData = data.filter(e => {
-      return e.tag === tag
-    })
+    let tableData
+    if(event.target.value == "") {
+      tableData = data
+    } else {
+      tableData = data.filter(e => {
+        return e.tag === tag
+      })
+  
+    }
 
+   
     this.setState({ tableData })
   }
 
@@ -439,7 +446,7 @@ export default class Audience extends Component {
                         <td>{e.publishDate}</td>
                         <td>{e.totalAudience}</td>
                         <td><p data-tip={e.title}>{(e.title).substring(0, 29)}{(e.title).length > 29 && '...'} </p> </td>
-                        <a target="_blank" href={e.cmsLink}>{e.cmsLink} ↗</a>
+                        <td><a target="_blank" href={e.cmsLink}>{e.cmsLink} ↗</a></td>
                         <td>{e.meanAudience}</td>
                         <td>{e.last30DaysAudience}</td>
                       </tr>
