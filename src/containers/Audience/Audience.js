@@ -165,7 +165,7 @@ export default class Audience extends Component {
         }
       }
     })
-
+    
     return _.orderBy(tableData, fieldArray, orderArray)
   }
 
@@ -217,7 +217,7 @@ export default class Audience extends Component {
   }
 
   capitalizeFirstLetter(string) {
-    console.log("capitalizeFirstLetter", string)
+    
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   biddingTags = async () => {
@@ -405,7 +405,6 @@ export default class Audience extends Component {
 
   orderArrayBy(key) {
     // let keyWordsList = this.state.keyWordsList
-    console.log('orderBy', key)
     let orderArray = this.state.orderArray
     let page = this.state.page
     let status = true
@@ -436,7 +435,8 @@ export default class Audience extends Component {
     }
 
     this.setState({ orderArray, page }, (r) => {
-      this.getAudience()
+      let newTableData = this.applyOrderingToTableData(this.state.tableData, this.state.orderArray)
+        this.setState({ tableData: newTableData, backupData: newTableData, loading: false })        
     })
   }
 
@@ -561,4 +561,3 @@ export default class Audience extends Component {
     )
   }
 }
-
