@@ -126,7 +126,7 @@ export default class Audience extends Component {
       });
 
 
-      tableData = this.applyOrderingToTableData(tableData, this.state.orderArray)
+      tableData = this.applyOrderingToTableData(mockTable.tableInfo, this.state.orderArray)
       this.setState({ tableData, backupData: tableData, chartData, loading: false }, r=> {
         this.callPagination()
       })
@@ -286,11 +286,13 @@ export default class Audience extends Component {
       if(page.currentPage > 1 ){
         page.currentPage -=1
 
-        let first = Number(page.slice.first) - Number(page.resultsPerPage) // 10 - 10
+        let first = Number(page.slice.first) - Number(page.resultsPerPage) +1 // 10 - 10
         let last = page.slice.first
 
         page.slice.first = first;
         page.slice.last = last;
+
+        console.log(first, last)
         this.setState({page})
 
       }
@@ -529,3 +531,5 @@ export default class Audience extends Component {
     )
   }
 }
+
+let mockTable = {"chartInfo":[{"month":11,"articles":[207361,207362,207363,207364,207342,205760,205970,177216,177783],"totalMonthAudience":42636},{"month":12,"articles":[207361,207362,207363,207364,207342,205760,205970,177216,207694,177783,207850],"totalMonthAudience":34952},{"month":10,"articles":[205760,205970,177216,177783],"totalMonthAudience":20024},{"month":8,"articles":[177216],"totalMonthAudience":1638},{"month":9,"articles":[177216,177783],"totalMonthAudience":53782}],"tableInfo":[{"articleId":207361,"monthsAudience":[{"month":11,"totalMonthAudience":12153},{"month":12,"totalMonthAudience":693}],"totalAudience":12846,"last30DaysAudience":12846,"meanAudience":6423,"Keyword":"0","title":"Escrevendo um título aqui! ","tag":"Internet","publishDate":"2020-11-05"},{"articleId":207362,"monthsAudience":[{"month":11,"totalMonthAudience":1476},{"month":12,"totalMonthAudience":43}],"totalAudience":1519,"last30DaysAudience":1519,"meanAudience":759.5,"Keyword":"1","title":"","tag":"","publishDate":"2020-11-15"},{"articleId":207363,"monthsAudience":[{"month":11,"totalMonthAudience":21382},{"month":12,"totalMonthAudience":5359}],"totalAudience":26741,"last30DaysAudience":26741,"meanAudience":13370.5,"Keyword":"2","title":"","tag":"","publishDate":"2020-11-20"},{"articleId":207364,"monthsAudience":[{"month":11,"totalMonthAudience":1043},{"month":12,"totalMonthAudience":37}],"totalAudience":1080,"last30DaysAudience":1080,"meanAudience":540,"Keyword":"3","title":"Confira informações sobre planos da Netflix","tag":"Internet","publishDate":"2020-11-25"},{"articleId":207342,"monthsAudience":[{"month":11,"totalMonthAudience":528},{"month":12,"totalMonthAudience":13}],"totalAudience":541,"last30DaysAudience":541,"meanAudience":270.5,"Keyword":"4","publishDate":"2020-11-30","title":"Opções de hospedagem para o airbnb","tag":"Cultura Geek"},{"articleId":205760,"monthsAudience":[{"month":10,"totalMonthAudience":14783},{"month":11,"totalMonthAudience":335},{"month":12,"totalMonthAudience":50}],"totalAudience":15168,"last30DaysAudience":95,"meanAudience":5056,"Keyword":"6","title":"outro titulo ","tag":"Mobilidade Urbana/Smart Cities","publishDate":"2020-12-07"},{"articleId":205970,"monthsAudience":[{"month":10,"totalMonthAudience":1185},{"month":11,"totalMonthAudience":69},{"month":12,"totalMonthAudience":4}],"totalAudience":1258,"last30DaysAudience":17,"meanAudience":419.3333333333333,"Keyword":"7","title":"","tag":"Minha Série","publishDate":"2020-12-06"},{"articleId":177216,"monthsAudience":[{"month":8,"totalMonthAudience":1638},{"month":9,"totalMonthAudience":49944},{"month":10,"totalMonthAudience":3923},{"month":11,"totalMonthAudience":5523},{"month":12,"totalMonthAudience":310}],"totalAudience":61338,"last30DaysAudience":796,"meanAudience":12267.6,"Keyword":"9","publishDate":"2020-12-1","title":"Opções de hospedagem para o airbnb","tag":"Cultura Geek"},{"articleId":207694,"monthsAudience":[{"month":12,"totalMonthAudience":27057}],"totalAudience":27057,"last30DaysAudience":27057,"meanAudience":27057,"Keyword":"dailymotion","title":"teste 221","tag":"Cultura Geek","cmsLink":"https://cms-stg.inzn.com.br/tecmundo/wp-admin/post.php?post=207694&action=edit","publishDate":"2020-12-05"},{"articleId":177783,"monthsAudience":[{"month":9,"totalMonthAudience":3838},{"month":10,"totalMonthAudience":133},{"month":11,"totalMonthAudience":127},{"month":12,"totalMonthAudience":10}],"totalAudience":4108,"last30DaysAudience":44,"meanAudience":1027,"Keyword":"entrar na minha conta do facebook","title":"teste 3","tag":"Produto","cmsLink":"https://cms-stg.inzn.com.br/tecmundo/wp-admin/post.php?post=177783&action=edit","publishDate":"2020-10-09"},{"articleId":207850,"monthsAudience":[{"month":12,"totalMonthAudience":1376}],"totalAudience":1376,"last30DaysAudience":1376,"meanAudience":1376,"Keyword":"filmes lançamentos 2020","title":"tfeste 3 ","tag":"Software","cmsLink":"https://cms-stg.inzn.com.br/tecmundo/wp-admin/post.php?post=207850&action=edit","publishDate":"2020-12-07"}]}
