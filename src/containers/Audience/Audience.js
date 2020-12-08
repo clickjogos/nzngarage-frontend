@@ -58,6 +58,10 @@ export default class Audience extends Component {
         resultsPerPage: 10,
         orderBy: 'Search Volume',
         orderType: 'desc',
+        slice: {
+          first: 0,
+          last: 9
+        }
       },
       tableData: [],
       backupData: [],
@@ -123,8 +127,10 @@ export default class Audience extends Component {
 
 
       tableData = this.applyOrderingToTableData(tableData, this.state.orderArray)
-      this.setState({ tableData, backupData: tableData, chartData, loading: false })
-
+      this.setState({ tableData, backupData: tableData, chartData, loading: false }, r=> {
+        this.callPagination()
+      })
+      
     } catch (error) {
       this.setState({ loading: false, tableData: [], chartData: [] })
     }
@@ -223,13 +229,62 @@ export default class Audience extends Component {
     }
   }
 
-  actionPage = (status) => {
+  callPagination(){
+    let array = this.state.tableData;
+    let page = this.state.page
+    let totalPages = Number((array.length/page.resultsPerPage).toFixed())
+
+    if(array.length/page.resultsPerPage - totalPages !== 0 && totalPages !== 1){
+      totalPages += 1
+    }
+
+
+    if(totalPages === 0) totalPages = 1;
+
+    page.totalPages = totalPages;
+    page.currentPage = 1;
+    
+    // console.log(totalPages, array.length/10)
+    this.setState({page})
   }
 
-  actionChangePage = (currentPage) => {
+  actionRows(value){
+    let array = this.state.chartData;
+    let page = this.state.page; 
+    let totalPages = (array.length/value).toFixed()
+
+    page.totalPages = totalPages
+    this.setState({page})
   }
 
-  actionRows = (rows) => {
+  actionPage(status){
+    let page = this.state.page
+    if(status){
+      if(page.currentPage < page.totalPages){
+        page.currentPage += 1
+        
+        let first = (page.slice.last) 
+        let last = (page.slice.last + page.resultsPerPage) -1
+
+        page.slice.first = first;
+        page.slice.last = last;
+        this.setState({page})
+
+      }
+    } else {
+      if(page.currentPage > 1 ){
+        page.currentPage -=1
+
+        let last = ( page.slice.last - (page.resultsPerPage -1)) // (9, 18) // 18 - 10 = 9
+        let first = last - last // 
+
+        page.slice.first = first;
+        page.slice.last = last;
+        this.setState({page})
+
+      }
+    }
+    this.setState({page})
   }
 
   filterByTag = (event) => {
@@ -254,7 +309,7 @@ export default class Audience extends Component {
     return (
       <div className="container-pagination">
         <div onClick={() => this.actionPage(false)} className="container-pagination-button">
-          <img src={ButtonChevronLeft} />
+          <img alt={'button'} src={ButtonChevronLeft} />
           <p>Página Anterior</p>
         </div>
         <div className="pagination-info">
@@ -263,15 +318,15 @@ export default class Audience extends Component {
             <input onChange={(e) => this.actionChangePage(e.target.value)} value={this.state.page.currentPage} type="number" />
             <p>de {this.state.page.totalPages}</p>
           </div>
-          <div className="pagination-input">
+          {/* <div className="pagination-input">
             <p>Exibindo</p>
             <input onChange={(e) => this.actionRows(e.target.value)} value={this.state.page.resultsPerPage} type="number" />
             <p>por página</p>
-          </div>
+          </div> */}
         </div>
         <div onClick={() => this.actionPage(true)} className="container-pagination-button">
           <p>Próxima Página</p>
-          <img src={ButtonChevronRight} />
+          <img alt={'button'} src={ButtonChevronRight} />
         </div>
       </div>
     )
@@ -437,7 +492,7 @@ export default class Audience extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.tableData.map((e, i) => (
+                  {(this.state.tableData.slice(this.state.page.slice.first,this.state.page.slice.last)).map((e, i) => (
                     <React.Fragment key={i}>
                       <tr>
                         <td>{e.articleId}</td>
