@@ -400,9 +400,7 @@ export default class Suggestion extends Component {
 									<></>
 								) : ( */}
 								<select onChange={this.handleTag}>
-									<option value="" selected>
-										Caderno
-										</option>
+									<option value="" selected>Caderno</option>
 									{this.state.tags.map((e) => (
 										<option value={e}>{e}</option>
 									))}

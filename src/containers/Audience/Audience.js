@@ -41,6 +41,7 @@ export default class Audience extends Component {
       showDateRange: false,
       keywordFilter: null,
       titleFilter: null,
+      tagFilter: null,
       orderArray: {
         codMat: null,
         keyword: null,
@@ -106,6 +107,8 @@ export default class Audience extends Component {
         startDate: this.state.startDate,
         endDate: this.state.endDate
       }
+      if(this.state.tagFilter)  filter['tag'] = this.state.tagFilter
+
       const result = await ServiceAudience.getAudience(filter)
       let tableData = result.data.tableInfo
       let resultChart = result.data.chartInfo
@@ -300,21 +303,21 @@ export default class Audience extends Component {
   }
 
   filterByTag = (event) => {
-    let tag = event.target.value
+    let tagToFilter = event.target.value
     let data = this.state.backupData;
 
-    let tableData
+    let tagFilter = this.state.tagFilter
+
     if(event.target.value == "") {
-      tableData = data
+      tagFilter = null
     } else {
-      tableData = data.filter(e => {
-        return e.tag === tag
-      })
-  
+      tagFilter = tagToFilter
     }
 
    
-    this.setState({ tableData })
+    this.setState({ tagFilter }, r=> {
+      this.getAudience()
+    })
   }
 
   actionChangePage = (currentPage) => {
@@ -454,7 +457,7 @@ export default class Audience extends Component {
     return (
       <div className="refine-planning-main">
         <Sidebar></Sidebar>
-        {!this.state.loading ?
+       
           <div className="container-flex">
             <div className="container-competitors">
               <div className="audience-title">
@@ -474,6 +477,8 @@ export default class Audience extends Component {
                   {this.state.showDateRange && <DateRange handleSelect={this.handleSelect} selectionRange={this.state.selectionRange} />}
                 </div>
               </div>
+              {!this.state.loading ?
+              (<>
               <div className="container-chart-audience">
                 <SimpleBarChart
                   data={this.state.chartData}
@@ -553,10 +558,12 @@ export default class Audience extends Component {
                   ))}
                 </tbody>
               </table>
-            </div>
-            {this.pagination()}
+            </>)
+          : <></>}
+            </div> 
+            
+            {!this.state.loading ? this.pagination() : <></>} 
           </div>
-          : <Loading />}
       </div>
     )
   }
