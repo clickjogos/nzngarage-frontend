@@ -234,10 +234,9 @@ export default class Audience extends Component {
     let page = this.state.page
     let totalPages = Number((array.length/page.resultsPerPage).toFixed())
 
-    if(array.length/page.resultsPerPage - totalPages !== 0 && totalPages !== 1){
+    if(array.length/page.resultsPerPage - totalPages !== 0 && array.length/page.resultsPerPage - totalPages > 0){
       totalPages += 1
     }
-
 
     if(totalPages === 0) totalPages = 1;
 
@@ -257,17 +256,29 @@ export default class Audience extends Component {
     this.setState({page})
   }
 
+  actionRows = (value) => {
+    let page = this.state.page
+    page.resultsPerPage = value 
+    page.slice.first = 0;
+    page.slice.last = value
+
+    this.setState({page}, r=> {
+      this.callPagination()
+    })
+  }
+
   actionPage(status){
     let page = this.state.page
     if(status){
       if(page.currentPage < page.totalPages){
         page.currentPage += 1
-        
-        let first = (page.slice.last) 
-        let last = (page.slice.last + page.resultsPerPage) -1
+
+        let first = page.slice.last
+        let last = (Number(page.slice.last) + Number(page.resultsPerPage))
 
         page.slice.first = first;
         page.slice.last = last;
+
         this.setState({page})
 
       }
@@ -275,8 +286,8 @@ export default class Audience extends Component {
       if(page.currentPage > 1 ){
         page.currentPage -=1
 
-        let last = ( page.slice.last - (page.resultsPerPage -1)) // (9, 18) // 18 - 10 = 9
-        let first = last - last // 
+        let first = Number(page.slice.first) - Number(page.resultsPerPage) // 10 - 10
+        let last = page.slice.first
 
         page.slice.first = first;
         page.slice.last = last;
@@ -318,11 +329,11 @@ export default class Audience extends Component {
             <input onChange={(e) => this.actionChangePage(e.target.value)} value={this.state.page.currentPage} type="number" />
             <p>de {this.state.page.totalPages}</p>
           </div>
-          {/* <div className="pagination-input">
+          <div className="pagination-input">
             <p>Exibindo</p>
             <input onChange={(e) => this.actionRows(e.target.value)} value={this.state.page.resultsPerPage} type="number" />
             <p>por página</p>
-          </div> */}
+          </div>
         </div>
         <div onClick={() => this.actionPage(true)} className="container-pagination-button">
           <p>Próxima Página</p>
