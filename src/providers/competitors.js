@@ -29,11 +29,12 @@ export function weeklyscheduleEdit(body) {
     return axiosProvider.put('/keyWords/weeklyschedule', body)
 }
 
-export function getTags(filter, startDate, endDate) {
+export function getTags(filter, startDate, endDate, audience) {
     let URL = '/tags?'
     if (startDate) URL += `&startDate=${startDate}`
     if (endDate) URL += `&endDate=${endDate}`
     if (filter) URL += '&filter=true'
+    if (audience) URL += '&audience=true'
     
     return axiosProvider.get(URL)
 }

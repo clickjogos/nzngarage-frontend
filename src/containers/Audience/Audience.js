@@ -167,14 +167,13 @@ export default class Audience extends Component {
     }
   }
 
-
   capitalizeFirstLetter(string) {
     console.log("capitalizeFirstLetter", string)
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   biddingTags = async () => {
     try {
-      let result = await ServiceSuggestion.getTags(true)
+      let result = await ServiceSuggestion.getTags(true, null, null, true)
       this.setState({ tags: result.data })
     } catch (error) {
 

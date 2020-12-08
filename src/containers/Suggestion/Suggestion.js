@@ -12,6 +12,7 @@ import DateRange from '../../components/DateRange/DateRage'
 import * as formart from '../../utils/format'
 
 import './Suggestion.scss'
+import { element } from 'prop-types'
 
 const IconEdit = require('../../assets/icons/icon-edit.svg')
 const ButtonChevronLeft = require('../../assets/icons/icon-button-left-arrow.svg')
@@ -168,11 +169,10 @@ export default class Suggestion extends Component {
 		let scheduledKeywords = this.state.scheduledKeywords
 		let schedule = this.state.schedule
 
-		let selectedKeywords = scheduledKeywords.map(e => {
-			if (e._id === objKeyword._id) {
-				e = objKeyword
+		let selectedKeywords = scheduledKeywords.map( (e, indexE) => {
+			if ((e.Keyword === objKeyword.Keyword) && (e.competitor === objKeyword.competitor)) {
+				scheduledKeywords[indexE] = objKeyword
 			}
-
 			return e;
 		})
 
@@ -180,14 +180,15 @@ export default class Suggestion extends Component {
 			selectedKeywords
 		}
 
-		schedule.forEach(element => {
-			scheduledKeywords.forEach((e, i) => {
-				if (element._id === e.ref) {
-					if (e._id === element.scheduledKeywords[i]) {
-						element.scheduledKeywords[i] = e
+		schedule.forEach( (actualSchedule, actualScheduleIndex) => {
+			actualSchedule.scheduledKeywords.map((element, elementIndex) =>{
+				scheduledKeywords.forEach((e, i) => {
+					if((element.Keyword === e.Keyword) && (element.competitor === e.competitor)) {
+							schedule[actualScheduleIndex].scheduledKeywords[elementIndex] = e
 					}
-				}
-			});
+				});
+			})
+			
 		});
 
 		schedule.forEach(element => {
